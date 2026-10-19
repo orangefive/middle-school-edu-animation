@@ -4,6 +4,7 @@
 
 不输出提示词，不输出分镜文档，输出 `lesson.html`：单文件、离线可播、可拖动进度。
 
+[![CI](https://github.com/orangefive/middle-school-edu-animation/actions/workflows/ci.yml/badge.svg)](https://github.com/orangefive/middle-school-edu-animation/actions/workflows/ci.yml)
 ![license](https://img.shields.io/badge/license-MIT-blue)
 ![runtime](https://img.shields.io/badge/runtime-zero%20dependencies-success)
 ![offline](https://img.shields.io/badge/network-not%20required-informational)
