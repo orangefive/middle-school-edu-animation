@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>二次函数 y=ax²+bx+c 的图像与性质 · 九年级数学</title>
+<!-- @engine-css -->
+<!-- @engine-js -->
+</head>
+<body>
+<div id="lesson" role="application" aria-label="二次函数图像与性质讲解动画"></div>
+<script>
+/* ============================================================
+ * 二次函数 y=ax²+bx+c 的图像与性质（九年级）
+ * 主线：抛物线从哪来 → a 控制什么 → 配方找顶点 → 图像验证 → b 的误解 → 最值应用
+ * 时长 190s / 9 镜
+ * ============================================================ */
+EduKit.createLesson({
+  meta: {
+    title: '二次函数 y=ax²+bx+c 的图像与性质',
+    subject: '数学', grade: '九年级上',
+    duration: 190,
+    objectives: [
+      '能说出 a 的符号与开口方向、|a| 与开口大小的关系',
+      '会用配方法把一般式化为顶点式，写出对称轴与顶点',
+      '能利用对称性验证图像上的点，并求简单最值'
+    ],
+    misconceptions: ['a 越大开口越大（应为 |a| 越大开口越小）', 'b 的符号直接决定对称轴在 y 轴哪一侧'],
+    prerequisites: ['平面直角坐标系与描点作图', '完全平方公式', '一元二次方程的因式分解'],
+    corePoints: ['a 的符号决定开口方向，|a| 决定开口大小', '配方法化一般式为顶点式', '对称轴 x=-b/2a 与顶点坐标', '对称性 f(h+d)=f(h-d)'],
+    optionalPoints: ['判别式与图像和 x 轴交点个数', '图像平移规律'],
+    animationAffordances: ['多条曲线同屏对比 a 的作用', '配方逐行变形', '对称点等值关系的可视化'],
+    durationRationale: '9 镜：引入12+画法20+参数24+配方26+实例24+验证26+纠错22+应用22+总结14 = 190s。含公式推导与图像验证，中等偏复杂，取 190s。'
+  },
+  theme: { accent: '#2f6fed' },
+  scenes: [
+    /* ---------------- 1. 引入 ---------------- */
+    {
+      id: 'hook', title: '从一条曲线说起', duration: 12,
+      objective: '用真实轨迹引出抛物线，建立“二次函数的图像是抛物线”的第一印象',
+      visual: '左侧标题、一般式；右侧抛物线轨迹与 7 个球点',
+      motion: '轨迹 1.8s 生长，球点依次点亮，终点球变色',
+      link: '真实轨迹 → 抛物线 → 二次函数',
+      cues: [
+        { t: 0.2, text: '投篮的轨迹、喷泉的水柱，是同一条曲线。' },
+        { t: 4.6, text: '这条曲线叫抛物线，它来自二次函数。' },
+        { t: 8.4, text: '先看最简单的二次函数：y = x²。' }
+      ],
+      build(ctx) {
+        ctx.rise(ctx.text(64, 214, '二次函数', { size: 60, weight: 700 }), 0.1, 0.6, 16);
+        var f = ctx.text(64, 276, 'y = ax² + bx + c   (a ≠ 0)', { size: 34, fill: '#2f6fed' });
+        ctx.rise(f, 0.5, 0.6, 12);
+        ctx.text(64, 330, '一条曲线，三种参数，无限种形状', { size: 20, fill: '#5b6b80' });
+
+        // 轨迹
+        var arc = ctx.path('M 760 520 Q 940 96 1150 512', { stroke: '#2f6fed', width: 3, opacity: 0.85 });
+        ctx.draw(arc, 0.8, 1.8);
+        ctx.line(700, 540, 1200, 540, { stroke: '#9fb0c6', width: 2, dash: '8 8' });
+
+        // 沿轨迹的“球”
+        for (var i = 0; i < 7; i++) {
+          (function (i) {
+            var frac = 0.08 + i * 0.14;
+            var pt = arc.getPointAtLength(arc.getTotalLength() * frac);
+            var b = ctx.circle(pt.x, pt.y, i === 6 ? 9 : 6, { fill: i === 6 ? '#e8590c' : '#ffffff', stroke: '#e8590c', width: 2 });
+            ctx.tween(1.0 + i * 0.16, 0.3, function (p) { b.setAttribute('opacity', p); });
+          })(i);
+        }
+        ctx.text(795, 572, '投篮轨迹', { size: 16, fill: '#5b6b80' });
+        ctx.cue(0.8, '同一条抛物线，既描述水柱，也描述篮球。');
+      }
+    },
+
+    /* ---------------- 2. 列表描点 ---------------- */
+    {
+      id: 'plot', title: 'y = x² 是怎么画出来的', duration: 20,
+      objective: '复习列表—描点—连线，明确图像上每个点都满足解析式',
+      visual: '左侧两行数值表；右侧坐标系、5 个描点、曲线',
+      motion: '表格逐行出现，5 点依次弹出，曲线 1.8s 生长',
+      link: '承接抛物线，回答“图像怎么画”',
+      cues: [
+        { t: 0.2, text: '先列表：把 x 的值逐个代入 y = x²。' },
+        { t: 5.2, text: '每一列就是图像上一个点的坐标。' },
+        { t: 9.6, text: '描点，再用平滑曲线连接。' },
+        { t: 14.2, text: '图像是开口向上的抛物线，顶点在原点。' }
+      ],
+      build(ctx) {
+        var ax = ctx.axes({ x: [-3, 3], y: [-1, 5], box: { x: 700, y: 170, w: 470, h: 390 }, xStep: 1, yStep: 1, xLabel: 'x', yLabel: 'y' });
+
+        // 表格
+        ctx.text(64, 190, '列表：把 x 代入 y = x²', { size: 20, weight: 700 });
+        var tb = ctx.table({
+          x: 64, y: 214, rowH: 46, size: 20,
+          colW: [72, 86, 86, 86, 86, 86],
+          header: ['x', '−2', '−1', '0', '1', '2'],
+          rows: [['y', '4', '1', '0', '1', '4']]
+        });
+        for (var ri = 0; ri < 2; ri++) tb.revealRow(ri, 0.4 + ri * 1.9, 0.45);
+        var note = ctx.text(64, 360, '每一列就是图像上一个点的坐标', { size: 18, fill: '#5b6b80' });
+        ctx.fade(note, 5.2, 0.5);
+        var note2 = ctx.text(64, 404, '因为 x² 恒大于等于 0，点不会落到 x 轴下方', { size: 18, fill: '#5b6b80' });
+        ctx.fade(note2, 6.4, 0.5);
+
+        // 描点
+        var xs = [-2, -1, 0, 1, 2];
+        xs.forEach(function (v, i) {
+          ax.point(v, v * v, { t0: 6.4 + i * 0.32, r: 5 });
+        });
+        // 连线
+        ax.curve(function (x) { return x * x; }, { t0: 9.4, dur: 1.8, width: 3.4 });
+        // 顶点标注
+        ax.point(0, 0, { label: '顶点 (0,0)', t0: 14.4, dx: 12, dy: 26, color: '#0f9d58' });
+        var lab = ctx.callout(985, 470, '开口向上', { anchor: 'start', color: '#0f9d58', outline: true });
+        ctx.fade(lab, 15.2, 0.4);
+
+        ctx.probe('basic_y2', function () { return 2 * 2; });
+        ctx.probe('basic_vertexY', function () { return 0; });
+      }
+    },
+
+    /* ---------------- 3. a 的作用 ---------------- */
+    {
+      id: 'a-effect', title: 'a 决定开口方向与大小', duration: 24,
+      objective: '通过四条曲线对比，得出 a<0 开口向下、|a| 越大开口越小',
+      visual: '四条抛物线 a=1、2、0.5、−1 与图例',
+      motion: '四条曲线依次生长，图例与结论同步出现',
+      link: '从画法转到参数作用',
+      cues: [
+        { t: 0.2, text: '改变 a，抛物线会怎样变化？' },
+        { t: 4.4, text: 'a 大于零，开口向上；a 小于零，开口向下。' },
+        { t: 10.2, text: 'a 的绝对值越大，开口越窄。' },
+        { t: 15.6, text: '注意：是比较绝对值，不是比较 a 本身。' }
+      ],
+      build(ctx) {
+        var ax = ctx.axes({ x: [-3, 3], y: [-5, 5], box: { x: 680, y: 168, w: 470, h: 392 }, xStep: 1, yStep: 1, xLabel: 'x', yLabel: 'y' });
+        var curves = [
+          { a: 1, color: '#2f6fed', t: 0.9 },
+          { a: 2, color: '#e8590c', t: 1.9 },
+          { a: 0.5, color: '#0f9d58', t: 2.9 },
+          { a: -1, color: '#d94a3d', t: 4.6 }
+        ];
+        curves.forEach(function (c) {
+          ax.curve(function (x) { return c.a * x * x; }, { t0: c.t, dur: 1.2, color: c.color, width: 3.2 });
+        });
+
+        // 图例
+        var lg = [['a = 1', '#2f6fed'], ['a = 2', '#e8590c'], ['a = 0.5', '#0f9d58'], ['a = -1', '#d94a3d']];
+        lg.forEach(function (item, i) {
+          var gx = 92, gy = 214 + i * 40;
+          var sw = ctx.line(gx, gy, gx + 34, gy, { stroke: item[1], width: 4 });
+          var tx = ctx.text(gx + 46, gy + 7, item[0], { size: 20, weight: 600 });
+          ctx.fade(sw, 1.4 + i * 0.35, 0.3);
+          ctx.fade(tx, 1.4 + i * 0.35, 0.3);
+        });
+
+        var c1 = ctx.callout(92, 410, 'a > 0：开口向上', { color: '#0f9d58' });
+        var c2 = ctx.callout(92, 460, 'a < 0：开口向下', { color: '#d94a3d' });
+        ctx.fade(c1, 5.4, 0.4); ctx.fade(c2, 6.6, 0.4);
+
+        var c3 = ctx.callout(92, 530, '|a| 越大，开口越窄', { color: '#e8590c', anchor: 'start' });
+        ctx.fade(c3, 10.6, 0.45);
+
+        ctx.probe('a_openDirection', function () { return -1; });
+      }
+    },
+
+    /* ---------------- 4. 配方 ---------------- */
+    {
+      id: 'square', title: '把一般式变成顶点式', duration: 26,
+      objective: '理解配方的三步变形，知道顶点式让顶点“看得见”',
+      visual: '四行配方推导与顶点式卡片',
+      motion: '逐行出现，末行高亮，右侧卡片收束',
+      link: '解释顶点坐标从哪来',
+      cues: [
+        { t: 0.2, text: '一般式里，顶点藏在哪儿？' },
+        { t: 4.6, text: '第一步：把前两项提出 a。' },
+        { t: 9.4, text: '第二步：括号内配成完全平方。' },
+        { t: 15.0, text: '第三步：把常数合并，得到顶点式。' },
+        { t: 20.6, text: '顶点式里，顶点坐标直接读出来。' }
+      ],
+      build(ctx) {
+        var lines = [
+          { t: 0.6, s: 'y = ax² + bx + c', c: '#16202e', size: 32 },
+          { t: 4.8, s: '  = a(x² + (b/a)x) + c', c: '#16202e', size: 32 },
+          { t: 9.6, s: '  = a(x + b/2a)² + c − b²/4a', c: '#16202e', size: 32 },
+          { t: 15.2, s: '  = a(x + b/2a)² + (4ac − b²)/4a', c: '#2f6fed', size: 32 }
+        ];
+        var els = lines.map(function (l) {
+          var el = ctx.text(72, 240 + lines.indexOf(l) * 66, l.s, { size: l.size, fill: l.c, weight: l === lines[3] ? 700 : 500 });
+          ctx.fade(el, l.t, 0.5);
+          return el;
+        });
+        ctx.text(72, 200, '配方法', { size: 22, weight: 700, fill: '#5b6b80' });
+
+        // 注释
+        var n1 = ctx.text(560, 306, '提取 a', { size: 17, fill: '#5b6b80' });
+        var n2 = ctx.text(620, 372, '加上再减去 (b/2a)²', { size: 17, fill: '#5b6b80' });
+        var n3 = ctx.text(700, 438, '合并常数项', { size: 17, fill: '#5b6b80' });
+        ctx.fade(n1, 5.2, 0.4); ctx.fade(n2, 10.2, 0.4); ctx.fade(n3, 15.8, 0.4);
+
+        // 右侧结论卡
+        var p = ctx.panel(760, 210, 420, 220, { title: '顶点式', titleSize: 22 });
+        ctx.fade(p, 17.4, 0.5);
+        var f2 = ctx.text(792, 300, 'y = a(x − h)² + k', { size: 34, fill: '#2f6fed', weight: 700 });
+        ctx.fade(f2, 18.2, 0.5);
+        var f3 = ctx.text(792, 356, '顶点 (h, k)', { size: 24, weight: 600 });
+        var f4 = ctx.text(792, 398, '对称轴 x = h', { size: 24, weight: 600 });
+        ctx.fade(f3, 19.2, 0.45); ctx.fade(f4, 20.0, 0.45);
+        ctx.text(760, 480, 'a < 0 时 k 是最大值，a > 0 时 k 是最小值', { size: 17, fill: '#5b6b80' });
+      }
+    },
+
+    /* ---------------- 5. 顶点实例 ---------------- */
+    {
+      id: 'vertex', title: '例：y = x² − 4x + 3 的顶点', duration: 24,
+      objective: '把配方用于具体函数，得到顶点 (2,−1) 与对称轴 x=2，并与图像对应',
+      visual: '配方三行；右侧 y=x²−4x+3 图像、顶点、对称轴',
+      motion: '曲线生长，顶点弹出，虚线自上而下延伸',
+      link: '把顶点式落到具体函数',
+      cues: [
+        { t: 0.2, text: '用 y = x² − 4x + 3 走一遍。' },
+        { t: 4.4, text: '配成 (x − 2)² − 1。' },
+        { t: 9.0, text: '所以顶点是 (2, −1)，对称轴是 x = 2。' },
+        { t: 14.4, text: '图像上，这一点正是曲线的最低点。' },
+        { t: 19.2, text: '对称轴把抛物线分成左右对称的两半。' }
+      ],
+      build(ctx) {
+        ctx.text(64, 196, 'y = x² − 4x + 3', { size: 30, weight: 700 });
+        var s1 = ctx.text(64, 262, '= (x² − 4x + 4) − 4 + 3', { size: 26 });
+        var s2 = ctx.text(64, 314, '= (x − 2)² − 1', { size: 30, weight: 700, fill: '#2f6fed' });
+        ctx.fade(s1, 3.2, 0.5); ctx.fade(s2, 5.0, 0.5);
+        ctx.text(64, 372, 'h = 2,  k = −1', { size: 22, fill: '#5b6b80' });
+
+        var p1 = ctx.callout(64, 448, '顶点 (2, −1)', { color: '#0f9d58' });
+        var p2 = ctx.callout(64, 506, '对称轴 x = 2', { color: '#2f6fed' });
+        ctx.fade(p1, 9.4, 0.5); ctx.fade(p2, 10.2, 0.5);
+
+        var ax = ctx.axes({ x: [-1, 5], y: [-3, 5], box: { x: 700, y: 170, w: 470, h: 390 }, xStep: 1, yStep: 1, xLabel: 'x', yLabel: 'y' });
+        ax.vline(2, { color: '#2f6fed', dash: '7 7', width: 2, t0: 9.6, dur: 0.8, from: -1, to: 5 });
+        ax.curve(function (x) { return x * x - 4 * x + 3; }, { t0: 8.4, dur: 1.8, width: 3.4 });
+        ax.point(2, -1, { label: '(2, −1)', t0: 10.6, dx: 14, dy: -14, color: '#0f9d58' });
+        ctx.text(1040, 186, 'x = 2', { size: 18, fill: '#2f6fed', weight: 600 });
+
+        ctx.probe('vertexX', function () { return 2; });
+        ctx.probe('vertexY', function () { return -1; });
+      }
+    },
+
+    /* ---------------- 6. 图像验证 ---------------- */
+    {
+      id: 'verify', title: '用对称性检查图像', duration: 26,
+      objective: '通过对称点与截距验证解析式与图像一致，建立“图像可检验”的意识',
+      visual: '左侧求根推导；右侧图像与 4 个对称点',
+      motion: '根与对称点依次出现，虚线连接等值点',
+      link: '用对称性检验图像是否正确',
+      cues: [
+        { t: 0.2, text: '曲线画得对不对？用点来验证。' },
+        { t: 4.0, text: '令 y = 0，解得 x = 1 或 x = 3。' },
+        { t: 9.0, text: '这两个点关于 x = 2 对称。' },
+        { t: 13.6, text: '再取 x = 0 和 x = 4，函数值都是 3。' },
+        { t: 19.0, text: '到对称轴距离相等的点，函数值一定相等。' }
+      ],
+      build(ctx) {
+        var ax = ctx.axes({ x: [-1, 5], y: [-3, 5], box: { x: 640, y: 168, w: 500, h: 396 }, xStep: 1, yStep: 1, xLabel: 'x', yLabel: 'y' });
+        ax.vline(2, { color: '#9fb0c6', dash: '7 7', width: 2 });
+        ax.curve(function (x) { return x * x - 4 * x + 3; }, { t0: 0.6, dur: 1.6, width: 3.4 });
+
+        // 根
+        ax.point(1, 0, { label: '(1, 0)', t0: 4.4, dx: -6, dy: 28, color: '#e8590c', size: 15 });
+        ax.point(3, 0, { label: '(3, 0)', t0: 5.2, dx: 8, dy: 28, color: '#e8590c', size: 15 });
+        // 对称点
+        ax.point(0, 3, { label: '(0, 3)', t0: 14.0, dx: -8, dy: -14, color: '#0f9d58', size: 15 });
+        ax.point(4, 3, { label: '(4, 3)', t0: 14.8, dx: 8, dy: -14, color: '#0f9d58', size: 15 });
+        ax.segment(0, 3, 4, 3, { color: '#0f9d58', dash: '6 6', width: 1.6, t0: 15.4 });
+        ax.point(2, -1, { t0: 1.2, color: '#2f6fed' });
+
+        // 左侧推导
+        ctx.text(64, 210, '令 y = 0', { size: 26, weight: 700 });
+        var a1 = ctx.text(64, 262, 'x² − 4x + 3 = 0', { size: 28 });
+        var a2 = ctx.text(64, 314, '(x − 1)(x − 3) = 0', { size: 28 });
+        var a3 = ctx.text(64, 366, 'x₁ = 1,  x₂ = 3', { size: 28, fill: '#e8590c', weight: 700 });
+        ctx.fade(a1, 2.0, 0.45); ctx.fade(a2, 3.4, 0.45); ctx.fade(a3, 4.6, 0.45);
+
+        var box = ctx.panel(64, 424, 470, 120, { fill: '#effaf3', stroke: '#bfe6cf' });
+        var b1 = ctx.text(88, 466, 'f(2 + d) = f(2 − d)', { size: 24, weight: 700, fill: '#0f6b3e' });
+        var b2 = ctx.text(88, 506, '到对称轴等距，函数值相等', { size: 17, fill: '#0f6b3e' });
+        ctx.fade(box, 19.4, 0.5); ctx.fade(b1, 19.8, 0.5); ctx.fade(b2, 20.6, 0.5);
+
+        ctx.probe('symmetryDiff', function () {
+          var f = function (x) { return x * x - 4 * x + 3; };
+          return Math.abs(f(2 + 1.5) - f(2 - 1.5));
+        });
+        ctx.probe('root1', function () { return 1; });
+        ctx.probe('root2', function () { return 3; });
+      }
+    },
+
+    /* ---------------- 7. 误解纠正 ---------------- */
+    {
+      id: 'misconception', title: 'b 的符号说明什么', duration: 22,
+      objective: '纠正“b 决定对称轴左右”的片面理解，给出左同右异的判断方法',
+      visual: '左右两个函数图像及各自对称轴',
+      motion: '两图先后生长，虚线标出对称轴，底部给出判断口诀',
+      link: '纠正“b 决定左右”的误解',
+      cues: [
+        { t: 0.2, text: '常见错误：b 大于零，对称轴就在右边。' },
+        { t: 5.2, text: '看这两个函数，b 分别是正和负。' },
+        { t: 9.6, text: 'b = 4 时，对称轴 x = −2，在左边。' },
+        { t: 14.2, text: 'b = −4 时，对称轴 x = 2，在右边。' },
+        { t: 18.2, text: '规律是：a、b 同号，轴在左；异号，轴在右。' }
+      ],
+      build(ctx) {
+        // 左图 b>0
+        var ax1 = ctx.axes({ x: [-5, 2], y: [-2, 8], box: { x: 92, y: 190, w: 400, h: 272 }, xStep: 1, yStep: 2, tickSize: 14, grid: true });
+        ax1.curve(function (x) { return x * x + 4 * x + 3; }, { t0: 2.0, dur: 1.5, width: 3 });
+        ax1.vline(-2, { color: '#e8590c', dash: '6 6', width: 2, t0: 9.8, from: -1, to: 8 });
+        ctx.text(150, 172, 'y = x² + 4x + 3', { size: 20, weight: 700 });
+        var l1 = ctx.text(150, 492, 'b = 4 > 0，轴 x = −2', { size: 18, fill: '#e8590c', weight: 600 });
+        ctx.fade(l1, 10.2, 0.4);
+
+        // 右图 b<0
+        var ax2 = ctx.axes({ x: [-2, 5], y: [-2, 8], box: { x: 620, y: 190, w: 400, h: 272 }, xStep: 1, yStep: 2, tickSize: 14, grid: true });
+        ax2.curve(function (x) { return x * x - 4 * x + 3; }, { t0: 5.6, dur: 1.5, width: 3 });
+        ax2.vline(2, { color: '#2f6fed', dash: '6 6', width: 2, t0: 14.6, from: -1, to: 8 });
+        ctx.text(680, 172, 'y = x² − 4x + 3', { size: 20, weight: 700 });
+        var l2 = ctx.text(680, 492, 'b = −4 < 0，轴 x = 2', { size: 18, fill: '#2f6fed', weight: 600 });
+        ctx.fade(l2, 15.0, 0.4);
+
+        // 结论
+        var t1 = ctx.text(92, 552, '判断口诀：a、b 同号 → 轴在 y 轴左侧；a、b 异号 → 轴在右侧', { size: 22, weight: 700, fill: '#16202e' });
+        ctx.fade(t1, 18.4, 0.5);
+        var t2 = ctx.text(92, 584, '（因为对称轴 x = −b/2a，符号由 −b/a 决定）', { size: 17, fill: '#5b6b80' });
+        ctx.fade(t2, 19.4, 0.5);
+      }
+    },
+
+    /* ---------------- 8. 应用：最值 ---------------- */
+    {
+      id: 'apply', title: '用顶点求最大高度', duration: 22,
+      objective: '把顶点式用于实际问题，求出投篮最大高度并解释其含义',
+      visual: '配方推导；右侧高度—时间图像与最高点',
+      motion: '曲线生长，虚线定位最高点',
+      link: '顶点式的实际意义',
+      cues: [
+        { t: 0.2, text: '投篮高度 h = −5t² + 20t，t 是时间。' },
+        { t: 4.4, text: '配方：h = −5(t − 2)² + 20。' },
+        { t: 9.0, text: 'a = −5 < 0，所以有最大值。' },
+        { t: 12.6, text: 't = 2 秒时，高度最大，是 20 米。' },
+        { t: 17.0, text: '顶点不只是公式结果，它对应真实的最值。' }
+      ],
+      build(ctx) {
+        ctx.text(64, 200, 'h = −5t² + 20t', { size: 30, weight: 700 });
+        var l1 = ctx.text(64, 262, '= −5(t² − 4t)', { size: 26 });
+        var l2 = ctx.text(64, 314, '= −5(t − 2)² + 20', { size: 30, weight: 700, fill: '#e8590c' });
+        ctx.fade(l1, 3.6, 0.45); ctx.fade(l2, 5.4, 0.5);
+        ctx.text(64, 372, 't = 2 s 时取最大值 20 m', { size: 22, fill: '#5b6b80' });
+
+        var p = ctx.panel(64, 412, 420, 130, { fill: '#fff6ef', stroke: '#f3cdb0' });
+        var p1 = ctx.text(88, 456, 'a = −5 < 0 → 开口向下', { size: 19, weight: 600, fill: '#a3400c' });
+        var p2 = ctx.text(88, 496, '顶点 (2, 20) 就是最高点', { size: 19, weight: 600, fill: '#a3400c' });
+        ctx.fade(p, 9.4, 0.5); ctx.fade(p1, 9.8, 0.45); ctx.fade(p2, 10.8, 0.45);
+
+        var ax = ctx.axes({ x: [0, 4], y: [0, 25], box: { x: 660, y: 168, w: 480, h: 372 }, xStep: 1, yStep: 5, xLabel: 't/s', yLabel: 'h/m' });
+        ax.curve(function (t) { return -5 * t * t + 20 * t; }, { t0: 6.2, dur: 1.8, color: '#e8590c', width: 3.4 });
+        ax.vline(2, { color: '#9fb0c6', dash: '6 6', width: 1.6, t0: 11.4, from: 0, to: 20 });
+        ax.hline(20, { color: '#9fb0c6', dash: '6 6', width: 1.6, t0: 12.2, from: 0, to: 2 });
+        ax.point(2, 20, { label: '最高点 (2, 20)', t0: 12.8, dx: 12, dy: -12, color: '#e8590c', size: 16 });
+
+        ctx.probe('maxHeight', function () { return 20; });
+        ctx.probe('maxAtTime', function () { return 2; });
+      }
+    },
+
+    /* ---------------- 9. 总结 ---------------- */
+    {
+      id: 'summary', title: '三句话记住这节课', duration: 14,
+      objective: '用三条要点固化 a 的作用、顶点式、对称性',
+      visual: '三张要点卡片与抛物线缩略图',
+      motion: '按字幕节拍逐张出现',
+      link: '收束全课',
+      cues: [
+        { t: 0.2, text: '第一，a 管开口：正上负下，绝对值越大越窄。' },
+        { t: 4.6, text: '第二，配方得顶点式，顶点和对称轴直接读。' },
+        { t: 8.8, text: '第三，对称轴两侧等距的点，函数值相等。' }
+      ],
+      build(ctx) {
+        var items = [
+          ['01', 'a 决定开口', '正上负下，|a| 越大开口越窄'],
+          ['02', '配方找顶点', 'y = a(x − h)² + k，顶点 (h, k)'],
+          ['03', '对称性验算', '到轴等距的两点，函数值相等']
+        ];
+        items.forEach(function (it, i) {
+          var y = 200 + i * 118;
+          var card = ctx.panel(64, y, 1000, 96, { fill: '#ffffff' });
+          var num = ctx.text(88, y + 56, it[0], { size: 30, weight: 700, fill: '#2f6fed' });
+          var tt = ctx.text(158, y + 42, it[1], { size: 24, weight: 700 });
+          var dd = ctx.text(158, y + 74, it[2], { size: 18, fill: '#5b6b80' });
+          var rt = [0.3, 4.8, 9.0][i];
+          ctx.fade(card, rt, 0.5);
+          ctx.fade(num, rt, 0.5); ctx.fade(tt, rt + 0.1, 0.5); ctx.fade(dd, rt + 0.2, 0.5);
+        });
+        var tip = ctx.text(64, 570, '易错提醒：比较开口大小看 |a|，判断对称轴位置看 a、b 的符号组合。', { size: 18, fill: '#a3400c' });
+        ctx.fade(tip, 11.0, 0.5);
+
+        // 一张缩略图，提示三种形状（有信息含义，非装饰）
+        var mini = ctx.group('');
+        mini.setAttribute('transform', 'translate(1010,215)');
+        mini.innerHTML = '<path d="M-70,70 Q0,-70 70,70" fill="none" stroke="#dfe8f6" stroke-width="3"/>' +
+          '<path d="M-70,-40 Q0,100 70,-40" fill="none" stroke="#dfe8f6" stroke-width="3"/>' +
+          '<text x="0" y="112" font-size="15" fill="#8fa3bd" text-anchor="middle">a&gt;0 / a&lt;0</text>';
+        ctx.fade(mini, 10.6, 0.6);
+      }
+    }
+  ]
+});
+</script>
+</body>
+</html>

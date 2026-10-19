@@ -1,0 +1,1044 @@
+{
+  "version": "1.0",
+  "createdAt": "2026-10-19",
+  "notes": "dev 集用于开发调试；holdout 集在 v1.1 冻结后单独评测，不得用于调参。",
+  "cases": [
+    {
+      "id": "M1-quadratic",
+      "set": "dev",
+      "subject": "mathematics",
+      "grade": "九年级上",
+      "topic": "二次函数 y=ax²+bx+c 的图像与性质",
+      "difficulty": "medium",
+      "lesson": "examples/mathematics/quadratic-function/lesson.html",
+      "durationRange": [
+        170,
+        220
+      ],
+      "keyPoints": [
+        "a 的符号与开口方向",
+        "|a| 与开口大小",
+        "配方法化顶点式",
+        "对称轴与顶点",
+        "对称性 f(h+d)=f(h-d)"
+      ],
+      "forbiddenErrors": [
+        "a 越大开口越大",
+        "顶点公式写错",
+        "把 b 的符号单独当作对称轴位置"
+      ],
+      "requiredVisuals": [
+        "坐标系中的抛物线",
+        "四条 a 不同的曲线对比",
+        "对称点与对称轴虚线",
+        "高度—时间图像"
+      ],
+      "requiredText": [
+        "对称轴",
+        "顶点",
+        "开口",
+        "配方"
+      ],
+      "forbiddenText": [
+        "a 越大，开口越大"
+      ],
+      "probes": {
+        "basic_y2": {
+          "value": 4,
+          "tol": 0.01
+        },
+        "vertexX": {
+          "value": 2,
+          "tol": 0.01
+        },
+        "vertexY": {
+          "value": -1,
+          "tol": 0.01
+        },
+        "symmetryDiff": {
+          "value": 0,
+          "tol": 0.01
+        },
+        "root1": {
+          "value": 1,
+          "tol": 0.01
+        },
+        "root2": {
+          "value": 3,
+          "tol": 0.01
+        },
+        "maxHeight": {
+          "value": 20,
+          "tol": 0.01
+        }
+      },
+      "autoChecks": [
+        "duration",
+        "timeline",
+        "storyboard",
+        "layout",
+        "probe",
+        "required-text",
+        "caption",
+        "viewport",
+        "console"
+      ],
+      "manualChecks": [
+        "a 的作用是否用对比而非口头描述讲清",
+        "配方推导每一步是否可停帧阅读",
+        "误解纠正是否有具体反例"
+      ]
+    },
+    {
+      "id": "M2-pythagoras",
+      "set": "dev",
+      "subject": "mathematics",
+      "grade": "八年级下",
+      "topic": "勾股定理",
+      "difficulty": "medium",
+      "lesson": "examples/mathematics/pythagoras/lesson.html",
+      "durationRange": [
+        135,
+        180
+      ],
+      "keyPoints": [
+        "直角三角形三边关系",
+        "面积法证明",
+        "c 必须是斜边",
+        "已知两边求第三边"
+      ],
+      "forbiddenErrors": [
+        "对任意三角形套用公式",
+        "把直角边当作斜边",
+        "面积相加关系画错"
+      ],
+      "requiredVisuals": [
+        "网格中的三个正方形",
+        "弦图（四个三角形 + 中央正方形）",
+        "梯子靠墙示意图"
+      ],
+      "requiredText": [
+        "勾股定理",
+        "斜边",
+        "直角边",
+        "面积"
+      ],
+      "forbiddenText": [
+        "对任意三角形都成立"
+      ],
+      "probes": {
+        "pythagoras_3_4": {
+          "value": 5,
+          "tol": 0.01
+        },
+        "grid_area_sum": {
+          "value": 25,
+          "tol": 0.01
+        },
+        "leg_from_hyp": {
+          "value": 12,
+          "tol": 0.01
+        },
+        "nonRightTriangle": {
+          "value": 0,
+          "tol": 0.01
+        },
+        "ladder_height": {
+          "value": 4,
+          "tol": 0.01
+        }
+      },
+      "autoChecks": [
+        "duration",
+        "timeline",
+        "storyboard",
+        "layout",
+        "probe",
+        "required-text",
+        "caption",
+        "viewport",
+        "console"
+      ],
+      "manualChecks": [
+        "弦图四个三角形是否真的拼成大正方形",
+        "面积法与代数恒等式的对应是否清楚"
+      ]
+    },
+    {
+      "id": "M3-congruence",
+      "set": "holdout",
+      "subject": "mathematics",
+      "grade": "八年级上",
+      "topic": "三角形全等的判定",
+      "difficulty": "medium",
+      "lesson": "examples/mathematics/congruence/lesson.html",
+      "durationRange": [
+        130,
+        175
+      ],
+      "keyPoints": [
+        "全等的定义与对应关系",
+        "SSS/SAS/ASA/AAS",
+        "SSA 反例",
+        "书写时对应顶点顺序"
+      ],
+      "forbiddenErrors": [
+        "把 SSA 当作判定",
+        "对应顶点顺序写错",
+        "SSA 反例画成两个全等三角形"
+      ],
+      "requiredVisuals": [
+        "两个全等三角形及对应标记",
+        "SSA 的两种解",
+        "例题的三组等边标记"
+      ],
+      "requiredText": [
+        "全等",
+        "SSS",
+        "SAS",
+        "ASA"
+      ],
+      "forbiddenText": [
+        "SSA 可以判定"
+      ],
+      "probes": {
+        "sss_valid": {
+          "value": 1,
+          "tol": 0.01
+        },
+        "ssa_solutions": {
+          "value": 2,
+          "tol": 0.01
+        },
+        "asa_third_angle": {
+          "value": 70,
+          "tol": 0.01
+        },
+        "choose_ssa": {
+          "value": 0,
+          "tol": 0.01
+        },
+        "example_sss": {
+          "value": 1,
+          "tol": 0.01
+        }
+      },
+      "autoChecks": [
+        "duration",
+        "timeline",
+        "storyboard",
+        "layout",
+        "probe",
+        "required-text",
+        "caption",
+        "viewport",
+        "console"
+      ],
+      "manualChecks": [
+        "SSA 反例的两个三角形是否真的满足同一组条件",
+        "例题证明格式是否规范"
+      ]
+    },
+    {
+      "id": "M4-linear",
+      "set": "dev",
+      "subject": "mathematics",
+      "grade": "八年级下",
+      "topic": "一次函数 y=kx+b 的图像与性质",
+      "difficulty": "easy",
+      "lesson": "examples/mathematics/linear-function/lesson.html",
+      "durationRange": [
+        95,
+        135
+      ],
+      "keyPoints": [
+        "图像是直线",
+        "k 决定增减与陡缓",
+        "b 是与 y 轴交点",
+        "k、b 与象限"
+      ],
+      "forbiddenErrors": [
+        "把 b 当斜率",
+        "k 越大越陡（应为 |k|）",
+        "象限判断错误"
+      ],
+      "requiredVisuals": [
+        "多条直线对比",
+        "三条平行直线",
+        "图像读数辅助线"
+      ],
+      "requiredText": [
+        "一次函数",
+        "直线",
+        "象限"
+      ],
+      "forbiddenText": [
+        "b 是斜率"
+      ],
+      "probes": {
+        "hook_slope": {
+          "value": 60,
+          "tol": 0.01
+        },
+        "def_value_at_3": {
+          "value": 9,
+          "tol": 0.01
+        },
+        "slope_sign": {
+          "value": -1,
+          "tol": 0.01
+        },
+        "intercept_at_0": {
+          "value": 3,
+          "tol": 0.01
+        },
+        "read_slope": {
+          "value": 6,
+          "tol": 0.01
+        },
+        "read_intercept": {
+          "value": 2,
+          "tol": 0.01
+        }
+      },
+      "autoChecks": [
+        "duration",
+        "timeline",
+        "storyboard",
+        "layout",
+        "probe",
+        "required-text",
+        "caption",
+        "viewport",
+        "console"
+      ],
+      "manualChecks": [
+        "四条象限结论是否与 k、b 符号一致",
+        "图像读数是否与解析式对应"
+      ]
+    },
+    {
+      "id": "P1-refraction",
+      "set": "dev",
+      "subject": "physics",
+      "grade": "八年级上",
+      "topic": "光的折射",
+      "difficulty": "complex",
+      "lesson": "examples/physics/refraction/lesson.html",
+      "durationRange": [
+        115,
+        155
+      ],
+      "keyPoints": [
+        "折射现象",
+        "法线与角度定义",
+        "空气一侧角大",
+        "光路可逆",
+        "池底变浅的虚像"
+      ],
+      "forbiddenErrors": [
+        "把入射角当成与界面夹角",
+        "光从空气入水时画成折射角大于入射角",
+        "虚像画得比实际更深"
+      ],
+      "requiredVisuals": [
+        "法线与两条光线",
+        "角度弧",
+        "池底虚像光路"
+      ],
+      "requiredText": [
+        "折射",
+        "法线",
+        "入射角",
+        "折射角"
+      ],
+      "forbiddenText": [],
+      "probes": {
+        "angle_in_water": {
+          "value": 32.1,
+          "tol": 0.2
+        },
+        "snell_forward": {
+          "value": 32.1,
+          "tol": 0.2
+        },
+        "snell_reverse": {
+          "value": 41.7,
+          "tol": 0.2
+        },
+        "reverse_relation": {
+          "value": 1,
+          "tol": 0.01
+        },
+        "apparent_depth_ratio": {
+          "value": 0.75,
+          "tol": 0.02
+        },
+        "fish_offset_direction": {
+          "value": -1,
+          "tol": 0.01
+        }
+      },
+      "autoChecks": [
+        "duration",
+        "timeline",
+        "storyboard",
+        "layout",
+        "probe",
+        "required-text",
+        "caption",
+        "viewport",
+        "console"
+      ],
+      "manualChecks": [
+        "入射角、折射角是否都从法线量起",
+        "折射光线偏折方向是否符合 n=1.33",
+        "虚像位置是否比实际浅"
+      ]
+    },
+    {
+      "id": "P2-newton",
+      "set": "dev",
+      "subject": "physics",
+      "grade": "八年级下",
+      "topic": "牛顿第一定律",
+      "difficulty": "medium",
+      "lesson": "examples/physics/newton-first-law/lesson.html",
+      "durationRange": [
+        125,
+        165
+      ],
+      "keyPoints": [
+        "力不是维持运动的原因",
+        "伽利略斜面推理",
+        "定律表述",
+        "惯性及其量度"
+      ],
+      "forbiddenErrors": [
+        "不受力时一定静止",
+        "惯性是一种力",
+        "惯性大小与速度有关"
+      ],
+      "requiredVisuals": [
+        "斜面三次实验的停止位置",
+        "无摩擦的匀速运动",
+        "刹车时乘客前倾"
+      ],
+      "requiredText": [
+        "牛顿第一定律",
+        "惯性",
+        "匀速直线运动"
+      ],
+      "forbiddenText": [],
+      "probes": {
+        "galileo_trend": {
+          "value": 1,
+          "tol": 0.01
+        },
+        "ideal_constant_v": {
+          "value": 1,
+          "tol": 0.01
+        },
+        "law_statement": {
+          "value": 1,
+          "tol": 0.01
+        },
+        "inertia_mass": {
+          "value": 1,
+          "tol": 0.01
+        },
+        "inertia_not_force": {
+          "value": 1,
+          "tol": 0.01
+        }
+      },
+      "autoChecks": [
+        "duration",
+        "timeline",
+        "storyboard",
+        "layout",
+        "probe",
+        "required-text",
+        "caption",
+        "viewport",
+        "console"
+      ],
+      "manualChecks": [
+        "斜面实验是否保持同一高度",
+        "错误说法是否被明确标注为错误"
+      ]
+    },
+    {
+      "id": "P3-circuits",
+      "set": "holdout",
+      "subject": "physics",
+      "grade": "九年级上",
+      "topic": "串联与并联电路",
+      "difficulty": "complex",
+      "lesson": "examples/physics/circuits/lesson.html",
+      "durationRange": [
+        120,
+        160
+      ],
+      "keyPoints": [
+        "串联电流相等、电压分配、电阻相加",
+        "并联电压相等、电流分配",
+        "等效电阻",
+        "开关控制范围"
+      ],
+      "forbiddenErrors": [
+        "串联电压处处相等",
+        "并联电流处处相等",
+        "并联等效电阻大于支路",
+        "电路图短路"
+      ],
+      "requiredVisuals": [
+        "串联回路",
+        "并联两条支路",
+        "电流光点分流",
+        "对比表"
+      ],
+      "requiredText": [
+        "串联",
+        "并联",
+        "电流",
+        "电压"
+      ],
+      "forbiddenText": [],
+      "probes": {
+        "series_R": {
+          "value": 30,
+          "tol": 0.01
+        },
+        "parallel_R": {
+          "value": 6.67,
+          "tol": 0.02
+        },
+        "example_series_I": {
+          "value": 0.2,
+          "tol": 0.001
+        },
+        "example_parallel_I": {
+          "value": 0.9,
+          "tol": 0.001
+        },
+        "identify_method": {
+          "value": 1,
+          "tol": 0.01
+        }
+      },
+      "autoChecks": [
+        "duration",
+        "timeline",
+        "storyboard",
+        "layout",
+        "probe",
+        "required-text",
+        "caption",
+        "viewport",
+        "console"
+      ],
+      "manualChecks": [
+        "并联电路是否存在短路路径",
+        "电流方向是否由正极经外电路回到负极",
+        "分压分流数值是否与欧姆定律一致"
+      ]
+    },
+    {
+      "id": "P4-buoyancy",
+      "set": "holdout",
+      "subject": "physics",
+      "grade": "八年级下",
+      "topic": "浮力（阿基米德原理）",
+      "difficulty": "medium",
+      "focus": "misconception",
+      "lesson": "examples/physics/buoyancy/lesson.html",
+      "durationRange": [
+        110,
+        150
+      ],
+      "keyPoints": [
+        "浮力方向竖直向上",
+        "称重法",
+        "F浮=ρ液gV排",
+        "浸没后与深度无关",
+        "浮沉条件"
+      ],
+      "forbiddenErrors": [
+        "浮力随深度增大",
+        "重的物体一定下沉",
+        "漂浮物体不受浮力"
+      ],
+      "requiredVisuals": [
+        "弹簧测力计示数变化",
+        "示数—深度图像的平台",
+        "排开液体与小桶",
+        "三种浮沉状态"
+      ],
+      "requiredText": [
+        "浮力",
+        "排开",
+        "阿基米德",
+        "浮沉"
+      ],
+      "forbiddenText": [],
+      "probes": {
+        "weigh_method": {
+          "value": 2,
+          "tol": 0.01
+        },
+        "buoyancy_depth": {
+          "value": 0,
+          "tol": 0.01
+        },
+        "buoyancy_formula": {
+          "value": 10,
+          "tol": 0.01
+        },
+        "float_condition": {
+          "value": 1,
+          "tol": 0.01
+        }
+      },
+      "autoChecks": [
+        "duration",
+        "timeline",
+        "storyboard",
+        "layout",
+        "probe",
+        "required-text",
+        "caption",
+        "viewport",
+        "console"
+      ],
+      "manualChecks": [
+        "是否正面处理了“浮力随深度增大”的误解",
+        "图像平台段是否被解释",
+        "浮沉条件的三分支是否完整"
+      ]
+    },
+    {
+      "id": "C1-conservation",
+      "set": "dev",
+      "subject": "chemistry",
+      "grade": "九年级上",
+      "topic": "质量守恒定律",
+      "difficulty": "medium",
+      "lesson": "examples/chemistry/conservation-of-mass/lesson.html",
+      "durationRange": [
+        120,
+        160
+      ],
+      "keyPoints": [
+        "定律内容",
+        "原子三不变",
+        "方程式配平",
+        "开放体系与密闭体系"
+      ],
+      "forbiddenErrors": [
+        "方程式未配平",
+        "把蜡烛变轻解释为物质消失",
+        "认为定律只对燃烧成立"
+      ],
+      "requiredVisuals": [
+        "密闭锥形瓶与天平示数",
+        "原子重排",
+        "原子计数表",
+        "敞口与密闭对比"
+      ],
+      "requiredText": [
+        "质量守恒",
+        "原子",
+        "配平",
+        "密闭"
+      ],
+      "forbiddenText": [
+        "物质消失了"
+      ],
+      "probes": {
+        "exp_balance": {
+          "value": 100,
+          "tol": 0.01
+        },
+        "atom_count_P": {
+          "value": 4,
+          "tol": 0.01
+        },
+        "atom_count_O": {
+          "value": 10,
+          "tol": 0.01
+        },
+        "balanced_P": {
+          "value": 4,
+          "tol": 0.01
+        },
+        "balanced_O": {
+          "value": 10,
+          "tol": 0.01
+        },
+        "open_system": {
+          "value": 0,
+          "tol": 0.01
+        },
+        "calc_product": {
+          "value": 44,
+          "tol": 0.01
+        }
+      },
+      "autoChecks": [
+        "duration",
+        "timeline",
+        "storyboard",
+        "layout",
+        "probe",
+        "required-text",
+        "caption",
+        "viewport",
+        "console"
+      ],
+      "manualChecks": [
+        "4P+5O₂→2P₂O₅ 是否配平",
+        "原子重排前后数量是否一致",
+        "开放体系解释是否回避了“定律失效”的误解"
+      ]
+    },
+    {
+      "id": "C2-atom",
+      "set": "dev",
+      "subject": "chemistry",
+      "grade": "九年级上",
+      "topic": "原子结构",
+      "difficulty": "medium",
+      "lesson": "examples/chemistry/atomic-structure/lesson.html",
+      "durationRange": [
+        118,
+        155
+      ],
+      "keyPoints": [
+        "原子由核与电子构成",
+        "质子/中子/电子的电性",
+        "核电荷数=质子数=电子数",
+        "电子分层排布",
+        "离子形成"
+      ],
+      "forbiddenErrors": [
+        "原子不可再分（现代观点）",
+        "质子数不等于电子数时仍称原子",
+        "电子排布违反 2,8,8"
+      ],
+      "requiredVisuals": [
+        "三种原子模型",
+        "钠的 2,8,1 排布",
+        "结构示意图",
+        "得失电子"
+      ],
+      "requiredText": [
+        "质子",
+        "中子",
+        "电子",
+        "原子核"
+      ],
+      "forbiddenText": [],
+      "probes": {
+        "rutherford_conclusion": {
+          "value": 1,
+          "tol": 0.01
+        },
+        "sodium_protons": {
+          "value": 11,
+          "tol": 0.01
+        },
+        "sodium_electrons": {
+          "value": 11,
+          "tol": 0.01
+        },
+        "na_inner_shell": {
+          "value": 2,
+          "tol": 0.01
+        },
+        "na_outer_shell": {
+          "value": 1,
+          "tol": 0.01
+        },
+        "na_ion_electrons": {
+          "value": 10,
+          "tol": 0.01
+        },
+        "cl_ion_electrons": {
+          "value": 18,
+          "tol": 0.01
+        }
+      },
+      "autoChecks": [
+        "duration",
+        "timeline",
+        "storyboard",
+        "layout",
+        "probe",
+        "required-text",
+        "caption",
+        "viewport",
+        "console"
+      ],
+      "manualChecks": [
+        "结构示意图数字位置是否正确",
+        "得失电子后电荷是否与粒子数一致",
+        "模型演变是否说明证据来源"
+      ]
+    },
+    {
+      "id": "B1-photosynthesis",
+      "set": "holdout",
+      "subject": "biology",
+      "grade": "七年级上",
+      "topic": "光合作用",
+      "difficulty": "complex",
+      "lesson": "examples/biology/photosynthesis/lesson.html",
+      "durationRange": [
+        140,
+        185
+      ],
+      "keyPoints": [
+        "原料：CO₂ 和 H₂O",
+        "条件：光；场所：叶绿体",
+        "产物：有机物和 O₂",
+        "物质与能量转化",
+        "对生物圈的意义"
+      ],
+      "forbiddenErrors": [
+        "原料写成 O₂ 和 H₂O",
+        "把呼吸作用与光合作用混为一谈",
+        "遮光部分变蓝"
+      ],
+      "requiredVisuals": [
+        "遮光与碘液显色",
+        "CO₂/H₂O/光 的流向",
+        "氧气检验",
+        "碳氧循环"
+      ],
+      "requiredText": [
+        "光合作用",
+        "叶绿体",
+        "有机物",
+        "氧气"
+      ],
+      "forbiddenText": [],
+      "probes": {
+        "starch_requires_light": {
+          "value": 1,
+          "tol": 0.01
+        },
+        "raw_materials": {
+          "value": 2,
+          "tol": 0.01
+        },
+        "product_oxygen": {
+          "value": 1,
+          "tol": 0.01
+        },
+        "energy_conversion": {
+          "value": 1,
+          "tol": 0.01
+        },
+        "oxygen_source": {
+          "value": 1,
+          "tol": 0.01
+        }
+      },
+      "autoChecks": [
+        "duration",
+        "timeline",
+        "storyboard",
+        "layout",
+        "probe",
+        "required-text",
+        "caption",
+        "viewport",
+        "console"
+      ],
+      "manualChecks": [
+        "实验步骤顺序是否符合教材",
+        "遮光部分与见光部分的显色是否相反",
+        "是否避免目的论表述"
+      ]
+    },
+    {
+      "id": "B2-cell",
+      "set": "dev",
+      "subject": "biology",
+      "grade": "七年级上",
+      "topic": "细胞的结构（用户未指定时长）",
+      "difficulty": "easy",
+      "durationUnspecified": true,
+      "lesson": "examples/biology/cell-structure/lesson.html",
+      "durationRange": [
+        95,
+        140
+      ],
+      "keyPoints": [
+        "动物细胞三结构",
+        "植物细胞特有结构",
+        "细胞膜控制进出",
+        "细胞核是控制中心"
+      ],
+      "forbiddenErrors": [
+        "细胞壁控制物质进出",
+        "动物细胞绝对没有液泡",
+        "叶绿体存在于所有植物细胞"
+      ],
+      "requiredVisuals": [
+        "动物细胞剖面",
+        "植物细胞剖面",
+        "对比表",
+        "结构—功能卡片"
+      ],
+      "requiredText": [
+        "细胞膜",
+        "细胞核",
+        "细胞壁",
+        "液泡"
+      ],
+      "forbiddenText": [
+        "细胞壁控制物质进出"
+      ],
+      "probes": {
+        "animal_parts": {
+          "value": 3,
+          "tol": 0.01
+        },
+        "plant_only": {
+          "value": 3,
+          "tol": 0.01
+        },
+        "compare_cell_wall": {
+          "value": 1,
+          "tol": 0.01
+        },
+        "membrane_function": {
+          "value": 1,
+          "tol": 0.01
+        }
+      },
+      "autoChecks": [
+        "duration",
+        "timeline",
+        "storyboard",
+        "layout",
+        "probe",
+        "required-text",
+        "caption",
+        "viewport",
+        "console"
+      ],
+      "manualChecks": [
+        "未指定时长时是否给出合理估算（100–130s）",
+        "细胞结构标注是否指到正确位置",
+        "叶绿体表述是否加了“绿色部分”限定"
+      ]
+    },
+    {
+      "id": "B3-mendel",
+      "set": "dev",
+      "subject": "biology",
+      "grade": "八年级下",
+      "topic": "孟德尔第一定律（基因的分离定律）",
+      "difficulty": "medium",
+      "lesson": "examples/biology/mendel-first-law/lesson.html",
+      "durationRange": [
+        175,
+        215
+      ],
+      "keyPoints": [
+        "F₁ 全高茎、F₂ 约 3:1",
+        "显性基因与隐性基因",
+        "成对基因在形成配子时分离",
+        "受精随机结合导致 3:1",
+        "测交后代 1:1"
+      ],
+      "forbiddenErrors": [
+        "认为矮茎基因在 F₁ 中消失",
+        "认为显性基因吃掉隐性基因",
+        "把配子 1:1 与表现型 3:1 混淆",
+        "棋盘格基因型写错"
+      ],
+      "requiredVisuals": [
+        "高茎与矮茎植株对比",
+        "亲本杂交与 F₁",
+        "787/277 柱状对比",
+        "成对基因拆分为配子",
+        "2×2 棋盘格",
+        "测交棋盘"
+      ],
+      "requiredText": [
+        "分离定律",
+        "显性",
+        "隐性",
+        "配子"
+      ],
+      "forbiddenText": [],
+      "probes": {
+        "relative_trait": {
+          "value": 1,
+          "tol": 0.01
+        },
+        "f1_all_tall": {
+          "value": 1,
+          "tol": 0.01
+        },
+        "mendel_f2_ratio": {
+          "value": 2.84,
+          "tol": 0.02
+        },
+        "f2_tall_count": {
+          "value": 3,
+          "tol": 0.01
+        },
+        "f2_short_count": {
+          "value": 1,
+          "tol": 0.01
+        },
+        "f1_genotype": {
+          "value": 1,
+          "tol": 0.01
+        },
+        "gamete_each": {
+          "value": 0.5,
+          "tol": 0.01
+        },
+        "punnett_tall": {
+          "value": 3,
+          "tol": 0.01
+        },
+        "punnett_short": {
+          "value": 1,
+          "tol": 0.01
+        },
+        "testcross_ratio": {
+          "value": 1,
+          "tol": 0.01
+        },
+        "recessive_hidden": {
+          "value": 1,
+          "tol": 0.01
+        }
+      },
+      "autoChecks": [
+        "duration",
+        "timeline",
+        "storyboard",
+        "layout",
+        "probe",
+        "required-text",
+        "caption",
+        "viewport",
+        "console"
+      ],
+      "manualChecks": [
+        "F₂ 数据与 3:1 的表述是否一致",
+        "棋盘格四种组合与表现型统计是否正确",
+        "测交逻辑是否说明“若为 DD 则不会出现矮茎”",
+        "是否避免“基因消失/吃掉”的错误表述"
+      ]
+    }
+  ]
+}

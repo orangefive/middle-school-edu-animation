@@ -1,0 +1,499 @@
+{
+  "case": "C2-atom",
+  "file": "examples\\chemistry\\atomic-structure\\lesson.html",
+  "generatedAt": "2026-10-19T05:41:02.643Z",
+  "duration": 134,
+  "scenes": [
+    {
+      "id": "hook",
+      "title": "物质由什么构成",
+      "objective": "建立“物质→分子→原子”的尺度递进，引出原子内部还有结构",
+      "start": 0,
+      "duration": 12,
+      "visual": "水滴 → 水分子 → 氢氧原子 → 原子内部，逐级放大",
+      "motion": "三级放大依次推进，最后停在原子内部结构上",
+      "camera": "固定机位",
+      "link": "从宏观尺度进入微观尺度",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "一滴水，可以分成许多水分子。"
+        },
+        {
+          "t": 4.4,
+          "text": "一个水分子，由氢原子和氧原子构成。"
+        },
+        {
+          "t": 8,
+          "text": "那么原子本身，还能再分吗？"
+        }
+      ]
+    },
+    {
+      "id": "models",
+      "title": "原子模型的三次演变",
+      "objective": "了解模型随证据更新，理解卢瑟福核式模型来自 α 散射实验",
+      "start": 12,
+      "duration": 26,
+      "visual": "三个模型并排：实心球、枣糕、核式；下方 α 粒子散射示意",
+      "motion": "三个模型依次出现；散射实验中大部分粒子直穿、少数偏转",
+      "camera": "固定机位",
+      "link": "用科学史说明模型是如何被修正的",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "1803 年，道尔顿认为原子是不可分割的实心球。"
+        },
+        {
+          "t": 6,
+          "text": "1897 年，汤姆孙发现电子，提出“枣糕模型”。"
+        },
+        {
+          "t": 12,
+          "text": "1911 年，卢瑟福用 α 粒子轰击金箔。"
+        },
+        {
+          "t": 18,
+          "text": "大多数粒子直接穿过，少数发生大角度偏转。"
+        },
+        {
+          "t": 22.6,
+          "text": "说明原子内部很空，中心有一个很小的核。"
+        }
+      ]
+    },
+    {
+      "id": "nucleus",
+      "title": "原子核与核外电子",
+      "objective": "说出原子核由质子和中子构成，明确三种粒子的电性",
+      "start": 38,
+      "duration": 22,
+      "visual": "原子剖面：中心核（质子+中子），外层电子；右侧粒子属性表",
+      "motion": "核与电子出现，质子和中子分别标出，属性逐条出现",
+      "camera": "固定机位",
+      "link": "从模型进入构成",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "原子由原子核和核外电子构成。"
+        },
+        {
+          "t": 5,
+          "text": "原子核里有质子（带正电）和中子（不带电）。"
+        },
+        {
+          "t": 10.6,
+          "text": "核外电子带负电，绕核运动。"
+        },
+        {
+          "t": 15.4,
+          "text": "原子核很小，却集中了几乎全部质量。"
+        }
+      ]
+    },
+    {
+      "id": "numbers",
+      "title": "三个数，其实相等",
+      "objective": "掌握核电荷数=质子数=核外电子数=原子序数，并会用于判断",
+      "start": 60,
+      "duration": 20,
+      "visual": "钠原子数据卡：质子 11、中子 12、电子 11；等式链逐段点亮",
+      "motion": "三个数字依次高亮，等式链连接，原子序数出现",
+      "camera": "固定机位",
+      "link": "把构成落到数量关系",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "以钠原子为例：质子 11 个，中子 12 个，电子 11 个。"
+        },
+        {
+          "t": 6,
+          "text": "质子数决定了它是不是钠，也决定原子序数。"
+        },
+        {
+          "t": 11,
+          "text": "因为是原子，质子数等于核外电子数，所以不带电。"
+        },
+        {
+          "t": 16,
+          "text": "核电荷数、质子数、电子数、原子序数，四个数相等。"
+        }
+      ]
+    },
+    {
+      "id": "shells",
+      "title": "电子怎么排布",
+      "objective": "掌握电子分层排布规则，会画钠原子的结构示意图",
+      "start": 80,
+      "duration": 24,
+      "visual": "钠原子的三层电子排布（2,8,1）与结构示意图写法",
+      "motion": "三层电子依次填入，结构示意图同步生成",
+      "camera": "固定机位",
+      "link": "把数量关系变成图示",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "电子在核外分层排布，从内到外。"
+        },
+        {
+          "t": 4.8,
+          "text": "第一层最多 2 个，第二层最多 8 个。"
+        },
+        {
+          "t": 10,
+          "text": "钠的 11 个电子，排成 2、8、1。"
+        },
+        {
+          "t": 15.4,
+          "text": "最外层只有 1 个电子，容易失去。"
+        },
+        {
+          "t": 20,
+          "text": "结构示意图用弧线表示电子层，数字表示电子数。"
+        }
+      ]
+    },
+    {
+      "id": "ion",
+      "title": "离子的形成",
+      "objective": "理解原子得失电子形成离子，离子带电",
+      "start": 104,
+      "duration": 18,
+      "visual": "钠原子失 1 个电子 → Na⁺；氯原子得 1 个电子 → Cl⁻",
+      "motion": "电子从钠转移到氯，两侧结构示意图同步变化",
+      "camera": "固定机位",
+      "link": "用结构解释性质",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "钠原子最外层 1 个电子，容易失去。"
+        },
+        {
+          "t": 5,
+          "text": "失去 1 个电子后，质子比电子多 1 个，带正电。"
+        },
+        {
+          "t": 10.4,
+          "text": "氯原子最外层 7 个电子，容易得到 1 个。"
+        },
+        {
+          "t": 14.6,
+          "text": "得到电子后带负电，形成氯离子。"
+        }
+      ]
+    },
+    {
+      "id": "summary",
+      "title": "三句话收尾",
+      "objective": "固化原子构成、数量关系与离子形成",
+      "start": 122,
+      "duration": 12,
+      "visual": "三张要点卡片",
+      "motion": "按字幕节拍出现",
+      "camera": "固定机位",
+      "link": "收束全课",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "一，原子由原子核和核外电子构成，核内有质子和中子。"
+        },
+        {
+          "t": 4.8,
+          "text": "二，核电荷数等于质子数等于电子数。"
+        },
+        {
+          "t": 9,
+          "text": "三，得失电子形成离子，最外层决定得失。"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "id": "load",
+      "name": "页面加载与引擎就绪",
+      "status": "pass",
+      "detail": "meta=原子结构：从实心球到电子云 scenes=7 duration=134s"
+    },
+    {
+      "id": "duration",
+      "name": "时长符合知识点复杂度",
+      "status": "pass",
+      "detail": "实际 134s，期望 118–155s"
+    },
+    {
+      "id": "timeline",
+      "name": "镜头时间轴连续闭合",
+      "status": "pass",
+      "detail": "7 个镜头合计 134s"
+    },
+    {
+      "id": "storyboard",
+      "name": "storyboard.json 与动画一致",
+      "status": "pass",
+      "detail": "7 镜头一一对应"
+    },
+    {
+      "id": "layout-clip",
+      "name": "文字未越出画面",
+      "status": "pass",
+      "detail": "22 帧全部在画布内"
+    },
+    {
+      "id": "layout-caption",
+      "name": "正文不侵入字幕区",
+      "status": "pass",
+      "detail": "内容区与字幕区物理分离"
+    },
+    {
+      "id": "layout-header",
+      "name": "正文不侵入标题区",
+      "status": "pass",
+      "detail": "无重叠"
+    },
+    {
+      "id": "layout-overlap",
+      "name": "文字之间无实质重叠",
+      "status": "pass",
+      "detail": "未检出重叠"
+    },
+    {
+      "id": "layout-font",
+      "name": "字号满足可读性下限",
+      "status": "pass",
+      "detail": "最小正文 13.5px / 字幕 20px"
+    },
+    {
+      "id": "contrast",
+      "name": "文字与底色对比足够",
+      "status": "pass",
+      "detail": "未检出低对比文字"
+    },
+    {
+      "id": "blank",
+      "name": "无空白帧",
+      "status": "pass",
+      "detail": "0 个采样帧内容过少"
+    },
+    {
+      "id": "jump",
+      "name": "无异常闪烁或瞬变",
+      "status": "pass",
+      "detail": "0.25s 间隔画面变化均 < 55%"
+    },
+    {
+      "id": "static",
+      "name": "镜头后段仍有内容推进",
+      "status": "pass",
+      "detail": "各镜头后段均有变化"
+    },
+    {
+      "id": "probe",
+      "name": "关键数值/几何关系正确",
+      "status": "pass",
+      "detail": "rutherford_conclusion=1；sodium_protons=11；sodium_electrons=11；na_inner_shell=2；na_outer_shell=1；na_ion_electrons=10；cl_ion_electrons=18"
+    },
+    {
+      "id": "required-text",
+      "name": "必须出现的关键表述齐备",
+      "status": "pass",
+      "detail": "4 项全部出现"
+    },
+    {
+      "id": "forbidden-text",
+      "name": "未出现错误表述",
+      "status": "pass",
+      "detail": "未检出禁止表述"
+    },
+    {
+      "id": "caption",
+      "name": "每个镜头都有字幕讲解",
+      "status": "pass",
+      "detail": "7 个镜头均有字幕"
+    },
+    {
+      "id": "viewport",
+      "name": "不同窗口尺寸下可读",
+      "status": "pass",
+      "detail": "1024×576 最小字号 ≥11.5px，无溢出"
+    },
+    {
+      "id": "console",
+      "name": "运行期无脚本错误",
+      "status": "pass",
+      "detail": "0 error"
+    }
+  ],
+  "summary": {
+    "total": 19,
+    "pass": 19,
+    "fail": 0,
+    "warn": 0,
+    "skip": 0,
+    "verdict": "PASS"
+  },
+  "frames": [
+    {
+      "scene": "hook",
+      "t": 0.7,
+      "file": "outputs\\frames\\C2-atom\\s01_0p7.png",
+      "texts": 5,
+      "nonBg": 0.04
+    },
+    {
+      "scene": "hook",
+      "t": 5.4,
+      "file": "outputs\\frames\\C2-atom\\s01_5p4.png",
+      "texts": 6,
+      "nonBg": 0.043
+    },
+    {
+      "scene": "hook",
+      "t": 9.8,
+      "file": "outputs\\frames\\C2-atom\\s01_9p8.png",
+      "texts": 8,
+      "nonBg": 0.046
+    },
+    {
+      "scene": "models",
+      "t": 12.7,
+      "file": "outputs\\frames\\C2-atom\\s02_12p7.png",
+      "texts": 5,
+      "nonBg": 0.034
+    },
+    {
+      "scene": "models",
+      "t": 23.7,
+      "file": "outputs\\frames\\C2-atom\\s02_23p7.png",
+      "texts": 7,
+      "nonBg": 0.039
+    },
+    {
+      "scene": "models",
+      "t": 33.3,
+      "file": "outputs\\frames\\C2-atom\\s02_33p3.png",
+      "texts": 9,
+      "nonBg": 0.046
+    },
+    {
+      "scene": "nucleus",
+      "t": 38.7,
+      "file": "outputs\\frames\\C2-atom\\s03_38p7.png",
+      "texts": 8,
+      "nonBg": 0.032
+    },
+    {
+      "scene": "nucleus",
+      "t": 47.9,
+      "file": "outputs\\frames\\C2-atom\\s03_47p9.png",
+      "texts": 20,
+      "nonBg": 0.041
+    },
+    {
+      "scene": "nucleus",
+      "t": 56,
+      "file": "outputs\\frames\\C2-atom\\s03_56.png",
+      "texts": 21,
+      "nonBg": 0.043
+    },
+    {
+      "scene": "numbers",
+      "t": 60.7,
+      "file": "outputs\\frames\\C2-atom\\s04_60p7.png",
+      "texts": 3,
+      "nonBg": 0.029
+    },
+    {
+      "scene": "numbers",
+      "t": 69,
+      "file": "outputs\\frames\\C2-atom\\s04_69.png",
+      "texts": 8,
+      "nonBg": 0.037
+    },
+    {
+      "scene": "numbers",
+      "t": 76.4,
+      "file": "outputs\\frames\\C2-atom\\s04_76p4.png",
+      "texts": 9,
+      "nonBg": 0.046
+    },
+    {
+      "scene": "shells",
+      "t": 80.7,
+      "file": "outputs\\frames\\C2-atom\\s05_80p7.png",
+      "texts": 9,
+      "nonBg": 0.038
+    },
+    {
+      "scene": "shells",
+      "t": 90.8,
+      "file": "outputs\\frames\\C2-atom\\s05_90p8.png",
+      "texts": 12,
+      "nonBg": 0.039
+    },
+    {
+      "scene": "shells",
+      "t": 99.7,
+      "file": "outputs\\frames\\C2-atom\\s05_99p7.png",
+      "texts": 13,
+      "nonBg": 0.043
+    },
+    {
+      "scene": "ion",
+      "t": 104.7,
+      "file": "outputs\\frames\\C2-atom\\s06_104p7.png",
+      "texts": 7,
+      "nonBg": 0.035
+    },
+    {
+      "scene": "ion",
+      "t": 112.1,
+      "file": "outputs\\frames\\C2-atom\\s06_112p1.png",
+      "texts": 7,
+      "nonBg": 0.036
+    },
+    {
+      "scene": "ion",
+      "t": 118.8,
+      "file": "outputs\\frames\\C2-atom\\s06_118p8.png",
+      "texts": 10,
+      "nonBg": 0.041
+    },
+    {
+      "scene": "summary",
+      "t": 122.7,
+      "file": "outputs\\frames\\C2-atom\\s07_122p7.png",
+      "texts": 4,
+      "nonBg": 0.037
+    },
+    {
+      "scene": "summary",
+      "t": 127.4,
+      "file": "outputs\\frames\\C2-atom\\s07_127p4.png",
+      "texts": 7,
+      "nonBg": 0.043
+    },
+    {
+      "scene": "summary",
+      "t": 131.8,
+      "file": "outputs\\frames\\C2-atom\\s07_131p8.png",
+      "texts": 10,
+      "nonBg": 0.051
+    },
+    {
+      "scene": "summary",
+      "t": 133.9,
+      "file": "outputs\\frames\\C2-atom\\s07_133p9.png",
+      "texts": 10,
+      "nonBg": 0.051
+    }
+  ],
+  "consoleErrors": []
+}

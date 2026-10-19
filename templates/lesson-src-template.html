@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>【知识点】· 学段学科</title>
+<!-- @engine-css -->
+<!-- @engine-js -->
+</head>
+<body>
+<div id="lesson" role="application" aria-label="【知识点】讲解动画"></div>
+<script>
+/* 最小可运行模板：复制到 examples/<subject>/<slug>/lesson.src.html 后修改。
+ * 时长、镜头标题、字幕、probe 都要与 storyboard 一致（导出后自动生成）。
+ */
+EduKit.createLesson({
+  meta: {
+    title: '【知识点】',
+    subject: '【学科】', grade: '【学段】',
+    duration: 86,
+    objectives: ['能说出……', '能解释……'],
+    misconceptions: ['常见误解'],
+    prerequisites: ['先备知识'],
+    corePoints: ['核心点 1', '核心点 2'],
+    optionalPoints: [],
+    animationAffordances: ['只有动画能讲清的过程'],
+    durationRationale: '2 镜：引入 12 + 讲解 60 + 总结 14 = 86s，简单知识点'
+  },
+  theme: { accent: '#2f6fed' },
+  scenes: [
+    {
+      id: 'hook', title: '【引入标题】', duration: 12,
+      objective: '用现象制造疑问，明确本课要解决的问题',
+      visual: '左侧问题文字；右侧一个待解释的现象',
+      motion: '现象出现 → 关键变化 → 问号出现',
+      link: '由现象引出本课问题',
+      check: '',
+      cues: [
+        { t: 0.2, text: '【一句现象描述，不超过 34 字。】' },
+        { t: 5.0, text: '【提出本课要回答的问题。】' }
+      ],
+      build(ctx) {
+        ctx.rise(ctx.text(64, 210, '【大标题】', { size: 54, weight: 700 }), 0.1, 0.6, 16);
+        ctx.text(64, 268, '【一句话副标题】', { size: 20, fill: '#5b6b80' });
+
+        // 右侧示意图：换成你的知识点
+        var ax = ctx.axes({ x: [-1, 5], y: [-1, 5], box: { x: 720, y: 190, w: 440, h: 360 }, xStep: 1, yStep: 1 });
+        ax.curve(function (x) { return x; }, { t0: 1.2, dur: 1.6 });
+        ax.point(3, 3, { label: '(3, 3)', t0: 3.0 });
+        ctx.probe('example_value', function () { return 3; });
+      }
+    },
+    {
+      id: 'explain', title: '【讲解标题】', duration: 60,
+      objective: '按“现象 → 规律 → 结论”讲清核心点',
+      visual: '左侧三条结论；右侧随讲解变化的图形',
+      motion: '结论逐条出现，图形同步变化',
+      link: '承接引入的问题，给出解释',
+      check: '【关键结论】',
+      cues: [
+        { t: 0.2, text: '【第一句：是什么。】' },
+        { t: 8.0, text: '【第二句：为什么。】' },
+        { t: 16.0, text: '【第三句：怎么用。】' },
+        { t: 24.0, text: '【第四句：易错提醒。】' }
+      ],
+      build(ctx) {
+        var l1 = ctx.text(64, 220, '【结论一】', { size: 22 });
+        var l2 = ctx.text(64, 270, '【结论二】', { size: 22 });
+        var l3 = ctx.text(64, 320, '【结论三】', { size: 22, weight: 700, fill: '#0f6b3e' });
+        ctx.fade(l1, 0.4, 0.5); ctx.fade(l2, 8.2, 0.5); ctx.fade(l3, 16.2, 0.5);
+
+        // 主视觉：一段有起止状态的动画
+        var box = ctx.rect(780, 320, 80, 80, { fill: '#e8f0ff', stroke: '#2f6fed', width: 2, rx: 8 });
+        ctx.tween(2.0, 20.0, function (p) {
+          box.setAttribute('x', 780 + 240 * p);
+        }, 'inOut');
+        ctx.tween(24.0, 2.0, function (p) {
+          box.setAttribute('fill', p < 0.5 ? '#ffe8d9' : '#e8f0ff');
+        });
+        ctx.probe('template_flag', function () { return 1; });
+      }
+    },
+    {
+      id: 'summary', title: '【总结标题】', duration: 14,
+      objective: '用 3 条以内要点固化结论',
+      visual: '三张要点卡片',
+      motion: '按字幕节拍依次出现',
+      link: '收束全课',
+      check: '',
+      cues: [
+        { t: 0.2, text: '【要点一。】' },
+        { t: 4.6, text: '【要点二。】' },
+        { t: 8.6, text: '【要点三。】' }
+      ],
+      build(ctx) {
+        ['【要点一】', '【要点二】', '【要点三】'].forEach(function (t, i) {
+          var y = 200 + i * 110;
+          var card = ctx.panel(64, y, 1000, 90, {});
+          var num = ctx.text(88, y + 52, '0' + (i + 1), { size: 26, weight: 700, fill: '#2f6fed' });
+          var text = ctx.text(160, y + 54, t, { size: 22, weight: 600 });
+          var rt = [0.3, 4.8, 8.8][i];
+          ctx.fade(card, rt, 0.5); ctx.fade(num, rt, 0.5); ctx.fade(text, rt + 0.1, 0.5);
+        });
+      }
+    }
+  ]
+});
+</script>
+</body>
+</html>

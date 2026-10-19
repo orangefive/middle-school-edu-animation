@@ -1,0 +1,10 @@
+{
+  "name": "middle-school-edu-animation-tools",
+  "private": true,
+  "version": "1.0.0",
+  "description": "验证脚本依赖：Playwright(Chromium) + pngjs。仅验证需要，动画本身零依赖。",
+  "dependencies": {
+    "playwright": "1.49.1",
+    "pngjs": "7.0.0"
+  }
+}

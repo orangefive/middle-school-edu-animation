@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>勾股定理 · 八年级数学</title>
+<!-- @engine-css -->
+<!-- @engine-js -->
+</head>
+<body>
+<div id="lesson" role="application" aria-label="勾股定理讲解动画"></div>
+<script>
+/* ============================================================
+ * 勾股定理（八年级下）
+ * 主线：特殊例子 → 网格数面积 → 弦图证明 → 公式条件 → 正反用例 → 误解 → 应用
+ * 时长 154s / 8 镜
+ * ============================================================ */
+EduKit.createLesson({
+  meta: {
+    title: '勾股定理：直角三角形三边关系',
+    subject: '数学', grade: '八年级下',
+    duration: 154,
+    objectives: [
+      '能说出勾股定理的内容与适用条件',
+      '能用面积法解释 a²+b²=c² 的由来',
+      '已知两边会求第三边，并能判断哪条边是斜边'
+    ],
+    misconceptions: ['认为 a²+b²=c² 对任意三角形都成立', '不区分直角边与斜边，把最长边以外的一边当作 c'],
+    prerequisites: ['直角三角形的概念', '正方形面积公式', '完全平方公式'],
+    corePoints: ['勾股定理只适用于直角三角形', 'c 必须是斜边（直角所对的边）', '面积法证明： (a+b)² = 4·½ab + c²', '已知两边求第三边'],
+    optionalPoints: ['勾股数 3-4-5、5-12-13 的规律', '赵爽弦图的历史'],
+    animationAffordances: ['网格上数正方形面积', '四个三角形拼合与面积拆分', '梯子问题的空间关系'],
+    durationRationale: '8 镜：引入12+网格24+证明30+公式14+例题24+误解20+应用18+总结12 = 154s。含几何证明，中等难度，取 154s。'
+  },
+  theme: { accent: '#2f6fed' },
+  scenes: [
+    {
+      id: 'hook', title: '三边之间藏着什么', duration: 12,
+      objective: '用一个 3-4-5 的直角三角形制造疑问：三边是否有固定关系',
+      visual: '左侧标题；右侧直角三角形，直角边标 3、4，斜边先标问号后变 5',
+      motion: '三角形三边依次画出，问号闪烁后替换为 5',
+      link: '由具体三角形引出三边关系',
+      cues: [
+        { t: 0.2, text: '一个直角三角形，两条直角边是 3 和 4。' },
+        { t: 4.2, text: '斜边不用量，也能算出来吗？' },
+        { t: 7.6, text: '它的斜边恰好是 5。这不是巧合。' }
+      ],
+      build(ctx) {
+        ctx.rise(ctx.text(64, 210, '勾股定理', { size: 58, weight: 700 }), 0.1, 0.6, 16);
+        ctx.rise(ctx.text(64, 268, '直角三角形三边的关系', { size: 28, fill: '#5b6b80' }), 0.45, 0.6, 12);
+        ctx.text(64, 330, 'a² + b² = c²', { size: 40, fill: '#2f6fed', weight: 700 });
+
+        var A = [760, 520], B = [985, 520], C = [760, 220];
+        var tri = ctx.path('M' + A[0] + ',' + A[1] + ' L' + B[0] + ',' + B[1] + ' L' + C[0] + ',' + C[1] + ' Z',
+          { stroke: '#2f6fed', width: 3 });
+        ctx.draw(tri, 0.6, 1.8);
+        // 直角标记
+        ctx.path('M' + (A[0] + 1) + ',' + (A[1] - 22) + ' h22 v22', { stroke: '#9fb0c6', width: 2 });
+        var l3 = ctx.text(860, 550, '3', { size: 24, weight: 700, fill: '#e8590c' });
+        var l4 = ctx.text(716, 380, '4', { size: 24, weight: 700, fill: '#e8590c' });
+        var q = ctx.text(890, 350, '?', { size: 30, weight: 700, fill: '#5b6b80' });
+        ctx.fade(l3, 1.8, 0.4); ctx.fade(l4, 2.2, 0.4); ctx.fade(q, 2.6, 0.4);
+        ctx.tween(7.6, 0.4, function (p) { q.setAttribute('opacity', 1 - p); });
+        var l5 = ctx.text(890, 350, '5', { size: 30, weight: 700, fill: '#0f9d58', opacity: 0 });
+        ctx.fade(l5, 8.0, 0.4);
+        ctx.probe('pythagoras_3_4', function () { return Math.sqrt(3 * 3 + 4 * 4); });
+      }
+    },
+
+    {
+      id: 'grid', title: '在网格上数面积', duration: 24,
+      objective: '在网格中看到三边外侧正方形的面积关系：9+16=25',
+      visual: '网格、3-4-5 直角三角形、三边外侧三个正方形及面积 9/16/25',
+      motion: '三角形描边生长，三个正方形依次展开，面积数字依次出现，最后合成等式',
+      link: '把“斜边是 5”升级为“面积相加”',
+      cues: [
+        { t: 0.2, text: '把三角形放在网格上，每条边向外作一个正方形。' },
+        { t: 5.4, text: '两条直角边上的正方形，面积分别是 9 和 16。' },
+        { t: 11.0, text: '斜边上的正方形，面积是 25。' },
+        { t: 16.0, text: '9 加 16 正好等于 25。' }
+      ],
+      build(ctx) {
+        var u = 40, ox = 720, oy = 470;
+        var px = function (x) { return ox + x * u; };
+        var py = function (y) { return oy - y * u; };
+
+        // 网格
+        for (var gx = 1; gx <= 7; gx++) {
+          ctx.line(px(-4), py(gx), px(9), py(gx), { stroke: '#e6edf6', width: 1 });
+        }
+        for (var gy = -4; gy <= 9; gy++) {
+          ctx.line(px(gy), py(-3), px(gy), py(7), { stroke: '#e6edf6', width: 1 });
+        }
+
+        // 三角形 A(0,0) B(3,0) C(0,4)
+        var A = [px(0), py(0)], B = [px(3), py(0)], C = [px(0), py(4)];
+        var tri = ctx.path('M' + A[0] + ',' + A[1] + ' L' + B[0] + ',' + B[1] + ' L' + C[0] + ',' + C[1] + ' Z', { stroke: '#2f6fed', width: 3 });
+        ctx.draw(tri, 0.3, 1.6);
+        var ra = ctx.path('M' + (A[0] + 1) + ',' + (A[1] - 18) + ' h18 v18', { stroke: '#9fb0c6', width: 2 });
+
+        // 正方形：直角边 AB 下方
+        var s1 = ctx.rect(px(0), py(0), 3 * u, 3 * u, { fill: '#e8f0ff', stroke: '#2f6fed', width: 2, rx: 0, opacity: 0 });
+        ctx.fade(s1, 5.2, 0.5);
+        var n1 = ctx.text(px(1.5) - 10, py(-1.5) + 10, '9', { size: 26, weight: 700, fill: '#2f6fed' });
+        ctx.fade(n1, 5.8, 0.4);
+
+        // 正方形：直角边 AC 左侧
+        var s2 = ctx.rect(px(-4), py(4), 4 * u, 4 * u, { fill: '#e9f7ef', stroke: '#0f9d58', width: 2, rx: 0 });
+        ctx.fade(s2, 7.4, 0.5);
+        var n2 = ctx.text(px(-2) - 12, py(2) + 10, '16', { size: 26, weight: 700, fill: '#0f9d58' });
+        ctx.fade(n2, 8.0, 0.4);
+
+        // 正方形：斜边外侧
+        var vx = C[0] - B[0], vy = C[1] - B[1];
+        var vlen = Math.sqrt(vx * vx + vy * vy);
+        var nx = -vy / vlen, ny = vx / vlen; // 单位外法线，指向远离 A 的一侧
+        var p3 = [B[0] + nx * 5 * u, B[1] + ny * 5 * u];
+        var p4 = [C[0] + nx * 5 * u, C[1] + ny * 5 * u];
+        var s3 = ctx.path('M' + B[0] + ',' + B[1] + ' L' + C[0] + ',' + C[1] + ' L' + p4[0] + ',' + p4[1] + ' L' + p3[0] + ',' + p3[1] + ' Z',
+          { fill: '#fff4e8', stroke: '#e8590c', width: 2, opacity: 0 });
+        ctx.fade(s3, 11.2, 0.6);
+        var cxm = (B[0] + C[0] + p3[0] + p4[0]) / 4, cym = (B[1] + C[1] + p3[1] + p4[1]) / 4;
+        var n3 = ctx.text(cxm - 14, cym + 10, '25', { size: 26, weight: 700, fill: '#e8590c' });
+        ctx.fade(n3, 11.8, 0.4);
+
+        // 三角形置于最上层，避免被正方形的边遮住
+        tri.setAttribute('fill', '#ffffff');
+        tri.setAttribute('stroke-width', 3.6);
+        ctx.g.appendChild(tri);
+        ctx.g.appendChild(ra);
+
+        // 等式
+        var eq = ctx.panel(64, 200, 420, 176, { fill: '#ffffff' });
+        var t1 = ctx.text(88, 244, '正方形面积', { size: 18, fill: '#5b6b80' });
+        var t2 = ctx.text(88, 296, '9 + 16 = 25', { size: 34, weight: 700, fill: '#2f6fed' });
+        var t3 = ctx.text(88, 344, '3² + 4² = 5²', { size: 24, fill: '#5b6b80' });
+        ctx.fade(eq, 4.4, 0.5); ctx.fade(t1, 4.6, 0.5); ctx.fade(t2, 16.4, 0.5); ctx.fade(t3, 17.4, 0.5);
+
+        ctx.text(64, 430, '三个正方形的面积', { size: 18, fill: '#5b6b80' });
+        ctx.text(64, 462, '正好满足“两个小的等于大的”', { size: 18, fill: '#5b6b80' });
+        ctx.probe('grid_area_sum', function () { return 9 + 16; });
+      }
+    },
+
+    {
+      id: 'proof', title: '四个三角形拼出的证明', duration: 30,
+      objective: '用面积法证明 a²+b²=c²，理解代数恒等式的几何来源',
+      visual: '边长 a+b 的大正方形，四个全等直角三角形，中间倾斜的 c² 正方形',
+      motion: '大正方形出现，四个三角形依次填充，中间正方形高亮，等式逐行推导',
+      link: '从“数出来”升级为“证出来”',
+      cues: [
+        { t: 0.2, text: '用四个一样的直角三角形，拼成一个大正方形。' },
+        { t: 5.6, text: '大正方形的边长是 a 加 b，面积是 (a+b)²。' },
+        { t: 11.4, text: '四个三角形的面积合计是 4 乘二分之一 ab，也就是 2ab。' },
+        { t: 17.4, text: '中间空出的正方形，边长是 c，面积是 c²。' },
+        { t: 22.8, text: '所以 a² + 2ab + b² = 2ab + c²，两边消去 2ab。' },
+        { t: 27.4, text: '得到 a² + b² = c²。' }
+      ],
+      build(ctx) {
+        var u = 44, ox = 760, oy = 500;
+        var P = function (x, y) { return [ox + x * u, oy - y * u]; };
+        var pt = function (x, y) { return P(x, y).join(','); };
+        // 大正方形
+        var big = ctx.path('M' + pt(0, 0) + ' L' + pt(7, 0) + ' L' + pt(7, 7) + ' L' + pt(0, 7) + ' Z',
+          { stroke: '#2f6fed', width: 3, fill: '#ffffff' });
+        ctx.draw(big, 0.4, 1.4);
+        // 标注 a+b
+        ctx.text(P(3.5, 0)[0] + 4, P(3.5, 0)[1] + 30, 'a + b', { size: 18, fill: '#5b6b80', anchor: 'middle' });
+
+        // 四个三角形
+        var tris = [
+          [[0, 0], [3, 0], [0, 4]],
+          [[7, 0], [7, 3], [3, 0]],
+          [[7, 7], [4, 7], [7, 3]],
+          [[0, 7], [0, 4], [4, 7]]
+        ];
+        tris.forEach(function (t, i) {
+          var d = 'M' + t.map(function (p) { return pt(p[0], p[1]); }).join(' L') + ' Z';
+          var el = ctx.path(d, { fill: 'rgba(47,111,237,0.14)', stroke: '#2f6fed', width: 2 });
+          ctx.fade(el, 5.2 + i * 0.45, 0.4);
+        });
+
+        // 中间正方形
+        var inner = ctx.path('M' + pt(3, 0) + ' L' + pt(7, 3) + ' L' + pt(4, 7) + ' L' + pt(0, 4) + ' Z',
+          { fill: 'rgba(232,89,12,0.16)', stroke: '#e8590c', width: 3 });
+        ctx.fade(inner, 17.4, 0.6);
+        var cLab = ctx.text(P(3.5, 3.5)[0] - 10, P(3.5, 3.5)[1] + 12, 'c²', { size: 30, weight: 700, fill: '#e8590c' });
+        ctx.fade(cLab, 17.8, 0.5);
+        ctx.text(P(1.5, 0)[0], P(1.5, 0)[1] - 10, 'a', { size: 19, fill: '#2f6fed', anchor: 'middle' });
+        ctx.text(P(7, 1.5)[0] + 18, P(7, 1.5)[1], 'b', { size: 19, fill: '#2f6fed' });
+
+        // 推导
+        var x0 = 64, y0 = 200;
+        ctx.text(x0, y0, '面积法', { size: 20, weight: 700, fill: '#5b6b80' });
+        var l1 = ctx.text(x0, y0 + 54, '(a + b)² = 4 × ab/2 + c²', { size: 27 });
+        var noteA = ctx.text(x0, y0 + 96, '大正方形 = 四个三角形 + 中间小正方形', { size: 17, fill: '#5b6b80' });
+        var noteB = ctx.text(x0, y0 + 132, '四个三角形合计 2ab', { size: 19, fill: '#5b6b80' });
+        var l2 = ctx.text(x0, y0 + 190, 'a² + 2ab + b² = 2ab + c²', { size: 27 });
+        var l3 = ctx.text(x0, y0 + 250, 'a² + b² = c²', { size: 32, weight: 700, fill: '#2f6fed' });
+        ctx.fade(l1, 6.0, 0.5); ctx.fade(noteA, 6.4, 0.5);
+        ctx.fade(noteB, 11.6, 0.5);
+        ctx.fade(l2, 22.6, 0.5); ctx.fade(l3, 27.6, 0.6);
+      }
+    },
+
+    {
+      id: 'formula', title: '定理的内容与条件', duration: 14,
+      objective: '准确表述勾股定理，明确“直角三角形”和“c 为斜边”两个前提',
+      visual: '带 a、b、c 标注的直角三角形与公式，条件用色块强调',
+      motion: '三角形与标注出现，公式逐字强调，两个条件卡片依次出现',
+      link: '把证明结果规范成定理',
+      cues: [
+        { t: 0.2, text: '直角三角形两条直角边的平方和，等于斜边的平方。' },
+        { t: 5.4, text: '用式子写就是 a² + b² = c²。' },
+        { t: 9.0, text: '两个前提：必须是直角三角形，c 必须是斜边。' }
+      ],
+      build(ctx) {
+        var A = [760, 500], B = [1060, 500], C = [760, 268];
+        var tri = ctx.path('M' + A + ' L' + B + ' L' + C + ' Z', { stroke: '#2f6fed', width: 3, fill: 'rgba(47,111,237,0.07)' });
+        ctx.draw(tri, 0.4, 1.4);
+        ctx.path('M' + (A[0] + 1) + ',' + (A[1] - 20) + ' h20 v20', { stroke: '#9fb0c6', width: 2 });
+        ctx.text((A[0] + B[0]) / 2 - 8, A[1] + 30, 'b', { size: 24, weight: 700, fill: '#2f6fed' });
+        ctx.text(A[0] - 26, (A[1] + C[1]) / 2 + 8, 'a', { size: 24, weight: 700, fill: '#2f6fed' });
+        ctx.text((B[0] + C[0]) / 2 + 10, (B[1] + C[1]) / 2 - 10, 'c', { size: 24, weight: 700, fill: '#e8590c' });
+
+        ctx.text(64, 206, 'a² + b² = c²', { size: 40, weight: 700 });
+        ctx.text(64, 258, '直角边² + 直角边² = 斜边²', { size: 20, fill: '#5b6b80' });
+
+        var c1 = ctx.panel(64, 320, 520, 84, { fill: '#eef6ff', stroke: '#bcd4f7' });
+        var c1t = ctx.text(88, 356, '条件一：这个三角形是直角三角形', { size: 20, weight: 600, fill: '#1c4fa8' });
+        var c2 = ctx.panel(64, 424, 520, 84, { fill: '#fff4e8', stroke: '#f3cdb0' });
+        var c2t = ctx.text(88, 460, '条件二：c 是直角所对的斜边', { size: 20, weight: 600, fill: '#a3400c' });
+        ctx.fade(c1, 9.4, 0.5); ctx.fade(c1t, 9.6, 0.5);
+        ctx.fade(c2, 10.6, 0.5); ctx.fade(c2t, 10.8, 0.5);
+      }
+    },
+
+    {
+      id: 'example', title: '已知两边求第三边', duration: 24,
+      objective: '正用与逆用公式，掌握“先定斜边再代入”的解题顺序',
+      visual: '左侧两道例题分步演算；右侧两个三角形分别标注 6-8-10 与 5-12-13',
+      motion: '第一题演算与三角形同步出现，切换到第二题时图形替换',
+      link: '把定理用于计算',
+      cues: [
+        { t: 0.2, text: '第一题：直角边 6 和 8，求斜边。' },
+        { t: 3.4, text: 'c² = 6² + 8² = 100，所以 c = 10。' },
+        { t: 9.6, text: '第二题：斜边 13，一条直角边 5，求另一条。' },
+        { t: 13.2, text: 'b² = 13² − 5² = 144，所以 b = 12。' },
+        { t: 18.8, text: '求斜边用加法，求直角边用减法。' }
+      ],
+      build(ctx) {
+        ctx.text(64, 196, '例 1', { size: 20, weight: 700, fill: '#5b6b80' });
+        var e1 = ctx.text(64, 246, 'c² = 6² + 8² = 100', { size: 26 });
+        var e1b = ctx.text(64, 296, 'c = 10', { size: 30, weight: 700, fill: '#0f9d58' });
+        var n1 = ctx.text(64, 344, '斜边 = √(6² + 8²)', { size: 18, fill: '#5b6b80' });
+        ctx.fade(e1, 2.4, 0.45); ctx.fade(e1b, 3.6, 0.45); ctx.fade(n1, 4.4, 0.4);
+
+        ctx.text(64, 404, '例 2', { size: 20, weight: 700, fill: '#5b6b80' });
+        var e2 = ctx.text(64, 454, 'b² = 13² − 5² = 144', { size: 26 });
+        var e2b = ctx.text(64, 504, 'b = 12', { size: 30, weight: 700, fill: '#0f9d58' });
+        var n2 = ctx.text(64, 552, '直角边 = √(13² − 5²)', { size: 18, fill: '#5b6b80' });
+        ctx.fade(e2, 12.4, 0.45); ctx.fade(e2b, 13.8, 0.45); ctx.fade(n2, 14.6, 0.4);
+
+        // 右图 1：6-8-10
+        var g1 = ctx.group('');
+        g1.innerHTML =
+          '<path d="M0,0 L180,0 L0,-240 Z" fill="rgba(47,111,237,0.07)" stroke="#2f6fed" stroke-width="3"/>' +
+          '<path d="M2,-20 h20 v20" fill="none" stroke="#9fb0c6" stroke-width="2"/>' +
+          '<text x="86" y="26" font-size="22" font-weight="700" fill="#2f6fed" text-anchor="middle">8</text>' +
+          '<text x="-18" y="-116" font-size="22" font-weight="700" fill="#2f6fed" text-anchor="middle">6</text>' +
+          '<text x="104" y="-110" font-size="22" font-weight="700" fill="#e8590c" text-anchor="middle">10</text>';
+        g1.setAttribute('transform', 'translate(820,470)');
+        ctx.fade(g1, 0.8, 0.6);
+
+        // 右图 2：5-12-13
+        var g2 = ctx.group('');
+        g2.innerHTML =
+          '<path d="M0,0 L300,0 L0,-125 Z" fill="rgba(232,89,12,0.08)" stroke="#e8590c" stroke-width="3"/>' +
+          '<path d="M2,-20 h20 v20" fill="none" stroke="#9fb0c6" stroke-width="2"/>' +
+          '<text x="150" y="26" font-size="22" font-weight="700" fill="#e8590c" text-anchor="middle">12</text>' +
+          '<text x="-18" y="-58" font-size="22" font-weight="700" fill="#e8590c" text-anchor="middle">5</text>' +
+          '<text x="164" y="-52" font-size="22" font-weight="700" fill="#2f6fed" text-anchor="middle">13</text>';
+        g2.setAttribute('transform', 'translate(790,500)');
+        ctx.fade(g2, 9.6, 0.6);
+        ctx.tween(9.0, 0.4, function (p) { g1.setAttribute('opacity', 1 - p); });
+
+        ctx.probe('leg_from_hyp', function () { return Math.sqrt(13 * 13 - 5 * 5); });
+      }
+    },
+
+    {
+      id: 'misconception', title: '两个常见错误', duration: 20,
+      objective: '用反例说明定理只适用于直角三角形，并强调斜边的判定',
+      visual: '左侧 3-4-6 的非直角三角形（9+16≠36）；右侧正确的直角三角形标注',
+      motion: '左图先出现并算出不等，右图再出现并强调“直角所对的边”',
+      link: '用反例巩固条件',
+      cues: [
+        { t: 0.2, text: '错误一：以为任意三角形都满足 a² + b² = c²。' },
+        { t: 5.0, text: '边长 3、4、6 的三角形，9 加 16 不等于 36。' },
+        { t: 10.4, text: '错误二：不找直角，随便把一条边当成 c。' },
+        { t: 15.0, text: '先找直角，直角所对的边才是斜边。' }
+      ],
+      build(ctx) {
+        // 面板一：反例
+        var pa = ctx.panel(64, 160, 540, 400, { title: '错误：任意三角形套公式', titleSize: 20, fill: '#fffafa', stroke: '#f0c8c3' });
+        ctx.fade(pa, 0.3, 0.5);
+        var bad = ctx.text(96, 240, '3² + 4² = 25', { size: 24 });
+        var bad2 = ctx.text(96, 284, '6² = 36', { size: 24 });
+        var bad3 = ctx.text(96, 336, '25 ≠ 36，不成立', { size: 24, weight: 700, fill: '#d94a3d' });
+        ctx.fade(bad, 5.4, 0.4); ctx.fade(bad2, 5.8, 0.4); ctx.fade(bad3, 6.4, 0.5);
+        // 按 3:4:6 的实际比例绘制（底边 4 → 120px）
+        var g1 = ctx.group('');
+        g1.innerHTML =
+          '<path d="M0,0 L120,0 L-41,-80 Z" fill="rgba(217,74,61,0.08)" stroke="#d94a3d" stroke-width="3"/>' +
+          '<text x="60" y="26" font-size="20" font-weight="700" fill="#d94a3d" text-anchor="middle">4</text>' +
+          '<text x="-26" y="-34" font-size="20" font-weight="700" fill="#d94a3d" text-anchor="middle">3</text>' +
+          '<text x="46" y="-46" font-size="20" font-weight="700" fill="#d94a3d" text-anchor="middle">6</text>';
+        g1.setAttribute('transform', 'translate(400,520)');
+        ctx.fade(g1, 1.4, 0.6);
+        ctx.text(96, 396, '3、4、6 能围成三角形，但没有直角', { size: 17, fill: '#5b6b80' });
+
+        // 面板二：正确标注
+        var pb = ctx.panel(660, 160, 556, 400, { title: '正确：先找直角，再定斜边', titleSize: 20, fill: '#f7fbff', stroke: '#c3d8f7' });
+        ctx.fade(pb, 10.0, 0.5);
+        var g2 = ctx.group('');
+        g2.innerHTML =
+          '<path d="M0,0 L210,0 L0,-160 Z" fill="rgba(47,111,237,0.08)" stroke="#2f6fed" stroke-width="3"/>' +
+          '<path d="M2,-20 h20 v20" fill="none" stroke="#9fb0c6" stroke-width="2"/>' +
+          '<text x="105" y="28" font-size="19" font-weight="700" fill="#2f6fed" text-anchor="middle">直角边</text>' +
+          '<text x="-14" y="-78" font-size="19" font-weight="700" fill="#2f6fed" text-anchor="end">直角边</text>' +
+          '<text x="118" y="-92" font-size="19" font-weight="700" fill="#e8590c" text-anchor="middle">斜边 c</text>';
+        g2.setAttribute('transform', 'translate(770,520)');
+        ctx.fade(g2, 10.4, 0.6);
+        var good = ctx.text(990, 300, '直角所对的边最长', { size: 21, weight: 700, fill: '#1c4fa8' });
+        var good2 = ctx.text(990, 340, '它才是 c', { size: 21, weight: 700, fill: '#1c4fa8' });
+        var good3 = ctx.text(990, 396, '另两条边可任意记为 a、b', { size: 17, fill: '#5b6b80' });
+        ctx.fade(good, 15.0, 0.5); ctx.fade(good2, 15.3, 0.5); ctx.fade(good3, 15.8, 0.5);
+
+        ctx.probe('nonRightTriangle', function () { return 3 * 3 + 4 * 4 === 6 * 6 ? 1 : 0; });
+      }
+    },
+
+    {
+      id: 'apply', title: '梯子靠墙', duration: 18,
+      objective: '把定理用于实际情境，识别斜边与直角边',
+      visual: '墙、地面、5 米梯子，标注底端距墙 3 米，求高度',
+      motion: '场景线稿出现，梯子画出，标注依次出现，计算过程与答案收束',
+      link: '定理回到真实场景',
+      cues: [
+        { t: 0.2, text: '5 米长的梯子斜靠墙面，底端离墙 3 米。' },
+        { t: 4.6, text: '梯子是斜边，墙高是直角边。' },
+        { t: 8.6, text: 'h² = 5² − 3² = 16，h = 4。' },
+        { t: 13.2, text: '梯子顶端离地 4 米。' }
+      ],
+      build(ctx) {
+        // 场景
+        ctx.line(900, 180, 900, 560, { stroke: '#9fb0c6', width: 6 });
+        ctx.line(700, 560, 1180, 560, { stroke: '#9fb0c6', width: 6 });
+        for (var i = 0; i < 5; i++) {
+          ctx.line(900, 200 + i * 70, 918, 180 + i * 70, { stroke: '#d7e0ec', width: 1.5 });
+        }
+        var ladder = ctx.line(1185, 560, 900, 180, { stroke: '#e8590c', width: 6 });
+        ctx.tween(1.2, 0.8, function (p) {
+          ladder.setAttribute('x2', 1185 + (900 - 1185) * p);
+          ladder.setAttribute('y2', 560 + (180 - 560) * p);
+        });
+
+        ctx.text(1020, 588, '3 m', { size: 22, weight: 700, fill: '#2f6fed' });
+        ctx.text(878, 380, 'h = ?', { size: 22, weight: 700, fill: '#2f6fed', anchor: 'end' });
+        ctx.text(1090, 350, '5 m', { size: 22, weight: 700, fill: '#e8590c' });
+        ctx.path('M902,538 h22 v22', { stroke: '#9fb0c6', width: 2 });
+
+        ctx.text(64, 206, '梯子问题', { size: 20, weight: 700, fill: '#5b6b80' });
+        var a = ctx.text(64, 262, '斜边：梯子 5 m', { size: 24 });
+        var b = ctx.text(64, 310, '直角边：离墙 3 m', { size: 24 });
+        var c = ctx.text(64, 358, '所求：墙高 h', { size: 24 });
+        ctx.fade(a, 4.8, 0.45); ctx.fade(b, 5.4, 0.45); ctx.fade(c, 6.0, 0.45);
+
+        var f1 = ctx.text(64, 430, 'h² = 5² − 3² = 16', { size: 27 });
+        var f2 = ctx.text(64, 486, 'h = 4', { size: 34, weight: 700, fill: '#0f9d58' });
+        ctx.fade(f1, 9.0, 0.5); ctx.fade(f2, 11.0, 0.5);
+        ctx.text(64, 540, '梯子顶端离地 4 米', { size: 18, fill: '#5b6b80' });
+
+        ctx.probe('ladder_height', function () { return Math.sqrt(5 * 5 - 3 * 3); });
+      }
+    },
+
+    {
+      id: 'summary', title: '记住这三件事', duration: 12,
+      objective: '固化定理内容、适用条件与使用顺序',
+      visual: '三张要点卡片',
+      motion: '按字幕节拍依次出现',
+      link: '收束全课',
+      cues: [
+        { t: 0.2, text: '一，直角三角形两条直角边的平方和等于斜边的平方。' },
+        { t: 4.6, text: '二，只有直角三角形才能用，c 必须是斜边。' },
+        { t: 8.4, text: '三，求斜边用加，求直角边用减。' }
+      ],
+      build(ctx) {
+        var items = [
+          ['01', '定理', 'a² + b² = c²'],
+          ['02', '条件', '直角三角形，c 为斜边'],
+          ['03', '用法', '求斜边相加，求直角边相减']
+        ];
+        items.forEach(function (it, i) {
+          var y = 196 + i * 118;
+          var card = ctx.panel(64, y, 1000, 96, {});
+          var num = ctx.text(88, y + 56, it[0], { size: 30, weight: 700, fill: '#2f6fed' });
+          var tt = ctx.text(158, y + 42, it[1], { size: 24, weight: 700 });
+          var dd = ctx.text(158, y + 74, it[2], { size: 18, fill: '#5b6b80' });
+          var rt = [0.3, 4.8, 8.6][i];
+          ctx.fade(card, rt, 0.5); ctx.fade(num, rt, 0.5);
+          ctx.fade(tt, rt + 0.1, 0.5); ctx.fade(dd, rt + 0.2, 0.5);
+        });
+      }
+    }
+  ]
+});
+</script>
+</body>
+</html>

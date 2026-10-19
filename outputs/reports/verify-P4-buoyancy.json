@@ -1,0 +1,456 @@
+{
+  "case": "P4-buoyancy",
+  "file": "examples\\physics\\buoyancy\\lesson.html",
+  "generatedAt": "2026-10-19T05:40:11.471Z",
+  "duration": 126,
+  "scenes": [
+    {
+      "id": "hook",
+      "title": "铁块沉底，轮船却能浮",
+      "objective": "暴露“重就下沉”的错误直觉",
+      "start": 0,
+      "duration": 14,
+      "visual": "左侧铁块下沉、右侧轮船漂浮；同一材质对比",
+      "motion": "铁块下沉动画与轮船轻微起伏对比，问号出现",
+      "camera": "固定机位",
+      "link": "用矛盾现象引出浮力",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "一块铁放进水里会沉底。"
+        },
+        {
+          "t": 4.2,
+          "text": "可钢铁造的大轮船，却能浮在水面上。"
+        },
+        {
+          "t": 8.4,
+          "text": "难道重的物体反而更容易浮起来？"
+        },
+        {
+          "t": 11.6,
+          "text": "关键不在轻重，而在它排开了多少水。"
+        }
+      ]
+    },
+    {
+      "id": "weigh",
+      "title": "称重法测浮力",
+      "objective": "掌握 F浮 = G − F示，理解示数变小的原因",
+      "start": 14,
+      "duration": 22,
+      "visual": "弹簧测力计悬挂物体，浸入水中后示数变小；受力分析图",
+      "motion": "物体浸入，测力计示数从 8 N 降到 6 N；三个力的箭头出现",
+      "camera": "固定机位",
+      "link": "给出可测量的定义",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "用弹簧测力计挂着物体，先读出示数 8 牛，这就是重力。"
+        },
+        {
+          "t": 5.6,
+          "text": "把物体浸入水中，示数变成 6 牛。"
+        },
+        {
+          "t": 10.4,
+          "text": "示数变小，是因为水给了物体一个向上的浮力。"
+        },
+        {
+          "t": 15,
+          "text": "所以 F浮 等于重力减去示数，等于 2 牛。"
+        }
+      ]
+    },
+    {
+      "id": "explore",
+      "title": "浮力与什么有关",
+      "objective": "通过控制变量得出：浮力随 V排 增大而增大，浸没后与深度无关",
+      "start": 36,
+      "duration": 28,
+      "visual": "左侧物体逐渐浸入，右侧 F–h 图像先上升后水平",
+      "motion": "物体下降，示数下降；图像同步描点，浸没后曲线变平",
+      "camera": "固定机位",
+      "link": "把定义变成定量规律",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "把物体慢慢浸入水中，观察示数。"
+        },
+        {
+          "t": 5,
+          "text": "浸入越多，排开的水越多，浮力越大。"
+        },
+        {
+          "t": 10.6,
+          "text": "完全浸没后，再往下沉，示数不再变化。"
+        },
+        {
+          "t": 16.4,
+          "text": "说明浸没后，浮力与深度无关。"
+        },
+        {
+          "t": 21.4,
+          "text": "换成盐水，同样的体积，浮力更大。"
+        }
+      ]
+    },
+    {
+      "id": "principle",
+      "title": "阿基米德原理",
+      "objective": "理解 F浮 = G排，会用公式计算",
+      "start": 64,
+      "duration": 24,
+      "visual": "物体排开的水流入小桶，小桶中水的重力与浮力数值相等",
+      "motion": "溢出的水流入小桶，数值对比",
+      "camera": "固定机位",
+      "link": "从定性走向定量",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "阿基米德发现：浮力等于排开液体所受的重力。"
+        },
+        {
+          "t": 5.4,
+          "text": "也就是 F浮 = G排。"
+        },
+        {
+          "t": 9.8,
+          "text": "写成公式：F浮 = ρ液 g V排。"
+        },
+        {
+          "t": 14.6,
+          "text": "ρ液 是液体密度，V排 是排开液体的体积。"
+        },
+        {
+          "t": 19.2,
+          "text": "1 升水重约 10 牛，排开 1 升就受 10 牛浮力。"
+        }
+      ]
+    },
+    {
+      "id": "float",
+      "title": "浮沉条件与轮船",
+      "objective": "掌握 F浮 与 G 的三种关系，解释轮船与潜水艇",
+      "start": 88,
+      "duration": 26,
+      "visual": "三个物体：上浮、悬浮、下沉；轮船与潜水艇示意",
+      "motion": "三个物体分别向上、悬停、向下，标注受力关系",
+      "camera": "固定机位",
+      "link": "原理用于判断浮沉",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "F浮 大于 G，物体上浮，最后漂浮。"
+        },
+        {
+          "t": 5.4,
+          "text": "F浮 等于 G，物体可以悬浮在任何深度。"
+        },
+        {
+          "t": 10.4,
+          "text": "F浮 小于 G，物体下沉。"
+        },
+        {
+          "t": 15.4,
+          "text": "轮船做成空心，增大 V排，从而获得更大浮力。"
+        },
+        {
+          "t": 20.4,
+          "text": "潜水艇靠充水和排水，改变自身重力。"
+        }
+      ]
+    },
+    {
+      "id": "summary",
+      "title": "三句话收尾",
+      "objective": "固化称重法、阿基米德原理与浮沉条件",
+      "start": 114,
+      "duration": 12,
+      "visual": "三张要点卡片",
+      "motion": "按字幕节拍出现",
+      "camera": "固定机位",
+      "link": "收束全课",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "一，浮力方向竖直向上，可用称重法测量。"
+        },
+        {
+          "t": 4.6,
+          "text": "二，F浮 等于排开液体的重力，与深度无关。"
+        },
+        {
+          "t": 8.6,
+          "text": "三，比较 F浮 和 G，就能判断浮沉。"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "id": "load",
+      "name": "页面加载与引擎就绪",
+      "status": "pass",
+      "detail": "meta=浮力：为什么轮船能浮起来 scenes=6 duration=126s"
+    },
+    {
+      "id": "duration",
+      "name": "时长符合知识点复杂度",
+      "status": "pass",
+      "detail": "实际 126s，期望 110–150s"
+    },
+    {
+      "id": "timeline",
+      "name": "镜头时间轴连续闭合",
+      "status": "pass",
+      "detail": "6 个镜头合计 126s"
+    },
+    {
+      "id": "storyboard",
+      "name": "storyboard.json 与动画一致",
+      "status": "pass",
+      "detail": "6 镜头一一对应"
+    },
+    {
+      "id": "layout-clip",
+      "name": "文字未越出画面",
+      "status": "pass",
+      "detail": "19 帧全部在画布内"
+    },
+    {
+      "id": "layout-caption",
+      "name": "正文不侵入字幕区",
+      "status": "pass",
+      "detail": "内容区与字幕区物理分离"
+    },
+    {
+      "id": "layout-header",
+      "name": "正文不侵入标题区",
+      "status": "pass",
+      "detail": "无重叠"
+    },
+    {
+      "id": "layout-overlap",
+      "name": "文字之间无实质重叠",
+      "status": "pass",
+      "detail": "未检出重叠"
+    },
+    {
+      "id": "layout-font",
+      "name": "字号满足可读性下限",
+      "status": "pass",
+      "detail": "最小正文 13.5px / 字幕 20px"
+    },
+    {
+      "id": "contrast",
+      "name": "文字与底色对比足够",
+      "status": "pass",
+      "detail": "未检出低对比文字"
+    },
+    {
+      "id": "blank",
+      "name": "无空白帧",
+      "status": "pass",
+      "detail": "0 个采样帧内容过少"
+    },
+    {
+      "id": "jump",
+      "name": "无异常闪烁或瞬变",
+      "status": "pass",
+      "detail": "0.25s 间隔画面变化均 < 55%"
+    },
+    {
+      "id": "static",
+      "name": "镜头后段仍有内容推进",
+      "status": "pass",
+      "detail": "各镜头后段均有变化"
+    },
+    {
+      "id": "probe",
+      "name": "关键数值/几何关系正确",
+      "status": "pass",
+      "detail": "weigh_method=2；buoyancy_depth=0；buoyancy_formula=10；float_condition=1"
+    },
+    {
+      "id": "required-text",
+      "name": "必须出现的关键表述齐备",
+      "status": "pass",
+      "detail": "4 项全部出现"
+    },
+    {
+      "id": "forbidden-text",
+      "name": "未出现错误表述",
+      "status": "pass",
+      "detail": "未检出禁止表述"
+    },
+    {
+      "id": "caption",
+      "name": "每个镜头都有字幕讲解",
+      "status": "pass",
+      "detail": "6 个镜头均有字幕"
+    },
+    {
+      "id": "viewport",
+      "name": "不同窗口尺寸下可读",
+      "status": "pass",
+      "detail": "1024×576 最小字号 ≥11.5px，无溢出"
+    },
+    {
+      "id": "console",
+      "name": "运行期无脚本错误",
+      "status": "pass",
+      "detail": "0 error"
+    }
+  ],
+  "summary": {
+    "total": 19,
+    "pass": 19,
+    "fail": 0,
+    "warn": 0,
+    "skip": 0,
+    "verdict": "PASS"
+  },
+  "frames": [
+    {
+      "scene": "hook",
+      "t": 0.7,
+      "file": "outputs\\frames\\P4-buoyancy\\s01_0p7.png",
+      "texts": 7,
+      "nonBg": 0.036
+    },
+    {
+      "scene": "hook",
+      "t": 6.3,
+      "file": "outputs\\frames\\P4-buoyancy\\s01_6p3.png",
+      "texts": 7,
+      "nonBg": 0.04
+    },
+    {
+      "scene": "hook",
+      "t": 11.5,
+      "file": "outputs\\frames\\P4-buoyancy\\s01_11p5.png",
+      "texts": 7,
+      "nonBg": 0.041
+    },
+    {
+      "scene": "weigh",
+      "t": 14.7,
+      "file": "outputs\\frames\\P4-buoyancy\\s02_14p7.png",
+      "texts": 5,
+      "nonBg": 0.037
+    },
+    {
+      "scene": "weigh",
+      "t": 23.9,
+      "file": "outputs\\frames\\P4-buoyancy\\s02_23p9.png",
+      "texts": 5,
+      "nonBg": 0.035
+    },
+    {
+      "scene": "weigh",
+      "t": 32,
+      "file": "outputs\\frames\\P4-buoyancy\\s02_32.png",
+      "texts": 12,
+      "nonBg": 0.047
+    },
+    {
+      "scene": "explore",
+      "t": 36.7,
+      "file": "outputs\\frames\\P4-buoyancy\\s03_36p7.png",
+      "texts": 20,
+      "nonBg": 0.038
+    },
+    {
+      "scene": "explore",
+      "t": 48.6,
+      "file": "outputs\\frames\\P4-buoyancy\\s03_48p6.png",
+      "texts": 23,
+      "nonBg": 0.043
+    },
+    {
+      "scene": "explore",
+      "t": 59,
+      "file": "outputs\\frames\\P4-buoyancy\\s03_59.png",
+      "texts": 26,
+      "nonBg": 0.054
+    },
+    {
+      "scene": "principle",
+      "t": 64.7,
+      "file": "outputs\\frames\\P4-buoyancy\\s04_64p7.png",
+      "texts": 8,
+      "nonBg": 0.047
+    },
+    {
+      "scene": "principle",
+      "t": 74.8,
+      "file": "outputs\\frames\\P4-buoyancy\\s04_74p8.png",
+      "texts": 10,
+      "nonBg": 0.05
+    },
+    {
+      "scene": "principle",
+      "t": 83.7,
+      "file": "outputs\\frames\\P4-buoyancy\\s04_83p7.png",
+      "texts": 11,
+      "nonBg": 0.056
+    },
+    {
+      "scene": "float",
+      "t": 88.7,
+      "file": "outputs\\frames\\P4-buoyancy\\s05_88p7.png",
+      "texts": 8,
+      "nonBg": 0.046
+    },
+    {
+      "scene": "float",
+      "t": 99.7,
+      "file": "outputs\\frames\\P4-buoyancy\\s05_99p7.png",
+      "texts": 8,
+      "nonBg": 0.045
+    },
+    {
+      "scene": "float",
+      "t": 109.3,
+      "file": "outputs\\frames\\P4-buoyancy\\s05_109p3.png",
+      "texts": 14,
+      "nonBg": 0.061
+    },
+    {
+      "scene": "summary",
+      "t": 114.7,
+      "file": "outputs\\frames\\P4-buoyancy\\s06_114p7.png",
+      "texts": 4,
+      "nonBg": 0.035
+    },
+    {
+      "scene": "summary",
+      "t": 119.4,
+      "file": "outputs\\frames\\P4-buoyancy\\s06_119p4.png",
+      "texts": 7,
+      "nonBg": 0.043
+    },
+    {
+      "scene": "summary",
+      "t": 123.8,
+      "file": "outputs\\frames\\P4-buoyancy\\s06_123p8.png",
+      "texts": 10,
+      "nonBg": 0.05
+    },
+    {
+      "scene": "summary",
+      "t": 125.9,
+      "file": "outputs\\frames\\P4-buoyancy\\s06_125p9.png",
+      "texts": 10,
+      "nonBg": 0.05
+    }
+  ],
+  "consoleErrors": []
+}

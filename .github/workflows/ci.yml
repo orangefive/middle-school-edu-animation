@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  static:
+    name: 结构校验与构建
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: 静态校验
+        run: python scripts/validate_project.py
+      - name: 重新构建（防止提交了过期产物）
+        run: python scripts/build_lesson.py --all
+      - name: 构建后不应有差异
+        run: git diff --exit-code -- 'examples/**/lesson.html'
+      - name: 构建后的产物仍通过校验
+        run: python scripts/validate_project.py
+
+  browser:
+    name: 浏览器逐帧验证（开发集）
+    runs-on: ubuntu-latest
+    needs: static
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: scripts/package-lock.json
+      - name: 安装中文字体
+        run: sudo apt-get update && sudo apt-get install -y fonts-noto-cjk
+      - name: 安装验证依赖
+        run: cd scripts && npm ci
+      - name: 安装 Chromium
+        run: cd scripts && npx playwright install --with-deps chromium
+      - name: 环境自检
+        run: python scripts/doctor.py
+      - name: 运行开发集
+        run: python scripts/run_tests.py --set dev --tag ci
+      - name: 上传报告与截图
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports
+          path: |
+            outputs/reports/
+            outputs/frames/
+          retention-days: 7

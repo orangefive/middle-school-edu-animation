@@ -1,0 +1,262 @@
+[
+  {
+    "case": "M1-quadratic",
+    "set": "dev",
+    "subject": "mathematics",
+    "auto": 100.0,
+    "manual": 89,
+    "final": 93.4,
+    "verdict": "PASS",
+    "hardFail": [],
+    "duration": 190,
+    "manualDetail": {
+      "knowledge": 24,
+      "logic": 18,
+      "animation": 16,
+      "visual": 12,
+      "timeline": 9,
+      "engineering": 10
+    },
+    "notes": "a 的四条曲线对比与配方推导是有效动画；识别镜头（verify）左右信息略挤；总结页信息密度合适。扣分：部分镜头仍是文字逐行出现。"
+  },
+  {
+    "case": "M2-pythagoras",
+    "set": "dev",
+    "subject": "mathematics",
+    "auto": 100.0,
+    "manual": 88,
+    "final": 92.8,
+    "verdict": "PASS",
+    "hardFail": [],
+    "duration": 154,
+    "manualDetail": {
+      "knowledge": 24,
+      "logic": 17,
+      "animation": 16,
+      "visual": 12,
+      "timeline": 9,
+      "engineering": 10
+    },
+    "notes": "弦图证明与网格面积是核心亮点；例题镜头两个三角形切换略生硬；误解面板信息偏满。"
+  },
+  {
+    "case": "M3-congruence",
+    "set": "holdout",
+    "subject": "mathematics",
+    "auto": 100.0,
+    "manual": 85,
+    "final": 91.0,
+    "verdict": "PASS",
+    "hardFail": [],
+    "duration": 148,
+    "manualDetail": {
+      "knowledge": 23,
+      "logic": 16,
+      "animation": 15,
+      "visual": 12,
+      "timeline": 9,
+      "engineering": 10
+    },
+    "notes": "SSA 两种解的图形成立且能说明问题；等长刻度画法偏示意，不够规范；判定表信息密度高。"
+  },
+  {
+    "case": "M4-linear",
+    "set": "dev",
+    "subject": "mathematics",
+    "auto": 100.0,
+    "manual": 81,
+    "final": 88.6,
+    "verdict": "PASS",
+    "hardFail": [],
+    "duration": 112,
+    "manualDetail": {
+      "knowledge": 24,
+      "logic": 16,
+      "animation": 13,
+      "visual": 12,
+      "timeline": 9,
+      "engineering": 10
+    },
+    "notes": "k 与 b 的作用讲清了；但多数镜头是直线生长 + 文字出现，缺少连续变换（如平移过程）；概念课偏静态。 复核下调：动画以直线生长和文字出现为主，缺少连续变换。"
+  },
+  {
+    "case": "P1-refraction",
+    "set": "dev",
+    "subject": "physics",
+    "auto": 100.0,
+    "manual": 88,
+    "final": 92.8,
+    "verdict": "PASS",
+    "hardFail": [],
+    "duration": 132,
+    "manualDetail": {
+      "knowledge": 24,
+      "logic": 17,
+      "animation": 16,
+      "visual": 12,
+      "timeline": 9,
+      "engineering": 10
+    },
+    "notes": "角度按 n=1.33 计算，光路自洽；池底虚像的反向延长线是有效动画；规律镜头未高亮“法线两侧”，讲解与画面弱对应。"
+  },
+  {
+    "case": "P2-newton",
+    "set": "dev",
+    "subject": "physics",
+    "auto": 100.0,
+    "manual": 80,
+    "final": 88.0,
+    "verdict": "PASS",
+    "hardFail": [],
+    "duration": 142,
+    "manualDetail": {
+      "knowledge": 23,
+      "logic": 16,
+      "animation": 14,
+      "visual": 11,
+      "timeline": 9,
+      "engineering": 10
+    },
+    "notes": "斜面三次实验是有效对照；惯性镜头人物为火柴人，刹车前倾表现力弱；错误说法打叉处理到位。 复核下调：惯性演示表现力弱。"
+  },
+  {
+    "case": "P3-circuits",
+    "set": "holdout",
+    "subject": "physics",
+    "auto": 100.0,
+    "manual": 86,
+    "final": 91.6,
+    "verdict": "PASS",
+    "hardFail": [],
+    "duration": 138,
+    "manualDetail": {
+      "knowledge": 24,
+      "logic": 16,
+      "animation": 15,
+      "visual": 12,
+      "timeline": 9,
+      "engineering": 10
+    },
+    "notes": "并联拓扑已修正为无短路；电流光点分流直观；例题数值全部可验算；识别镜头较简。"
+  },
+  {
+    "case": "P4-buoyancy",
+    "set": "holdout",
+    "subject": "physics",
+    "auto": 100.0,
+    "manual": 85,
+    "final": 91.0,
+    "verdict": "PASS",
+    "hardFail": [],
+    "duration": 126,
+    "manualDetail": {
+      "knowledge": 23,
+      "logic": 17,
+      "animation": 15,
+      "visual": 11,
+      "timeline": 9,
+      "engineering": 10
+    },
+    "notes": "示数—深度图像的平台段正面回应“浮力随深度增大”的误解；浮沉三状态图较简，已修复文字压色块；轮船/潜水艇只给了文字卡片。"
+  },
+  {
+    "case": "C1-conservation",
+    "set": "dev",
+    "subject": "chemistry",
+    "auto": 100.0,
+    "manual": 88,
+    "final": 92.8,
+    "verdict": "PASS",
+    "hardFail": [],
+    "duration": 138,
+    "manualDetail": {
+      "knowledge": 24,
+      "logic": 17,
+      "animation": 16,
+      "visual": 12,
+      "timeline": 9,
+      "engineering": 10
+    },
+    "notes": "原子重排 + 计数表是核心价值；实验装置为示意，天平读数与装置连接关系不够真实；配平计数正确。"
+  },
+  {
+    "case": "C2-atom",
+    "set": "dev",
+    "subject": "chemistry",
+    "auto": 100.0,
+    "manual": 81,
+    "final": 88.6,
+    "verdict": "PASS",
+    "hardFail": [],
+    "duration": 134,
+    "manualDetail": {
+      "knowledge": 23,
+      "logic": 16,
+      "animation": 14,
+      "visual": 12,
+      "timeline": 9,
+      "engineering": 10
+    },
+    "notes": "三种模型演变与 α 散射有信息量；电子分层只做点状排布，未表现“层”的规则；离子镜头信息偏多。 复核下调：分层规则未充分展开。"
+  },
+  {
+    "case": "B1-photosynthesis",
+    "set": "holdout",
+    "subject": "biology",
+    "auto": 100.0,
+    "manual": 86,
+    "final": 91.6,
+    "verdict": "PASS",
+    "hardFail": [],
+    "duration": 160,
+    "manualDetail": {
+      "knowledge": 23,
+      "logic": 17,
+      "animation": 15,
+      "visual": 12,
+      "timeline": 9,
+      "engineering": 10
+    },
+    "notes": "遮光—脱色—显色的颜色变化是有效动画；实验步骤文字与画面同步良好；意义页偏文字卡片。"
+  },
+  {
+    "case": "B2-cell",
+    "set": "dev",
+    "subject": "biology",
+    "auto": 100.0,
+    "manual": 79,
+    "final": 87.4,
+    "verdict": "PASS",
+    "hardFail": [],
+    "duration": 114,
+    "manualDetail": {
+      "knowledge": 23,
+      "logic": 15,
+      "animation": 13,
+      "visual": 12,
+      "timeline": 9,
+      "engineering": 10
+    },
+    "notes": "结构标注清楚，对比表实用；教学以识别为主，缺少“为什么这样分工”的深入；动画多为标注依次出现。 复核下调：教学以结构识别为主，功能解释较浅。"
+  },
+  {
+    "case": "B3-mendel",
+    "set": "dev",
+    "subject": "biology",
+    "auto": 100.0,
+    "manual": 91,
+    "final": 94.6,
+    "verdict": "PASS",
+    "hardFail": [],
+    "duration": 194,
+    "manualDetail": {
+      "knowledge": 24,
+      "logic": 18,
+      "animation": 17,
+      "visual": 13,
+      "timeline": 9,
+      "engineering": 10
+    },
+    "notes": "成对基因拆分配子、棋盘格逐格填充是有效动画；F2 用 787/277 的真实数据比直接给 3:1 更有说服力；测交的反证逻辑完整。扣分：植株为通用示意，品种特征不足。"
+  }
+]

@@ -1,0 +1,542 @@
+{
+  "case": "M3-congruence",
+  "file": "examples\\mathematics\\congruence\\lesson.html",
+  "generatedAt": "2026-10-19T05:38:18.457Z",
+  "duration": 148,
+  "scenes": [
+    {
+      "id": "hook",
+      "title": "两块完全一样的三角板",
+      "objective": "用实物建立“完全重合”的直观，引出全等形",
+      "start": 0,
+      "duration": 10,
+      "visual": "两块同形状三角板，一块平移覆盖另一块",
+      "motion": "右侧三角板平移到左侧并重合，重合瞬间高亮",
+      "camera": "固定机位",
+      "link": "由实物引出全等概念",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "两块一样的三角板，可以完全重合。"
+        },
+        {
+          "t": 4.6,
+          "text": "能完全重合的图形，叫全等形。"
+        }
+      ]
+    },
+    {
+      "id": "definition",
+      "title": "全等三角形的对应关系",
+      "objective": "明确全等的记法、对应顶点顺序与对应边角相等",
+      "start": 10,
+      "duration": 18,
+      "visual": "两个全等三角形，顶点 A↔D、B↔E、C↔F，对应边用刻度标记",
+      "motion": "两个三角形出现，顶点标签依次对应高亮，结论逐条出现",
+      "camera": "固定机位",
+      "link": "给出严格的记法与性质",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "记作 △ABC 全等于 △DEF，字母顺序必须对应。"
+        },
+        {
+          "t": 5,
+          "text": "A 对 D，B 对 E，C 对 F。"
+        },
+        {
+          "t": 9.2,
+          "text": "对应边相等，对应角也相等。"
+        },
+        {
+          "t": 13.6,
+          "text": "所以写全等时，顺序不能随便换。"
+        }
+      ]
+    },
+    {
+      "id": "sss",
+      "title": "判定一：三边对应相等（SSS）",
+      "objective": "理解三边确定则三角形形状大小唯一，掌握 SSS",
+      "start": 28,
+      "duration": 22,
+      "visual": "左三角形三边做刻度标记，右侧用同样三边拼出并平移重合",
+      "motion": "三边依次标记，右侧三角形逐边生成，最后平移到左侧重合",
+      "camera": "固定机位",
+      "link": "从定义走向判定",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "如果两个三角形的三条边都对应相等。"
+        },
+        {
+          "t": 5,
+          "text": "三根小棒的长度固定，能拼出的三角形只有一个。"
+        },
+        {
+          "t": 10.6,
+          "text": "所以这两个三角形一定全等，简称 SSS。"
+        },
+        {
+          "t": 15.6,
+          "text": "这就是三角形具有稳定性的原因。"
+        }
+      ]
+    },
+    {
+      "id": "sas",
+      "title": "判定二：两边夹角（SAS）与 SSA 反例",
+      "objective": "掌握 SAS；通过反例理解 SSA 不能判定全等",
+      "start": 50,
+      "duration": 26,
+      "visual": "上方 SAS 图形；下方两边一角但角不在夹角位置时出现两个不同三角形",
+      "motion": "SAS 先高亮夹角；随后 SSA 以圆弧与两交点展示两种可能",
+      "camera": "固定机位",
+      "link": "从“能判定”转向“不能判定”",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "两边和它们的夹角对应相等，简称 SAS。"
+        },
+        {
+          "t": 4.6,
+          "text": "注意：角必须是两边的夹角。"
+        },
+        {
+          "t": 9.4,
+          "text": "如果角不是夹角，情况就不同了。"
+        },
+        {
+          "t": 13.6,
+          "text": "同样两边一角，可能画出两个不同的三角形。"
+        },
+        {
+          "t": 19.8,
+          "text": "所以 SSA 不能作为判定方法。"
+        }
+      ]
+    },
+    {
+      "id": "asa",
+      "title": "判定三：两角与夹边（ASA / AAS）",
+      "objective": "掌握 ASA 与 AAS，理解两角确定后形状确定",
+      "start": 76,
+      "duration": 18,
+      "visual": "三角形标注两个角与夹边；旁注 AAS 情形",
+      "motion": "两个角弧与夹边高亮，结论出现",
+      "camera": "固定机位",
+      "link": "补齐判定方法",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "两角和它们的夹边对应相等，简称 ASA。"
+        },
+        {
+          "t": 5.2,
+          "text": "如果边不是夹边，而是其中一个角的对边呢？"
+        },
+        {
+          "t": 10.4,
+          "text": "因为三角形内角和是 180 度，第三个角也就确定了。"
+        },
+        {
+          "t": 14.6,
+          "text": "所以 AAS 同样可以判定全等。"
+        }
+      ]
+    },
+    {
+      "id": "choose",
+      "title": "怎么选判定方法",
+      "objective": "形成“先找已知边角，再匹配判定”的选择流程",
+      "start": 94,
+      "duration": 16,
+      "visual": "四种判定的条件对照表与选择口诀",
+      "motion": "表格逐行出现，底部口诀强调",
+      "camera": "固定机位",
+      "link": "把四种判定组织成可用的工具",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "已知三边，用 SSS；已知两边，找夹角用 SAS。"
+        },
+        {
+          "t": 4.8,
+          "text": "已知两角，找夹边用 ASA，找对边用 AAS。"
+        },
+        {
+          "t": 9.6,
+          "text": "只有 SSA 和 AAA 不行。"
+        },
+        {
+          "t": 13,
+          "text": "口诀：边边边、边角边、角边角、角角边。"
+        }
+      ]
+    },
+    {
+      "id": "example",
+      "title": "例题：证明两个三角形全等",
+      "objective": "用 SSS 完成一次规范证明，并由全等推出对应角相等",
+      "start": 110,
+      "duration": 26,
+      "visual": "△ABD 与 △ACD，AB=AC、BD=CD、AD 公共边，三组刻度标记",
+      "motion": "图形出现，三组条件依次高亮，证明步骤逐行出现，结论角相等",
+      "camera": "固定机位",
+      "link": "把判定用于书写",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "已知 AB = AC，BD = CD，求证 △ABD 全等于 △ACD。"
+        },
+        {
+          "t": 6.4,
+          "text": "再加上公共边 AD，三条边都对应相等。"
+        },
+        {
+          "t": 12,
+          "text": "由 SSS 得到两个三角形全等。"
+        },
+        {
+          "t": 17.6,
+          "text": "全等之后，对应角相等，所以 ∠B = ∠C。"
+        }
+      ]
+    },
+    {
+      "id": "summary",
+      "title": "四句话记住判定",
+      "objective": "固化四种判定与 SSA/AAA 的排除",
+      "start": 136,
+      "duration": 12,
+      "visual": "四张判定卡片",
+      "motion": "按字幕节拍出现",
+      "camera": "固定机位",
+      "link": "收束全课",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "边边边、边角边、角边角、角角边。"
+        },
+        {
+          "t": 4.4,
+          "text": "核心是：边角的位置关系要对。"
+        },
+        {
+          "t": 8.2,
+          "text": "SSA 和 AAA 不能判定全等。"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "id": "load",
+      "name": "页面加载与引擎就绪",
+      "status": "pass",
+      "detail": "meta=三角形全等的判定 scenes=8 duration=148s"
+    },
+    {
+      "id": "duration",
+      "name": "时长符合知识点复杂度",
+      "status": "pass",
+      "detail": "实际 148s，期望 130–175s"
+    },
+    {
+      "id": "timeline",
+      "name": "镜头时间轴连续闭合",
+      "status": "pass",
+      "detail": "8 个镜头合计 148s"
+    },
+    {
+      "id": "storyboard",
+      "name": "storyboard.json 与动画一致",
+      "status": "pass",
+      "detail": "8 镜头一一对应"
+    },
+    {
+      "id": "layout-clip",
+      "name": "文字未越出画面",
+      "status": "pass",
+      "detail": "25 帧全部在画布内"
+    },
+    {
+      "id": "layout-caption",
+      "name": "正文不侵入字幕区",
+      "status": "pass",
+      "detail": "内容区与字幕区物理分离"
+    },
+    {
+      "id": "layout-header",
+      "name": "正文不侵入标题区",
+      "status": "pass",
+      "detail": "无重叠"
+    },
+    {
+      "id": "layout-overlap",
+      "name": "文字之间无实质重叠",
+      "status": "pass",
+      "detail": "未检出重叠"
+    },
+    {
+      "id": "layout-font",
+      "name": "字号满足可读性下限",
+      "status": "pass",
+      "detail": "最小正文 13.5px / 字幕 20px"
+    },
+    {
+      "id": "contrast",
+      "name": "文字与底色对比足够",
+      "status": "pass",
+      "detail": "未检出低对比文字"
+    },
+    {
+      "id": "blank",
+      "name": "无空白帧",
+      "status": "pass",
+      "detail": "0 个采样帧内容过少"
+    },
+    {
+      "id": "jump",
+      "name": "无异常闪烁或瞬变",
+      "status": "pass",
+      "detail": "0.25s 间隔画面变化均 < 55%"
+    },
+    {
+      "id": "static",
+      "name": "镜头后段仍有内容推进",
+      "status": "pass",
+      "detail": "各镜头后段均有变化"
+    },
+    {
+      "id": "probe",
+      "name": "关键数值/几何关系正确",
+      "status": "pass",
+      "detail": "sss_valid=1；ssa_solutions=2；asa_third_angle=70；choose_ssa=0；example_sss=1"
+    },
+    {
+      "id": "required-text",
+      "name": "必须出现的关键表述齐备",
+      "status": "pass",
+      "detail": "4 项全部出现"
+    },
+    {
+      "id": "forbidden-text",
+      "name": "未出现错误表述",
+      "status": "pass",
+      "detail": "未检出禁止表述"
+    },
+    {
+      "id": "caption",
+      "name": "每个镜头都有字幕讲解",
+      "status": "pass",
+      "detail": "8 个镜头均有字幕"
+    },
+    {
+      "id": "viewport",
+      "name": "不同窗口尺寸下可读",
+      "status": "pass",
+      "detail": "1024×576 最小字号 ≥11.5px，无溢出"
+    },
+    {
+      "id": "console",
+      "name": "运行期无脚本错误",
+      "status": "pass",
+      "detail": "0 error"
+    }
+  ],
+  "summary": {
+    "total": 19,
+    "pass": 19,
+    "fail": 0,
+    "warn": 0,
+    "skip": 0,
+    "verdict": "PASS"
+  },
+  "frames": [
+    {
+      "scene": "hook",
+      "t": 0.7,
+      "file": "outputs\\frames\\M3-congruence\\s01_0p7.png",
+      "texts": 3,
+      "nonBg": 0.035
+    },
+    {
+      "scene": "hook",
+      "t": 4.5,
+      "file": "outputs\\frames\\M3-congruence\\s01_4p5.png",
+      "texts": 3,
+      "nonBg": 0.055
+    },
+    {
+      "scene": "hook",
+      "t": 8.2,
+      "file": "outputs\\frames\\M3-congruence\\s01_8p2.png",
+      "texts": 5,
+      "nonBg": 0.059
+    },
+    {
+      "scene": "definition",
+      "t": 10.7,
+      "file": "outputs\\frames\\M3-congruence\\s02_10p7.png",
+      "texts": 10,
+      "nonBg": 0.036
+    },
+    {
+      "scene": "definition",
+      "t": 18.1,
+      "file": "outputs\\frames\\M3-congruence\\s02_18p1.png",
+      "texts": 10,
+      "nonBg": 0.034
+    },
+    {
+      "scene": "definition",
+      "t": 24.8,
+      "file": "outputs\\frames\\M3-congruence\\s02_24p8.png",
+      "texts": 12,
+      "nonBg": 0.042
+    },
+    {
+      "scene": "sss",
+      "t": 28.7,
+      "file": "outputs\\frames\\M3-congruence\\s03_28p7.png",
+      "texts": 6,
+      "nonBg": 0.034
+    },
+    {
+      "scene": "sss",
+      "t": 37.9,
+      "file": "outputs\\frames\\M3-congruence\\s03_37p9.png",
+      "texts": 6,
+      "nonBg": 0.038
+    },
+    {
+      "scene": "sss",
+      "t": 46,
+      "file": "outputs\\frames\\M3-congruence\\s03_46.png",
+      "texts": 7,
+      "nonBg": 0.054
+    },
+    {
+      "scene": "sas",
+      "t": 50.7,
+      "file": "outputs\\frames\\M3-congruence\\s04_50p7.png",
+      "texts": 12,
+      "nonBg": 0.044
+    },
+    {
+      "scene": "sas",
+      "t": 61.7,
+      "file": "outputs\\frames\\M3-congruence\\s04_61p7.png",
+      "texts": 12,
+      "nonBg": 0.044
+    },
+    {
+      "scene": "sas",
+      "t": 71.3,
+      "file": "outputs\\frames\\M3-congruence\\s04_71p3.png",
+      "texts": 12,
+      "nonBg": 0.044
+    },
+    {
+      "scene": "asa",
+      "t": 76.7,
+      "file": "outputs\\frames\\M3-congruence\\s05_76p7.png",
+      "texts": 7,
+      "nonBg": 0.041
+    },
+    {
+      "scene": "asa",
+      "t": 84.1,
+      "file": "outputs\\frames\\M3-congruence\\s05_84p1.png",
+      "texts": 7,
+      "nonBg": 0.041
+    },
+    {
+      "scene": "asa",
+      "t": 90.8,
+      "file": "outputs\\frames\\M3-congruence\\s05_90p8.png",
+      "texts": 11,
+      "nonBg": 0.047
+    },
+    {
+      "scene": "choose",
+      "t": 94.7,
+      "file": "outputs\\frames\\M3-congruence\\s06_94p7.png",
+      "texts": 5,
+      "nonBg": 0.033
+    },
+    {
+      "scene": "choose",
+      "t": 101.2,
+      "file": "outputs\\frames\\M3-congruence\\s06_101p2.png",
+      "texts": 25,
+      "nonBg": 0.052
+    },
+    {
+      "scene": "choose",
+      "t": 107.1,
+      "file": "outputs\\frames\\M3-congruence\\s06_107p1.png",
+      "texts": 26,
+      "nonBg": 0.055
+    },
+    {
+      "scene": "example",
+      "t": 110.7,
+      "file": "outputs\\frames\\M3-congruence\\s07_110p7.png",
+      "texts": 9,
+      "nonBg": 0.037
+    },
+    {
+      "scene": "example",
+      "t": 121.7,
+      "file": "outputs\\frames\\M3-congruence\\s07_121p7.png",
+      "texts": 13,
+      "nonBg": 0.042
+    },
+    {
+      "scene": "example",
+      "t": 131.3,
+      "file": "outputs\\frames\\M3-congruence\\s07_131p3.png",
+      "texts": 15,
+      "nonBg": 0.048
+    },
+    {
+      "scene": "summary",
+      "t": 136.7,
+      "file": "outputs\\frames\\M3-congruence\\s08_136p7.png",
+      "texts": 3,
+      "nonBg": 0.032
+    },
+    {
+      "scene": "summary",
+      "t": 141.4,
+      "file": "outputs\\frames\\M3-congruence\\s08_141p4.png",
+      "texts": 9,
+      "nonBg": 0.045
+    },
+    {
+      "scene": "summary",
+      "t": 145.8,
+      "file": "outputs\\frames\\M3-congruence\\s08_145p8.png",
+      "texts": 10,
+      "nonBg": 0.048
+    },
+    {
+      "scene": "summary",
+      "t": 147.9,
+      "file": "outputs\\frames\\M3-congruence\\s08_147p9.png",
+      "texts": 10,
+      "nonBg": 0.048
+    }
+  ],
+  "consoleErrors": []
+}

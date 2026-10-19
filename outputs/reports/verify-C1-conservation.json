@@ -1,0 +1,503 @@
+{
+  "case": "C1-conservation",
+  "file": "examples\\chemistry\\conservation-of-mass\\lesson.html",
+  "generatedAt": "2026-10-19T05:40:38.002Z",
+  "duration": 138,
+  "scenes": [
+    {
+      "id": "hook",
+      "title": "蜡烛越烧越短",
+      "objective": "用蜡烛变短的现象制造疑问：消失的质量去哪了",
+      "start": 0,
+      "duration": 14,
+      "visual": "燃烧的蜡烛，烛身逐渐变短；旁边出现“质量去哪了”的问号",
+      "motion": "火焰摇曳，蜡烛高度缓慢下降，问号出现",
+      "camera": "固定机位",
+      "link": "由现象引出质量去向问题",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "一支蜡烛燃烧一段时间，明显变短了。"
+        },
+        {
+          "t": 4.6,
+          "text": "减少的那部分物质，去哪了？"
+        },
+        {
+          "t": 8.6,
+          "text": "是消失了，还是变成了别的东西？"
+        },
+        {
+          "t": 11.6,
+          "text": "先别猜，用天平来回答。"
+        }
+      ]
+    },
+    {
+      "id": "experiment",
+      "title": "两个定量实验",
+      "objective": "通过密闭体系实验看到反应前后总质量不变",
+      "start": 14,
+      "duration": 26,
+      "visual": "左：密闭锥形瓶内红磷燃烧，放在天平上；右：铁钉插入硫酸铜溶液",
+      "motion": "天平示数出现，点燃后白烟生成，冷却后示数保持不变；右杯颜色变化但质量不变",
+      "camera": "固定机位",
+      "link": "用实验事实回答“质量去哪了”",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "第一个实验：锥形瓶里放红磷，瓶口系气球，整套放在天平上。"
+        },
+        {
+          "t": 6,
+          "text": "点燃红磷，产生大量白烟。"
+        },
+        {
+          "t": 11.4,
+          "text": "冷却后再称，质量没有变化。"
+        },
+        {
+          "t": 16,
+          "text": "第二个实验：铁钉放入硫酸铜溶液。"
+        },
+        {
+          "t": 20.4,
+          "text": "铁钉表面变红，溶液变色，总质量仍然不变。"
+        }
+      ]
+    },
+    {
+      "id": "micro",
+      "title": "微观：原子只是重新组合",
+      "objective": "从原子种类、数目、质量不变解释质量守恒",
+      "start": 40,
+      "duration": 26,
+      "visual": "左侧反应前 4 个磷原子与 5 个氧分子；右侧反应后 2 个五氧化二磷分子",
+      "motion": "原子沿路径迁移重排，计数板数字保持不变",
+      "camera": "固定机位",
+      "link": "从宏观事实进入微观解释",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "化学变化的本质，是原子重新组合。"
+        },
+        {
+          "t": 4.6,
+          "text": "反应前有 4 个磷原子、10 个氧原子。"
+        },
+        {
+          "t": 10,
+          "text": "反应后，它们重新组合成 2 个五氧化二磷分子。"
+        },
+        {
+          "t": 15.6,
+          "text": "原子的种类没变，数目没变，质量也没变。"
+        },
+        {
+          "t": 21,
+          "text": "所以反应前后总质量必然相等。"
+        }
+      ]
+    },
+    {
+      "id": "equation",
+      "title": "方程式为什么必须配平",
+      "objective": "理解配平的依据是原子守恒，学会用原子计数检查方程式",
+      "start": 66,
+      "duration": 22,
+      "visual": "4P + 5O₂ →(点燃) 2P₂O₅ 与逐元素计数表",
+      "motion": "方程式出现，原子计数表逐行填入，未配平的错误写法对照",
+      "camera": "固定机位",
+      "link": "把守恒用于化学用语",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "红磷燃烧的方程式：4P 加 5O₂，点燃生成 2P₂O₅。"
+        },
+        {
+          "t": 5.4,
+          "text": "检查磷原子：左边 4 个，右边 2 乘 2 也是 4 个。"
+        },
+        {
+          "t": 10.6,
+          "text": "检查氧原子：左边 5 乘 2 是 10 个，右边 2 乘 5 也是 10 个。"
+        },
+        {
+          "t": 15.6,
+          "text": "如果不配平，两边原子数不等，就违背了质量守恒。"
+        }
+      ]
+    },
+    {
+      "id": "explain",
+      "title": "蜡烛变轻，定律失效了吗",
+      "objective": "区分开放体系与密闭体系，纠正“物质消失”的错误",
+      "start": 88,
+      "duration": 22,
+      "visual": "左：敞口燃烧，CO₂ 与水蒸气逸散；右：密闭容器，质量不变",
+      "motion": "敞口时气体分子飞出，总质量下降；密闭时气体被留住，示数不变",
+      "camera": "固定机位",
+      "link": "回到开头的现象",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "蜡烛燃烧生成二氧化碳和水蒸气。"
+        },
+        {
+          "t": 5,
+          "text": "敞口时，这些气体跑到空气里，称到的质量就变小了。"
+        },
+        {
+          "t": 10.6,
+          "text": "如果把这些气体也收集起来称，质量仍然相等。"
+        },
+        {
+          "t": 15.8,
+          "text": "所以定律没有失效，是我们漏称了气体。"
+        }
+      ]
+    },
+    {
+      "id": "calc",
+      "title": "用守恒做计算",
+      "objective": "用质量守恒进行简单计算，验证“反应物质量之和等于生成物质量”",
+      "start": 110,
+      "duration": 16,
+      "visual": "碳燃烧的方程式与质量关系：12 + 32 = 44",
+      "motion": "方程式与质量数字依次出现，天平式等式收束",
+      "camera": "固定机位",
+      "link": "把定律用于定量问题",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "12 克碳在 32 克氧气中恰好完全燃烧。"
+        },
+        {
+          "t": 5,
+          "text": "生成多少克二氧化碳？"
+        },
+        {
+          "t": 8.6,
+          "text": "根据质量守恒，生成物总质量等于反应物总质量。"
+        },
+        {
+          "t": 12.2,
+          "text": "12 加 32 等于 44 克。"
+        }
+      ]
+    },
+    {
+      "id": "summary",
+      "title": "三句话收尾",
+      "objective": "固化定律内容、微观原因与适用范围",
+      "start": 126,
+      "duration": 12,
+      "visual": "三张要点卡片",
+      "motion": "按字幕节拍出现",
+      "camera": "固定机位",
+      "link": "收束全课",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "一，参加反应的各物质质量总和，等于生成物质量总和。"
+        },
+        {
+          "t": 4.8,
+          "text": "二，原因是原子的种类、数目、质量都不变。"
+        },
+        {
+          "t": 9,
+          "text": "三，开放体系要记得把气体算进去。"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "id": "load",
+      "name": "页面加载与引擎就绪",
+      "status": "pass",
+      "detail": "meta=质量守恒定律：物质去哪了 scenes=7 duration=138s"
+    },
+    {
+      "id": "duration",
+      "name": "时长符合知识点复杂度",
+      "status": "pass",
+      "detail": "实际 138s，期望 120–160s"
+    },
+    {
+      "id": "timeline",
+      "name": "镜头时间轴连续闭合",
+      "status": "pass",
+      "detail": "7 个镜头合计 138s"
+    },
+    {
+      "id": "storyboard",
+      "name": "storyboard.json 与动画一致",
+      "status": "pass",
+      "detail": "7 镜头一一对应"
+    },
+    {
+      "id": "layout-clip",
+      "name": "文字未越出画面",
+      "status": "pass",
+      "detail": "22 帧全部在画布内"
+    },
+    {
+      "id": "layout-caption",
+      "name": "正文不侵入字幕区",
+      "status": "pass",
+      "detail": "内容区与字幕区物理分离"
+    },
+    {
+      "id": "layout-header",
+      "name": "正文不侵入标题区",
+      "status": "pass",
+      "detail": "无重叠"
+    },
+    {
+      "id": "layout-overlap",
+      "name": "文字之间无实质重叠",
+      "status": "pass",
+      "detail": "未检出重叠"
+    },
+    {
+      "id": "layout-font",
+      "name": "字号满足可读性下限",
+      "status": "pass",
+      "detail": "最小正文 13.5px / 字幕 20px"
+    },
+    {
+      "id": "contrast",
+      "name": "文字与底色对比足够",
+      "status": "pass",
+      "detail": "未检出低对比文字"
+    },
+    {
+      "id": "blank",
+      "name": "无空白帧",
+      "status": "pass",
+      "detail": "0 个采样帧内容过少"
+    },
+    {
+      "id": "jump",
+      "name": "无异常闪烁或瞬变",
+      "status": "pass",
+      "detail": "0.25s 间隔画面变化均 < 55%"
+    },
+    {
+      "id": "static",
+      "name": "镜头后段仍有内容推进",
+      "status": "pass",
+      "detail": "各镜头后段均有变化"
+    },
+    {
+      "id": "probe",
+      "name": "关键数值/几何关系正确",
+      "status": "pass",
+      "detail": "exp_balance=100；atom_count_P=4；atom_count_O=10；balanced_P=4；balanced_O=10；open_system=0；calc_product=44"
+    },
+    {
+      "id": "required-text",
+      "name": "必须出现的关键表述齐备",
+      "status": "pass",
+      "detail": "4 项全部出现"
+    },
+    {
+      "id": "forbidden-text",
+      "name": "未出现错误表述",
+      "status": "pass",
+      "detail": "未检出禁止表述"
+    },
+    {
+      "id": "caption",
+      "name": "每个镜头都有字幕讲解",
+      "status": "pass",
+      "detail": "7 个镜头均有字幕"
+    },
+    {
+      "id": "viewport",
+      "name": "不同窗口尺寸下可读",
+      "status": "pass",
+      "detail": "1024×576 最小字号 ≥11.5px，无溢出"
+    },
+    {
+      "id": "console",
+      "name": "运行期无脚本错误",
+      "status": "pass",
+      "detail": "0 error"
+    }
+  ],
+  "summary": {
+    "total": 19,
+    "pass": 19,
+    "fail": 0,
+    "warn": 0,
+    "skip": 0,
+    "verdict": "PASS"
+  },
+  "frames": [
+    {
+      "scene": "hook",
+      "t": 0.7,
+      "file": "outputs\\frames\\C1-conservation\\s01_0p7.png",
+      "texts": 5,
+      "nonBg": 0.041
+    },
+    {
+      "scene": "hook",
+      "t": 6.3,
+      "file": "outputs\\frames\\C1-conservation\\s01_6p3.png",
+      "texts": 6,
+      "nonBg": 0.042
+    },
+    {
+      "scene": "hook",
+      "t": 11.5,
+      "file": "outputs\\frames\\C1-conservation\\s01_11p5.png",
+      "texts": 6,
+      "nonBg": 0.043
+    },
+    {
+      "scene": "experiment",
+      "t": 14.7,
+      "file": "outputs\\frames\\C1-conservation\\s02_14p7.png",
+      "texts": 8,
+      "nonBg": 0.064
+    },
+    {
+      "scene": "experiment",
+      "t": 25.7,
+      "file": "outputs\\frames\\C1-conservation\\s02_25p7.png",
+      "texts": 9,
+      "nonBg": 0.064
+    },
+    {
+      "scene": "experiment",
+      "t": 35.3,
+      "file": "outputs\\frames\\C1-conservation\\s02_35p3.png",
+      "texts": 10,
+      "nonBg": 0.067
+    },
+    {
+      "scene": "micro",
+      "t": 40.7,
+      "file": "outputs\\frames\\C1-conservation\\s03_40p7.png",
+      "texts": 6,
+      "nonBg": 0.032
+    },
+    {
+      "scene": "micro",
+      "t": 51.7,
+      "file": "outputs\\frames\\C1-conservation\\s03_51p7.png",
+      "texts": 6,
+      "nonBg": 0.041
+    },
+    {
+      "scene": "micro",
+      "t": 61.3,
+      "file": "outputs\\frames\\C1-conservation\\s03_61p3.png",
+      "texts": 20,
+      "nonBg": 0.048
+    },
+    {
+      "scene": "equation",
+      "t": 66.7,
+      "file": "outputs\\frames\\C1-conservation\\s04_66p7.png",
+      "texts": 6,
+      "nonBg": 0.039
+    },
+    {
+      "scene": "equation",
+      "t": 75.9,
+      "file": "outputs\\frames\\C1-conservation\\s04_75p9.png",
+      "texts": 18,
+      "nonBg": 0.046
+    },
+    {
+      "scene": "equation",
+      "t": 84,
+      "file": "outputs\\frames\\C1-conservation\\s04_84.png",
+      "texts": 20,
+      "nonBg": 0.054
+    },
+    {
+      "scene": "explain",
+      "t": 88.7,
+      "file": "outputs\\frames\\C1-conservation\\s05_88p7.png",
+      "texts": 6,
+      "nonBg": 0.047
+    },
+    {
+      "scene": "explain",
+      "t": 97.9,
+      "file": "outputs\\frames\\C1-conservation\\s05_97p9.png",
+      "texts": 6,
+      "nonBg": 0.049
+    },
+    {
+      "scene": "explain",
+      "t": 106,
+      "file": "outputs\\frames\\C1-conservation\\s05_106.png",
+      "texts": 7,
+      "nonBg": 0.054
+    },
+    {
+      "scene": "calc",
+      "t": 110.7,
+      "file": "outputs\\frames\\C1-conservation\\s06_110p7.png",
+      "texts": 11,
+      "nonBg": 0.034
+    },
+    {
+      "scene": "calc",
+      "t": 117.2,
+      "file": "outputs\\frames\\C1-conservation\\s06_117p2.png",
+      "texts": 13,
+      "nonBg": 0.045
+    },
+    {
+      "scene": "calc",
+      "t": 123.1,
+      "file": "outputs\\frames\\C1-conservation\\s06_123p1.png",
+      "texts": 16,
+      "nonBg": 0.061
+    },
+    {
+      "scene": "summary",
+      "t": 126.7,
+      "file": "outputs\\frames\\C1-conservation\\s07_126p7.png",
+      "texts": 4,
+      "nonBg": 0.038
+    },
+    {
+      "scene": "summary",
+      "t": 131.4,
+      "file": "outputs\\frames\\C1-conservation\\s07_131p4.png",
+      "texts": 7,
+      "nonBg": 0.044
+    },
+    {
+      "scene": "summary",
+      "t": 135.8,
+      "file": "outputs\\frames\\C1-conservation\\s07_135p8.png",
+      "texts": 10,
+      "nonBg": 0.052
+    },
+    {
+      "scene": "summary",
+      "t": 137.9,
+      "file": "outputs\\frames\\C1-conservation\\s07_137p9.png",
+      "texts": 10,
+      "nonBg": 0.052
+    }
+  ],
+  "consoleErrors": []
+}

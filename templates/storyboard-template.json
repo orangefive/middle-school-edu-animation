@@ -1,0 +1,38 @@
+{
+  "$schema": "storyboard.schema.json",
+  "meta": {
+    "title": "知识点标题（与动画 meta.title 一致）",
+    "subject": "数学 | 物理 | 化学 | 生物",
+    "grade": "九年级上",
+    "duration": 0,
+    "objectives": [
+      "能说出……",
+      "能判断……",
+      "能解释……"
+    ],
+    "prerequisites": ["先备知识 1", "先备知识 2"],
+    "misconceptions": ["误解 1（错误表现）", "误解 2"],
+    "corePoints": ["核心点 1", "核心点 2", "核心点 3"],
+    "optionalPoints": ["拓展 1"],
+    "animationAffordances": ["只有动画能讲清的过程 1"],
+    "durationRationale": "N 镜：a+b+c = Xs，复杂度说明，最终取 Xs"
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "title": "镜头标题（显示在画面左上）",
+      "start": 0,
+      "duration": 12,
+      "objective": "本镜头结束时学生应获得的一个具体认知",
+      "visual": "屏幕上出现的文字/公式/图形/物体及大致位置",
+      "motion": "起始状态 → 变化过程 → 结束状态；时长与缓动",
+      "camera": "固定机位 | 局部强调 | 取景框 | 分屏",
+      "captions": [
+        { "t": 0.2, "text": "第一句字幕（≤34 字）" },
+        { "t": 5.0, "text": "第二句字幕" }
+      ],
+      "link": "与前后镜头的衔接：承接什么、铺垫什么",
+      "check": "本镜头要验证的知识结论（可写成数值断言）"
+    }
+  ]
+}

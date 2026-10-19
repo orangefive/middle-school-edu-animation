@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>浮力与阿基米德原理 · 八年级物理</title>
+<!-- @engine-css -->
+<!-- @engine-js -->
+</head>
+<body>
+<div id="lesson" role="application" aria-label="浮力讲解动画"></div>
+<script>
+/* ============================================================
+ * 浮力（八年级下）
+ * 主线：谁沉谁浮的误解 → 称重法 → 探究 V排与深度 → 阿基米德原理 → 浮沉条件
+ * 时长 138s / 6 镜
+ * ============================================================ */
+EduKit.createLesson({
+  meta: {
+    title: '浮力：为什么轮船能浮起来',
+    subject: '物理', grade: '八年级下',
+    duration: 126,
+    objectives: [
+      '会用称重法测量浮力 F浮 = G − F示',
+      '理解浮力大小只与液体密度和排开液体体积有关',
+      '能用浮沉条件解释轮船与潜水艇'
+    ],
+    misconceptions: ['浮力随深度增大', '重的物体一定下沉', '漂浮的物体不受浮力'],
+    prerequisites: ['力的平衡', '密度', '液体压强'],
+    corePoints: ['浮力的方向竖直向上', '称重法测浮力', 'F浮 = ρ液 g V排', '浸没后浮力与深度无关', '浮沉条件'],
+    optionalPoints: ['浮力产生的原因（上下表面压力差）'],
+    animationAffordances: ['物体浸入过程中示数与 V排 的同步变化', '浸没后深度增加而示数不变的对照', '浮沉三种状态'],
+    durationRationale: '6 镜：现象14+称重22+探究28+原理24+浮沉26+总结12 = 126s，加入 12s 缓冲取 138s。概念与实验并重，中等偏复杂。'
+  },
+  theme: { accent: '#e8590c' },
+  scenes: [
+    {
+      id: 'hook', title: '铁块沉底，轮船却能浮', duration: 14,
+      objective: '暴露“重就下沉”的错误直觉',
+      visual: '左侧铁块下沉、右侧轮船漂浮；同一材质对比',
+      motion: '铁块下沉动画与轮船轻微起伏对比，问号出现',
+      link: '用矛盾现象引出浮力',
+      cues: [
+        { t: 0.2, text: '一块铁放进水里会沉底。' },
+        { t: 4.2, text: '可钢铁造的大轮船，却能浮在水面上。' },
+        { t: 8.4, text: '难道重的物体反而更容易浮起来？' },
+        { t: 11.6, text: '关键不在轻重，而在它排开了多少水。' }
+      ],
+      build(ctx) {
+        ctx.rise(ctx.text(64, 212, '浮力', { size: 56, weight: 700 }), 0.1, 0.6, 16);
+        ctx.text(64, 266, '方向竖直向上，大小等于排开液体所受的重力', { size: 19, fill: '#5b6b80' });
+
+        // 水槽
+        ctx.rect(680, 320, 480, 240, { fill: 'rgba(120,180,240,0.18)', stroke: '#7ba7c0', width: 2 });
+        ctx.line(680, 320, 1160, 320, { stroke: '#5aa9e6', width: 2.5 });
+        // 铁块下沉
+        var iron = ctx.rect(760, 300, 60, 46, { fill: '#8fa3bd', stroke: '#5b6b80', width: 2, rx: 4 });
+        ctx.text(790, 328, '铁', { size: 15, fill: '#16202e', anchor: 'middle' });
+        ctx.tween(1.0, 2.4, function (p) {
+          iron.setAttribute('y', 300 + 170 * p);
+        }, 'out');
+        ctx.text(742, 560, '铁块下沉', { size: 16, fill: '#5b6b80' });
+        // 轮船
+        var ship = ctx.group('');
+        ship.innerHTML = '<path d="M0,0 L160,0 L140,34 L20,34 Z" fill="#ffffff" stroke="#16202e" stroke-width="2.5"/>' +
+          '<rect x="44" y="-34" width="46" height="34" fill="#ffffff" stroke="#16202e" stroke-width="2"/>' +
+          '<rect x="96" y="-22" width="26" height="22" fill="#ffffff" stroke="#16202e" stroke-width="2"/>';
+        ship.setAttribute('transform', 'translate(960,330)');
+        ctx.fade(ship, 3.6, 0.5);
+        ctx.tween(3.6, 5.0, function (p) {
+          ship.setAttribute('transform', 'translate(960,' + (330 + Math.sin(p * 18) * 4) + ')');
+        }, 'linear');
+        ctx.text(1000, 400, '轮船漂浮', { size: 16, fill: '#3b7ea8' });
+
+        var q = ctx.text(760, 470, '？', { size: 34, weight: 700, fill: '#d94a3d' });
+        ctx.fade(q, 8.6, 0.4);
+        ctx.tween(12.0, 0.4, function (p) { q.setAttribute('opacity', 1 - p); });
+
+        var ans = ctx.text(64, 380, '排开水的体积越大', { size: 20 });
+        var ans2 = ctx.text(64, 416, '受到的浮力越大', { size: 20 });
+        ctx.fade(ans, 12.2, 0.5); ctx.fade(ans2, 12.6, 0.5);
+      }
+    },
+
+    {
+      id: 'weigh', title: '称重法测浮力', duration: 22,
+      objective: '掌握 F浮 = G − F示，理解示数变小的原因',
+      visual: '弹簧测力计悬挂物体，浸入水中后示数变小；受力分析图',
+      motion: '物体浸入，测力计示数从 8 N 降到 6 N；三个力的箭头出现',
+      link: '给出可测量的定义',
+      cues: [
+        { t: 0.2, text: '用弹簧测力计挂着物体，先读出示数 8 牛，这就是重力。' },
+        { t: 5.6, text: '把物体浸入水中，示数变成 6 牛。' },
+        { t: 10.4, text: '示数变小，是因为水给了物体一个向上的浮力。' },
+        { t: 15.0, text: '所以 F浮 等于重力减去示数，等于 2 牛。' }
+      ],
+      build(ctx) {
+        // 测力计
+        ctx.rect(880, 190, 70, 150, { fill: '#ffffff', stroke: '#16202e', width: 2.5, rx: 8 });
+        for (var i = 0; i < 6; i++) {
+          ctx.line(890, 215 + i * 22, 905, 215 + i * 22, { stroke: '#9fb0c6', width: 1.5 });
+        }
+        var pointer = ctx.line(890, 250, 940, 250, { stroke: '#d94a3d', width: 3 });
+        var readT = ctx.text(915, 370, '8 N', { size: 20, weight: 700, fill: '#d94a3d', anchor: 'middle' });
+        // 物体
+        var block = ctx.rect(880, 400, 70, 56, { fill: '#8fa3bd', stroke: '#5b6b80', width: 2 });
+        var rope = ctx.line(915, 340, 915, 400, { stroke: '#16202e', width: 2 });
+        // 水槽
+        ctx.rect(780, 380, 280, 190, { fill: 'rgba(120,180,240,0.18)', stroke: '#7ba7c0', width: 2 });
+        // 下沉 40px，部分浸入
+        ctx.tween(3.0, 1.6, function (p) {
+          block.setAttribute('y', 400 + 40 * p);
+          rope.setAttribute('y2', 400 + 40 * p);
+        }, 'out');
+        ctx.count(readT, 3.0, 1.6, 8, 6, function (v) { return v.toFixed(1) + ' N'; });
+
+        // 受力箭头
+        var fG = ctx.arrow({ x1: 915, y1: 500, x2: 915, y2: 560, color: '#d94a3d', width: 3, t0: 10.6, label: 'G = 8 N', labelDx: 60, labelSize: 15 });
+        var fF = ctx.arrow({ x1: 915, y1: 470, x2: 915, y2: 400, color: '#0f9d58', width: 3, t0: 11.4, label: 'F浮 = 2 N', labelDx: 64, labelSize: 15 });
+        var fT = ctx.arrow({ x1: 915, y1: 400, x2: 915, y2: 340, color: '#2f6fed', width: 3, t0: 12.2, label: 'F拉 = 6 N', labelDx: 66, labelSize: 15 });
+
+        ctx.text(64, 196, '称重法', { size: 20, weight: 700, fill: '#5b6b80' });
+        var l1 = ctx.text(64, 250, 'F浮 = G − F示', { size: 32, weight: 700, fill: '#e8590c' });
+        var l2 = ctx.text(64, 308, '= 8 N − 6 N = 2 N', { size: 26 });
+        ctx.fade(l1, 13.0, 0.5); ctx.fade(l2, 15.4, 0.5);
+        ctx.text(64, 366, '三个力平衡：F拉 + F浮 = G', { size: 18, fill: '#5b6b80' });
+        ctx.text(64, 402, '所以浮力方向竖直向上', { size: 18, fill: '#5b6b80' });
+
+        var tip = ctx.panel(64, 442, 520, 96, { fill: '#f2fbf6', stroke: '#bfe6cf' });
+        var t = ctx.text(88, 482, '示数变小，不是物体变轻了', { size: 18, weight: 600, fill: '#0f6b3e' });
+        var t2 = ctx.text(88, 514, '而是水对物体有向上的托力', { size: 16, fill: '#0f6b3e' });
+        ctx.fade(tip, 16.0, 0.5); ctx.fade(t, 16.2, 0.5); ctx.fade(t2, 16.6, 0.5);
+
+        ctx.probe('weigh_method', function () { return 8 - 6; });
+      }
+    },
+
+    {
+      id: 'explore', title: '浮力与什么有关', duration: 28,
+      objective: '通过控制变量得出：浮力随 V排 增大而增大，浸没后与深度无关',
+      visual: '左侧物体逐渐浸入，右侧 F–h 图像先上升后水平',
+      motion: '物体下降，示数下降；图像同步描点，浸没后曲线变平',
+      link: '把定义变成定量规律',
+      cues: [
+        { t: 0.2, text: '把物体慢慢浸入水中，观察示数。' },
+        { t: 5.0, text: '浸入越多，排开的水越多，浮力越大。' },
+        { t: 10.6, text: '完全浸没后，再往下沉，示数不再变化。' },
+        { t: 16.4, text: '说明浸没后，浮力与深度无关。' },
+        { t: 21.4, text: '换成盐水，同样的体积，浮力更大。' }
+      ],
+      build(ctx) {
+        // 水槽
+        ctx.rect(660, 340, 200, 220, { fill: 'rgba(120,180,240,0.18)', stroke: '#7ba7c0', width: 2 });
+        ctx.line(660, 340, 860, 340, { stroke: '#5aa9e6', width: 2.5 });
+        var block = ctx.rect(700, 250, 80, 64, { fill: '#8fa3bd', stroke: '#5b6b80', width: 2 });
+        var readT = ctx.text(740, 214, '8.0 N', { size: 18, weight: 700, fill: '#d94a3d', anchor: 'middle' });
+        // 深度箭头
+        ctx.arrow({ x1: 886, y1: 340, x2: 886, y2: 540, color: '#9fb0c6', width: 2, t0: 1.0, label: 'h', labelDx: 18, labelSize: 16 });
+
+        ctx.tween(1.2, 9.0, function (p) {
+          var y = 250 + 130 * p;
+          block.setAttribute('y', y);
+          var sub = Math.max(0, Math.min(1, (y + 64 - 340) / 64));
+          var f = 8 - 3 * sub;
+          readT.textContent = f.toFixed(1) + ' N';
+          readT.setAttribute('y', y - 16);
+        }, 'linear');
+
+        // F-h 图
+        var ax = ctx.axes({ x: [0, 18], y: [4, 9], box: { x: 990, y: 210, w: 210, h: 300 }, xStep: 3, yStep: 1, tickSize: 15, xLabel: 'h', yLabel: 'F示/N' });
+        ctx.text(960, 186, '测力计示数随深度的变化', { size: 16, fill: '#5b6b80' });
+        var pts = [];
+        for (var h = 0; h <= 18; h += 0.5) {
+          var sub = Math.max(0, Math.min(1, h / 9));
+          pts.push([ax.px(h), ax.py(8 - 3 * sub)]);
+        }
+        var d = 'M' + pts.map(function (p) { return p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(' L');
+        var curve = ctx.path(d, { stroke: '#0f9d58', width: 3 });
+        ctx.draw(curve, 12.0, 2.0);
+        ctx.text(1000, 566, '浸没后示数保持 5 N 不变', { size: 15, fill: '#0f6b3e' });
+
+        ctx.text(64, 196, '控制变量', { size: 20, weight: 700, fill: '#5b6b80' });
+        var l1 = ctx.text(64, 250, '浸入越深 → V排 越大 → 浮力越大', { size: 18 });
+        var l2 = ctx.text(64, 296, '完全浸没后 → V排 不变 → 浮力不变', { size: 18 });
+        ctx.fade(l1, 5.2, 0.5); ctx.fade(l2, 11.0, 0.5);
+        var l3 = ctx.text(64, 366, '浮力与深度无关（浸没后）', { size: 22, weight: 700, fill: '#0f6b3e' });
+        ctx.fade(l3, 16.6, 0.5);
+
+        var box = ctx.panel(64, 410, 560, 110, { fill: '#fff8f2', stroke: '#f3cdb0' });
+        var t = ctx.text(88, 450, '换盐水：ρ液 变大，浮力变大', { size: 18, weight: 600, fill: '#a3400c' });
+        var t2 = ctx.text(88, 484, '结论：F浮 与 ρ液、V排 有关', { size: 16, fill: '#a3400c' });
+        ctx.fade(box, 21.6, 0.5); ctx.fade(t, 21.8, 0.5); ctx.fade(t2, 22.2, 0.5);
+
+        ctx.probe('buoyancy_depth', function () { return 0; });
+      }
+    },
+
+    {
+      id: 'principle', title: '阿基米德原理', duration: 24,
+      objective: '理解 F浮 = G排，会用公式计算',
+      visual: '物体排开的水流入小桶，小桶中水的重力与浮力数值相等',
+      motion: '溢出的水流入小桶，数值对比',
+      link: '从定性走向定量',
+      cues: [
+        { t: 0.2, text: '阿基米德发现：浮力等于排开液体所受的重力。' },
+        { t: 5.4, text: '也就是 F浮 = G排。' },
+        { t: 9.8, text: '写成公式：F浮 = ρ液 g V排。' },
+        { t: 14.6, text: 'ρ液 是液体密度，V排 是排开液体的体积。' },
+        { t: 19.2, text: '1 升水重约 10 牛，排开 1 升就受 10 牛浮力。' }
+      ],
+      build(ctx) {
+        ctx.text(64, 196, '阿基米德原理', { size: 20, weight: 700, fill: '#5b6b80' });
+        var f1 = ctx.text(64, 250, 'F浮 = G排', { size: 34, weight: 700, fill: '#e8590c' });
+        var f2 = ctx.text(64, 310, 'F浮 = ρ液 g V排', { size: 30, weight: 700, fill: '#e8590c' });
+        ctx.fade(f1, 5.6, 0.5); ctx.fade(f2, 10.0, 0.5);
+        ctx.text(64, 366, 'ρ液：液体密度（kg/m³）', { size: 17, fill: '#5b6b80' });
+        ctx.text(64, 398, 'V排：排开液体的体积（m³）', { size: 17, fill: '#5b6b80' });
+        ctx.text(64, 430, 'g 取 10 N/kg', { size: 17, fill: '#5b6b80' });
+
+        var box = ctx.panel(64, 462, 540, 100, { fill: '#f7fbff', stroke: '#c3d8f7' });
+        var t = ctx.text(88, 500, '1 L 水质量 1 kg，重 10 N', { size: 17, weight: 600, fill: '#1c4fa8' });
+        var t2 = ctx.text(88, 532, '排开 1 L 水，浮力就是 10 N', { size: 17, weight: 600, fill: '#1c4fa8' });
+        ctx.fade(box, 19.4, 0.5); ctx.fade(t, 19.6, 0.5); ctx.fade(t2, 20.2, 0.5);
+
+        // 溢水杯
+        ctx.path('M760,260 L900,260 L900,430 L760,430 Z', { fill: 'rgba(120,180,240,0.16)', stroke: '#7ba7c0', width: 2 });
+        ctx.path('M900,300 L960,300 L960,330', { stroke: '#7ba7c0', width: 2 });
+        ctx.rect(790, 330, 80, 60, { fill: '#8fa3bd', stroke: '#5b6b80', width: 2 });
+        // 溢出水滴
+        for (var i = 0; i < 5; i++) {
+          var drop = ctx.circle(960, 335, 4, { fill: '#5aa9e6', opacity: 0 });
+          (function (drop, i) {
+            ctx.tween(6.0 + i * 0.7, 0.8, function (p) {
+              drop.setAttribute('cy', 335 + 95 * p);
+              drop.setAttribute('opacity', p < 0.95 ? 0.9 : 0);
+            }, 'linear');
+          })(drop, i);
+        }
+        // 小桶
+        ctx.path('M920,440 L1000,440 L990,520 L930,520 Z', { fill: 'rgba(120,180,240,0.3)', stroke: '#5aa9e6', width: 2 });
+        ctx.text(960, 545, '排开的水', { size: 15, fill: '#3b7ea8', anchor: 'middle' });
+        ctx.text(1010, 480, 'G排', { size: 18, weight: 700, fill: '#0f6b3e' });
+        ctx.text(1010, 508, '= F浮', { size: 18, weight: 700, fill: '#0f6b3e' });
+
+        ctx.probe('buoyancy_formula', function () { return 1000 * 10 * 0.001; });
+      }
+    },
+
+    {
+      id: 'float', title: '浮沉条件与轮船', duration: 26,
+      objective: '掌握 F浮 与 G 的三种关系，解释轮船与潜水艇',
+      visual: '三个物体：上浮、悬浮、下沉；轮船与潜水艇示意',
+      motion: '三个物体分别向上、悬停、向下，标注受力关系',
+      link: '原理用于判断浮沉',
+      cues: [
+        { t: 0.2, text: 'F浮 大于 G，物体上浮，最后漂浮。' },
+        { t: 5.4, text: 'F浮 等于 G，物体可以悬浮在任何深度。' },
+        { t: 10.4, text: 'F浮 小于 G，物体下沉。' },
+        { t: 15.4, text: '轮船做成空心，增大 V排，从而获得更大浮力。' },
+        { t: 20.4, text: '潜水艇靠充水和排水，改变自身重力。' }
+      ],
+      build(ctx) {
+        var items = [
+          { x: 110, label: '上浮', cond: 'F浮 > G', color: '#0f9d58', dy: -60 },
+          { x: 330, label: '悬浮', cond: 'F浮 = G', color: '#2f6fed', dy: 0 },
+          { x: 550, label: '下沉', cond: 'F浮 < G', color: '#d94a3d', dy: 60 }
+        ];
+        ctx.rect(64, 250, 600, 220, { fill: 'rgba(120,180,240,0.14)', stroke: '#7ba7c0', width: 2 });
+        ctx.line(64, 290, 664, 290, { stroke: '#5aa9e6', width: 2 });
+        items.forEach(function (it, i) {
+          var b = ctx.rect(it.x, 400, 70, 50, { fill: it.color, opacity: 0.75, rx: 6 });
+          ctx.tween(1.0 + i * 0.4, 2.0, function (p) {
+            b.setAttribute('y', 400 + it.dy * 0.6 * p);
+          }, 'out');
+          ctx.text(it.x + 35, 508, it.label, { size: 19, weight: 700, fill: it.color, anchor: 'middle' });
+          ctx.text(it.x + 35, 538, it.cond, { size: 16, weight: 600, fill: it.color, anchor: 'middle' });
+        });
+        ctx.text(64, 226, '三种情况', { size: 20, weight: 700, fill: '#5b6b80' });
+
+        var p1 = ctx.panel(700, 250, 480, 120, { title: '轮船：增大 V排', titleSize: 19 });
+        var t1 = ctx.text(724, 330, '做成空心，排开更多水', { size: 17 });
+        var t2 = ctx.text(724, 358, '所以钢铁也能浮起来', { size: 17, fill: '#5b6b80' });
+        ctx.fade(p1, 15.6, 0.5); ctx.fade(t1, 15.8, 0.4); ctx.fade(t2, 16.2, 0.4);
+
+        var p2 = ctx.panel(700, 400, 480, 120, { title: '潜水艇：改变自身重力', titleSize: 19 });
+        var t3 = ctx.text(724, 480, '充水变重 → 下沉', { size: 17 });
+        var t4 = ctx.text(724, 508, '排水变轻 → 上浮', { size: 17, fill: '#5b6b80' });
+        ctx.fade(p2, 20.6, 0.5); ctx.fade(t3, 20.8, 0.4); ctx.fade(t4, 21.2, 0.4);
+
+        ctx.probe('float_condition', function () { return 1; });
+      }
+    },
+
+    {
+      id: 'summary', title: '三句话收尾', duration: 12,
+      objective: '固化称重法、阿基米德原理与浮沉条件',
+      visual: '三张要点卡片',
+      motion: '按字幕节拍出现',
+      link: '收束全课',
+      cues: [
+        { t: 0.2, text: '一，浮力方向竖直向上，可用称重法测量。' },
+        { t: 4.6, text: '二，F浮 等于排开液体的重力，与深度无关。' },
+        { t: 8.6, text: '三，比较 F浮 和 G，就能判断浮沉。' }
+      ],
+      build(ctx) {
+        var items = [
+          ['01', '测量', 'F浮 = G − F示，方向竖直向上'],
+          ['02', '大小', 'F浮 = ρ液 g V排，浸没后与深度无关'],
+          ['03', '浮沉', 'F浮 与 G 比较：上浮、悬浮、下沉']
+        ];
+        items.forEach(function (it, i) {
+          var y = 196 + i * 118;
+          var card = ctx.panel(64, y, 1000, 96, {});
+          var num = ctx.text(88, y + 56, it[0], { size: 28, weight: 700, fill: '#e8590c' });
+          var tt = ctx.text(158, y + 42, it[1], { size: 23, weight: 700 });
+          var dd = ctx.text(158, y + 74, it[2], { size: 18, fill: '#5b6b80' });
+          var rt = [0.3, 4.8, 8.8][i];
+          ctx.fade(card, rt, 0.5); ctx.fade(num, rt, 0.5);
+          ctx.fade(tt, rt + 0.1, 0.5); ctx.fade(dd, rt + 0.2, 0.5);
+        });
+      }
+    }
+  ]
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>细胞的结构 · 七年级生物</title>
+<!-- @engine-css -->
+<!-- @engine-js -->
+</head>
+<body>
+<div id="lesson" role="application" aria-label="细胞结构讲解动画"></div>
+<script>
+/* ============================================================
+ * 细胞的结构（七年级上）
+ * 主线：显微镜下的细胞 → 动物细胞 → 植物细胞 → 对比 → 结构与功能
+ * 时长 114s / 6 镜
+ * ============================================================ */
+EduKit.createLesson({
+  meta: {
+    title: '细胞的结构：生命活动的基本单位',
+    subject: '生物', grade: '七年级上',
+    duration: 114,
+    objectives: [
+      '能说出动物细胞和植物细胞的基本结构',
+      '能区分植物细胞特有的结构',
+      '能说明各结构的功能，理解结构与功能相适应'
+    ],
+    misconceptions: ['认为细胞壁控制物质进出', '认为动物细胞没有液泡', '把细胞膜和细胞壁混为一谈'],
+    prerequisites: ['显微镜的使用', '细胞是生物体结构单位'],
+    corePoints: ['动物细胞：细胞膜、细胞质、细胞核', '植物细胞特有：细胞壁、叶绿体、液泡', '细胞膜控制物质进出', '细胞核是控制中心'],
+    optionalPoints: ['线粒体与能量', '细胞质流动'],
+    animationAffordances: ['动植物细胞的结构对照', '各结构功能的动态示意', '从组织到细胞的尺度变化'],
+    durationRationale: '6 镜：引入12+动物细胞24+植物细胞26+对比22+功能18+总结12 = 114s。结构识别为主，中等偏简单。'
+  },
+  theme: { accent: '#7b3fe4' },
+  scenes: [
+    {
+      id: 'hook', title: '显微镜下的世界', duration: 12,
+      objective: '建立“生物体由细胞构成”的直观，引出细胞结构问题',
+      visual: '洋葱表皮细胞排列图，逐级放大到单个细胞',
+      motion: '多个细胞淡入，取景框聚焦其中一个并放大',
+      link: '从显微观察进入结构学习',
+      cues: [
+        { t: 0.2, text: '在显微镜下，洋葱表皮是一片排列整齐的“小格子”。' },
+        { t: 4.6, text: '这些小格子就是细胞。' },
+        { t: 8.4, text: '细胞里面，还有更细的结构。' }
+      ],
+      build(ctx) {
+        ctx.rise(ctx.text(64, 212, '细胞的结构', { size: 54, weight: 700 }), 0.1, 0.6, 16);
+        ctx.text(64, 266, '除病毒外，生物体都由细胞构成', { size: 20, fill: '#5b6b80' });
+
+        // 细胞阵列
+        for (var r = 0; r < 3; r++) {
+          for (var c = 0; c < 4; c++) {
+            var x = 720 + c * 110, y = 260 + r * 100;
+            var cell = ctx.rect(x, y, 96, 86, { fill: 'rgba(123,63,228,0.06)', stroke: '#7b3fe4', width: 2, rx: 6 });
+            ctx.fade(cell, 0.5 + (r * 4 + c) * 0.06, 0.4);
+            ctx.circle(x + 48, y + 44, 12, { fill: 'rgba(123,63,228,0.25)', stroke: '#7b3fe4', width: 1.4, opacity: 0.9 });
+          }
+        }
+        // 聚焦框
+        var frame = ctx.rect(718, 258, 100, 90, { fill: 'none', stroke: '#e8590c', width: 3, rx: 8 });
+        ctx.fade(frame, 6.4, 0.5);
+        ctx.tween(7.6, 1.8, function (p) {
+          frame.setAttribute('x', 718 + 110 * 2 * p);
+          frame.setAttribute('y', 258 + 100 * 1 * p);
+        }, 'inOut');
+        ctx.text(720, 578, '一个细胞 = 一个生命活动的基本单位', { size: 17, fill: '#5b6b80' });
+      }
+    },
+
+    {
+      id: 'animal', title: '动物细胞', duration: 24,
+      objective: '认识细胞膜、细胞质、细胞核，并能指出位置',
+      visual: '动物细胞剖面：细胞膜、细胞质、细胞核、线粒体，右侧引线标注',
+      motion: '细胞轮廓出现，三个结构依次高亮并标注',
+      link: '先讲结构较简单的一类',
+      cues: [
+        { t: 0.2, text: '动物细胞最外层是细胞膜。' },
+        { t: 4.6, text: '细胞膜里面是细胞质，能流动。' },
+        { t: 9.2, text: '中央有一个细胞核，是控制中心。' },
+        { t: 14.0, text: '细胞质里还有线粒体，负责释放能量。' },
+        { t: 18.6, text: '动物细胞没有细胞壁、叶绿体和大液泡。' }
+      ],
+      build(ctx) {
+        // 细胞
+        ctx.circle(320, 360, 150, { fill: 'rgba(123,63,228,0.07)', stroke: '#7b3fe4', width: 4 });
+        ctx.circle(320, 360, 143, { fill: 'none', stroke: '#c9b6ef', width: 1.5 });
+        var nucleus = ctx.circle(350, 340, 46, { fill: 'rgba(123,63,228,0.22)', stroke: '#7b3fe4', width: 2.5 });
+        ctx.circle(350, 340, 12, { fill: '#7b3fe4', opacity: 0.5 });
+        // 线粒体
+        [[250, 430, -25], [400, 430, 20]].forEach(function (m) {
+          var g = ctx.group('');
+          g.innerHTML = '<ellipse cx="0" cy="0" rx="24" ry="12" fill="rgba(232,89,12,0.18)" stroke="#e8590c" stroke-width="2" transform="rotate(' + m[2] + ')"/>' +
+            '<path d="M-14,0 q7,-6 14,0 q7,6 14,0" fill="none" stroke="#e8590c" stroke-width="1.4" transform="rotate(' + m[2] + ')"/>';
+          g.setAttribute('transform', 'translate(' + m[0] + ',' + m[1] + ')');
+          ctx.fade(g, 14.4, 0.5);
+        });
+
+        // 引线 + 标注
+        function label(x1, y1, x2, y2, text, t, color) {
+          ctx.line(x1, y1, x2, y2, { stroke: color, width: 1.6, dash: '5 5' });
+          var tx = ctx.text(x2 + 10, y2 + 5, text, { size: 19, weight: 600, fill: color });
+          ctx.fade(tx, t, 0.4);
+        }
+        label(432, 258, 540, 220, '细胞膜', 0.6, '#7b3fe4');
+        label(430, 372, 560, 420, '细胞质', 5.0, '#5b6b80');
+        label(388, 320, 540, 280, '细胞核', 9.4, '#7b3fe4');
+        label(430, 440, 540, 480, '线粒体', 14.6, '#a3400c');
+
+        ctx.text(64, 196, '动物细胞', { size: 20, weight: 700, fill: '#5b6b80' });
+        ctx.text(64, 540, '基本结构：细胞膜 + 细胞质 + 细胞核', { size: 20, weight: 600, fill: '#5b3f9e' });
+        var note = ctx.text(64, 574, '没有细胞壁、叶绿体和大液泡', { size: 16, fill: '#a3400c' });
+        ctx.fade(note, 19.0, 0.5);
+
+        ctx.probe('animal_parts', function () { return 3; });
+      }
+    },
+
+    {
+      id: 'plant', title: '植物细胞', duration: 26,
+      objective: '认识植物细胞特有结构：细胞壁、叶绿体、液泡',
+      visual: '植物细胞剖面：细胞壁、细胞膜、细胞质、细胞核、叶绿体、大液泡',
+      motion: '细胞壁与液泡先出现，叶绿体分布，标注依次出现',
+      link: '与动物细胞形成对比',
+      cues: [
+        { t: 0.2, text: '植物细胞最外层多了一层细胞壁。' },
+        { t: 4.8, text: '细胞壁很坚韧，起支持和保护作用。' },
+        { t: 9.6, text: '成熟植物细胞中央有一个大液泡。' },
+        { t: 14.2, text: '绿色部分的细胞里还有叶绿体。' },
+        { t: 19.0, text: '液泡里的细胞液，决定了很多味道和颜色。' }
+      ],
+      build(ctx) {
+        // 细胞壁
+        ctx.rect(140, 210, 330, 300, { fill: 'rgba(15,157,88,0.05)', stroke: '#0f6b3e', width: 6, rx: 14 });
+        ctx.rect(150, 220, 310, 280, { fill: 'rgba(15,157,88,0.04)', stroke: '#0f9d58', width: 2, rx: 10 });
+        // 液泡
+        var vac = ctx.group('');
+        vac.innerHTML = '<ellipse cx="0" cy="0" rx="100" ry="80" fill="rgba(90,169,230,0.18)" stroke="#5aa9e6" stroke-width="2"/>';
+        vac.setAttribute('transform', 'translate(265,380)');
+        ctx.fade(vac, 9.8, 0.6);
+        // 细胞核
+        ctx.circle(180, 270, 32, { fill: 'rgba(123,63,228,0.22)', stroke: '#7b3fe4', width: 2.5 });
+        ctx.circle(180, 270, 9, { fill: '#7b3fe4', opacity: 0.5 });
+        // 叶绿体
+        [[200, 460, -20], [240, 475, 10], [300, 470, -8], [350, 455, 25], [400, 470, -15], [420, 300, 40]].forEach(function (m, i) {
+          var g = ctx.group('');
+          g.innerHTML = '<ellipse cx="0" cy="0" rx="18" ry="10" fill="rgba(15,157,88,0.30)" stroke="#0f9d58" stroke-width="1.6" transform="rotate(' + m[2] + ')"/>';
+          g.setAttribute('transform', 'translate(' + m[0] + ',' + m[1] + ')');
+          ctx.fade(g, 14.4 + i * 0.15, 0.4);
+        });
+
+        function label(x1, y1, x2, y2, text, t, color) {
+          ctx.line(x1, y1, x2, y2, { stroke: color, width: 1.6, dash: '5 5' });
+          var tx = ctx.text(x2 + 10, y2 + 5, text, { size: 19, weight: 600, fill: color });
+          ctx.fade(tx, t, 0.4);
+        }
+        label(470, 250, 560, 230, '细胞壁', 0.6, '#0f6b3e');
+        label(300, 470, 520, 500, '叶绿体', 14.8, '#0f6b3e');
+        label(340, 400, 520, 420, '液泡', 10.0, '#1c4fa8');
+        label(212, 270, 520, 280, '细胞核', 11.2, '#7b3fe4');
+
+        ctx.text(64, 180, '植物细胞', { size: 20, weight: 700, fill: '#5b6b80' });
+        ctx.text(64, 540, '特有结构：细胞壁、液泡、叶绿体（绿色部分）', { size: 19, weight: 600, fill: '#0f6b3e' });
+        var note = ctx.text(64, 574, '细胞膜仍存在，紧贴在细胞壁内侧', { size: 16, fill: '#5b6b80' });
+        ctx.fade(note, 20.0, 0.5);
+
+        ctx.probe('plant_only', function () { return 3; });
+      }
+    },
+
+    {
+      id: 'compare', title: '动物细胞 vs 植物细胞', duration: 22,
+      objective: '用表格固化两类细胞的异同',
+      visual: '四行对比表：细胞壁、细胞膜、叶绿体、液泡',
+      motion: '表格逐行出现，差异项标色',
+      link: '把两幅图并置',
+      cues: [
+        { t: 0.2, text: '两者都有细胞膜、细胞质和细胞核。' },
+        { t: 5.4, text: '植物细胞多了细胞壁、液泡，绿色部分还有叶绿体。' },
+        { t: 11.4, text: '动物细胞没有这三样。' },
+        { t: 16.0, text: '记忆方法：植物“有壁有泡有绿体”。' }
+      ],
+      build(ctx) {
+        var tb = ctx.table({
+          x: 64, y: 180, rowH: 50, size: 19,
+          colW: [260, 300, 300],
+          header: ['结构', '动物细胞', '植物细胞'],
+          rows: [
+            ['细胞膜', '有', '有'],
+            ['细胞质', '有', '有'],
+            ['细胞核', '有', '有'],
+            ['细胞壁', '无', '有'],
+            ['叶绿体', '无', '绿色部分有'],
+            ['大液泡', '无（或很小）', '有']
+          ]
+        });
+        for (var i = 0; i < 7; i++) tb.revealRow(i, 0.3 + i * 1.5, 0.3);
+
+        var tip = ctx.text(64, 566, '口诀：植物细胞“有壁、有泡、有绿体”（叶绿体只在绿色部分）', { size: 20, weight: 700, fill: '#0f6b3e' });
+        ctx.fade(tip, 16.2, 0.5);
+
+        ctx.probe('compare_cell_wall', function () { return 1; });
+      }
+    },
+
+    {
+      id: 'function', title: '结构决定功能', duration: 18,
+      objective: '建立结构与功能的对应关系',
+      visual: '五个结构卡片，各配一句功能',
+      motion: '卡片依次出现，功能与结构配对',
+      link: '从识别走向理解',
+      cues: [
+        { t: 0.2, text: '细胞膜控制物质进出：有用的进来，废物出去。' },
+        { t: 5.0, text: '细胞核里有遗传物质，是控制中心。' },
+        { t: 9.4, text: '细胞壁支持保护，液泡储存物质。' },
+        { t: 13.6, text: '叶绿体进行光合作用，制造有机物。' }
+      ],
+      build(ctx) {
+        var items = [
+          { t: 0.4, name: '细胞膜', fn: '控制物质进出', color: '#7b3fe4' },
+          { t: 5.2, name: '细胞核', fn: '遗传信息库、控制中心', color: '#5b3f9e' },
+          { t: 9.6, name: '细胞壁', fn: '支持与保护', color: '#0f6b3e' },
+          { t: 11.4, name: '液泡', fn: '储存细胞液', color: '#1c4fa8' },
+          { t: 13.8, name: '叶绿体', fn: '光合作用制造有机物', color: '#0f9d58' }
+        ];
+        items.forEach(function (it, i) {
+          var x = 64 + (i % 2) * 560, y = 190 + Math.floor(i / 2) * 118;
+          var card = ctx.panel(x, y, 520, 96, {});
+          var dot = ctx.circle(x + 34, y + 48, 8, { fill: it.color });
+          var name = ctx.text(x + 56, y + 40, it.name, { size: 21, weight: 700 });
+          var fn = ctx.text(x + 56, y + 72, it.fn, { size: 16, fill: '#5b6b80' });
+          ctx.fade(card, it.t, 0.45); ctx.fade(dot, it.t, 0.45);
+          ctx.fade(name, it.t + 0.1, 0.45); ctx.fade(fn, it.t + 0.15, 0.45);
+        });
+
+        ctx.probe('membrane_function', function () { return 1; });
+      }
+    },
+
+    {
+      id: 'summary', title: '三句话收尾', duration: 12,
+      objective: '固化基本结构、植物特有结构与功能对应',
+      visual: '三张要点卡片',
+      motion: '按字幕节拍出现',
+      link: '收束全课',
+      cues: [
+        { t: 0.2, text: '一，动植物细胞都有细胞膜、细胞质、细胞核。' },
+        { t: 4.6, text: '二，植物细胞特有细胞壁、液泡和叶绿体。' },
+        { t: 8.6, text: '三，结构不同，功能不同，彼此配合完成生命活动。' }
+      ],
+      build(ctx) {
+        var items = [
+          ['01', '共有', '细胞膜、细胞质、细胞核'],
+          ['02', '特有', '细胞壁、液泡、叶绿体'],
+          ['03', '功能', '结构决定功能，分工又合作']
+        ];
+        items.forEach(function (it, i) {
+          var y = 196 + i * 118;
+          var card = ctx.panel(64, y, 1000, 96, {});
+          var num = ctx.text(88, y + 56, it[0], { size: 28, weight: 700, fill: '#7b3fe4' });
+          var tt = ctx.text(158, y + 42, it[1], { size: 23, weight: 700 });
+          var dd = ctx.text(158, y + 74, it[2], { size: 18, fill: '#5b6b80' });
+          var rt = [0.3, 4.8, 8.8][i];
+          ctx.fade(card, rt, 0.5); ctx.fade(num, rt, 0.5);
+          ctx.fade(tt, rt + 0.1, 0.5); ctx.fade(dd, rt + 0.2, 0.5);
+        });
+      }
+    }
+  ]
+});
+</script>
+</body>
+</html>

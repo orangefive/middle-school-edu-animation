@@ -1,0 +1,550 @@
+{
+  "case": "M2-pythagoras",
+  "file": "examples\\mathematics\\pythagoras\\lesson.html",
+  "generatedAt": "2026-10-19T05:37:51.942Z",
+  "duration": 154,
+  "scenes": [
+    {
+      "id": "hook",
+      "title": "三边之间藏着什么",
+      "objective": "用一个 3-4-5 的直角三角形制造疑问：三边是否有固定关系",
+      "start": 0,
+      "duration": 12,
+      "visual": "左侧标题；右侧直角三角形，直角边标 3、4，斜边先标问号后变 5",
+      "motion": "三角形三边依次画出，问号闪烁后替换为 5",
+      "camera": "固定机位",
+      "link": "由具体三角形引出三边关系",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "一个直角三角形，两条直角边是 3 和 4。"
+        },
+        {
+          "t": 4.2,
+          "text": "斜边不用量，也能算出来吗？"
+        },
+        {
+          "t": 7.6,
+          "text": "它的斜边恰好是 5。这不是巧合。"
+        }
+      ]
+    },
+    {
+      "id": "grid",
+      "title": "在网格上数面积",
+      "objective": "在网格中看到三边外侧正方形的面积关系：9+16=25",
+      "start": 12,
+      "duration": 24,
+      "visual": "网格、3-4-5 直角三角形、三边外侧三个正方形及面积 9/16/25",
+      "motion": "三角形描边生长，三个正方形依次展开，面积数字依次出现，最后合成等式",
+      "camera": "固定机位",
+      "link": "把“斜边是 5”升级为“面积相加”",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "把三角形放在网格上，每条边向外作一个正方形。"
+        },
+        {
+          "t": 5.4,
+          "text": "两条直角边上的正方形，面积分别是 9 和 16。"
+        },
+        {
+          "t": 11,
+          "text": "斜边上的正方形，面积是 25。"
+        },
+        {
+          "t": 16,
+          "text": "9 加 16 正好等于 25。"
+        }
+      ]
+    },
+    {
+      "id": "proof",
+      "title": "四个三角形拼出的证明",
+      "objective": "用面积法证明 a²+b²=c²，理解代数恒等式的几何来源",
+      "start": 36,
+      "duration": 30,
+      "visual": "边长 a+b 的大正方形，四个全等直角三角形，中间倾斜的 c² 正方形",
+      "motion": "大正方形出现，四个三角形依次填充，中间正方形高亮，等式逐行推导",
+      "camera": "固定机位",
+      "link": "从“数出来”升级为“证出来”",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "用四个一样的直角三角形，拼成一个大正方形。"
+        },
+        {
+          "t": 5.6,
+          "text": "大正方形的边长是 a 加 b，面积是 (a+b)²。"
+        },
+        {
+          "t": 11.4,
+          "text": "四个三角形的面积合计是 4 乘二分之一 ab，也就是 2ab。"
+        },
+        {
+          "t": 17.4,
+          "text": "中间空出的正方形，边长是 c，面积是 c²。"
+        },
+        {
+          "t": 22.8,
+          "text": "所以 a² + 2ab + b² = 2ab + c²，两边消去 2ab。"
+        },
+        {
+          "t": 27.4,
+          "text": "得到 a² + b² = c²。"
+        }
+      ]
+    },
+    {
+      "id": "formula",
+      "title": "定理的内容与条件",
+      "objective": "准确表述勾股定理，明确“直角三角形”和“c 为斜边”两个前提",
+      "start": 66,
+      "duration": 14,
+      "visual": "带 a、b、c 标注的直角三角形与公式，条件用色块强调",
+      "motion": "三角形与标注出现，公式逐字强调，两个条件卡片依次出现",
+      "camera": "固定机位",
+      "link": "把证明结果规范成定理",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "直角三角形两条直角边的平方和，等于斜边的平方。"
+        },
+        {
+          "t": 5.4,
+          "text": "用式子写就是 a² + b² = c²。"
+        },
+        {
+          "t": 9,
+          "text": "两个前提：必须是直角三角形，c 必须是斜边。"
+        }
+      ]
+    },
+    {
+      "id": "example",
+      "title": "已知两边求第三边",
+      "objective": "正用与逆用公式，掌握“先定斜边再代入”的解题顺序",
+      "start": 80,
+      "duration": 24,
+      "visual": "左侧两道例题分步演算；右侧两个三角形分别标注 6-8-10 与 5-12-13",
+      "motion": "第一题演算与三角形同步出现，切换到第二题时图形替换",
+      "camera": "固定机位",
+      "link": "把定理用于计算",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "第一题：直角边 6 和 8，求斜边。"
+        },
+        {
+          "t": 3.4,
+          "text": "c² = 6² + 8² = 100，所以 c = 10。"
+        },
+        {
+          "t": 9.6,
+          "text": "第二题：斜边 13，一条直角边 5，求另一条。"
+        },
+        {
+          "t": 13.2,
+          "text": "b² = 13² − 5² = 144，所以 b = 12。"
+        },
+        {
+          "t": 18.8,
+          "text": "求斜边用加法，求直角边用减法。"
+        }
+      ]
+    },
+    {
+      "id": "misconception",
+      "title": "两个常见错误",
+      "objective": "用反例说明定理只适用于直角三角形，并强调斜边的判定",
+      "start": 104,
+      "duration": 20,
+      "visual": "左侧 3-4-6 的非直角三角形（9+16≠36）；右侧正确的直角三角形标注",
+      "motion": "左图先出现并算出不等，右图再出现并强调“直角所对的边”",
+      "camera": "固定机位",
+      "link": "用反例巩固条件",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "错误一：以为任意三角形都满足 a² + b² = c²。"
+        },
+        {
+          "t": 5,
+          "text": "边长 3、4、6 的三角形，9 加 16 不等于 36。"
+        },
+        {
+          "t": 10.4,
+          "text": "错误二：不找直角，随便把一条边当成 c。"
+        },
+        {
+          "t": 15,
+          "text": "先找直角，直角所对的边才是斜边。"
+        }
+      ]
+    },
+    {
+      "id": "apply",
+      "title": "梯子靠墙",
+      "objective": "把定理用于实际情境，识别斜边与直角边",
+      "start": 124,
+      "duration": 18,
+      "visual": "墙、地面、5 米梯子，标注底端距墙 3 米，求高度",
+      "motion": "场景线稿出现，梯子画出，标注依次出现，计算过程与答案收束",
+      "camera": "固定机位",
+      "link": "定理回到真实场景",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "5 米长的梯子斜靠墙面，底端离墙 3 米。"
+        },
+        {
+          "t": 4.6,
+          "text": "梯子是斜边，墙高是直角边。"
+        },
+        {
+          "t": 8.6,
+          "text": "h² = 5² − 3² = 16，h = 4。"
+        },
+        {
+          "t": 13.2,
+          "text": "梯子顶端离地 4 米。"
+        }
+      ]
+    },
+    {
+      "id": "summary",
+      "title": "记住这三件事",
+      "objective": "固化定理内容、适用条件与使用顺序",
+      "start": 142,
+      "duration": 12,
+      "visual": "三张要点卡片",
+      "motion": "按字幕节拍依次出现",
+      "camera": "固定机位",
+      "link": "收束全课",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "一，直角三角形两条直角边的平方和等于斜边的平方。"
+        },
+        {
+          "t": 4.6,
+          "text": "二，只有直角三角形才能用，c 必须是斜边。"
+        },
+        {
+          "t": 8.4,
+          "text": "三，求斜边用加，求直角边用减。"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "id": "load",
+      "name": "页面加载与引擎就绪",
+      "status": "pass",
+      "detail": "meta=勾股定理：直角三角形三边关系 scenes=8 duration=154s"
+    },
+    {
+      "id": "duration",
+      "name": "时长符合知识点复杂度",
+      "status": "pass",
+      "detail": "实际 154s，期望 135–180s"
+    },
+    {
+      "id": "timeline",
+      "name": "镜头时间轴连续闭合",
+      "status": "pass",
+      "detail": "8 个镜头合计 154s"
+    },
+    {
+      "id": "storyboard",
+      "name": "storyboard.json 与动画一致",
+      "status": "pass",
+      "detail": "8 镜头一一对应"
+    },
+    {
+      "id": "layout-clip",
+      "name": "文字未越出画面",
+      "status": "pass",
+      "detail": "25 帧全部在画布内"
+    },
+    {
+      "id": "layout-caption",
+      "name": "正文不侵入字幕区",
+      "status": "pass",
+      "detail": "内容区与字幕区物理分离"
+    },
+    {
+      "id": "layout-header",
+      "name": "正文不侵入标题区",
+      "status": "pass",
+      "detail": "无重叠"
+    },
+    {
+      "id": "layout-overlap",
+      "name": "文字之间无实质重叠",
+      "status": "pass",
+      "detail": "未检出重叠"
+    },
+    {
+      "id": "layout-font",
+      "name": "字号满足可读性下限",
+      "status": "pass",
+      "detail": "最小正文 13.5px / 字幕 20px"
+    },
+    {
+      "id": "contrast",
+      "name": "文字与底色对比足够",
+      "status": "pass",
+      "detail": "未检出低对比文字"
+    },
+    {
+      "id": "blank",
+      "name": "无空白帧",
+      "status": "pass",
+      "detail": "0 个采样帧内容过少"
+    },
+    {
+      "id": "jump",
+      "name": "无异常闪烁或瞬变",
+      "status": "pass",
+      "detail": "0.25s 间隔画面变化均 < 55%"
+    },
+    {
+      "id": "static",
+      "name": "镜头后段仍有内容推进",
+      "status": "pass",
+      "detail": "各镜头后段均有变化"
+    },
+    {
+      "id": "probe",
+      "name": "关键数值/几何关系正确",
+      "status": "pass",
+      "detail": "pythagoras_3_4=5；grid_area_sum=25；leg_from_hyp=12；nonRightTriangle=0；ladder_height=4"
+    },
+    {
+      "id": "required-text",
+      "name": "必须出现的关键表述齐备",
+      "status": "pass",
+      "detail": "4 项全部出现"
+    },
+    {
+      "id": "forbidden-text",
+      "name": "未出现错误表述",
+      "status": "pass",
+      "detail": "未检出禁止表述"
+    },
+    {
+      "id": "caption",
+      "name": "每个镜头都有字幕讲解",
+      "status": "pass",
+      "detail": "8 个镜头均有字幕"
+    },
+    {
+      "id": "viewport",
+      "name": "不同窗口尺寸下可读",
+      "status": "pass",
+      "detail": "1024×576 最小字号 ≥11.5px，无溢出"
+    },
+    {
+      "id": "console",
+      "name": "运行期无脚本错误",
+      "status": "pass",
+      "detail": "0 error"
+    }
+  ],
+  "summary": {
+    "total": 19,
+    "pass": 19,
+    "fail": 0,
+    "warn": 0,
+    "skip": 0,
+    "verdict": "PASS"
+  },
+  "frames": [
+    {
+      "scene": "hook",
+      "t": 0.7,
+      "file": "outputs\\frames\\M2-pythagoras\\s01_0p7.png",
+      "texts": 5,
+      "nonBg": 0.036
+    },
+    {
+      "scene": "hook",
+      "t": 5.4,
+      "file": "outputs\\frames\\M2-pythagoras\\s01_5p4.png",
+      "texts": 7,
+      "nonBg": 0.04
+    },
+    {
+      "scene": "hook",
+      "t": 9.8,
+      "file": "outputs\\frames\\M2-pythagoras\\s01_9p8.png",
+      "texts": 7,
+      "nonBg": 0.04
+    },
+    {
+      "scene": "grid",
+      "t": 12.7,
+      "file": "outputs\\frames\\M2-pythagoras\\s02_12p7.png",
+      "texts": 3,
+      "nonBg": 0.027
+    },
+    {
+      "scene": "grid",
+      "t": 22.8,
+      "file": "outputs\\frames\\M2-pythagoras\\s02_22p8.png",
+      "texts": 6,
+      "nonBg": 0.034
+    },
+    {
+      "scene": "grid",
+      "t": 31.7,
+      "file": "outputs\\frames\\M2-pythagoras\\s02_31p7.png",
+      "texts": 9,
+      "nonBg": 0.037
+    },
+    {
+      "scene": "proof",
+      "t": 36.7,
+      "file": "outputs\\frames\\M2-pythagoras\\s03_36p7.png",
+      "texts": 5,
+      "nonBg": 0.027
+    },
+    {
+      "scene": "proof",
+      "t": 49.5,
+      "file": "outputs\\frames\\M2-pythagoras\\s03_49p5.png",
+      "texts": 8,
+      "nonBg": 0.042
+    },
+    {
+      "scene": "proof",
+      "t": 60.6,
+      "file": "outputs\\frames\\M2-pythagoras\\s03_60p6.png",
+      "texts": 10,
+      "nonBg": 0.094
+    },
+    {
+      "scene": "formula",
+      "t": 66.7,
+      "file": "outputs\\frames\\M2-pythagoras\\s04_66p7.png",
+      "texts": 6,
+      "nonBg": 0.032
+    },
+    {
+      "scene": "formula",
+      "t": 72.3,
+      "file": "outputs\\frames\\M2-pythagoras\\s04_72p3.png",
+      "texts": 6,
+      "nonBg": 0.033
+    },
+    {
+      "scene": "formula",
+      "t": 77.5,
+      "file": "outputs\\frames\\M2-pythagoras\\s04_77p5.png",
+      "texts": 8,
+      "nonBg": 0.047
+    },
+    {
+      "scene": "example",
+      "t": 80.7,
+      "file": "outputs\\frames\\M2-pythagoras\\s05_80p7.png",
+      "texts": 6,
+      "nonBg": 0.03
+    },
+    {
+      "scene": "example",
+      "t": 90.8,
+      "file": "outputs\\frames\\M2-pythagoras\\s05_90p8.png",
+      "texts": 9,
+      "nonBg": 0.035
+    },
+    {
+      "scene": "example",
+      "t": 99.7,
+      "file": "outputs\\frames\\M2-pythagoras\\s05_99p7.png",
+      "texts": 12,
+      "nonBg": 0.038
+    },
+    {
+      "scene": "misconception",
+      "t": 104.7,
+      "file": "outputs\\frames\\M2-pythagoras\\s06_104p7.png",
+      "texts": 3,
+      "nonBg": 0.035
+    },
+    {
+      "scene": "misconception",
+      "t": 113,
+      "file": "outputs\\frames\\M2-pythagoras\\s06_113.png",
+      "texts": 9,
+      "nonBg": 0.045
+    },
+    {
+      "scene": "misconception",
+      "t": 120.4,
+      "file": "outputs\\frames\\M2-pythagoras\\s06_120p4.png",
+      "texts": 16,
+      "nonBg": 0.062
+    },
+    {
+      "scene": "apply",
+      "t": 124.7,
+      "file": "outputs\\frames\\M2-pythagoras\\s07_124p7.png",
+      "texts": 6,
+      "nonBg": 0.036
+    },
+    {
+      "scene": "apply",
+      "t": 132.1,
+      "file": "outputs\\frames\\M2-pythagoras\\s07_132p1.png",
+      "texts": 9,
+      "nonBg": 0.043
+    },
+    {
+      "scene": "apply",
+      "t": 138.8,
+      "file": "outputs\\frames\\M2-pythagoras\\s07_138p8.png",
+      "texts": 11,
+      "nonBg": 0.045
+    },
+    {
+      "scene": "summary",
+      "t": 142.7,
+      "file": "outputs\\frames\\M2-pythagoras\\s08_142p7.png",
+      "texts": 4,
+      "nonBg": 0.036
+    },
+    {
+      "scene": "summary",
+      "t": 147.4,
+      "file": "outputs\\frames\\M2-pythagoras\\s08_147p4.png",
+      "texts": 7,
+      "nonBg": 0.042
+    },
+    {
+      "scene": "summary",
+      "t": 151.8,
+      "file": "outputs\\frames\\M2-pythagoras\\s08_151p8.png",
+      "texts": 10,
+      "nonBg": 0.05
+    },
+    {
+      "scene": "summary",
+      "t": 153.9,
+      "file": "outputs\\frames\\M2-pythagoras\\s08_153p9.png",
+      "texts": 10,
+      "nonBg": 0.05
+    }
+  ],
+  "consoleErrors": []
+}

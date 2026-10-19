@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>光合作用 · 七年级生物</title>
+<!-- @engine-css -->
+<!-- @engine-js -->
+</head>
+<body>
+<div id="lesson" role="application" aria-label="光合作用讲解动画"></div>
+<script>
+/* ============================================================
+ * 光合作用（七年级上）
+ * 主线：植物从哪获得物质 → 经典实验 → 原料与条件 → 产物 → 能量转化 → 意义与应用
+ * 时长 148s / 7 镜
+ * ============================================================ */
+EduKit.createLesson({
+  meta: {
+    title: '光合作用：植物为什么能养活世界',
+    subject: '生物', grade: '七年级上',
+    duration: 160,
+    objectives: [
+      '能说出光合作用的原料、条件、场所和产物',
+      '能描述绿叶在光下制造有机物的实验步骤与现象',
+      '能解释光合作用对生物圈的意义'
+    ],
+    misconceptions: ['认为植物靠“吃土壤”长大', '把光合作用原料说成氧气和水', '认为光合作用只在白天进行所以与呼吸作用对立'],
+    prerequisites: ['细胞的基本结构', '叶绿体的存在', '二氧化碳与氧气的性质'],
+    corePoints: ['原料：二氧化碳和水', '条件：光；场所：叶绿体', '产物：有机物（淀粉）和氧气', '物质与能量的转化', '对生物圈的意义'],
+    optionalPoints: ['光反应与暗反应', 'C3、C4 植物'],
+    animationAffordances: ['遮光实验的对照现象', '气体与水分流向的可视化', '能量形式的转化'],
+    durationRationale: '7 镜：引入14+实验28+原料24+产物22+能量24+意义20+应用与总结16 = 148s。含实验与微观过程，复杂，取 148s。'
+  },
+  theme: { accent: '#0f9d58' },
+  scenes: [
+    {
+      id: 'hook', title: '一棵树长大，物质从哪来', duration: 14,
+      objective: '用海尔蒙特实验排除“土壤提供全部物质”的直觉',
+      visual: '柳树与土槽，五年后树增重而土几乎不变',
+      motion: '树逐年长大，土壤高度标尺几乎不动',
+      link: '用历史实验提出“物质来源”问题',
+      cues: [
+        { t: 0.2, text: '一棵小树长成大树，增加的重量从哪来？' },
+        { t: 4.8, text: '有人认为是土壤。海尔蒙特把柳树种在称过的土里。' },
+        { t: 9.4, text: '五年后，树重了 70 多千克，土只少了 60 克。' },
+        { t: 12.6, text: '土壤解释不了，答案在空气和水中。' }
+      ],
+      build(ctx) {
+        ctx.rise(ctx.text(64, 212, '光合作用', { size: 54, weight: 700 }), 0.1, 0.6, 16);
+        ctx.text(64, 266, '植物把光能转变成化学能，储存在有机物中', { size: 19, fill: '#5b6b80' });
+
+        ctx.rect(760, 430, 340, 110, { fill: '#e8dcc8', stroke: '#b9a488', width: 2, rx: 6 });
+        ctx.text(780, 500, '土壤 100 kg', { size: 16, fill: '#6b5b45' });
+        var tree = ctx.group('');
+        tree.innerHTML = '<rect x="-6" y="-120" width="12" height="120" fill="#8a6a45"/>' +
+          '<circle cx="0" cy="-150" r="52" fill="rgba(15,157,88,0.25)" stroke="#0f9d58" stroke-width="2"/>' +
+          '<circle cx="-34" cy="-122" r="34" fill="rgba(15,157,88,0.22)" stroke="#0f9d58" stroke-width="2"/>' +
+          '<circle cx="36" cy="-126" r="36" fill="rgba(15,157,88,0.22)" stroke="#0f9d58" stroke-width="2"/>';
+        tree.setAttribute('transform', 'translate(930,430) scale(0.35)');
+        ctx.tween(1.2, 6.0, function (p) {
+          tree.setAttribute('transform', 'translate(930,430) scale(' + (0.35 + 0.65 * p) + ')');
+        }, 'out');
+        ctx.text(930, 580, '五年后：树 +74 kg，土 −0.06 kg', { size: 16, fill: '#5b6b80', anchor: 'middle' });
+
+        var q = ctx.text(64, 360, '增加的 74 kg 物质，来自哪里？', { size: 24, weight: 700, fill: '#0f6b3e' });
+        ctx.fade(q, 9.6, 0.5);
+        ctx.text(64, 414, '空气：二氧化碳', { size: 19 });
+        ctx.text(64, 450, '土壤：水', { size: 19 });
+        ctx.fade(ctx.text(64, 486, '阳光提供能量', { size: 19 }), 12.8, 0.5);
+      }
+    },
+
+    {
+      id: 'experiment', title: '绿叶在光下制造有机物', duration: 28,
+      objective: '掌握实验步骤与现象，理解对照与单一变量',
+      visual: '叶片：暗处理 → 部分遮光 → 光照 → 酒精脱色 → 碘液显色',
+      motion: '叶片颜色随步骤变化：绿 → 黄白 → 见光部分蓝黑',
+      link: '用实验证明产物是淀粉、条件是光',
+      cues: [
+        { t: 0.2, text: '第一步，暗处理一昼夜，让叶片里的淀粉消耗掉。' },
+        { t: 5.6, text: '第二步，用黑纸片把叶片一部分遮住，再光照。' },
+        { t: 11.4, text: '第三步，摘下叶片，酒精隔水加热脱色。' },
+        { t: 16.8, text: '第四步，滴加碘液，见光部分变蓝。' },
+        { t: 22.0, text: '说明光下产生了淀粉，光是必要条件。' }
+      ],
+      build(ctx) {
+        ctx.text(64, 190, '实验步骤', { size: 20, weight: 700, fill: '#5b6b80' });
+        var steps = [
+          '① 暗处理：消耗原有淀粉',
+          '② 部分遮光：形成对照',
+          '③ 光照：让叶片进行光合作用',
+          '④ 酒精脱色：去掉叶绿素',
+          '⑤ 滴碘液：检验淀粉'
+        ];
+        steps.forEach(function (s, i) {
+          var el = ctx.text(64, 238 + i * 48, s, { size: 18 });
+          ctx.fade(el, 0.6 + i * 5.2, 0.4);
+        });
+        var ctrl = ctx.text(64, 500, '变量：光　对照：遮光部分', { size: 17, weight: 600, fill: '#0f6b3e' });
+        ctx.fade(ctrl, 11.6, 0.5);
+        ctx.text(64, 536, '其他条件相同，才能说明是光的作用', { size: 15, fill: '#5b6b80' });
+
+        // 叶片
+        var leaf = ctx.path('M820,330 C 900,250 1080,250 1140,330 C 1080,410 900,410 820,330 Z',
+          { fill: '#2f8f5b', stroke: '#0f6b3e', width: 3 });
+        ctx.path('M830,330 L1130,330', { stroke: '#0f6b3e', width: 2, opacity: 0.5 });
+        // 遮光纸片
+        var cover = ctx.rect(830, 288, 108, 84, { fill: '#16202e', opacity: 0, rx: 4 });
+        var coverLab = ctx.text(884, 392, '黑纸片', { size: 14, fill: '#5b6b80', anchor: 'middle' });
+        ctx.fade(cover, 5.8, 0.5); ctx.fade(coverLab, 5.8, 0.5);
+        // 脱色
+        ctx.tween(12.0, 3.0, function (p) {
+          leaf.setAttribute('fill', 'rgb(' + Math.round(47 + 200 * p) + ',' + Math.round(143 + 90 * p) + ',' + Math.round(91 + 120 * p) + ')');
+        });
+        // 脱色后取下黑纸片（遮光部分恢复可见，呈黄白色）
+        ctx.tween(11.4, 0.4, function (p) {
+          cover.setAttribute('opacity', 1 - p);
+          coverLab.setAttribute('opacity', 1 - p);
+        });
+        var blue = ctx.path('M940,330 C 1000,258 1080,258 1140,330 C 1080,402 1000,402 940,330 Z',
+          { fill: 'rgba(28,52,120,0.85)', opacity: 0 });
+        ctx.fade(blue, 18.0, 0.8);
+
+        var res = ctx.text(760, 470, '见光部分变蓝 → 有淀粉', { size: 17, weight: 600, fill: '#1c4fa8' });
+        var res2 = ctx.text(760, 500, '遮光部分不变蓝 → 无淀粉', { size: 17, fill: '#5b6b80' });
+        var res3 = ctx.text(760, 530, '结论：光是光合作用的必要条件', { size: 17, weight: 700, fill: '#0f6b3e' });
+        ctx.fade(res, 22.2, 0.5); ctx.fade(res2, 22.8, 0.5); ctx.fade(res3, 23.4, 0.5);
+
+        ctx.probe('starch_requires_light', function () { return 1; });
+      }
+    },
+
+    {
+      id: 'inputs', title: '原料与条件', duration: 24,
+      objective: '明确原料是二氧化碳和水，条件是光和叶绿体',
+      visual: '植株：空气中 CO₂ 进入叶片，根部吸水上行，阳光照到叶绿体',
+      motion: '三股箭头分别表示 CO₂、H₂O、光能，汇入叶绿体',
+      link: '从实验走向过程',
+      cues: [
+        { t: 0.2, text: '光合作用的原料是二氧化碳和水。' },
+        { t: 4.6, text: '二氧化碳从气孔进入叶片。' },
+        { t: 9.0, text: '水由根吸收，经导管运到叶。' },
+        { t: 13.4, text: '条件是光，场所是叶绿体。' },
+        { t: 18.0, text: '四者缺一不可。' }
+      ],
+      build(ctx) {
+        // 植株
+        ctx.line(880, 520, 880, 260, { stroke: '#0f6b3e', width: 6 });
+        ctx.path('M880,400 C 820,370 800,330 810,300 C 850,310 875,350 880,400 Z', { fill: '#2f8f5b', opacity: 0.85 });
+        ctx.path('M880,340 C 940,310 960,270 950,240 C 910,250 885,290 880,340 Z', { fill: '#2f8f5b', opacity: 0.85 });
+        ctx.rect(800, 520, 160, 40, { fill: '#e8dcc8', stroke: '#b9a488', width: 2, rx: 6 });
+        // 太阳
+        ctx.circle(700, 220, 30, { fill: '#ffd166' });
+        for (var i = 0; i < 8; i++) {
+          var a = i / 8 * Math.PI * 2;
+          ctx.line(700 + Math.cos(a) * 38, 220 + Math.sin(a) * 38, 700 + Math.cos(a) * 50, 220 + Math.sin(a) * 50, { stroke: '#e8b93c', width: 3 });
+        }
+        ctx.text(700, 300, '光能', { size: 16, fill: '#a3400c', anchor: 'middle' });
+
+        // 箭头
+        ctx.arrow({ x1: 780, y1: 330, x2: 868, y2: 330, color: '#2f6fed', width: 3, t0: 4.6, label: 'CO₂', labelDy: -12, labelSize: 17 });
+        ctx.arrow({ x1: 880, y1: 540, x2: 880, y2: 400, color: '#5aa9e6', width: 3, t0: 9.0, label: 'H₂O', labelDx: 34, labelSize: 17 });
+        ctx.arrow({ x1: 742, y1: 244, x2: 840, y2: 300, color: '#e8590c', width: 2.5, t0: 13.4 });
+
+        ctx.text(64, 190, '原料与条件', { size: 20, weight: 700, fill: '#5b6b80' });
+        var f1 = ctx.text(64, 244, 'CO₂ + H₂O', { size: 30, weight: 700 });
+        var f2 = ctx.text(64, 300, '→ 有机物 + O₂', { size: 30, weight: 700, fill: '#0f6b3e' });
+        ctx.fade(f1, 0.8, 0.5); ctx.fade(f2, 18.4, 0.5);
+        var cond = ctx.text(220, 344, '条件：光　场所：叶绿体', { size: 18, fill: '#a3400c' });
+        ctx.fade(cond, 13.6, 0.5);
+        ctx.text(64, 404, '原料：二氧化碳、水', { size: 19 });
+        ctx.text(64, 440, '产物：有机物、氧气', { size: 19 });
+        ctx.text(64, 476, '四者缺一不可', { size: 19, weight: 600, fill: '#0f6b3e' });
+
+        ctx.probe('raw_materials', function () { return 2; });
+      }
+    },
+
+    {
+      id: 'outputs', title: '产物：有机物和氧气', duration: 22,
+      objective: '确认产物是有机物（淀粉）和氧气，并能检验氧气',
+      visual: '金鱼藻在水中产生气泡，试管收集气体使带火星木条复燃',
+      motion: '气泡上升进入试管，木条复燃',
+      link: '补齐产物一侧',
+      cues: [
+        { t: 0.2, text: '把金鱼藻放在水中光照，会不断冒出气泡。' },
+        { t: 5.4, text: '收集这些气体，带火星的木条会复燃。' },
+        { t: 9.8, text: '说明光合作用产生了氧气。' },
+        { t: 14.0, text: '同时生成的有机物，主要是淀粉。' },
+        { t: 18.2, text: '有机物既是植物自身的“食物”，也是其他生物的食物。' }
+      ],
+      build(ctx) {
+        ctx.rect(700, 300, 220, 240, { fill: 'rgba(120,180,240,0.16)', stroke: '#7ba7c0', width: 2 });
+        ctx.line(700, 300, 920, 300, { stroke: '#5aa9e6', width: 2 });
+        // 水草
+        ctx.path('M760,520 C 750,460 790,440 780,380 M800,520 C 800,470 830,450 820,400 M840,520 C 850,470 870,440 860,390',
+          { stroke: '#2f8f5b', width: 4, fill: 'none' });
+        // 气泡
+        for (var i = 0; i < 7; i++) {
+          var b = ctx.circle(770 + (i % 4) * 26, 480 - Math.floor(i / 4) * 30, 5, { fill: 'none', stroke: '#5aa9e6', width: 1.6, opacity: 0 });
+          (function (b, i) {
+            ctx.tween(1.0 + i * 0.5, 2.4, function (p) {
+              b.setAttribute('cy', 480 - Math.floor(i / 4) * 30 - 150 * p);
+              b.setAttribute('opacity', p < 0.9 ? 1 : 0);
+            }, 'linear');
+          })(b, i);
+        }
+        // 试管
+        ctx.rect(820, 240, 40, 90, { fill: 'rgba(255,255,255,0.8)', stroke: '#7ba7c0', width: 2, rx: 20 });
+        // 木条
+        ctx.line(760, 230, 700, 190, { stroke: '#a3400c', width: 5 });
+        var flame = ctx.group('<path d="M0,0 C-8,-12 -5,-24 0,-32 C5,-24 8,-12 0,0 Z" fill="#ffb703"/>');
+        flame.setAttribute('transform', 'translate(696,186)');
+        ctx.fade(flame, 6.6, 0.4);
+        ctx.text(640, 170, '带火星木条复燃', { size: 15, fill: '#a3400c' });
+
+        ctx.text(64, 190, '产物', { size: 20, weight: 700, fill: '#5b6b80' });
+        ctx.text(64, 244, '氧气 O₂', { size: 26, weight: 700, fill: '#1c4fa8' });
+        ctx.text(64, 290, '检验：带火星木条复燃', { size: 18, fill: '#5b6b80' });
+        ctx.text(64, 350, '有机物（淀粉）', { size: 26, weight: 700, fill: '#0f6b3e' });
+        ctx.text(64, 396, '检验：碘液变蓝', { size: 18, fill: '#5b6b80' });
+        var p = ctx.panel(64, 436, 540, 96, { fill: '#f2fbf6', stroke: '#bfe6cf' });
+        var t = ctx.text(88, 476, '植物制造的有机物，是生态系统的食物来源', { size: 17, weight: 600, fill: '#0f6b3e' });
+        var t2 = ctx.text(88, 506, '也是氧气的来源', { size: 16, fill: '#0f6b3e' });
+        ctx.fade(p, 18.4, 0.5); ctx.fade(t, 18.6, 0.5); ctx.fade(t2, 19.0, 0.5);
+
+        ctx.probe('product_oxygen', function () { return 1; });
+      }
+    },
+
+    {
+      id: 'energy', title: '物质与能量的转化', duration: 24,
+      objective: '理解光合作用是物质转化与能量转化的统一',
+      visual: '左：无机物 → 有机物；右：光能 → 化学能',
+      motion: '两条转化链同时推进，箭头与数值出现',
+      link: '把过程抽象为两条转化',
+      cues: [
+        { t: 0.2, text: '光合作用同时完成了两件事。' },
+        { t: 4.6, text: '一是物质转化：无机物变成有机物。' },
+        { t: 10.0, text: '二是能量转化：光能变成化学能。' },
+        { t: 15.4, text: '能量储存在有机物里，随食物链传递。' },
+        { t: 20.0, text: '所以光合作用是生物圈的“能量入口”。' }
+      ],
+      build(ctx) {
+        ctx.text(64, 190, '两条转化', { size: 20, weight: 700, fill: '#5b6b80' });
+        var p1 = ctx.panel(64, 220, 540, 140, { title: '物质转化', titleSize: 19 });
+        var t1 = ctx.text(88, 300, '无机物（CO₂、H₂O）', { size: 20 });
+        var t2 = ctx.text(88, 336, '→ 有机物（淀粉等）', { size: 20, weight: 600, fill: '#0f6b3e' });
+        ctx.fade(p1, 4.8, 0.5); ctx.fade(t1, 5.0, 0.4); ctx.fade(t2, 5.4, 0.4);
+
+        var p2 = ctx.panel(64, 390, 540, 140, { title: '能量转化', titleSize: 19 });
+        var t3 = ctx.text(88, 470, '光能', { size: 20 });
+        var t4 = ctx.text(88, 506, '→ 化学能（储存在有机物中）', { size: 20, weight: 600, fill: '#a3400c' });
+        ctx.fade(p2, 10.2, 0.5); ctx.fade(t3, 10.4, 0.4); ctx.fade(t4, 10.8, 0.4);
+
+        // 右侧能量流动
+        ctx.circle(800, 260, 34, { fill: 'rgba(255,209,102,0.5)', stroke: '#e8b93c', width: 2 });
+        ctx.text(800, 266, '光能', { size: 15, weight: 600, anchor: 'middle' });
+        ctx.rect(760, 360, 80, 60, { fill: 'rgba(15,157,88,0.18)', stroke: '#0f9d58', width: 2, rx: 8 });
+        ctx.text(800, 396, '有机物', { size: 14, weight: 600, anchor: 'middle' });
+        ctx.arrow({ x1: 800, y1: 300, x2: 800, y2: 356, color: '#e8590c', width: 3, t0: 12.0, label: '转化', labelDx: 34, labelSize: 15 });
+        // 食物链
+        for (var i = 0; i < 3; i++) {
+          var x = 880 + i * 110;
+          ctx.circle(x, 430, 22, { fill: 'rgba(15,157,88,0.14)', stroke: '#0f9d58', width: 1.8 });
+        }
+        ctx.text(880, 436, '植物', { size: 14.5, anchor: 'middle' });
+        ctx.text(990, 436, '植食动物', { size: 14.5, anchor: 'middle' });
+        ctx.text(1100, 436, '肉食动物', { size: 14.5, anchor: 'middle' });
+        ctx.arrow({ x1: 906, y1: 430, x2: 954, y2: 430, color: '#5b6b80', width: 2, t0: 16.0 });
+        ctx.arrow({ x1: 1016, y1: 430, x2: 1064, y2: 430, color: '#5b6b80', width: 2, t0: 16.6 });
+        ctx.text(880, 500, '能量沿食物链逐级递减', { size: 15, fill: '#5b6b80' });
+
+        var concl = ctx.text(760, 552, '光合作用 = 生物圈的能量入口', { size: 20, weight: 700, fill: '#0f6b3e' });
+        ctx.fade(concl, 20.2, 0.5);
+
+        ctx.probe('energy_conversion', function () { return 1; });
+      }
+    },
+
+    {
+      id: 'meaning', title: '对生物圈意味着什么', duration: 20,
+      objective: '从食物、氧气、碳氧平衡三个角度说明光合作用的意义',
+      visual: '三张卡片：食物来源、氧气来源、碳氧平衡；底部碳氧循环箭头',
+      motion: '卡片依次出现，循环箭头闭合',
+      link: '把过程放到生态系统尺度',
+      cues: [
+        { t: 0.2, text: '第一，制造有机物，为所有生物提供食物。' },
+        { t: 5.4, text: '第二，释放氧气，维持大气中的氧含量。' },
+        { t: 10.4, text: '第三，消耗二氧化碳，参与碳氧平衡。' },
+        { t: 15.2, text: '没有光合作用，就没有今天的地球生命。' }
+      ],
+      build(ctx) {
+        var items = [
+          { t: 0.4, title: '食物来源', desc: '有机物沿食物链传递' },
+          { t: 5.6, title: '氧气来源', desc: '大气中的氧主要来自光合作用' },
+          { t: 10.6, title: '碳氧平衡', desc: '消耗 CO₂，释放 O₂' }
+        ];
+        items.forEach(function (it, i) {
+          var x = 64 + i * 380;
+          var card = ctx.panel(x, 190, 350, 150, {});
+          var title = ctx.text(x + 24, 238, it.title, { size: 21, weight: 700 });
+          var desc = ctx.text(x + 24, 292, it.desc, { size: 16, fill: '#5b6b80' });
+          ctx.fade(card, it.t, 0.5); ctx.fade(title, it.t + 0.1, 0.5); ctx.fade(desc, it.t + 0.2, 0.5);
+        });
+
+        // 碳氧循环
+        ctx.circle(600, 450, 46, { fill: 'rgba(15,157,88,0.12)', stroke: '#0f9d58', width: 2 });
+        ctx.text(600, 456, '植物', { size: 16, weight: 700, anchor: 'middle' });
+        ctx.circle(880, 450, 46, { fill: 'rgba(91,107,128,0.10)', stroke: '#5b6b80', width: 2 });
+        ctx.text(880, 456, '生物', { size: 16, weight: 700, anchor: 'middle' });
+        ctx.arrow({ x1: 646, y1: 424, x2: 834, y2: 424, color: '#0f9d58', width: 2.5, t0: 15.4, label: 'O₂', labelDy: -10, labelSize: 14 });
+        ctx.arrow({ x1: 834, y1: 476, x2: 646, y2: 476, color: '#5b6b80', width: 2.5, t0: 15.8, label: 'CO₂', labelDy: 18, labelSize: 14 });
+        var note = ctx.text(600, 540, '循环的规模，取决于绿色植物的光合作用', { size: 16, fill: '#5b6b80' });
+        ctx.fade(note, 16.4, 0.5);
+
+        ctx.probe('oxygen_source', function () { return 1; });
+      }
+    },
+
+    {
+      id: 'apply', title: '大棚里怎么增产', duration: 16,
+      objective: '把光合作用原理迁移到农业生产',
+      visual: '大棚：补光、施气肥、控温三个措施与对应原理',
+      motion: '三个措施依次出现并指向对应原理',
+      link: '原理回到生产实践',
+      cues: [
+        { t: 0.2, text: '蔬菜大棚里，常用三种办法提高产量。' },
+        { t: 4.6, text: '增加二氧化碳浓度，比如施气肥。' },
+        { t: 8.6, text: '延长光照时间，或增加光照强度。' },
+        { t: 12.2, text: '控制温度，让酶保持较高活性。' }
+      ],
+      build(ctx) {
+        // 大棚
+        ctx.path('M760,470 V300 Q900,200 1040,300 V470', { stroke: '#7ba7c0', width: 3, fill: 'rgba(200,230,245,0.20)' });
+        ctx.line(760, 470, 1040, 470, { stroke: '#7ba7c0', width: 3 });
+        for (var i = 0; i < 4; i++) {
+          ctx.line(780 + i * 70, 470, 780 + i * 70, 330 - Math.abs(i - 1.5) * 30, { stroke: '#d7e0ec', width: 1 });
+        }
+        ctx.circle(900, 380, 8, { fill: '#ffb703', opacity: 0.9 });
+
+        var items = [
+          { t: 4.8, x: 64, y: 220, title: '施气肥', desc: '提高 CO₂ 浓度' },
+          { t: 8.8, x: 64, y: 320, title: '补光', desc: '延长光照时间' },
+          { t: 12.4, x: 64, y: 420, title: '控温', desc: '保持酶活性' }
+        ];
+        items.forEach(function (it) {
+          var card = ctx.panel(it.x, it.y, 400, 80, {});
+          var title = ctx.text(it.x + 22, it.y + 34, it.title, { size: 19, weight: 700 });
+          var desc = ctx.text(it.x + 22, it.y + 62, it.desc, { size: 16, fill: '#5b6b80' });
+          ctx.fade(card, it.t, 0.45); ctx.fade(title, it.t + 0.1, 0.4); ctx.fade(desc, it.t + 0.15, 0.4);
+        });
+        ctx.text(64, 540, '思路：让原料更足、条件更好', { size: 17, weight: 600, fill: '#0f6b3e' });
+      }
+    },
+
+    {
+      id: 'summary', title: '一句话记住光合作用', duration: 12,
+      objective: '用一句完整表述固化原料、条件、场所、产物与意义',
+      visual: '中心公式与四条要点',
+      motion: '公式与要点依次出现',
+      link: '收束全课',
+      cues: [
+        { t: 0.2, text: '绿色植物在光下，把二氧化碳和水变成有机物和氧气。' },
+        { t: 4.8, text: '场所是叶绿体，能量来自光。' },
+        { t: 8.4, text: '这一过程，养活了几乎整个生物圈。' }
+      ],
+      build(ctx) {
+        var f = ctx.text(64, 230, 'CO₂ + H₂O  →  有机物 + O₂', { size: 34, weight: 700, fill: '#0f6b3e' });
+        ctx.fade(f, 0.4, 0.6);
+        ctx.text(64, 172, '光能 · 叶绿体', { size: 17, fill: '#a3400c' });
+        var items = [
+          '原料：二氧化碳、水',
+          '条件：光',
+          '场所：叶绿体',
+          '产物：有机物、氧气'
+        ];
+        items.forEach(function (s, i) {
+          var el = ctx.text(64 + (i % 2) * 520, 330 + Math.floor(i / 2) * 70, s, { size: 20 });
+          ctx.fade(el, 1.0 + i * 0.9, 0.45);
+        });
+        var note = ctx.text(64, 520, '意义：食物来源、氧气来源、维持碳氧平衡', { size: 19, weight: 600, fill: '#0f6b3e' });
+        ctx.fade(note, 8.6, 0.5);
+      }
+    }
+  ]
+});
+</script>
+</body>
+</html>

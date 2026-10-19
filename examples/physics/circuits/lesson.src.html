@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>串联与并联电路 · 九年级物理</title>
+<!-- @engine-css -->
+<!-- @engine-js -->
+</head>
+<body>
+<div id="lesson" role="application" aria-label="串联与并联电路讲解动画"></div>
+<script>
+/* ============================================================
+ * 串联与并联（九年级上）
+ * 主线：两种连接 → 串联规律 → 并联规律 → 对比 → 计算 → 识别
+ * 电路符号与电流方向均按初中规范绘制
+ * 时长 138s / 7 镜
+ * ============================================================ */
+EduKit.createLesson({
+  meta: {
+    title: '串联与并联：两种连接方式',
+    subject: '物理', grade: '九年级上',
+    duration: 138,
+    objectives: [
+      '能识别串联与并联电路，说出电流路径的区别',
+      '掌握串联的电流、电压、电阻规律',
+      '掌握并联的电压、电流规律，会算等效电阻'
+    ],
+    misconceptions: ['认为串联电压处处相等', '认为并联电流处处相等', '开关在并联中控制整个电路'],
+    prerequisites: ['电流、电压、电阻的概念', '电路符号', '欧姆定律'],
+    corePoints: ['串联：一条路径，I 相等，U 分配，R 相加', '并联：多条路径，U 相等，I 分配', '并联等效电阻小于任一支路', '开关的控制范围'],
+    optionalPoints: ['混联电路化简'],
+    animationAffordances: ['电流路径的动态追踪', '串联分压、并联分流的数值同步', '支路独立性的对比'],
+    durationRationale: '7 镜：引入12+串联26+并联28+对比18+计算26+识别16+总结12 = 138s。规律多且易混，取 138s。'
+  },
+  theme: { accent: '#e8590c' },
+  scenes: [
+    {
+      id: 'hook', title: '两个灯泡，两种接法', duration: 12,
+      objective: '直观区分“一条路径”和“多条路径”两种连接',
+      visual: '左右两个简单电路：串联一条回路，并联两条支路',
+      motion: '先画串联，电流沿单一回路流动；再画并联，电流分成两支',
+      link: '用路径差异定义两种连接',
+      cues: [
+        { t: 0.2, text: '两个灯泡，可以接成一条路径，也可以接成两条。' },
+        { t: 4.8, text: '一条路径，叫串联；两条路径，叫并联。' },
+        { t: 9.0, text: '区别的关键，是电流有没有分叉。' }
+      ],
+      build(ctx) {
+        ctx.rise(ctx.text(64, 212, '串联与并联', { size: 54, weight: 700 }), 0.1, 0.6, 16);
+        ctx.text(64, 266, '判断依据：电流从正极出发，有没有分叉', { size: 20, fill: '#5b6b80' });
+
+        // 串联小图
+        ctx.text(120, 350, '串联', { size: 22, weight: 700, fill: '#2f6fed' });
+        ctx.path('M100,400 H300 V520 H100 Z', { stroke: '#16202e', width: 2.5, fill: 'none' });
+        ctx.circle(160, 400, 16, { fill: '#fff', stroke: '#16202e', width: 2.5 });
+        ctx.path('M150,390 L170,410 M170,390 L150,410', { stroke: '#16202e', width: 2 });
+        ctx.circle(240, 400, 16, { fill: '#fff', stroke: '#16202e', width: 2.5 });
+        ctx.path('M230,390 L250,410 M250,390 L230,410', { stroke: '#16202e', width: 2 });
+        ctx.line(180, 520, 196, 520, { stroke: '#16202e', width: 4 });
+        ctx.line(196, 512, 196, 528, { stroke: '#16202e', width: 2 });
+        ctx.line(204, 520, 220, 520, { stroke: '#16202e', width: 4 });
+
+        // 并联小图
+        ctx.text(760, 350, '并联', { size: 22, weight: 700, fill: '#0f9d58' });
+        ctx.path('M740,400 H980 V520 H740 Z', { stroke: '#16202e', width: 2.5, fill: 'none' });
+        ctx.path('M800,400 V470 H920 V400', { stroke: '#16202e', width: 2.5, fill: 'none' });
+        ctx.circle(860, 400, 16, { fill: '#fff', stroke: '#16202e', width: 2.5 });
+        ctx.path('M850,390 L870,410 M870,390 L850,410', { stroke: '#16202e', width: 2 });
+        ctx.circle(860, 470, 16, { fill: '#fff', stroke: '#16202e', width: 2.5 });
+        ctx.path('M850,460 L870,480 M870,460 L850,480', { stroke: '#16202e', width: 2 });
+        ctx.line(840, 520, 856, 520, { stroke: '#16202e', width: 4 });
+        ctx.line(856, 512, 856, 528, { stroke: '#16202e', width: 2 });
+        ctx.line(864, 520, 880, 520, { stroke: '#16202e', width: 4 });
+      }
+    },
+
+    {
+      id: 'series', title: '串联：一条路径走到底', duration: 26,
+      objective: '掌握串联电流处处相等、电压分配、电阻相加',
+      visual: '串联电路，电流箭头沿回路移动；两点电流表读数相同；电压分配条',
+      motion: '电流光点沿回路运动；两个电流值同步显示；电压条按电阻分配',
+      link: '先讲清串联的三条规律',
+      cues: [
+        { t: 0.2, text: '串联电路只有一条路径，电流处处相等。' },
+        { t: 5.4, text: '所以 I = I₁ = I₂，流过每个用电器的电流都一样。' },
+        { t: 10.6, text: '总电压等于各部分电压之和：U = U₁ + U₂。' },
+        { t: 15.8, text: '总电阻等于各电阻之和：R = R₁ + R₂。' },
+        { t: 20.8, text: '所以串联的总电阻，比任何一个都大。' }
+      ],
+      build(ctx) {
+        // 主回路
+        ctx.path('M700,240 H1160 V500 H960', { stroke: '#16202e', width: 3, fill: 'none' });
+        ctx.path('M700,240 V500 H900', { stroke: '#16202e', width: 3, fill: 'none' });
+        // 电池
+        ctx.line(900, 500, 920, 500, { stroke: '#16202e', width: 3 });
+        ctx.line(920, 480, 920, 520, { stroke: '#16202e', width: 2 });
+        ctx.line(930, 490, 930, 510, { stroke: '#16202e', width: 6 });
+        ctx.line(940, 500, 960, 500, { stroke: '#16202e', width: 3 });
+        ctx.text(930, 548, '电源', { size: 15, fill: '#5b6b80', anchor: 'middle' });
+        // 两个灯泡
+        [[830, 240], [1040, 240]].forEach(function (p, i) {
+          ctx.circle(p[0], p[1], 20, { fill: '#ffffff', stroke: '#16202e', width: 3 });
+          ctx.path('M' + (p[0] - 12) + ',' + (p[1] - 12) + ' L' + (p[0] + 12) + ',' + (p[1] + 12) + ' M' + (p[0] + 12) + ',' + (p[1] - 12) + ' L' + (p[0] - 12) + ',' + (p[1] + 12), { stroke: '#16202e', width: 2.4 });
+          ctx.text(p[0], p[1] - 34, 'L' + (i + 1), { size: 17, weight: 700, anchor: 'middle' });
+        });
+        // 电流光点
+        var dots = [];
+        for (var i = 0; i < 3; i++) {
+          dots.push(ctx.circle(0, 0, 5, { fill: '#e8590c' }));
+        }
+        var path = [[960, 500], [700, 500], [700, 240], [1160, 240], [1160, 500], [960, 500]];
+        function posAt(t) {
+          var segs = [[0, 260], [260, 520], [520, 1440], [1440, 1700], [1700, 1960]];
+          var d = t * 1960;
+          if (d < 260) return [960 - d, 500];
+          if (d < 520) return [700, 500 - (d - 260)];
+          if (d < 1440) return [700 + (d - 520), 240];
+          if (d < 1700) return [1160, 240 + (d - 1440)];
+          return [1160 - (d - 1700), 500];
+        }
+        ctx.tween(0, 26, function (p) {
+          for (var k = 0; k < 3; k++) {
+            var ph = (p * 7 + k / 3) % 1;
+            var pt = posAt(ph);
+            dots[k].setAttribute('cx', pt[0]);
+            dots[k].setAttribute('cy', pt[1]);
+            dots[k].setAttribute('opacity', 0.9);
+          }
+        }, 'linear');
+
+        ctx.text(64, 190, '三条规律', { size: 20, weight: 700, fill: '#5b6b80' });
+        var l1 = ctx.text(64, 244, 'I = I₁ = I₂', { size: 28, weight: 700, fill: '#e8590c' });
+        var l2 = ctx.text(64, 300, 'U = U₁ + U₂', { size: 28, weight: 700, fill: '#e8590c' });
+        var l3 = ctx.text(64, 356, 'R = R₁ + R₂', { size: 28, weight: 700, fill: '#e8590c' });
+        ctx.fade(l1, 5.6, 0.5); ctx.fade(l2, 10.8, 0.5); ctx.fade(l3, 16.0, 0.5);
+        ctx.text(64, 410, '电流只有一条路，处处相等', { size: 17, fill: '#5b6b80' });
+        ctx.text(64, 442, '电压按电阻大小分配', { size: 17, fill: '#5b6b80' });
+        var note = ctx.text(64, 500, '一个用电器断路，整个电路都不工作', { size: 17, weight: 600, fill: '#a3400c' });
+        ctx.fade(note, 21.0, 0.5);
+
+        ctx.probe('series_R', function () { return 10 + 20; });
+      }
+    },
+
+    {
+      id: 'parallel', title: '并联：电流分成几路', duration: 28,
+      objective: '掌握并联电压相等、电流分配、等效电阻小于支路',
+      visual: '并联电路，电流在节点分流；两条支路电压相同；电流分配条',
+      motion: '电流光点在节点分开，沿两条支路流动；电压标签同时出现',
+      link: '与串联形成对照',
+      cues: [
+        { t: 0.2, text: '并联电路中，电流从节点分成两条路径。' },
+        { t: 5.6, text: '两条支路的两端都接在同一对节点上。' },
+        { t: 10.8, text: '所以各支路电压相等：U = U₁ = U₂。' },
+        { t: 16.0, text: '干路电流等于各支路电流之和：I = I₁ + I₂。' },
+        { t: 21.4, text: '等效电阻的倒数等于各支路倒数之和。' }
+      ],
+      build(ctx) {
+        // 两条支路并联在左右两条干路之间
+        ctx.path('M700,500 V300 M1160,500 V300', { stroke: '#16202e', width: 3 });
+        ctx.path('M700,500 H900 M960,500 H1160', { stroke: '#16202e', width: 3 });
+        ctx.path('M700,300 H1160', { stroke: '#16202e', width: 3 });
+        ctx.path('M700,400 H1160', { stroke: '#16202e', width: 3 });
+        // 灯泡
+        [[930, 300], [930, 400]].forEach(function (p, i) {
+          ctx.circle(p[0], p[1], 20, { fill: '#fff', stroke: '#16202e', width: 3 });
+          ctx.path('M' + (p[0] - 12) + ',' + (p[1] - 12) + ' L' + (p[0] + 12) + ',' + (p[1] + 12) + ' M' + (p[0] + 12) + ',' + (p[1] - 12) + ' L' + (p[0] - 12) + ',' + (p[1] + 12), { stroke: '#16202e', width: 2.4 });
+          ctx.text(p[0], p[1] - 34, 'L' + (i + 1), { size: 17, weight: 700, anchor: 'middle' });
+        });
+        // 电池
+        ctx.line(900, 500, 920, 500, { stroke: '#16202e', width: 3 });
+        ctx.line(920, 480, 920, 520, { stroke: '#16202e', width: 2 });
+        ctx.line(930, 490, 930, 510, { stroke: '#16202e', width: 6 });
+        ctx.line(940, 500, 960, 500, { stroke: '#16202e', width: 3 });
+
+        // 电流光点：干路 → 分叉到两条支路
+        var d1 = ctx.circle(0, 0, 5, { fill: '#e8590c' });
+        var d2 = ctx.circle(0, 0, 5, { fill: '#0f9d58' });
+        var d3 = ctx.circle(0, 0, 5, { fill: '#0f9d58' });
+        ctx.tween(0, 28, function (p) {
+          var ph = (p * 7) % 1;
+          if (ph < 0.5) {
+            d1.setAttribute('opacity', 1);
+            d1.setAttribute('cx', 960 - 260 * (ph / 0.5));
+            d1.setAttribute('cy', 500);
+            d2.setAttribute('opacity', 0); d3.setAttribute('opacity', 0);
+          } else {
+            d1.setAttribute('opacity', 0);
+            var q = (ph - 0.5) / 0.5;
+            d2.setAttribute('opacity', 1); d3.setAttribute('opacity', 1);
+            d2.setAttribute('cx', 700 + 460 * q); d2.setAttribute('cy', 300);
+            d3.setAttribute('cx', 700 + 460 * q); d3.setAttribute('cy', 400);
+          }
+        }, 'linear');
+
+        ctx.text(64, 190, '两条支路，各走各的', { size: 20, weight: 700, fill: '#5b6b80' });
+        var l1 = ctx.text(64, 250, 'U = U₁ = U₂', { size: 28, weight: 700, fill: '#0f9d58' });
+        var l2 = ctx.text(64, 306, 'I = I₁ + I₂', { size: 28, weight: 700, fill: '#0f9d58' });
+        var l3 = ctx.text(64, 362, '1/R = 1/R₁ + 1/R₂', { size: 26, weight: 700, fill: '#0f9d58' });
+        ctx.fade(l1, 11.0, 0.5); ctx.fade(l2, 16.2, 0.5); ctx.fade(l3, 21.6, 0.5);
+        var n1 = ctx.text(64, 424, '各支路互不影响，一条断路，另一条照常工作', { size: 17, fill: '#5b6b80' });
+        ctx.fade(n1, 22.6, 0.5);
+        var n2 = ctx.text(64, 456, '等效电阻比任何一条支路都小', { size: 17, weight: 600, fill: '#0f6b3e' });
+        ctx.fade(n2, 23.8, 0.5);
+
+        ctx.probe('parallel_R', function () { return Math.round((1 / (1 / 10 + 1 / 20)) * 100) / 100; });
+      }
+    },
+
+    {
+      id: 'compare', title: '串并联对比', duration: 18,
+      objective: '用一张表固化串并联在电流、电压、电阻、开关控制上的差异',
+      visual: '四行对比表',
+      motion: '表格逐行出现，关键差异高亮',
+      link: '把两条规律并置记忆',
+      cues: [
+        { t: 0.2, text: '把两者放在一起看，差别很清楚。' },
+        { t: 4.4, text: '串联电流相等、电压分配；并联电压相等、电流分配。' },
+        { t: 10.0, text: '串联电阻相加，并联等效电阻更小。' },
+        { t: 14.2, text: '串联开关控制全部，并联干路开关控制全部、支路开关只管自己。' }
+      ],
+      build(ctx) {
+        var tb = ctx.table({
+          x: 64, y: 190, rowH: 58, size: 19,
+          colW: [200, 400, 400],
+          header: ['比较项', '串联', '并联'],
+          rows: [
+            ['电流', '处处相等 I=I₁=I₂', '干路等于各支路之和 I=I₁+I₂'],
+            ['电压', '总电压等于各部分之和', '各支路电压相等 U=U₁=U₂'],
+            ['电阻', 'R=R₁+R₂', '1/R=1/R₁+1/R₂，比支路小'],
+            ['开关', '控制整个电路', '干路管全部，支路只管本支路']
+          ]
+        });
+        for (var i = 0; i < 5; i++) tb.revealRow(i, 0.3 + i * 1.6, 0.35);
+
+        var tip = ctx.text(64, 540, '记忆抓手：串联“一条路”，并联“多条路”', { size: 22, weight: 700, fill: '#e8590c' });
+        ctx.fade(tip, 15.0, 0.5);
+
+        ctx.probe('compare_rule', function () { return 1; });
+      }
+    },
+
+    {
+      id: 'example', title: '串并联各算一次', duration: 26,
+      objective: '用欧姆定律完成串并联计算，理解分压与分流',
+      visual: '左：串联 6V、10Ω、20Ω；右：同样两电阻并联，数值对比',
+      motion: '数值随计算步骤出现，电压/电流分配可视化',
+      link: '规律用于计算',
+      cues: [
+        { t: 0.2, text: '两个电阻 10 欧和 20 欧，接在 6 伏电源上。' },
+        { t: 4.6, text: '串联时总电阻 30 欧，电流 0.2 安。' },
+        { t: 9.4, text: '电压按电阻分配：2 伏和 4 伏。' },
+        { t: 14.4, text: '并联时电压都是 6 伏，电流分别是 0.6 安和 0.3 安。' },
+        { t: 20.0, text: '干路电流 0.9 安，等效电阻约 6.7 欧。' }
+      ],
+      build(ctx) {
+        ctx.text(64, 190, '串联', { size: 20, weight: 700, fill: '#2f6fed' });
+        var s1 = ctx.text(64, 238, 'R = 10 + 20 = 30 Ω', { size: 23 });
+        var s2 = ctx.text(64, 288, 'I = 6 ÷ 30 = 0.2 A', { size: 23 });
+        var s3 = ctx.text(64, 338, 'U₁ = 0.2 × 10 = 2 V', { size: 23 });
+        var s4 = ctx.text(64, 388, 'U₂ = 0.2 × 20 = 4 V', { size: 23 });
+        ctx.fade(s1, 5.0, 0.4); ctx.fade(s2, 6.2, 0.4); ctx.fade(s3, 9.8, 0.4); ctx.fade(s4, 10.8, 0.4);
+
+        ctx.text(64, 448, '并联', { size: 20, weight: 700, fill: '#0f9d58' });
+        var p1 = ctx.text(64, 494, 'I₁ = 6 ÷ 10 = 0.6 A', { size: 23 });
+        var p2 = ctx.text(64, 540, 'I₂ = 6 ÷ 20 = 0.3 A', { size: 23 });
+        var p3 = ctx.text(64, 578, 'I = 0.9 A，R ≈ 6.7 Ω', { size: 23, weight: 700, fill: '#0f6b3e' });
+        ctx.fade(p1, 14.8, 0.4); ctx.fade(p2, 16.0, 0.4); ctx.fade(p3, 20.2, 0.4);
+
+        // 串联电压条
+        var b1 = ctx.rect(960, 240, 0, 44, { fill: '#2f6fed', rx: 4 });
+        var b2 = ctx.rect(960, 296, 0, 44, { fill: '#7b3fe4', rx: 4 });
+        ctx.tween(11.0, 1.0, function (p) {
+          if (b1) b1.setAttribute('width', 38 * p);
+          if (b2) b2.setAttribute('width', 76 * p);
+        });
+        ctx.text(1006, 268, 'U₁=2V', { size: 15, fill: '#2f6fed' });
+        ctx.text(1044, 324, 'U₂=4V', { size: 15, fill: '#7b3fe4' });
+        ctx.text(960, 200, '串联分压', { size: 17, weight: 600, fill: '#5b6b80' });
+        ctx.text(960, 400, '电阻大，分到的电压大', { size: 16, fill: '#5b6b80' });
+
+        ctx.probe('example_series_I', function () { return 6 / (10 + 20); });
+        ctx.probe('example_parallel_I', function () { return 6 / 10 + 6 / 20; });
+      }
+    },
+
+    {
+      id: 'identify', title: '怎么快速识别', duration: 16,
+      objective: '掌握“从正极出发沿电流路径找分叉”的识别方法',
+      visual: '三个电路小图，用高亮路径演示是否分叉',
+      motion: '电流路径依次高亮：串联不分叉，并联在节点分叉',
+      link: '方法收束',
+      cues: [
+        { t: 0.2, text: '判断方法：从电源正极出发，沿导线走。' },
+        { t: 5.0, text: '中途没有分叉，就是串联。' },
+        { t: 9.4, text: '在某点分成两条路，就是并联。' },
+        { t: 12.8, text: '注意：开关闭合前后，电路结构可能改变。' }
+      ],
+      build(ctx) {
+        ctx.text(64, 196, '电流路径法', { size: 22, weight: 700, fill: '#5b6b80' });
+        var steps = [
+          '① 找到电源正极',
+          '② 沿导线一路走',
+          '③ 看有没有分叉',
+          '④ 有分叉 → 并联'
+        ];
+        steps.forEach(function (t, i) {
+          var el = ctx.text(64, 256 + i * 54, t, { size: 21 });
+          ctx.fade(el, 0.4 + i * 1.2, 0.45);
+        });
+        var tip = ctx.text(64, 500, '开关断开时，先看闭合后会怎样', { size: 17, fill: '#a3400c' });
+        ctx.fade(tip, 12.9, 0.5);
+
+        // 串联高亮
+        var g1 = ctx.group('');
+        g1.innerHTML = '<path d="M760,300 H900 V420 H760 Z" fill="none" stroke="#c9d4e2" stroke-width="3"/>' +
+          '<path d="M760,420 H900 V300 H760" fill="none" stroke="#e8590c" stroke-width="4" stroke-dasharray="10 8"/>';
+        ctx.fade(g1, 3.0, 0.5);
+        ctx.text(760, 270, '不分叉 → 串联', { size: 16, fill: '#e8590c' });
+
+        // 并联高亮
+        var g2 = ctx.group('');
+        g2.innerHTML = '<path d="M980,300 H1160 V420 H980 Z" fill="none" stroke="#c9d4e2" stroke-width="3"/>' +
+          '<path d="M1040,300 V420 M1040,300 H1160 M1040,420 H1160" fill="none" stroke="#0f9d58" stroke-width="4" stroke-dasharray="10 8"/>';
+        ctx.fade(g2, 8.0, 0.5);
+        ctx.text(980, 270, '有分叉 → 并联', { size: 16, fill: '#0f9d58' });
+
+        ctx.probe('identify_method', function () { return 1; });
+      }
+    },
+
+    {
+      id: 'summary', title: '三句话收尾', duration: 12,
+      objective: '固化两条主线规律与识别方法',
+      visual: '三张要点卡片',
+      motion: '按字幕节拍出现',
+      link: '收束全课',
+      cues: [
+        { t: 0.2, text: '一，串联一条路：电流相等，电压分配，电阻相加。' },
+        { t: 4.6, text: '二，并联多条路：电压相等，电流分配，电阻更小。' },
+        { t: 8.6, text: '三，识别就看电流有没有分叉。' }
+      ],
+      build(ctx) {
+        var items = [
+          ['01', '串联', 'I 相等，U 分配，R 相加'],
+          ['02', '并联', 'U 相等，I 分配，R 更小'],
+          ['03', '识别', '从正极出发，看是否分叉']
+        ];
+        items.forEach(function (it, i) {
+          var y = 196 + i * 118;
+          var card = ctx.panel(64, y, 1000, 96, {});
+          var num = ctx.text(88, y + 56, it[0], { size: 28, weight: 700, fill: '#e8590c' });
+          var tt = ctx.text(158, y + 42, it[1], { size: 23, weight: 700 });
+          var dd = ctx.text(158, y + 74, it[2], { size: 18, fill: '#5b6b80' });
+          var rt = [0.3, 4.8, 8.8][i];
+          ctx.fade(card, rt, 0.5); ctx.fade(num, rt, 0.5);
+          ctx.fade(tt, rt + 0.1, 0.5); ctx.fade(dd, rt + 0.2, 0.5);
+        });
+      }
+    }
+  ]
+});
+</script>
+</body>
+</html>

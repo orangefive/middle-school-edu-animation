@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>三角形全等的判定 · 八年级数学</title>
+<!-- @engine-css -->
+<!-- @engine-js -->
+</head>
+<body>
+<div id="lesson" role="application" aria-label="三角形全等判定讲解动画"></div>
+<script>
+/* ============================================================
+ * 三角形全等的判定（八年级上）
+ * 主线：什么叫全等 → SSS → SAS（含 SSA 反例）→ ASA/AAS → 怎么选 → 例题
+ * 时长 148s / 8 镜
+ * ============================================================ */
+EduKit.createLesson({
+  meta: {
+    title: '三角形全等的判定',
+    subject: '数学', grade: '八年级上',
+    duration: 148,
+    objectives: [
+      '能说出全等三角形的对应边、对应角相等',
+      '掌握 SSS、SAS、ASA、AAS 四种判定',
+      '知道 SSA 不能判定全等，并能说明理由'
+    ],
+    misconceptions: ['把 SSA 当成判定方法', '书写全等时对应顶点顺序写错'],
+    prerequisites: ['三角形的边角概念', '尺规作三角形'],
+    corePoints: ['全等的定义：完全重合', 'SSS/SAS/ASA/AAS 四种判定', 'SSA 不能判定（反例）', '对应顶点顺序决定对应边角'],
+    optionalPoints: ['HL（直角三角形斜边直角边）判定'],
+    animationAffordances: ['两个三角形平移重合', 'SSA 两种解同屏对比', '条件与结论的对应高亮'],
+    durationRationale: '8 镜：引入10+定义18+SSS22+SAS26+ASA18+选择16+例题26+总结12 = 148s。判定较多，中等偏复杂，取 148s。'
+  },
+  theme: { accent: '#2f6fed' },
+  scenes: [
+    {
+      id: 'hook', title: '两块完全一样的三角板', duration: 10,
+      objective: '用实物建立“完全重合”的直观，引出全等形',
+      visual: '两块同形状三角板，一块平移覆盖另一块',
+      motion: '右侧三角板平移到左侧并重合，重合瞬间高亮',
+      link: '由实物引出全等概念',
+      cues: [
+        { t: 0.2, text: '两块一样的三角板，可以完全重合。' },
+        { t: 4.6, text: '能完全重合的图形，叫全等形。' }
+      ],
+      build(ctx) {
+        ctx.rise(ctx.text(64, 210, '三角形全等', { size: 56, weight: 700 }), 0.1, 0.6, 16);
+        ctx.rise(ctx.text(64, 268, '判定两个三角形全等，需要几个条件？', { size: 24, fill: '#5b6b80' }), 0.5, 0.6, 12);
+
+        var shapeA = 'M0,0 L220,0 L0,-150 Z';
+        var g1 = ctx.group('<path d="' + shapeA + '" fill="rgba(47,111,237,0.08)" stroke="#2f6fed" stroke-width="3"/>');
+        g1.setAttribute('transform', 'translate(700,480)');
+        var g2 = ctx.group('<path d="' + shapeA + '" fill="rgba(232,89,12,0.08)" stroke="#e8590c" stroke-width="3"/>');
+        g2.setAttribute('transform', 'translate(960,480)');
+        ctx.fade(g1, 0.8, 0.5); ctx.fade(g2, 1.2, 0.5);
+        ctx.move(g2, 3.2, 1.4, [960, 480], [700, 480], 'inOut');
+        var tag = ctx.text(700, 520, '完全重合', { size: 20, weight: 700, fill: '#0f9d58' });
+        ctx.fade(tag, 4.8, 0.5);
+        var tag2 = ctx.text(700, 556, '对应边相等，对应角相等', { size: 17, fill: '#5b6b80' });
+        ctx.fade(tag2, 6.2, 0.5);
+        ctx.emphasize(g1.querySelector('path'), 7.4, 1.2, {});
+      }
+    },
+
+    {
+      id: 'definition', title: '全等三角形的对应关系', duration: 18,
+      objective: '明确全等的记法、对应顶点顺序与对应边角相等',
+      visual: '两个全等三角形，顶点 A↔D、B↔E、C↔F，对应边用刻度标记',
+      motion: '两个三角形出现，顶点标签依次对应高亮，结论逐条出现',
+      link: '给出严格的记法与性质',
+      cues: [
+        { t: 0.2, text: '记作 △ABC 全等于 △DEF，字母顺序必须对应。' },
+        { t: 5.0, text: 'A 对 D，B 对 E，C 对 F。' },
+        { t: 9.2, text: '对应边相等，对应角也相等。' },
+        { t: 13.6, text: '所以写全等时，顺序不能随便换。' }
+      ],
+      build(ctx) {
+        // 左三角形
+        var A = [150, 300], B = [390, 300], C = [150, 470];
+        var D = [700, 300], E = [940, 300], F = [700, 470];
+        ctx.path('M' + A + ' L' + B + ' L' + C + ' Z', { stroke: '#2f6fed', width: 3, fill: 'rgba(47,111,237,0.06)' });
+        ctx.path('M' + D + ' L' + E + ' L' + F + ' Z', { stroke: '#e8590c', width: 3, fill: 'rgba(232,89,12,0.06)' });
+        [['A', A, 100, 380], ['B', B, 400, 380], ['C', C, 100, 520]].forEach(function (p) {
+          ctx.text(p[2], p[3], p[0], { size: 22, weight: 700 });
+        });
+        [['D', D, 650, 380], ['E', E, 950, 380], ['F', F, 650, 520]].forEach(function (p) {
+          ctx.text(p[2], p[3], p[0], { size: 22, weight: 700 });
+        });
+
+        // 对应边标记
+        ctx.line(150, 318, 390, 318, { stroke: '#2f6fed', width: 2, dash: '6 5' });
+        ctx.line(700, 318, 940, 318, { stroke: '#e8590c', width: 2, dash: '6 5' });
+
+        var eq1 = ctx.text(64, 180, '△ABC ≌ △DEF', { size: 30, weight: 700, fill: '#2f6fed' });
+        ctx.fade(eq1, 0.6, 0.6);
+        ctx.text(495, 250, '≌', { size: 40, weight: 700, fill: '#5b6b80' });
+        ctx.text(64, 560, '读作：三角形 ABC 全等于三角形 DEF', { size: 18, fill: '#5b6b80' });
+
+        var p = ctx.panel(770, 500, 430, 84, { fill: '#f7fbff', stroke: '#c3d8f7' });
+        var pt = ctx.text(794, 534, '对应边相等，对应角相等', { size: 20, weight: 700, fill: '#1c4fa8' });
+        var pt2 = ctx.text(794, 566, 'AB = DE，∠A = ∠D ……', { size: 17, fill: '#1c4fa8' });
+        ctx.fade(p, 9.4, 0.5); ctx.fade(pt, 9.6, 0.5); ctx.fade(pt2, 10.2, 0.5);
+
+        ctx.probe('congruent_order', function () { return 1; });
+      }
+    },
+
+    {
+      id: 'sss', title: '判定一：三边对应相等（SSS）', duration: 22,
+      objective: '理解三边确定则三角形形状大小唯一，掌握 SSS',
+      visual: '左三角形三边做刻度标记，右侧用同样三边拼出并平移重合',
+      motion: '三边依次标记，右侧三角形逐边生成，最后平移到左侧重合',
+      link: '从定义走向判定',
+      cues: [
+        { t: 0.2, text: '如果两个三角形的三条边都对应相等。' },
+        { t: 5.0, text: '三根小棒的长度固定，能拼出的三角形只有一个。' },
+        { t: 10.6, text: '所以这两个三角形一定全等，简称 SSS。' },
+        { t: 15.6, text: '这就是三角形具有稳定性的原因。' }
+      ],
+      build(ctx) {
+        var t1 = [120, 320], t2 = [400, 320], t3 = [250, 500];
+        ctx.path('M' + t1 + ' L' + t2 + ' L' + t3 + ' Z', { stroke: '#2f6fed', width: 3, fill: 'rgba(47,111,237,0.06)' });
+        // 刻度：单、双、三
+        function tick(x1, y1, x2, y2, n, color) {
+          var mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
+          var ang = Math.atan2(y2 - y1, x2 - x1);
+          for (var i = 0; i < n; i++) {
+            var off = (i - (n - 1) / 2) * 7;
+            var cx = mx + Math.cos(ang + Math.PI / 2) * off;
+            var cy = my + Math.sin(ang + Math.PI / 2) * off;
+            ctx.line(cx - Math.cos(ang) * 7, cy - Math.sin(ang) * 7, cx + Math.cos(ang) * 7, cy + Math.sin(ang) * 7, { stroke: color, width: 2.4 });
+          }
+        }
+        tick(t1[0], t1[1], t2[0], t2[1], 1, '#e8590c');
+        tick(t2[0], t2[1], t3[0], t3[1], 2, '#e8590c');
+        tick(t3[0], t3[1], t1[0], t1[1], 3, '#e8590c');
+
+        // 右侧同三边三角形
+        var s = 0.92;
+        var u1 = [760, 315], u2 = [760 + 280 * s, 315], u3 = [760 + 130 * s, 315 + 180 * s];
+        var g = ctx.group('');
+        g.innerHTML = '<path d="M' + u1 + ' L' + u2 + ' L' + u3 + ' Z" fill="rgba(232,89,12,0.06)" stroke="#e8590c" stroke-width="3"/>';
+        ctx.fade(g, 5.2, 0.6);
+        tick(u1[0], u1[1], u2[0], u2[1], 1, '#2f6fed');
+        tick(u2[0], u2[1], u3[0], u3[1], 2, '#2f6fed');
+        tick(u3[0], u3[1], u1[0], u1[1], 3, '#2f6fed');
+
+        ctx.text(64, 200, '三边分别相等', { size: 20, weight: 700, fill: '#5b6b80' });
+        ctx.text(64, 236, 'AB = DE', { size: 21 });
+        ctx.text(64, 274, 'BC = EF', { size: 21 });
+        ctx.text(64, 312, 'CA = FD', { size: 21 });
+        var s1 = ctx.text(64, 372, '△ABC ≌ △DEF (SSS)', { size: 26, weight: 700, fill: '#2f6fed' });
+        ctx.fade(s1, 10.8, 0.5);
+        ctx.text(64, 424, '三边确定，形状和大小就唯一确定', { size: 18, fill: '#5b6b80' });
+
+        ctx.move(g, 15.6, 1.4, [0, 0], [-640, 5], 'inOut');
+        ctx.probe('sss_valid', function () { return 1; });
+      }
+    },
+
+    {
+      id: 'sas', title: '判定二：两边夹角（SAS）与 SSA 反例', duration: 26,
+      objective: '掌握 SAS；通过反例理解 SSA 不能判定全等',
+      visual: '上方 SAS 图形；下方两边一角但角不在夹角位置时出现两个不同三角形',
+      motion: 'SAS 先高亮夹角；随后 SSA 以圆弧与两交点展示两种可能',
+      link: '从“能判定”转向“不能判定”',
+      cues: [
+        { t: 0.2, text: '两边和它们的夹角对应相等，简称 SAS。' },
+        { t: 4.6, text: '注意：角必须是两边的夹角。' },
+        { t: 9.4, text: '如果角不是夹角，情况就不同了。' },
+        { t: 13.6, text: '同样两边一角，可能画出两个不同的三角形。' },
+        { t: 19.8, text: '所以 SSA 不能作为判定方法。' }
+      ],
+      build(ctx) {
+        var n = function (v) { return Math.round(v * 100) / 100; };
+        // SAS
+        var A = [130, 300], B = [380, 300], C = [130, 470];
+        ctx.path('M' + A + ' L' + B + ' L' + C + ' Z', { stroke: '#2f6fed', width: 3, fill: 'rgba(47,111,237,0.06)' });
+        ctx.path('M170,300 A 40 40 0 0 0 130,340', { stroke: '#e8590c', width: 3 });
+        ctx.text(168, 344, '夹角', { size: 17, fill: '#e8590c', weight: 600 });
+        ctx.text(64, 196, 'SAS', { size: 22, weight: 700, fill: '#2f6fed' });
+        ctx.text(64, 524, '两边 + 夹角', { size: 19, fill: '#5b6b80' });
+
+        // SSA 反例：两边 7、5，角 30° 在非夹角位置
+        var ax = 760, ay = 500, u = 42;
+        var Cx = ax + 7 * Math.cos(Math.PI / 6) * u, Cy = ay - 7 * Math.sin(Math.PI / 6) * u;
+        ctx.line(ax, ay, ax + 400, ay, { stroke: '#9fb0c6', width: 1.8 });
+        ctx.line(ax, ay, ax + 360 * Math.cos(Math.PI / 6), ay - 360 * Math.sin(Math.PI / 6), { stroke: '#9fb0c6', width: 1.8, dash: '7 6' });
+        // 以 C 为圆心、半径 5 的下侧圆弧，与底边交于两点
+        var r = 5 * u;
+        // 以 C 为圆心、半径 5 的弧（只画与底边相交的一段）
+        var pts = [];
+        for (var deg = 224; deg <= 316; deg += 4) {
+          var rad = deg * Math.PI / 180;
+          pts.push(n(Cx + r * Math.cos(rad)) + ',' + n(Cy - r * Math.sin(rad)));
+        }
+        ctx.path('M' + pts.join(' L'), { stroke: '#e8590c', width: 2, dash: '7 6' });
+
+        var b1x = ax + (7 * Math.cos(Math.PI / 6) - Math.sqrt(25 - 12.25)) * u;
+        var b2x = ax + (7 * Math.cos(Math.PI / 6) + Math.sqrt(25 - 12.25)) * u;
+
+        ctx.path('M' + ax + ',' + ay + ' L' + b1x + ',' + ay + ' L' + n(Cx) + ',' + n(Cy) + ' Z',
+          { stroke: '#2f6fed', width: 2.6, fill: 'rgba(47,111,237,0.10)' });
+        ctx.path('M' + ax + ',' + ay + ' L' + b2x + ',' + ay + ' L' + n(Cx) + ',' + n(Cy) + ' Z',
+          { stroke: '#0f9d58', width: 2.6, fill: 'none', dash: '8 6' });
+        ctx.circle(ax, ay, 4, { fill: '#16202e' });
+        ctx.circle(Cx, Cy, 4.5, { fill: '#e8590c' });
+        ctx.circle(b1x, ay, 4, { fill: '#2f6fed' });
+        ctx.circle(b2x, ay, 4, { fill: '#0f9d58' });
+        ctx.text(ax - 20, ay + 6, 'A', { size: 17, weight: 700 });
+        ctx.text(Cx + 10, Cy - 10, 'C', { size: 17, weight: 700 });
+        ctx.text(b1x - 8, ay + 26, 'B₁', { size: 15, fill: '#2f6fed' });
+        ctx.text(b2x - 12, ay + 26, 'B₂', { size: 15, fill: '#0f9d58' });
+        // 角 A 标记
+        ctx.path('M' + (ax + 58) + ',' + ay + ' A 58 58 0 0 0 ' + n(ax + 58 * Math.cos(Math.PI / 6)) + ',' + n(ay - 58 * Math.sin(Math.PI / 6)),
+          { stroke: '#e8590c', width: 2 });
+        ctx.text(ax + 66, ay - 14, '30°', { size: 15, fill: '#e8590c' });
+
+        ctx.text(760, 196, 'SSA：同样条件，两种形状', { size: 20, weight: 700, fill: '#a3400c' });
+        ctx.text(760, 232, 'AC = 7，CB = 5，∠A = 30°', { size: 17, fill: '#5b6b80' });
+        ctx.text(760, 262, 'B 有两种位置，三角形不唯一', { size: 17, fill: '#5b6b80' });
+
+        ctx.probe('ssa_solutions', function () {
+          var h = 7 * Math.sin(Math.PI / 6);
+          return 5 > h ? 2 : 1;
+        });
+      }
+    },
+
+    {
+      id: 'asa', title: '判定三：两角与夹边（ASA / AAS）', duration: 18,
+      objective: '掌握 ASA 与 AAS，理解两角确定后形状确定',
+      visual: '三角形标注两个角与夹边；旁注 AAS 情形',
+      motion: '两个角弧与夹边高亮，结论出现',
+      link: '补齐判定方法',
+      cues: [
+        { t: 0.2, text: '两角和它们的夹边对应相等，简称 ASA。' },
+        { t: 5.2, text: '如果边不是夹边，而是其中一个角的对边呢？' },
+        { t: 10.4, text: '因为三角形内角和是 180 度，第三个角也就确定了。' },
+        { t: 14.6, text: '所以 AAS 同样可以判定全等。' }
+      ],
+      build(ctx) {
+        var A = [230, 340], B = [540, 340], C = [340, 510];
+        ctx.path('M' + A + ' L' + B + ' L' + C + ' Z', { stroke: '#2f6fed', width: 3, fill: 'rgba(47,111,237,0.06)' });
+        ctx.path('M272,340 A 42 42 0 0 0 248,382', { stroke: '#e8590c', width: 3 });
+        ctx.path('M498,340 A 42 42 0 0 1 522,382', { stroke: '#e8590c', width: 3 });
+        ctx.text(292, 378, '∠A', { size: 17, fill: '#e8590c' });
+        ctx.text(462, 378, '∠B', { size: 17, fill: '#e8590c' });
+        ctx.text(352, 326, '夹边 AB', { size: 17, fill: '#2f6fed' });
+
+        ctx.text(64, 200, 'ASA：两角 + 夹边', { size: 22, weight: 700, fill: '#2f6fed' });
+        ctx.text(64, 246, 'AAS：两角 + 其中一角的对边', { size: 22, weight: 700, fill: '#0f9d58' });
+        ctx.text(64, 300, '内角和 180°，第三角自然确定', { size: 18, fill: '#5b6b80' });
+
+        var p = ctx.panel(700, 360, 460, 200, { title: '为什么 AAS 也行', titleSize: 20 });
+        var l1 = ctx.text(724, 440, '∠A、∠B 确定', { size: 20 });
+        var l2 = ctx.text(724, 482, '→ ∠C = 180° − ∠A − ∠B', { size: 20 });
+        var l3 = ctx.text(724, 524, '→ 转化为 ASA', { size: 20, weight: 700, fill: '#0f9d58' });
+        ctx.fade(p, 10.6, 0.5); ctx.fade(l1, 10.9, 0.4); ctx.fade(l2, 11.4, 0.4); ctx.fade(l3, 12.0, 0.4);
+
+        ctx.probe('asa_third_angle', function () { return 180 - 60 - 50; });
+      }
+    },
+
+    {
+      id: 'choose', title: '怎么选判定方法', duration: 16,
+      objective: '形成“先找已知边角，再匹配判定”的选择流程',
+      visual: '四种判定的条件对照表与选择口诀',
+      motion: '表格逐行出现，底部口诀强调',
+      link: '把四种判定组织成可用的工具',
+      cues: [
+        { t: 0.2, text: '已知三边，用 SSS；已知两边，找夹角用 SAS。' },
+        { t: 4.8, text: '已知两角，找夹边用 ASA，找对边用 AAS。' },
+        { t: 9.6, text: '只有 SSA 和 AAA 不行。' },
+        { t: 13.0, text: '口诀：边边边、边角边、角边角、角角边。' }
+      ],
+      build(ctx) {
+        ctx.text(64, 184, '判定方法对照', { size: 20, weight: 700, fill: '#5b6b80' });
+        var tb = ctx.table({
+          x: 64, y: 208, rowH: 52, size: 20,
+          colW: [210, 170, 300],
+          header: ['已知条件', '简称', '结论'],
+          rows: [
+            ['三条边', 'SSS', '全等'],
+            ['两边及夹角', 'SAS', '全等'],
+            ['两角及夹边', 'ASA', '全等'],
+            ['两角及一角对边', 'AAS', '全等'],
+            ['两边及一边对角', 'SSA', '不一定']
+          ]
+        });
+        for (var i = 0; i < 6; i++) tb.revealRow(i, 0.4 + i * 1.0, 0.3);
+        var bad = ctx.text(64, 560, '注意：AAA 只能说明形状相同，大小可能不同。', { size: 18, fill: '#a3400c' });
+        ctx.fade(bad, 10.0, 0.5);
+
+        var p = ctx.panel(740, 210, 440, 280, { title: '选择顺序', titleSize: 20, fill: '#f7fbff', stroke: '#c3d8f7' });
+        var l1 = ctx.text(766, 280, '1. 圈出已知相等的边和角', { size: 19 });
+        var l2 = ctx.text(766, 330, '2. 看边角位置关系', { size: 19 });
+        var l3 = ctx.text(766, 380, '3. 缺什么，先证什么', { size: 19 });
+        var l4 = ctx.text(766, 440, '缺条件时，先用已知证出', { size: 17, fill: '#5b6b80' });
+        ctx.fade(p, 4.6, 0.5);
+        [l1, l2, l3, l4].forEach(function (el, i) { ctx.fade(el, 4.9 + i * 0.5, 0.4); });
+
+        ctx.probe('choose_ssa', function () { return 0; });
+      }
+    },
+
+    {
+      id: 'example', title: '例题：证明两个三角形全等', duration: 26,
+      objective: '用 SSS 完成一次规范证明，并由全等推出对应角相等',
+      visual: '△ABD 与 △ACD，AB=AC、BD=CD、AD 公共边，三组刻度标记',
+      motion: '图形出现，三组条件依次高亮，证明步骤逐行出现，结论角相等',
+      link: '把判定用于书写',
+      cues: [
+        { t: 0.2, text: '已知 AB = AC，BD = CD，求证 △ABD 全等于 △ACD。' },
+        { t: 6.4, text: '再加上公共边 AD，三条边都对应相等。' },
+        { t: 12.0, text: '由 SSS 得到两个三角形全等。' },
+        { t: 17.6, text: '全等之后，对应角相等，所以 ∠B = ∠C。' }
+      ],
+      build(ctx) {
+        var A = [900, 220], B = [770, 410], C = [1030, 410], D = [900, 520];
+        ctx.path('M' + A + ' L' + B + ' L' + D + ' Z', { stroke: '#2f6fed', width: 2.6, fill: 'rgba(47,111,237,0.06)' });
+        ctx.path('M' + A + ' L' + C + ' L' + D + ' Z', { stroke: '#0f9d58', width: 2.6, fill: 'rgba(15,157,88,0.06)' });
+        ctx.text(876, 205, 'A', { size: 19, weight: 700 });
+        ctx.text(742, 428, 'B', { size: 19, weight: 700 });
+        ctx.text(1042, 428, 'C', { size: 19, weight: 700 });
+        ctx.text(880, 552, 'D', { size: 19, weight: 700 });
+        // 刻度
+        ctx.line(838, 310, 866, 328, { stroke: '#e8590c', width: 3 });
+        ctx.line(938, 326, 966, 306, { stroke: '#e8590c', width: 3 });
+        ctx.line(836, 478, 856, 454, { stroke: '#2f6fed', width: 3 });
+        ctx.line(940, 462, 960, 486, { stroke: '#2f6fed', width: 3 });
+        ctx.line(890, 372, 910, 372, { stroke: '#7b3fe4', width: 3 });
+        ctx.text(1000, 330, 'AB = AC', { size: 16, fill: '#e8590c' });
+        ctx.text(1000, 470, 'BD = CD', { size: 16, fill: '#2f6fed' });
+        ctx.text(916, 364, '公共边 AD', { size: 16, fill: '#7b3fe4' });
+
+        ctx.text(64, 190, '证明', { size: 21, weight: 700, fill: '#5b6b80' });
+        var s = [
+          { t: 1.0, text: '在 △ABD 和 △ACD 中' },
+          { t: 6.6, text: 'AB = AC   (已知)' },
+          { t: 8.4, text: 'BD = CD   (已知)' },
+          { t: 10.2, text: 'AD = AD   (公共边)' },
+          { t: 12.4, text: '∴ △ABD ≌ △ACD (SSS)' },
+          { t: 17.8, text: '∴ ∠B = ∠C  (全等三角形对应角相等)' }
+        ];
+        s.forEach(function (item, i) {
+          var el = ctx.text(64, 238 + i * 50, item.text, { size: i >= 4 ? 22 : 21, weight: i >= 4 ? 700 : 400, fill: i >= 4 ? '#2f6fed' : '#16202e' });
+          ctx.fade(el, item.t, 0.45);
+        });
+
+        ctx.probe('example_sss', function () { return 1; });
+      }
+    },
+
+    {
+      id: 'summary', title: '四句话记住判定', duration: 12,
+      objective: '固化四种判定与 SSA/AAA 的排除',
+      visual: '四张判定卡片',
+      motion: '按字幕节拍出现',
+      link: '收束全课',
+      cues: [
+        { t: 0.2, text: '边边边、边角边、角边角、角角边。' },
+        { t: 4.4, text: '核心是：边角的位置关系要对。' },
+        { t: 8.2, text: 'SSA 和 AAA 不能判定全等。' }
+      ],
+      build(ctx) {
+        var items = [['SSS', '三边'], ['SAS', '两边 + 夹角'], ['ASA', '两角 + 夹边'], ['AAS', '两角 + 对边']];
+        items.forEach(function (it, i) {
+          var x = 64 + (i % 2) * 520, y = 180 + Math.floor(i / 2) * 170;
+          var card = ctx.panel(x, y, 480, 140, {});
+          var k = ctx.text(x + 28, y + 60, it[0], { size: 34, weight: 700, fill: '#2f6fed' });
+          var d = ctx.text(x + 28, y + 104, it[1], { size: 19, fill: '#5b6b80' });
+          var rt = 0.4 + i * 0.7;
+          ctx.fade(card, rt, 0.45); ctx.fade(k, rt, 0.45); ctx.fade(d, rt + 0.1, 0.45);
+        });
+        var t = ctx.text(64, 540, 'SSA、AAA 不能判定全等', { size: 22, weight: 700, fill: '#d94a3d' });
+        ctx.fade(t, 8.4, 0.5);
+      }
+    }
+  ]
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+/* lesson-kit.css — 动画舞台样式（无外部字体/资源） */
+:root {
+  --bg: #f6f8fb;
+  --ink: #16202e;
+  --muted: #5b6b80;
+  --line: #d7e0ec;
+  --line-strong: #9fb0c6;
+  --line-soft: #e3eaf3;
+  --grid: #e6edf6;
+  --accent: #2f6fed;
+  --accent-soft: rgba(47, 111, 237, 0.10);
+  --font: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Source Han Sans SC", "Noto Sans CJK SC", sans-serif;
+  --mono: "Cascadia Mono", "Consolas", "SF Mono", monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #e9eef6;
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+#lesson {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.lesson-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100vw;
+  max-height: 100vh;
+  background: var(--bg);
+  font-family: var(--font);
+  shape-rendering: geometricPrecision;
+  text-rendering: optimizeLegibility;
+}
+
+.lesson-svg text {
+  font-family: var(--font);
+  letter-spacing: 0.2px;
+}
+
+/* 公式与数字用等宽字体保证对齐 */
+.lesson-svg text[data-mono="1"] {
+  font-family: var(--mono);
+  letter-spacing: 0;
+}
+
+.lesson-svg text[data-role="ui"],
+.lesson-svg text[data-role="label"] {
+  user-select: none;
+}
+
+/* 窄屏时保持 16:9，不裁切内容 */
+@media (max-aspect-ratio: 16/9) {
+  .lesson-svg { height: auto; }
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .lesson-svg { width: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* 动画本身由脚本按时间绘制，这里仅关闭页面级过渡 */
+  * { transition: none !important; }
+}

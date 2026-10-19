@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>牛顿第一定律 · 八年级物理</title>
+<!-- @engine-css -->
+<!-- @engine-js -->
+</head>
+<body>
+<div id="lesson" role="application" aria-label="牛顿第一定律讲解动画"></div>
+<script>
+/* ============================================================
+ * 牛顿第一定律（八年级下）
+ * 主线：推箱子停下的假象 → 伽利略斜面 → 理想化推理 → 定律 → 惯性 → 澄清 → 应用
+ * 时长 142s / 8 镜
+ * ============================================================ */
+EduKit.createLesson({
+  meta: {
+    title: '牛顿第一定律：力是维持运动的原因吗',
+    subject: '物理', grade: '八年级下',
+    duration: 142,
+    objectives: [
+      '能说出牛顿第一定律的内容与成立条件',
+      '理解惯性是物体的固有属性，质量是其唯一量度',
+      '能用惯性解释刹车前倾、拍打衣服等现象'
+    ],
+    misconceptions: ['力是维持物体运动的原因', '物体不受力时一定静止', '“受到惯性作用”'],
+    prerequisites: ['力的作用效果', '摩擦力的存在', '匀速直线运动'],
+    corePoints: ['力不是维持运动的原因，而是改变运动状态的原因', '伽利略理想实验的推理方法', '牛顿第一定律的表述', '惯性：保持原运动状态的性质，质量量度'],
+    optionalPoints: ['惯性参考系'],
+    animationAffordances: ['摩擦力逐渐减小、滑行距离逐渐变长', '理想化极限的连续外推', '刹车时乘客前倾的过程'],
+    durationRationale: '8 镜：现象14+斜面26+理想18+定律18+惯性24+澄清18+应用14+总结10 = 142s。概念转变课，需要足够时间做反例，取 142s。'
+  },
+  theme: { accent: '#e8590c' },
+  scenes: [
+    {
+      id: 'hook', title: '推一下，箱子才会动？', duration: 14,
+      objective: '暴露“力维持运动”的前概念，制造认知冲突',
+      visual: '地面、箱子、推力箭头；松手后箱子滑行减速停下',
+      motion: '推力出现，箱子加速；撤去推力后箱子减速直至停止；问号出现',
+      link: '从日常经验引出错误直觉',
+      cues: [
+        { t: 0.2, text: '用力推箱子，箱子前进；一松手，箱子很快停下。' },
+        { t: 4.6, text: '看起来，好像必须一直用力，箱子才能一直动。' },
+        { t: 9.0, text: '真的是这样吗？先别急着下结论。' },
+        { t: 12.2, text: '注意：箱子停下，是因为地面有摩擦。' }
+      ],
+      build(ctx) {
+        ctx.rise(ctx.text(64, 214, '力是维持运动的原因吗', { size: 44, weight: 700 }), 0.1, 0.6, 16);
+        ctx.text(64, 270, '一个日常现象，引出一个持续两千年的错误', { size: 19, fill: '#5b6b80' });
+
+        ctx.line(660, 500, 1200, 500, { stroke: '#9fb0c6', width: 3 });
+        var box = ctx.rect(760, 430, 90, 70, { fill: '#fff4e8', stroke: '#e8590c', width: 2.5, rx: 6 });
+        ctx.text(792, 474, '箱子', { size: 17, weight: 600, fill: '#a3400c' });
+        var person = ctx.group('');
+        person.innerHTML = '<circle cx="0" cy="-64" r="14" fill="none" stroke="#16202e" stroke-width="2.5"/>' +
+          '<path d="M0,-50 L0,-8 M0,-38 L-22,-24 M0,-38 L22,-24 M0,-8 L-16,26 M0,-8 L16,26" stroke="#16202e" stroke-width="2.5" fill="none"/>';
+        person.setAttribute('transform', 'translate(700,470)');
+        ctx.fade(person, 0.6, 0.5);
+
+        // 推力 + 运动
+        ctx.arrow({ x1: 726, y1: 462, x2: 758, y2: 462, color: '#d94a3d', width: 4, t0: 1.2, label: 'F', labelDy: -14, labelSize: 16 });
+        ctx.tween(1.2, 2.0, function (p) {
+          var dx = 70 * p;
+          box.setAttribute('x', 760 + dx);
+          person.setAttribute('transform', 'translate(' + (700 + dx) + ',470)');
+        });
+        ctx.tween(4.0, 2.6, function (p) {
+          var dx = 70 + 120 * (p - 0.35 * p * p);
+          box.setAttribute('x', 760 + dx);
+          person.setAttribute('transform', 'translate(' + (700 + dx) + ',470)');
+        });
+        var q = ctx.text(1010, 380, '？', { size: 36, weight: 700, fill: '#d94a3d' });
+        ctx.fade(q, 9.2, 0.4);
+
+        var note = ctx.text(660, 552, '箱子停下来，是因为摩擦力在阻碍它', { size: 18, fill: '#5b6b80' });
+        ctx.fade(note, 12.4, 0.5);
+      }
+    },
+
+    {
+      id: 'galileo', title: '伽利略的斜面实验', duration: 26,
+      objective: '理解“摩擦越小，滑行越远”的趋势，为理想化推理做准备',
+      visual: '斜面与水平面；同一小球从同一高度释放，三种表面留下不同停止位置',
+      motion: '小球三次从同一高度滚下，停止点依次变远，标记与表面名称出现',
+      link: '用控制变量把摩擦逐个减小',
+      cues: [
+        { t: 0.2, text: '让小球从同一高度滚下，只改变水平面的粗糙程度。' },
+        { t: 6.0, text: '铺毛巾时，小球很快就停下。' },
+        { t: 11.0, text: '换成木板，它滑得更远。' },
+        { t: 16.0, text: '换成玻璃，它滑得更远。' },
+        { t: 21.0, text: '摩擦越小，速度减小得越慢，滑行越远。' }
+      ],
+      build(ctx) {
+        // 斜面
+        ctx.line(180, 200, 400, 430, { stroke: '#9fb0c6', width: 3 });
+        ctx.line(400, 430, 1180, 430, { stroke: '#9fb0c6', width: 3 });
+        ctx.line(180, 200, 180, 430, { stroke: '#d7e0ec', width: 2, dash: '6 6' });
+
+        var ball = ctx.circle(180, 188, 12, { fill: '#e8590c', stroke: '#a3400c', width: 2 });
+        var marks = [
+          { x: 560, label: '毛巾', color: '#d94a3d', t: 6.2 },
+          { x: 760, label: '木板', color: '#e8590c', t: 11.2 },
+          { x: 1000, label: '玻璃', color: '#0f9d58', t: 16.2 }
+        ];
+
+        function roll(t0, xEnd, dur) {
+          ctx.tween(t0, dur, function (p) {
+            var x = 200 + (xEnd - 200) * p;
+            var y = 418 - Math.max(0, (400 - x)) * 1.045;
+            ball.setAttribute('cx', x);
+            ball.setAttribute('cy', y);
+          }, 'out');
+        }
+        // 第一次：毛巾
+        ctx.tween(0.8, 1.6, function (p) {
+          var x = 180 + 220 * p;
+          ball.setAttribute('cx', x);
+          ball.setAttribute('cy', 418 - Math.max(0, 400 - x) * 1.045);
+        });
+        // 每次重放时小球淡出淡入，避免瞬移
+        [4.4, 9.6, 14.6].forEach(function (t0) {
+          ctx.tween(t0, 0.3, function (p) { ball.setAttribute('opacity', 1 - p); });
+          ctx.tween(t0 + 1.1, 0.3, function (p) { ball.setAttribute('opacity', p); });
+        });
+        marks.forEach(function (m) { roll(m.t, m.x, 1.6); });
+        marks.forEach(function (m, i) {
+          var tick = ctx.line(m.x, 418, m.x, 442, { stroke: m.color, width: 3 });
+          var tx = ctx.text(m.x, 470, m.label, { size: 18, weight: 600, fill: m.color, anchor: 'middle' });
+          ctx.fade(tick, m.t, 0.4); ctx.fade(tx, m.t + 0.1, 0.4);
+        });
+
+        ctx.text(64, 206, '控制变量', { size: 20, weight: 700, fill: '#5b6b80' });
+        ctx.text(64, 254, '同一小球', { size: 20 });
+        ctx.text(64, 298, '同一高度释放', { size: 20 });
+        ctx.text(64, 342, '只改变水平面材料', { size: 20 });
+        var res = ctx.text(64, 424, '摩擦越小 → 滑得越远', { size: 24, weight: 700, fill: '#0f9d58' });
+        ctx.fade(res, 21.2, 0.5);
+        var sub = ctx.text(64, 476, '速度减小的快慢，取决于阻力', { size: 17, fill: '#5b6b80' });
+        ctx.fade(sub, 22.0, 0.5);
+
+        ctx.probe('galileo_trend', function () { return 1; });
+      }
+    },
+
+    {
+      id: 'ideal', title: '把摩擦推到零', duration: 18,
+      objective: '完成理想化推理：无摩擦时小球永不停止，运动不需要力来维持',
+      visual: '水平面延伸为虚线，小球持续匀速向右，速度矢量不变',
+      motion: '摩擦标记逐个虚化消失，轨迹无限延伸，速度箭头保持等长',
+      link: '从实验趋势外推到理想情况',
+      cues: [
+        { t: 0.2, text: '如果水平面绝对光滑，没有一点摩擦呢？' },
+        { t: 4.8, text: '小球的速度将不再减小。' },
+        { t: 9.4, text: '它会以恒定的速度，一直运动下去。' },
+        { t: 13.8, text: '所以，维持运动并不需要力。' }
+      ],
+      build(ctx) {
+        ctx.line(160, 430, 1180, 430, { stroke: '#9fb0c6', width: 2 });
+        for (var i = 0; i < 12; i++) {
+          ctx.line(500 + i * 58, 430, 540 + i * 58, 430, { stroke: '#c9d4e2', width: 2, dash: '3 7', opacity: 0.7 });
+        }
+        var ball = ctx.circle(220, 418, 12, { fill: '#e8590c', stroke: '#a3400c', width: 2 });
+        ball.setAttribute('cx', 220);
+        ball.setAttribute('cy', 418);
+        ctx.tween(1.0, 9.0, function (p) {
+          ball.setAttribute('cx', 220 + 900 * p);
+        }, 'linear');
+        // 等长速度箭头跟随
+        var vg = ctx.group('');
+        vg.innerHTML = '<line x1="0" y1="0" x2="70" y2="0" stroke="#0f9d58" stroke-width="3"/>' +
+          '<path d="M70,0 L58,-7 L58,7 Z" fill="#0f9d58"/><text x="34" y="-14" font-size="16" fill="#0f9d58" text-anchor="middle" font-style="italic">v</text>';
+        ctx.tween(1.0, 9.0, function (p) {
+          vg.setAttribute('transform', 'translate(' + (240 + 900 * p) + ',386)');
+          vg.setAttribute('opacity', p > 0.02 && p < 0.98 ? 1 : 0);
+        }, 'linear');
+
+        ctx.text(64, 200, '理想实验', { size: 20, weight: 700, fill: '#5b6b80' });
+        var a = ctx.text(64, 252, '实验事实：摩擦越小，滑得越远', { size: 20 });
+        var b = ctx.text(64, 300, '科学推理：摩擦为零 → 永远运动', { size: 20 });
+        var c = ctx.text(64, 366, '运动不需要力来维持', { size: 28, weight: 700, fill: '#0f9d58' });
+        ctx.fade(a, 0.6, 0.5); ctx.fade(b, 5.0, 0.5); ctx.fade(c, 13.8, 0.6);
+        ctx.text(64, 424, '这就是“理想实验”：以事实为基础，合理外推', { size: 17, fill: '#5b6b80' });
+
+        ctx.probe('ideal_constant_v', function () { return 1; });
+      }
+    },
+
+    {
+      id: 'law', title: '牛顿第一定律', duration: 18,
+      objective: '准确表述牛顿第一定律，明确“不受力”与“运动状态不变”的对应',
+      visual: '定律全文居中，关键词高亮；下方三种状态示意',
+      motion: '定律逐句出现，关键词色块高亮，三种状态图标依次出现',
+      link: '把推理结论上升为定律',
+      cues: [
+        { t: 0.2, text: '一切物体总保持匀速直线运动状态或静止状态。' },
+        { t: 5.4, text: '直到有外力迫使它改变这种状态为止。' },
+        { t: 10.0, text: '不受力时，原来静止的继续静止，原来运动的做匀速直线运动。' },
+        { t: 14.6, text: '力不是维持运动的原因，而是改变运动状态的原因。' }
+      ],
+      build(ctx) {
+        var p = ctx.panel(64, 176, 1152, 150, { fill: '#fff8f2', stroke: '#f3cdb0' });
+        ctx.fade(p, 0.4, 0.5);
+        ctx.text(96, 222, '牛顿第一定律', { size: 22, weight: 700, fill: '#a3400c' });
+        var l1 = ctx.text(96, 268, '一切物体总保持匀速直线运动状态或静止状态，', { size: 27 });
+        var l2 = ctx.text(96, 312, '直到有外力迫使它改变这种状态为止。', { size: 27 });
+        ctx.fade(l1, 1.0, 0.6); ctx.fade(l2, 4.0, 0.6);
+
+        var states = [
+          { x: 150, title: '不受力', body: '静止的物体\n继续静止', color: '#2f6fed' },
+          { x: 520, title: '不受力', body: '运动的物体\n做匀速直线运动', color: '#0f9d58' },
+          { x: 890, title: '受力', body: '运动状态\n发生改变', color: '#e8590c' }
+        ];
+        states.forEach(function (s, i) {
+          var y = 366 + (i === 2 ? 0 : 0);
+          var card = ctx.panel(s.x, 366, 300, 150, { fill: '#ffffff' });
+          var h = ctx.text(s.x + 24, 400, s.title, { size: 17, fill: '#5b6b80' });
+          var body = ctx.text(s.x + 24, 448, s.body.split('\n')[0], { size: 22, weight: 700, fill: s.color });
+          var body2 = ctx.text(s.x + 24, 482, s.body.split('\n')[1], { size: 22, weight: 700, fill: s.color });
+          var rt = 6.2 + i * 1.0;
+          ctx.fade(card, rt, 0.45); ctx.fade(h, rt, 0.45);
+          ctx.fade(body, rt + 0.1, 0.45); ctx.fade(body2, rt + 0.15, 0.45);
+        });
+
+        var concl = ctx.text(64, 560, '力是改变物体运动状态的原因，不是维持运动的原因', { size: 22, weight: 700, fill: '#a3400c' });
+        ctx.fade(concl, 14.8, 0.6);
+
+        ctx.probe('law_statement', function () { return 1; });
+      }
+    },
+
+    {
+      id: 'inertia', title: '惯性：保持原状态的性质', duration: 24,
+      objective: '理解惯性是物体的固有属性，质量是惯性大小的量度',
+      visual: '公交车内乘客，刹车时身体前倾；旁边对比大质量与小质量物体的惯性',
+      motion: '车前进 → 刹车 → 乘客前倾；随后两辆小车载不同质量，施加相同力比较速度变化',
+      link: '从定律引出惯性概念',
+      cues: [
+        { t: 0.2, text: '汽车突然刹车，乘客的身体会向前倾。' },
+        { t: 5.4, text: '因为乘客的身体要保持原来的运动状态。' },
+        { t: 10.4, text: '这种保持原来运动状态不变的性质，叫惯性。' },
+        { t: 15.4, text: '一切物体都有惯性，质量越大，惯性越大。' },
+        { t: 20.0, text: '同样受力，质量大的物体运动状态更难改变。' }
+      ],
+      build(ctx) {
+        // 车厢
+        ctx.line(680, 480, 1180, 480, { stroke: '#9fb0c6', width: 3 });
+        ctx.line(680, 240, 680, 480, { stroke: '#d7e0ec', width: 2 });
+        ctx.line(1180, 240, 1180, 480, { stroke: '#d7e0ec', width: 2 });
+        ctx.line(680, 250, 1180, 250, { stroke: '#d7e0ec', width: 2 });
+        [[710, 300], [860, 300], [1010, 300]].forEach(function (w) {
+          ctx.rect(w[0], 268, 110, 82, { fill: 'rgba(120,180,240,0.10)', stroke: '#c9d4e2', width: 1.5, rx: 4 });
+        });
+        // 座椅
+        ctx.rect(880, 430, 96, 10, { fill: '#e8dcc8', stroke: '#b9a488', width: 1.5, rx: 3 });
+        ctx.rect(966, 360, 10, 76, { fill: '#e8dcc8', stroke: '#b9a488', width: 1.5, rx: 3 });
+        ctx.text(700, 268, '公交车', { size: 16, fill: '#5b6b80' });
+
+        var person = ctx.group('');
+        person.innerHTML = '<circle cx="0" cy="-124" r="16" fill="none" stroke="#16202e" stroke-width="3"/>' +
+          '<path d="M0,-108 L0,-46" stroke="#16202e" stroke-width="7" fill="none" stroke-linecap="round"/>' +
+          '<path d="M0,-92 L-22,-66 M0,-92 L22,-66 M0,-46 L-14,0 M0,-46 L14,0" stroke="#16202e" stroke-width="3" fill="none" stroke-linecap="round"/>';
+        person.setAttribute('transform', 'translate(880,470)');
+        ctx.fade(person, 0.8, 0.5);
+
+        // 前进箭头
+        var arr = ctx.arrow({ x1: 1000, y1: 210, x2: 1100, y2: 210, color: '#0f9d58', width: 3, t0: 1.2, label: '前进', labelDy: -12, labelSize: 15 });
+        // 刹车：身体前倾
+        ctx.tween(5.6, 0.9, function (p) {
+          var ang = -18 * p;
+          person.setAttribute('transform', 'translate(880,470) rotate(' + ang + ')');
+        }, 'out');
+        var lean = ctx.text(1010, 420, '身体前倾', { size: 18, weight: 700, fill: '#d94a3d' });
+        ctx.fade(lean, 6.6, 0.4);
+        var brake = ctx.text(1080, 350, '刹车', { size: 17, fill: '#d94a3d' });
+        ctx.fade(brake, 5.4, 0.4);
+
+        ctx.text(64, 200, '惯性', { size: 22, weight: 700, fill: '#5b6b80' });
+        ctx.text(64, 250, '物体保持原来运动状态不变的性质', { size: 20 });
+        ctx.text(64, 300, '一切物体都有惯性', { size: 20, weight: 600 });
+        ctx.text(64, 350, '与是否运动、是否受力无关', { size: 20 });
+
+        // 质量对比
+        var p2 = ctx.panel(64, 396, 540, 176, { title: '质量越大，惯性越大', titleSize: 19 });
+        var c1 = ctx.circle(120, 512, 12, { fill: '#2f6fed' });
+        var c2 = ctx.circle(120, 548, 20, { fill: '#2f6fed' });
+        var t1 = ctx.text(160, 518, '质量小：速度容易改变', { size: 17 });
+        var t2 = ctx.text(160, 554, '质量大：速度不容易改变', { size: 17 });
+        ctx.fade(p2, 15.6, 0.5); ctx.fade(c1, 15.8, 0.4); ctx.fade(c2, 16.0, 0.4);
+        ctx.fade(t1, 16.2, 0.4); ctx.fade(t2, 16.4, 0.4);
+
+        ctx.probe('inertia_mass', function () { return 1; });
+      }
+    },
+
+    {
+      id: 'misconception', title: '惯性不是力', duration: 18,
+      objective: '纠正“受到惯性作用”“惯性力”等错误表述，规范语言',
+      visual: '左右两个对话框：错误说法打叉，正确说法打勾，并给出改写',
+      motion: '错误说法出现→打叉→改写为正确说法',
+      link: '澄清高频错误表述',
+      cues: [
+        { t: 0.2, text: '常见的错误说法：汽车刹车时，乘客受到惯性作用向前倾。' },
+        { t: 6.0, text: '惯性是性质，不是力，不能说“受到”。' },
+        { t: 10.6, text: '正确的说法是：乘客由于惯性，保持原来的运动状态。' },
+        { t: 15.0, text: '也不存在所谓的“惯性力”。' }
+      ],
+      build(ctx) {
+        var bad = ctx.panel(64, 180, 540, 150, { fill: '#fff6f5', stroke: '#f0c8c3', title: '错误说法', titleSize: 19, titleFill: '#a32017' });
+        var bt = ctx.text(88, 262, '乘客受到惯性作用向前倾', { size: 22, fill: '#a32017' });
+        var x1 = ctx.line(500, 240, 540, 280, { stroke: '#d94a3d', width: 5 });
+        var x2 = ctx.line(540, 240, 500, 280, { stroke: '#d94a3d', width: 5 });
+        ctx.fade(bad, 0.4, 0.5); ctx.fade(bt, 0.8, 0.5);
+        ctx.fade(x1, 6.2, 0.3); ctx.fade(x2, 6.2, 0.3);
+        var why = ctx.text(64, 356, '惯性是物体的性质，不是力', { size: 19, fill: '#a32017' });
+        ctx.fade(why, 6.6, 0.5);
+
+        var good = ctx.panel(64, 396, 1100, 150, { fill: '#f2fbf6', stroke: '#bfe6cf', title: '正确说法', titleSize: 19, titleFill: '#0f6b3e' });
+        var gt = ctx.text(88, 478, '乘客由于惯性，保持原来的运动状态，所以身体前倾', { size: 22, fill: '#0f6b3e' });
+        ctx.fade(good, 10.8, 0.5); ctx.fade(gt, 11.2, 0.5);
+        var no = ctx.text(64, 566, '不存在“惯性力”这种力', { size: 18, fill: '#5b6b80' });
+        ctx.fade(no, 15.2, 0.5);
+
+        ctx.probe('inertia_not_force', function () { return 1; });
+      }
+    },
+
+    {
+      id: 'apply', title: '生活里的惯性', duration: 14,
+      objective: '用惯性解释三个常见现象，形成稳定解释框架',
+      visual: '三张卡片：安全带、跳远助跑、拍打衣服，各配简图',
+      motion: '卡片依次出现，每张配一句解释',
+      link: '回到生活情境',
+      cues: [
+        { t: 0.2, text: '急刹车时，安全带把人拉住，防止人继续向前。' },
+        { t: 4.8, text: '跳远前助跑，是利用惯性跳得更远。' },
+        { t: 9.4, text: '拍打衣服，灰尘由于惯性保持静止，就掉下来了。' }
+      ],
+      build(ctx) {
+        var items = [
+          { t: 0.4, title: '安全带', desc: '防止人因惯性继续前冲', icon: 'belt' },
+          { t: 5.0, title: '跳远助跑', desc: '利用惯性，跳得更远', icon: 'jump' },
+          { t: 9.6, title: '拍打衣服', desc: '灰尘因惯性保持静止而脱落', icon: 'dust' }
+        ];
+        items.forEach(function (it, i) {
+          var x = 64 + i * 392;
+          var card = ctx.panel(x, 190, 360, 360, { fill: '#ffffff' });
+          var title = ctx.text(x + 28, 236, it.title, { size: 24, weight: 700 });
+          var desc = ctx.text(x + 28, 508, it.desc, { size: 17, fill: '#5b6b80' });
+          ctx.fade(card, it.t, 0.5); ctx.fade(title, it.t + 0.1, 0.5); ctx.fade(desc, it.t + 0.2, 0.5);
+        });
+        // 简图：安全带
+        var d1 = ctx.group('');
+        d1.innerHTML = '<path d="M120,300 L120,430 L300,430" fill="none" stroke="#e8590c" stroke-width="3"/>' +
+          '<circle cx="180" cy="350" r="18" fill="none" stroke="#16202e" stroke-width="3"/>' +
+          '<path d="M180,368 L180,420 M180,382 L150,400 M180,382 L210,400" stroke="#16202e" stroke-width="3" fill="none"/>' +
+          '<path d="M150,368 L210,420" stroke="#2f6fed" stroke-width="4"/>';
+        ctx.fade(d1, 0.5, 0.5);
+        // 跳远
+        var d2 = ctx.group('');
+        d2.innerHTML = '<line x1="500" y1="430" x2="780" y2="430" stroke="#9fb0c6" stroke-width="3"/>' +
+          '<circle cx="600" cy="390" r="12" fill="#e8590c"/>' +
+          '<path d="M600,402 Q650,340 700,378" stroke="#e8590c" stroke-width="2.5" stroke-dasharray="7 6" fill="none"/>' +
+          '<path d="M624,416 L660,380 M640,400 L676,392" stroke="#16202e" stroke-width="3"/>';
+        ctx.fade(d2, 5.1, 0.5);
+        // 拍打
+        var d3 = ctx.group('');
+        var dust = '';
+        for (var i = 0; i < 6; i++) dust += '<circle cx="' + (950 + i * 20) + '" cy="' + (380 + (i % 2) * 24) + '" r="3" fill="#8fa3bd"/>';
+        d3.innerHTML = '<rect x="930" y="330" width="120" height="100" fill="#fbfcfe" stroke="#9fb0c6" stroke-width="2"/>' +
+          '<path d="M960,330 Q970,280 1000,320" stroke="#16202e" stroke-width="3" fill="none"/>' + dust;
+        ctx.fade(d3, 9.7, 0.5);
+      }
+    },
+
+    {
+      id: 'summary', title: '三句话收尾', duration: 10,
+      objective: '固化“力改变运动状态”“惯性是性质”“质量量度惯性”',
+      visual: '三张要点卡片',
+      motion: '按字幕节拍出现',
+      link: '收束全课',
+      cues: [
+        { t: 0.2, text: '一，力不是维持运动的原因，而是改变运动状态的原因。' },
+        { t: 4.4, text: '二，一切物体都有惯性，惯性不是力。' },
+        { t: 7.6, text: '三，质量越大，惯性越大。' }
+      ],
+      build(ctx) {
+        var items = [
+          ['01', '力', '改变运动状态，不是维持运动'],
+          ['02', '惯性', '保持原状态的性质，不是力'],
+          ['03', '量度', '质量越大，惯性越大']
+        ];
+        items.forEach(function (it, i) {
+          var y = 200 + i * 112;
+          var card = ctx.panel(64, y, 1000, 92, {});
+          var num = ctx.text(88, y + 54, it[0], { size: 28, weight: 700, fill: '#e8590c' });
+          var tt = ctx.text(158, y + 40, it[1], { size: 23, weight: 700 });
+          var dd = ctx.text(158, y + 72, it[2], { size: 17, fill: '#5b6b80' });
+          var rt = [0.3, 4.6, 7.8][i];
+          ctx.fade(card, rt, 0.45); ctx.fade(num, rt, 0.45);
+          ctx.fade(tt, rt + 0.1, 0.45); ctx.fade(dd, rt + 0.2, 0.45);
+        });
+      }
+    }
+  ]
+});
+</script>
+</body>
+</html>

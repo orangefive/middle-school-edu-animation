@@ -1,0 +1,138 @@
+{
+  "reviewer": "开发 Agent 自评（多模态逐帧检查 + 连续播放）",
+  "date": "2026-10-19",
+  "method": "每个用例查看 2–4 张关键帧并连续播放一遍；按 tests/evaluation-rubric.md 打分；证据为镜头 id 与观察。",
+  "caveat": "自评存在确认偏差，不等同独立评审。知识正确性以教材表述为准，未做第三方复核。",
+  "scores": {
+    "M1-quadratic": {
+      "knowledge": 24,
+      "logic": 18,
+      "animation": 16,
+      "visual": 12,
+      "timeline": 9,
+      "engineering": 10,
+      "total": 89,
+      "notes": "a 的四条曲线对比与配方推导是有效动画；识别镜头（verify）左右信息略挤；总结页信息密度合适。扣分：部分镜头仍是文字逐行出现。"
+    },
+    "M2-pythagoras": {
+      "knowledge": 24,
+      "logic": 17,
+      "animation": 16,
+      "visual": 12,
+      "timeline": 9,
+      "engineering": 10,
+      "total": 88,
+      "notes": "弦图证明与网格面积是核心亮点；例题镜头两个三角形切换略生硬；误解面板信息偏满。"
+    },
+    "M3-congruence": {
+      "knowledge": 23,
+      "logic": 16,
+      "animation": 15,
+      "visual": 12,
+      "timeline": 9,
+      "engineering": 10,
+      "total": 85,
+      "notes": "SSA 两种解的图形成立且能说明问题；等长刻度画法偏示意，不够规范；判定表信息密度高。"
+    },
+    "M4-linear": {
+      "knowledge": 24,
+      "logic": 16,
+      "animation": 13,
+      "visual": 12,
+      "timeline": 9,
+      "engineering": 10,
+      "total": 81,
+      "notes": "k 与 b 的作用讲清了；但多数镜头是直线生长 + 文字出现，缺少连续变换（如平移过程）；概念课偏静态。 复核下调：动画以直线生长和文字出现为主，缺少连续变换。"
+    },
+    "P1-refraction": {
+      "knowledge": 24,
+      "logic": 17,
+      "animation": 16,
+      "visual": 12,
+      "timeline": 9,
+      "engineering": 10,
+      "total": 88,
+      "notes": "角度按 n=1.33 计算，光路自洽；池底虚像的反向延长线是有效动画；规律镜头未高亮“法线两侧”，讲解与画面弱对应。"
+    },
+    "P2-newton": {
+      "knowledge": 23,
+      "logic": 16,
+      "animation": 14,
+      "visual": 11,
+      "timeline": 9,
+      "engineering": 10,
+      "total": 80,
+      "notes": "斜面三次实验是有效对照；惯性镜头人物为火柴人，刹车前倾表现力弱；错误说法打叉处理到位。 复核下调：惯性演示表现力弱。"
+    },
+    "P3-circuits": {
+      "knowledge": 24,
+      "logic": 16,
+      "animation": 15,
+      "visual": 12,
+      "timeline": 9,
+      "engineering": 10,
+      "total": 86,
+      "notes": "并联拓扑已修正为无短路；电流光点分流直观；例题数值全部可验算；识别镜头较简。"
+    },
+    "P4-buoyancy": {
+      "knowledge": 23,
+      "logic": 17,
+      "animation": 15,
+      "visual": 11,
+      "timeline": 9,
+      "engineering": 10,
+      "total": 85,
+      "notes": "示数—深度图像的平台段正面回应“浮力随深度增大”的误解；浮沉三状态图较简，已修复文字压色块；轮船/潜水艇只给了文字卡片。"
+    },
+    "C1-conservation": {
+      "knowledge": 24,
+      "logic": 17,
+      "animation": 16,
+      "visual": 12,
+      "timeline": 9,
+      "engineering": 10,
+      "total": 88,
+      "notes": "原子重排 + 计数表是核心价值；实验装置为示意，天平读数与装置连接关系不够真实；配平计数正确。"
+    },
+    "C2-atom": {
+      "knowledge": 23,
+      "logic": 16,
+      "animation": 14,
+      "visual": 12,
+      "timeline": 9,
+      "engineering": 10,
+      "total": 81,
+      "notes": "三种模型演变与 α 散射有信息量；电子分层只做点状排布，未表现“层”的规则；离子镜头信息偏多。 复核下调：分层规则未充分展开。"
+    },
+    "B1-photosynthesis": {
+      "knowledge": 23,
+      "logic": 17,
+      "animation": 15,
+      "visual": 12,
+      "timeline": 9,
+      "engineering": 10,
+      "total": 86,
+      "notes": "遮光—脱色—显色的颜色变化是有效动画；实验步骤文字与画面同步良好；意义页偏文字卡片。"
+    },
+    "B2-cell": {
+      "knowledge": 23,
+      "logic": 15,
+      "animation": 13,
+      "visual": 12,
+      "timeline": 9,
+      "engineering": 10,
+      "total": 79,
+      "notes": "结构标注清楚，对比表实用；教学以识别为主，缺少“为什么这样分工”的深入；动画多为标注依次出现。 复核下调：教学以结构识别为主，功能解释较浅。"
+    },
+    "B3-mendel": {
+      "knowledge": 24,
+      "logic": 18,
+      "animation": 17,
+      "visual": 13,
+      "timeline": 9,
+      "engineering": 10,
+      "total": 91,
+      "notes": "成对基因拆分配子、棋盘格逐格填充是有效动画；F2 用 787/277 的真实数据比直接给 3:1 更有说服力；测交的反证逻辑完整。扣分：植株为通用示意，品种特征不足。"
+    }
+  }
+}

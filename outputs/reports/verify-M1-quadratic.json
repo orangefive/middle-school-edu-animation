@@ -1,0 +1,617 @@
+{
+  "case": "M1-quadratic",
+  "file": "examples\\mathematics\\quadratic-function\\lesson.html",
+  "generatedAt": "2026-10-19T05:37:20.651Z",
+  "duration": 190,
+  "scenes": [
+    {
+      "id": "hook",
+      "title": "从一条曲线说起",
+      "objective": "用真实轨迹引出抛物线，建立“二次函数的图像是抛物线”的第一印象",
+      "start": 0,
+      "duration": 12,
+      "visual": "左侧标题、一般式；右侧抛物线轨迹与 7 个球点",
+      "motion": "轨迹 1.8s 生长，球点依次点亮，终点球变色",
+      "camera": "固定机位",
+      "link": "真实轨迹 → 抛物线 → 二次函数",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "投篮的轨迹、喷泉的水柱，是同一条曲线。"
+        },
+        {
+          "t": 4.6,
+          "text": "这条曲线叫抛物线，它来自二次函数。"
+        },
+        {
+          "t": 8.4,
+          "text": "先看最简单的二次函数：y = x²。"
+        },
+        {
+          "t": 0.8,
+          "text": "同一条抛物线，既描述水柱，也描述篮球。"
+        }
+      ]
+    },
+    {
+      "id": "plot",
+      "title": "y = x² 是怎么画出来的",
+      "objective": "复习列表—描点—连线，明确图像上每个点都满足解析式",
+      "start": 12,
+      "duration": 20,
+      "visual": "左侧两行数值表；右侧坐标系、5 个描点、曲线",
+      "motion": "表格逐行出现，5 点依次弹出，曲线 1.8s 生长",
+      "camera": "固定机位",
+      "link": "承接抛物线，回答“图像怎么画”",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "先列表：把 x 的值逐个代入 y = x²。"
+        },
+        {
+          "t": 5.2,
+          "text": "每一列就是图像上一个点的坐标。"
+        },
+        {
+          "t": 9.6,
+          "text": "描点，再用平滑曲线连接。"
+        },
+        {
+          "t": 14.2,
+          "text": "图像是开口向上的抛物线，顶点在原点。"
+        }
+      ]
+    },
+    {
+      "id": "a-effect",
+      "title": "a 决定开口方向与大小",
+      "objective": "通过四条曲线对比，得出 a<0 开口向下、|a| 越大开口越小",
+      "start": 32,
+      "duration": 24,
+      "visual": "四条抛物线 a=1、2、0.5、−1 与图例",
+      "motion": "四条曲线依次生长，图例与结论同步出现",
+      "camera": "固定机位",
+      "link": "从画法转到参数作用",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "改变 a，抛物线会怎样变化？"
+        },
+        {
+          "t": 4.4,
+          "text": "a 大于零，开口向上；a 小于零，开口向下。"
+        },
+        {
+          "t": 10.2,
+          "text": "a 的绝对值越大，开口越窄。"
+        },
+        {
+          "t": 15.6,
+          "text": "注意：是比较绝对值，不是比较 a 本身。"
+        }
+      ]
+    },
+    {
+      "id": "square",
+      "title": "把一般式变成顶点式",
+      "objective": "理解配方的三步变形，知道顶点式让顶点“看得见”",
+      "start": 56,
+      "duration": 26,
+      "visual": "四行配方推导与顶点式卡片",
+      "motion": "逐行出现，末行高亮，右侧卡片收束",
+      "camera": "固定机位",
+      "link": "解释顶点坐标从哪来",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "一般式里，顶点藏在哪儿？"
+        },
+        {
+          "t": 4.6,
+          "text": "第一步：把前两项提出 a。"
+        },
+        {
+          "t": 9.4,
+          "text": "第二步：括号内配成完全平方。"
+        },
+        {
+          "t": 15,
+          "text": "第三步：把常数合并，得到顶点式。"
+        },
+        {
+          "t": 20.6,
+          "text": "顶点式里，顶点坐标直接读出来。"
+        }
+      ]
+    },
+    {
+      "id": "vertex",
+      "title": "例：y = x² − 4x + 3 的顶点",
+      "objective": "把配方用于具体函数，得到顶点 (2,−1) 与对称轴 x=2，并与图像对应",
+      "start": 82,
+      "duration": 24,
+      "visual": "配方三行；右侧 y=x²−4x+3 图像、顶点、对称轴",
+      "motion": "曲线生长，顶点弹出，虚线自上而下延伸",
+      "camera": "固定机位",
+      "link": "把顶点式落到具体函数",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "用 y = x² − 4x + 3 走一遍。"
+        },
+        {
+          "t": 4.4,
+          "text": "配成 (x − 2)² − 1。"
+        },
+        {
+          "t": 9,
+          "text": "所以顶点是 (2, −1)，对称轴是 x = 2。"
+        },
+        {
+          "t": 14.4,
+          "text": "图像上，这一点正是曲线的最低点。"
+        },
+        {
+          "t": 19.2,
+          "text": "对称轴把抛物线分成左右对称的两半。"
+        }
+      ]
+    },
+    {
+      "id": "verify",
+      "title": "用对称性检查图像",
+      "objective": "通过对称点与截距验证解析式与图像一致，建立“图像可检验”的意识",
+      "start": 106,
+      "duration": 26,
+      "visual": "左侧求根推导；右侧图像与 4 个对称点",
+      "motion": "根与对称点依次出现，虚线连接等值点",
+      "camera": "固定机位",
+      "link": "用对称性检验图像是否正确",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "曲线画得对不对？用点来验证。"
+        },
+        {
+          "t": 4,
+          "text": "令 y = 0，解得 x = 1 或 x = 3。"
+        },
+        {
+          "t": 9,
+          "text": "这两个点关于 x = 2 对称。"
+        },
+        {
+          "t": 13.6,
+          "text": "再取 x = 0 和 x = 4，函数值都是 3。"
+        },
+        {
+          "t": 19,
+          "text": "到对称轴距离相等的点，函数值一定相等。"
+        }
+      ]
+    },
+    {
+      "id": "misconception",
+      "title": "b 的符号说明什么",
+      "objective": "纠正“b 决定对称轴左右”的片面理解，给出左同右异的判断方法",
+      "start": 132,
+      "duration": 22,
+      "visual": "左右两个函数图像及各自对称轴",
+      "motion": "两图先后生长，虚线标出对称轴，底部给出判断口诀",
+      "camera": "固定机位",
+      "link": "纠正“b 决定左右”的误解",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "常见错误：b 大于零，对称轴就在右边。"
+        },
+        {
+          "t": 5.2,
+          "text": "看这两个函数，b 分别是正和负。"
+        },
+        {
+          "t": 9.6,
+          "text": "b = 4 时，对称轴 x = −2，在左边。"
+        },
+        {
+          "t": 14.2,
+          "text": "b = −4 时，对称轴 x = 2，在右边。"
+        },
+        {
+          "t": 18.2,
+          "text": "规律是：a、b 同号，轴在左；异号，轴在右。"
+        }
+      ]
+    },
+    {
+      "id": "apply",
+      "title": "用顶点求最大高度",
+      "objective": "把顶点式用于实际问题，求出投篮最大高度并解释其含义",
+      "start": 154,
+      "duration": 22,
+      "visual": "配方推导；右侧高度—时间图像与最高点",
+      "motion": "曲线生长，虚线定位最高点",
+      "camera": "固定机位",
+      "link": "顶点式的实际意义",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "投篮高度 h = −5t² + 20t，t 是时间。"
+        },
+        {
+          "t": 4.4,
+          "text": "配方：h = −5(t − 2)² + 20。"
+        },
+        {
+          "t": 9,
+          "text": "a = −5 < 0，所以有最大值。"
+        },
+        {
+          "t": 12.6,
+          "text": "t = 2 秒时，高度最大，是 20 米。"
+        },
+        {
+          "t": 17,
+          "text": "顶点不只是公式结果，它对应真实的最值。"
+        }
+      ]
+    },
+    {
+      "id": "summary",
+      "title": "三句话记住这节课",
+      "objective": "用三条要点固化 a 的作用、顶点式、对称性",
+      "start": 176,
+      "duration": 14,
+      "visual": "三张要点卡片与抛物线缩略图",
+      "motion": "按字幕节拍逐张出现",
+      "camera": "固定机位",
+      "link": "收束全课",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "第一，a 管开口：正上负下，绝对值越大越窄。"
+        },
+        {
+          "t": 4.6,
+          "text": "第二，配方得顶点式，顶点和对称轴直接读。"
+        },
+        {
+          "t": 8.8,
+          "text": "第三，对称轴两侧等距的点，函数值相等。"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "id": "load",
+      "name": "页面加载与引擎就绪",
+      "status": "pass",
+      "detail": "meta=二次函数 y=ax²+bx+c 的图像与性质 scenes=9 duration=190s"
+    },
+    {
+      "id": "duration",
+      "name": "时长符合知识点复杂度",
+      "status": "pass",
+      "detail": "实际 190s，期望 170–220s"
+    },
+    {
+      "id": "timeline",
+      "name": "镜头时间轴连续闭合",
+      "status": "pass",
+      "detail": "9 个镜头合计 190s"
+    },
+    {
+      "id": "storyboard",
+      "name": "storyboard.json 与动画一致",
+      "status": "pass",
+      "detail": "9 镜头一一对应"
+    },
+    {
+      "id": "layout-clip",
+      "name": "文字未越出画面",
+      "status": "pass",
+      "detail": "28 帧全部在画布内"
+    },
+    {
+      "id": "layout-caption",
+      "name": "正文不侵入字幕区",
+      "status": "pass",
+      "detail": "内容区与字幕区物理分离"
+    },
+    {
+      "id": "layout-header",
+      "name": "正文不侵入标题区",
+      "status": "pass",
+      "detail": "无重叠"
+    },
+    {
+      "id": "layout-overlap",
+      "name": "文字之间无实质重叠",
+      "status": "pass",
+      "detail": "未检出重叠"
+    },
+    {
+      "id": "layout-font",
+      "name": "字号满足可读性下限",
+      "status": "pass",
+      "detail": "最小正文 13.5px / 字幕 20px"
+    },
+    {
+      "id": "contrast",
+      "name": "文字与底色对比足够",
+      "status": "pass",
+      "detail": "未检出低对比文字"
+    },
+    {
+      "id": "blank",
+      "name": "无空白帧",
+      "status": "pass",
+      "detail": "0 个采样帧内容过少"
+    },
+    {
+      "id": "jump",
+      "name": "无异常闪烁或瞬变",
+      "status": "pass",
+      "detail": "0.25s 间隔画面变化均 < 55%"
+    },
+    {
+      "id": "static",
+      "name": "镜头后段仍有内容推进",
+      "status": "pass",
+      "detail": "各镜头后段均有变化"
+    },
+    {
+      "id": "probe",
+      "name": "关键数值/几何关系正确",
+      "status": "pass",
+      "detail": "basic_y2=4；vertexX=2；vertexY=-1；symmetryDiff=0；root1=1；root2=3；maxHeight=20"
+    },
+    {
+      "id": "required-text",
+      "name": "必须出现的关键表述齐备",
+      "status": "pass",
+      "detail": "4 项全部出现"
+    },
+    {
+      "id": "forbidden-text",
+      "name": "未出现错误表述",
+      "status": "pass",
+      "detail": "未检出禁止表述"
+    },
+    {
+      "id": "caption",
+      "name": "每个镜头都有字幕讲解",
+      "status": "pass",
+      "detail": "9 个镜头均有字幕"
+    },
+    {
+      "id": "viewport",
+      "name": "不同窗口尺寸下可读",
+      "status": "pass",
+      "detail": "1024×576 最小字号 ≥11.5px，无溢出"
+    },
+    {
+      "id": "console",
+      "name": "运行期无脚本错误",
+      "status": "pass",
+      "detail": "0 error"
+    }
+  ],
+  "summary": {
+    "total": 19,
+    "pass": 19,
+    "fail": 0,
+    "warn": 0,
+    "skip": 0,
+    "verdict": "PASS"
+  },
+  "frames": [
+    {
+      "scene": "hook",
+      "t": 0.7,
+      "file": "outputs\\frames\\M1-quadratic\\s01_0p7.png",
+      "texts": 5,
+      "nonBg": 0.036
+    },
+    {
+      "scene": "hook",
+      "t": 5.4,
+      "file": "outputs\\frames\\M1-quadratic\\s01_5p4.png",
+      "texts": 5,
+      "nonBg": 0.039
+    },
+    {
+      "scene": "hook",
+      "t": 9.8,
+      "file": "outputs\\frames\\M1-quadratic\\s01_9p8.png",
+      "texts": 5,
+      "nonBg": 0.039
+    },
+    {
+      "scene": "plot",
+      "t": 12.7,
+      "file": "outputs\\frames\\M1-quadratic\\s02_12p7.png",
+      "texts": 22,
+      "nonBg": 0.029
+    },
+    {
+      "scene": "plot",
+      "t": 21,
+      "file": "outputs\\frames\\M1-quadratic\\s02_21.png",
+      "texts": 31,
+      "nonBg": 0.035
+    },
+    {
+      "scene": "plot",
+      "t": 28.4,
+      "file": "outputs\\frames\\M1-quadratic\\s02_28p4.png",
+      "texts": 33,
+      "nonBg": 0.041
+    },
+    {
+      "scene": "a-effect",
+      "t": 32.7,
+      "file": "outputs\\frames\\M1-quadratic\\s03_32p7.png",
+      "texts": 20,
+      "nonBg": 0.026
+    },
+    {
+      "scene": "a-effect",
+      "t": 42.8,
+      "file": "outputs\\frames\\M1-quadratic\\s03_42p8.png",
+      "texts": 27,
+      "nonBg": 0.041
+    },
+    {
+      "scene": "a-effect",
+      "t": 51.7,
+      "file": "outputs\\frames\\M1-quadratic\\s03_51p7.png",
+      "texts": 27,
+      "nonBg": 0.042
+    },
+    {
+      "scene": "square",
+      "t": 56.7,
+      "file": "outputs\\frames\\M1-quadratic\\s04_56p7.png",
+      "texts": 4,
+      "nonBg": 0.028
+    },
+    {
+      "scene": "square",
+      "t": 67.7,
+      "file": "outputs\\frames\\M1-quadratic\\s04_67p7.png",
+      "texts": 8,
+      "nonBg": 0.036
+    },
+    {
+      "scene": "square",
+      "t": 77.3,
+      "file": "outputs\\frames\\M1-quadratic\\s04_77p3.png",
+      "texts": 14,
+      "nonBg": 0.051
+    },
+    {
+      "scene": "vertex",
+      "t": 82.7,
+      "file": "outputs\\frames\\M1-quadratic\\s05_82p7.png",
+      "texts": 21,
+      "nonBg": 0.029
+    },
+    {
+      "scene": "vertex",
+      "t": 92.8,
+      "file": "outputs\\frames\\M1-quadratic\\s05_92p8.png",
+      "texts": 26,
+      "nonBg": 0.039
+    },
+    {
+      "scene": "vertex",
+      "t": 101.7,
+      "file": "outputs\\frames\\M1-quadratic\\s05_101p7.png",
+      "texts": 26,
+      "nonBg": 0.041
+    },
+    {
+      "scene": "verify",
+      "t": 106.7,
+      "file": "outputs\\frames\\M1-quadratic\\s06_106p7.png",
+      "texts": 19,
+      "nonBg": 0.033
+    },
+    {
+      "scene": "verify",
+      "t": 117.7,
+      "file": "outputs\\frames\\M1-quadratic\\s06_117p7.png",
+      "texts": 24,
+      "nonBg": 0.039
+    },
+    {
+      "scene": "verify",
+      "t": 127.3,
+      "file": "outputs\\frames\\M1-quadratic\\s06_127p3.png",
+      "texts": 28,
+      "nonBg": 0.049
+    },
+    {
+      "scene": "misconception",
+      "t": 132.7,
+      "file": "outputs\\frames\\M1-quadratic\\s07_132p7.png",
+      "texts": 29,
+      "nonBg": 0.035
+    },
+    {
+      "scene": "misconception",
+      "t": 141.9,
+      "file": "outputs\\frames\\M1-quadratic\\s07_141p9.png",
+      "texts": 29,
+      "nonBg": 0.039
+    },
+    {
+      "scene": "misconception",
+      "t": 150,
+      "file": "outputs\\frames\\M1-quadratic\\s07_150.png",
+      "texts": 31,
+      "nonBg": 0.042
+    },
+    {
+      "scene": "apply",
+      "t": 154.7,
+      "file": "outputs\\frames\\M1-quadratic\\s08_154p7.png",
+      "texts": 15,
+      "nonBg": 0.035
+    },
+    {
+      "scene": "apply",
+      "t": 163.9,
+      "file": "outputs\\frames\\M1-quadratic\\s08_163p9.png",
+      "texts": 18,
+      "nonBg": 0.045
+    },
+    {
+      "scene": "apply",
+      "t": 172,
+      "file": "outputs\\frames\\M1-quadratic\\s08_172.png",
+      "texts": 20,
+      "nonBg": 0.052
+    },
+    {
+      "scene": "summary",
+      "t": 176.7,
+      "file": "outputs\\frames\\M1-quadratic\\s09_176p7.png",
+      "texts": 4,
+      "nonBg": 0.038
+    },
+    {
+      "scene": "summary",
+      "t": 182.3,
+      "file": "outputs\\frames\\M1-quadratic\\s09_182p3.png",
+      "texts": 7,
+      "nonBg": 0.047
+    },
+    {
+      "scene": "summary",
+      "t": 187.5,
+      "file": "outputs\\frames\\M1-quadratic\\s09_187p5.png",
+      "texts": 12,
+      "nonBg": 0.062
+    },
+    {
+      "scene": "summary",
+      "t": 189.9,
+      "file": "outputs\\frames\\M1-quadratic\\s09_189p9.png",
+      "texts": 12,
+      "nonBg": 0.062
+    }
+  ],
+  "consoleErrors": []
+}

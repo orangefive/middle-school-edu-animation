@@ -1,0 +1,499 @@
+{
+  "case": "P1-refraction",
+  "file": "examples\\physics\\refraction\\lesson.html",
+  "generatedAt": "2026-10-19T05:38:57.443Z",
+  "duration": 132,
+  "scenes": [
+    {
+      "id": "hook",
+      "title": "插在水里的筷子",
+      "objective": "用“折断”的现象制造认知冲突，明确这是光的折射造成的视觉现象",
+      "start": 0,
+      "duration": 14,
+      "visual": "水杯与筷子，水面处出现折角；标注“看起来折断了”",
+      "motion": "筷子入水，水面处的下半段逐渐偏折，问号出现后给出“折射”",
+      "camera": "固定机位",
+      "link": "由现象引出折射",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "把筷子斜插入水中，它看起来像折断了。"
+        },
+        {
+          "t": 4.8,
+          "text": "筷子并没有断，是光在“骗”我们的眼睛。"
+        },
+        {
+          "t": 9,
+          "text": "光从水中射入空气时，方向发生了改变。"
+        },
+        {
+          "t": 12,
+          "text": "这种现象叫光的折射。"
+        }
+      ]
+    },
+    {
+      "id": "setup",
+      "title": "让一束光斜射入水",
+      "objective": "认识界面、法线、入射光线、折射光线、入射角、折射角",
+      "start": 14,
+      "duration": 22,
+      "visual": "空气/水两层介质、法线、入射光线与折射光线、两个角",
+      "motion": "界面与法线先出现，入射光线射到 O 点，折射光线从 O 点折向水中，角度标注",
+      "camera": "固定机位",
+      "link": "把现象变成可测量的光路",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "让一束激光从空气斜射向水面。"
+        },
+        {
+          "t": 4.4,
+          "text": "在入射点作一条垂直于水面的法线。"
+        },
+        {
+          "t": 9,
+          "text": "入射光线与法线的夹角，叫入射角 i。"
+        },
+        {
+          "t": 14,
+          "text": "折射光线与法线的夹角，叫折射角 r。"
+        },
+        {
+          "t": 18.2,
+          "text": "可以看到，光进入水中后向法线靠近。"
+        }
+      ]
+    },
+    {
+      "id": "law",
+      "title": "折射的三条规律",
+      "objective": "掌握三线共面、法线两侧、空气中角大三条规律，并能用于判断",
+      "start": 36,
+      "duration": 24,
+      "visual": "同一光路，三条规律逐条高亮；右侧给出 45°→32° 的数值例子",
+      "motion": "规律逐条出现，对应元素高亮；数值例子随后出现",
+      "camera": "固定机位",
+      "link": "从作图走向规律",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "第一条：入射光线、折射光线、法线在同一平面内。"
+        },
+        {
+          "t": 6.6,
+          "text": "第二条：折射光线和入射光线分居法线两侧。"
+        },
+        {
+          "t": 12,
+          "text": "第三条：光在空气中那侧的角更大。"
+        },
+        {
+          "t": 17.4,
+          "text": "比如入射角 45 度时，折射角约为 32 度。"
+        }
+      ]
+    },
+    {
+      "id": "reverse",
+      "title": "光路可逆",
+      "objective": "理解光路可逆，明确从水射向空气时折射角大于入射角",
+      "start": 60,
+      "duration": 18,
+      "visual": "同一光路反向：光从水中射向空气，远离法线",
+      "motion": "箭头反向，折射光线向界面偏折，角度对比出现",
+      "camera": "固定机位",
+      "link": "把规律用“反向”检验",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "把光路反过来，光从水射向空气。"
+        },
+        {
+          "t": 4.6,
+          "text": "这时的入射角是水中的角，折射角是空气中的角。"
+        },
+        {
+          "t": 9.6,
+          "text": "因为空气中角大，所以折射角大于入射角。"
+        },
+        {
+          "t": 14,
+          "text": "光路可逆：沿原路返回，光会沿原路射出。"
+        }
+      ]
+    },
+    {
+      "id": "pool",
+      "title": "池底为什么变浅",
+      "objective": "用折射光路与虚像位置解释池底看起来变浅，理解“看到的是虚像”",
+      "start": 78,
+      "duration": 26,
+      "visual": "池底点 S、水面入射点 P、折射光线进入眼睛，反向延长交于 S′",
+      "motion": "实际光线先画出，眼睛出现，反向延长虚线出现，S′ 标出并与 S 对比",
+      "camera": "固定机位",
+      "link": "用规律解释现象",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "池底一点 S 发出的光，在水面 P 点射出。"
+        },
+        {
+          "t": 5,
+          "text": "进入空气后，光远离法线偏折。"
+        },
+        {
+          "t": 10,
+          "text": "眼睛逆着折射光线看回去，感觉光来自 S′ 的位置。"
+        },
+        {
+          "t": 15.4,
+          "text": "S′ 比 S 更靠近水面，所以池底看起来变浅了。"
+        },
+        {
+          "t": 20.4,
+          "text": "我们看到的不是池底本身，而是它的虚像。"
+        }
+      ]
+    },
+    {
+      "id": "apply",
+      "title": "叉鱼要瞄准下方",
+      "objective": "把虚像结论迁移到新情境，形成“看到的位置偏高”的通用判断",
+      "start": 104,
+      "duration": 16,
+      "visual": "鱼、虚像、鱼叉；鱼叉指向鱼的实际位置下方",
+      "motion": "鱼与虚像出现，鱼叉下移对准真实位置，提示文字出现",
+      "camera": "固定机位",
+      "link": "规律迁移到新问题",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "看到水中的鱼，它会显得比实际位置浅。"
+        },
+        {
+          "t": 5.4,
+          "text": "如果直接对着看到的位置叉，会叉空。"
+        },
+        {
+          "t": 10.2,
+          "text": "要瞄准看到的鱼的下方。"
+        }
+      ]
+    },
+    {
+      "id": "summary",
+      "title": "折射三句话",
+      "objective": "固化折射规律与两个典型应用",
+      "start": 120,
+      "duration": 12,
+      "visual": "三张要点卡片",
+      "motion": "按字幕节拍出现",
+      "camera": "固定机位",
+      "link": "收束全课",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "一，斜射入另一种介质，方向才会改变。"
+        },
+        {
+          "t": 4.4,
+          "text": "二，三线共面、法线两侧、空气中角大。"
+        },
+        {
+          "t": 8.4,
+          "text": "三，看到的水中物体，位置偏高、变浅。"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "id": "load",
+      "name": "页面加载与引擎就绪",
+      "status": "pass",
+      "detail": "meta=光的折射：从筷子“折断”说起 scenes=7 duration=132s"
+    },
+    {
+      "id": "duration",
+      "name": "时长符合知识点复杂度",
+      "status": "pass",
+      "detail": "实际 132s，期望 115–155s"
+    },
+    {
+      "id": "timeline",
+      "name": "镜头时间轴连续闭合",
+      "status": "pass",
+      "detail": "7 个镜头合计 132s"
+    },
+    {
+      "id": "storyboard",
+      "name": "storyboard.json 与动画一致",
+      "status": "pass",
+      "detail": "7 镜头一一对应"
+    },
+    {
+      "id": "layout-clip",
+      "name": "文字未越出画面",
+      "status": "pass",
+      "detail": "22 帧全部在画布内"
+    },
+    {
+      "id": "layout-caption",
+      "name": "正文不侵入字幕区",
+      "status": "pass",
+      "detail": "内容区与字幕区物理分离"
+    },
+    {
+      "id": "layout-header",
+      "name": "正文不侵入标题区",
+      "status": "pass",
+      "detail": "无重叠"
+    },
+    {
+      "id": "layout-overlap",
+      "name": "文字之间无实质重叠",
+      "status": "pass",
+      "detail": "未检出重叠"
+    },
+    {
+      "id": "layout-font",
+      "name": "字号满足可读性下限",
+      "status": "pass",
+      "detail": "最小正文 13.5px / 字幕 20px"
+    },
+    {
+      "id": "contrast",
+      "name": "文字与底色对比足够",
+      "status": "pass",
+      "detail": "未检出低对比文字"
+    },
+    {
+      "id": "blank",
+      "name": "无空白帧",
+      "status": "pass",
+      "detail": "0 个采样帧内容过少"
+    },
+    {
+      "id": "jump",
+      "name": "无异常闪烁或瞬变",
+      "status": "pass",
+      "detail": "0.25s 间隔画面变化均 < 55%"
+    },
+    {
+      "id": "static",
+      "name": "镜头后段仍有内容推进",
+      "status": "pass",
+      "detail": "各镜头后段均有变化"
+    },
+    {
+      "id": "probe",
+      "name": "关键数值/几何关系正确",
+      "status": "pass",
+      "detail": "angle_in_water=32.1；snell_forward=32.1；snell_reverse=41.7；reverse_relation=1；apparent_depth_ratio=0.75；fish_offset_direction=-1"
+    },
+    {
+      "id": "required-text",
+      "name": "必须出现的关键表述齐备",
+      "status": "pass",
+      "detail": "4 项全部出现"
+    },
+    {
+      "id": "forbidden-text",
+      "name": "未出现错误表述",
+      "status": "pass",
+      "detail": "未检出禁止表述"
+    },
+    {
+      "id": "caption",
+      "name": "每个镜头都有字幕讲解",
+      "status": "pass",
+      "detail": "7 个镜头均有字幕"
+    },
+    {
+      "id": "viewport",
+      "name": "不同窗口尺寸下可读",
+      "status": "pass",
+      "detail": "1024×576 最小字号 ≥11.5px，无溢出"
+    },
+    {
+      "id": "console",
+      "name": "运行期无脚本错误",
+      "status": "pass",
+      "detail": "0 error"
+    }
+  ],
+  "summary": {
+    "total": 19,
+    "pass": 19,
+    "fail": 0,
+    "warn": 0,
+    "skip": 0,
+    "verdict": "PASS"
+  },
+  "frames": [
+    {
+      "scene": "hook",
+      "t": 0.7,
+      "file": "outputs\\frames\\P1-refraction\\s01_0p7.png",
+      "texts": 5,
+      "nonBg": 0.037
+    },
+    {
+      "scene": "hook",
+      "t": 6.3,
+      "file": "outputs\\frames\\P1-refraction\\s01_6p3.png",
+      "texts": 5,
+      "nonBg": 0.041
+    },
+    {
+      "scene": "hook",
+      "t": 11.5,
+      "file": "outputs\\frames\\P1-refraction\\s01_11p5.png",
+      "texts": 5,
+      "nonBg": 0.041
+    },
+    {
+      "scene": "setup",
+      "t": 14.7,
+      "file": "outputs\\frames\\P1-refraction\\s02_14p7.png",
+      "texts": 10,
+      "nonBg": 0.028
+    },
+    {
+      "scene": "setup",
+      "t": 23.9,
+      "file": "outputs\\frames\\P1-refraction\\s02_23p9.png",
+      "texts": 14,
+      "nonBg": 0.038
+    },
+    {
+      "scene": "setup",
+      "t": 32,
+      "file": "outputs\\frames\\P1-refraction\\s02_32.png",
+      "texts": 14,
+      "nonBg": 0.039
+    },
+    {
+      "scene": "law",
+      "t": 36.7,
+      "file": "outputs\\frames\\P1-refraction\\s03_36p7.png",
+      "texts": 4,
+      "nonBg": 0.033
+    },
+    {
+      "scene": "law",
+      "t": 46.8,
+      "file": "outputs\\frames\\P1-refraction\\s03_46p8.png",
+      "texts": 5,
+      "nonBg": 0.037
+    },
+    {
+      "scene": "law",
+      "t": 55.7,
+      "file": "outputs\\frames\\P1-refraction\\s03_55p7.png",
+      "texts": 7,
+      "nonBg": 0.044
+    },
+    {
+      "scene": "reverse",
+      "t": 60.7,
+      "file": "outputs\\frames\\P1-refraction\\s04_60p7.png",
+      "texts": 5,
+      "nonBg": 0.027
+    },
+    {
+      "scene": "reverse",
+      "t": 68.1,
+      "file": "outputs\\frames\\P1-refraction\\s04_68p1.png",
+      "texts": 7,
+      "nonBg": 0.034
+    },
+    {
+      "scene": "reverse",
+      "t": 74.8,
+      "file": "outputs\\frames\\P1-refraction\\s04_74p8.png",
+      "texts": 9,
+      "nonBg": 0.039
+    },
+    {
+      "scene": "pool",
+      "t": 78.7,
+      "file": "outputs\\frames\\P1-refraction\\s05_78p7.png",
+      "texts": 8,
+      "nonBg": 0.035
+    },
+    {
+      "scene": "pool",
+      "t": 89.7,
+      "file": "outputs\\frames\\P1-refraction\\s05_89p7.png",
+      "texts": 10,
+      "nonBg": 0.045
+    },
+    {
+      "scene": "pool",
+      "t": 99.3,
+      "file": "outputs\\frames\\P1-refraction\\s05_99p3.png",
+      "texts": 13,
+      "nonBg": 0.053
+    },
+    {
+      "scene": "apply",
+      "t": 104.7,
+      "file": "outputs\\frames\\P1-refraction\\s06_104p7.png",
+      "texts": 9,
+      "nonBg": 0.043
+    },
+    {
+      "scene": "apply",
+      "t": 111.2,
+      "file": "outputs\\frames\\P1-refraction\\s06_111p2.png",
+      "texts": 9,
+      "nonBg": 0.045
+    },
+    {
+      "scene": "apply",
+      "t": 117.1,
+      "file": "outputs\\frames\\P1-refraction\\s06_117p1.png",
+      "texts": 9,
+      "nonBg": 0.044
+    },
+    {
+      "scene": "summary",
+      "t": 120.7,
+      "file": "outputs\\frames\\P1-refraction\\s07_120p7.png",
+      "texts": 4,
+      "nonBg": 0.034
+    },
+    {
+      "scene": "summary",
+      "t": 125.4,
+      "file": "outputs\\frames\\P1-refraction\\s07_125p4.png",
+      "texts": 7,
+      "nonBg": 0.043
+    },
+    {
+      "scene": "summary",
+      "t": 129.8,
+      "file": "outputs\\frames\\P1-refraction\\s07_129p8.png",
+      "texts": 10,
+      "nonBg": 0.052
+    },
+    {
+      "scene": "summary",
+      "t": 131.9,
+      "file": "outputs\\frames\\P1-refraction\\s07_131p9.png",
+      "texts": 10,
+      "nonBg": 0.052
+    }
+  ],
+  "consoleErrors": []
+}

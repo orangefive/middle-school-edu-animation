@@ -1,0 +1,550 @@
+{
+  "case": "P2-newton",
+  "file": "examples\\physics\\newton-first-law\\lesson.html",
+  "generatedAt": "2026-10-19T05:39:24.550Z",
+  "duration": 142,
+  "scenes": [
+    {
+      "id": "hook",
+      "title": "推一下，箱子才会动？",
+      "objective": "暴露“力维持运动”的前概念，制造认知冲突",
+      "start": 0,
+      "duration": 14,
+      "visual": "地面、箱子、推力箭头；松手后箱子滑行减速停下",
+      "motion": "推力出现，箱子加速；撤去推力后箱子减速直至停止；问号出现",
+      "camera": "固定机位",
+      "link": "从日常经验引出错误直觉",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "用力推箱子，箱子前进；一松手，箱子很快停下。"
+        },
+        {
+          "t": 4.6,
+          "text": "看起来，好像必须一直用力，箱子才能一直动。"
+        },
+        {
+          "t": 9,
+          "text": "真的是这样吗？先别急着下结论。"
+        },
+        {
+          "t": 12.2,
+          "text": "注意：箱子停下，是因为地面有摩擦。"
+        }
+      ]
+    },
+    {
+      "id": "galileo",
+      "title": "伽利略的斜面实验",
+      "objective": "理解“摩擦越小，滑行越远”的趋势，为理想化推理做准备",
+      "start": 14,
+      "duration": 26,
+      "visual": "斜面与水平面；同一小球从同一高度释放，三种表面留下不同停止位置",
+      "motion": "小球三次从同一高度滚下，停止点依次变远，标记与表面名称出现",
+      "camera": "固定机位",
+      "link": "用控制变量把摩擦逐个减小",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "让小球从同一高度滚下，只改变水平面的粗糙程度。"
+        },
+        {
+          "t": 6,
+          "text": "铺毛巾时，小球很快就停下。"
+        },
+        {
+          "t": 11,
+          "text": "换成木板，它滑得更远。"
+        },
+        {
+          "t": 16,
+          "text": "换成玻璃，它滑得更远。"
+        },
+        {
+          "t": 21,
+          "text": "摩擦越小，速度减小得越慢，滑行越远。"
+        }
+      ]
+    },
+    {
+      "id": "ideal",
+      "title": "把摩擦推到零",
+      "objective": "完成理想化推理：无摩擦时小球永不停止，运动不需要力来维持",
+      "start": 40,
+      "duration": 18,
+      "visual": "水平面延伸为虚线，小球持续匀速向右，速度矢量不变",
+      "motion": "摩擦标记逐个虚化消失，轨迹无限延伸，速度箭头保持等长",
+      "camera": "固定机位",
+      "link": "从实验趋势外推到理想情况",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "如果水平面绝对光滑，没有一点摩擦呢？"
+        },
+        {
+          "t": 4.8,
+          "text": "小球的速度将不再减小。"
+        },
+        {
+          "t": 9.4,
+          "text": "它会以恒定的速度，一直运动下去。"
+        },
+        {
+          "t": 13.8,
+          "text": "所以，维持运动并不需要力。"
+        }
+      ]
+    },
+    {
+      "id": "law",
+      "title": "牛顿第一定律",
+      "objective": "准确表述牛顿第一定律，明确“不受力”与“运动状态不变”的对应",
+      "start": 58,
+      "duration": 18,
+      "visual": "定律全文居中，关键词高亮；下方三种状态示意",
+      "motion": "定律逐句出现，关键词色块高亮，三种状态图标依次出现",
+      "camera": "固定机位",
+      "link": "把推理结论上升为定律",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "一切物体总保持匀速直线运动状态或静止状态。"
+        },
+        {
+          "t": 5.4,
+          "text": "直到有外力迫使它改变这种状态为止。"
+        },
+        {
+          "t": 10,
+          "text": "不受力时，原来静止的继续静止，原来运动的做匀速直线运动。"
+        },
+        {
+          "t": 14.6,
+          "text": "力不是维持运动的原因，而是改变运动状态的原因。"
+        }
+      ]
+    },
+    {
+      "id": "inertia",
+      "title": "惯性：保持原状态的性质",
+      "objective": "理解惯性是物体的固有属性，质量是惯性大小的量度",
+      "start": 76,
+      "duration": 24,
+      "visual": "公交车内乘客，刹车时身体前倾；旁边对比大质量与小质量物体的惯性",
+      "motion": "车前进 → 刹车 → 乘客前倾；随后两辆小车载不同质量，施加相同力比较速度变化",
+      "camera": "固定机位",
+      "link": "从定律引出惯性概念",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "汽车突然刹车，乘客的身体会向前倾。"
+        },
+        {
+          "t": 5.4,
+          "text": "因为乘客的身体要保持原来的运动状态。"
+        },
+        {
+          "t": 10.4,
+          "text": "这种保持原来运动状态不变的性质，叫惯性。"
+        },
+        {
+          "t": 15.4,
+          "text": "一切物体都有惯性，质量越大，惯性越大。"
+        },
+        {
+          "t": 20,
+          "text": "同样受力，质量大的物体运动状态更难改变。"
+        }
+      ]
+    },
+    {
+      "id": "misconception",
+      "title": "惯性不是力",
+      "objective": "纠正“受到惯性作用”“惯性力”等错误表述，规范语言",
+      "start": 100,
+      "duration": 18,
+      "visual": "左右两个对话框：错误说法打叉，正确说法打勾，并给出改写",
+      "motion": "错误说法出现→打叉→改写为正确说法",
+      "camera": "固定机位",
+      "link": "澄清高频错误表述",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "常见的错误说法：汽车刹车时，乘客受到惯性作用向前倾。"
+        },
+        {
+          "t": 6,
+          "text": "惯性是性质，不是力，不能说“受到”。"
+        },
+        {
+          "t": 10.6,
+          "text": "正确的说法是：乘客由于惯性，保持原来的运动状态。"
+        },
+        {
+          "t": 15,
+          "text": "也不存在所谓的“惯性力”。"
+        }
+      ]
+    },
+    {
+      "id": "apply",
+      "title": "生活里的惯性",
+      "objective": "用惯性解释三个常见现象，形成稳定解释框架",
+      "start": 118,
+      "duration": 14,
+      "visual": "三张卡片：安全带、跳远助跑、拍打衣服，各配简图",
+      "motion": "卡片依次出现，每张配一句解释",
+      "camera": "固定机位",
+      "link": "回到生活情境",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "急刹车时，安全带把人拉住，防止人继续向前。"
+        },
+        {
+          "t": 4.8,
+          "text": "跳远前助跑，是利用惯性跳得更远。"
+        },
+        {
+          "t": 9.4,
+          "text": "拍打衣服，灰尘由于惯性保持静止，就掉下来了。"
+        }
+      ]
+    },
+    {
+      "id": "summary",
+      "title": "三句话收尾",
+      "objective": "固化“力改变运动状态”“惯性是性质”“质量量度惯性”",
+      "start": 132,
+      "duration": 10,
+      "visual": "三张要点卡片",
+      "motion": "按字幕节拍出现",
+      "camera": "固定机位",
+      "link": "收束全课",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "一，力不是维持运动的原因，而是改变运动状态的原因。"
+        },
+        {
+          "t": 4.4,
+          "text": "二，一切物体都有惯性，惯性不是力。"
+        },
+        {
+          "t": 7.6,
+          "text": "三，质量越大，惯性越大。"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "id": "load",
+      "name": "页面加载与引擎就绪",
+      "status": "pass",
+      "detail": "meta=牛顿第一定律：力是维持运动的原因吗 scenes=8 duration=142s"
+    },
+    {
+      "id": "duration",
+      "name": "时长符合知识点复杂度",
+      "status": "pass",
+      "detail": "实际 142s，期望 125–165s"
+    },
+    {
+      "id": "timeline",
+      "name": "镜头时间轴连续闭合",
+      "status": "pass",
+      "detail": "8 个镜头合计 142s"
+    },
+    {
+      "id": "storyboard",
+      "name": "storyboard.json 与动画一致",
+      "status": "pass",
+      "detail": "8 镜头一一对应"
+    },
+    {
+      "id": "layout-clip",
+      "name": "文字未越出画面",
+      "status": "pass",
+      "detail": "25 帧全部在画布内"
+    },
+    {
+      "id": "layout-caption",
+      "name": "正文不侵入字幕区",
+      "status": "pass",
+      "detail": "内容区与字幕区物理分离"
+    },
+    {
+      "id": "layout-header",
+      "name": "正文不侵入标题区",
+      "status": "pass",
+      "detail": "无重叠"
+    },
+    {
+      "id": "layout-overlap",
+      "name": "文字之间无实质重叠",
+      "status": "pass",
+      "detail": "未检出重叠"
+    },
+    {
+      "id": "layout-font",
+      "name": "字号满足可读性下限",
+      "status": "pass",
+      "detail": "最小正文 13.5px / 字幕 20px"
+    },
+    {
+      "id": "contrast",
+      "name": "文字与底色对比足够",
+      "status": "pass",
+      "detail": "未检出低对比文字"
+    },
+    {
+      "id": "blank",
+      "name": "无空白帧",
+      "status": "pass",
+      "detail": "0 个采样帧内容过少"
+    },
+    {
+      "id": "jump",
+      "name": "无异常闪烁或瞬变",
+      "status": "pass",
+      "detail": "0.25s 间隔画面变化均 < 55%"
+    },
+    {
+      "id": "static",
+      "name": "镜头后段仍有内容推进",
+      "status": "pass",
+      "detail": "各镜头后段均有变化"
+    },
+    {
+      "id": "probe",
+      "name": "关键数值/几何关系正确",
+      "status": "pass",
+      "detail": "galileo_trend=1；ideal_constant_v=1；law_statement=1；inertia_mass=1；inertia_not_force=1"
+    },
+    {
+      "id": "required-text",
+      "name": "必须出现的关键表述齐备",
+      "status": "pass",
+      "detail": "3 项全部出现"
+    },
+    {
+      "id": "forbidden-text",
+      "name": "未出现错误表述",
+      "status": "pass",
+      "detail": "未检出禁止表述"
+    },
+    {
+      "id": "caption",
+      "name": "每个镜头都有字幕讲解",
+      "status": "pass",
+      "detail": "8 个镜头均有字幕"
+    },
+    {
+      "id": "viewport",
+      "name": "不同窗口尺寸下可读",
+      "status": "pass",
+      "detail": "1024×576 最小字号 ≥11.5px，无溢出"
+    },
+    {
+      "id": "console",
+      "name": "运行期无脚本错误",
+      "status": "pass",
+      "detail": "0 error"
+    }
+  ],
+  "summary": {
+    "total": 19,
+    "pass": 19,
+    "fail": 0,
+    "warn": 0,
+    "skip": 0,
+    "verdict": "PASS"
+  },
+  "frames": [
+    {
+      "scene": "hook",
+      "t": 0.7,
+      "file": "outputs\\frames\\P2-newton\\s01_0p7.png",
+      "texts": 4,
+      "nonBg": 0.043
+    },
+    {
+      "scene": "hook",
+      "t": 6.3,
+      "file": "outputs\\frames\\P2-newton\\s01_6p3.png",
+      "texts": 5,
+      "nonBg": 0.043
+    },
+    {
+      "scene": "hook",
+      "t": 11.5,
+      "file": "outputs\\frames\\P2-newton\\s01_11p5.png",
+      "texts": 6,
+      "nonBg": 0.043
+    },
+    {
+      "scene": "galileo",
+      "t": 14.7,
+      "file": "outputs\\frames\\P2-newton\\s02_14p7.png",
+      "texts": 5,
+      "nonBg": 0.035
+    },
+    {
+      "scene": "galileo",
+      "t": 25.7,
+      "file": "outputs\\frames\\P2-newton\\s02_25p7.png",
+      "texts": 7,
+      "nonBg": 0.034
+    },
+    {
+      "scene": "galileo",
+      "t": 35.3,
+      "file": "outputs\\frames\\P2-newton\\s02_35p3.png",
+      "texts": 9,
+      "nonBg": 0.041
+    },
+    {
+      "scene": "ideal",
+      "t": 40.7,
+      "file": "outputs\\frames\\P2-newton\\s03_40p7.png",
+      "texts": 4,
+      "nonBg": 0.034
+    },
+    {
+      "scene": "ideal",
+      "t": 48.1,
+      "file": "outputs\\frames\\P2-newton\\s03_48p1.png",
+      "texts": 6,
+      "nonBg": 0.035
+    },
+    {
+      "scene": "ideal",
+      "t": 54.8,
+      "file": "outputs\\frames\\P2-newton\\s03_54p8.png",
+      "texts": 6,
+      "nonBg": 0.04
+    },
+    {
+      "scene": "law",
+      "t": 58.7,
+      "file": "outputs\\frames\\P2-newton\\s04_58p7.png",
+      "texts": 2,
+      "nonBg": 0.033
+    },
+    {
+      "scene": "law",
+      "t": 66.1,
+      "file": "outputs\\frames\\P2-newton\\s04_66p1.png",
+      "texts": 10,
+      "nonBg": 0.056
+    },
+    {
+      "scene": "law",
+      "t": 72.8,
+      "file": "outputs\\frames\\P2-newton\\s04_72p8.png",
+      "texts": 13,
+      "nonBg": 0.063
+    },
+    {
+      "scene": "inertia",
+      "t": 76.7,
+      "file": "outputs\\frames\\P2-newton\\s05_76p7.png",
+      "texts": 6,
+      "nonBg": 0.046
+    },
+    {
+      "scene": "inertia",
+      "t": 86.8,
+      "file": "outputs\\frames\\P2-newton\\s05_86p8.png",
+      "texts": 9,
+      "nonBg": 0.051
+    },
+    {
+      "scene": "inertia",
+      "t": 95.7,
+      "file": "outputs\\frames\\P2-newton\\s05_95p7.png",
+      "texts": 12,
+      "nonBg": 0.061
+    },
+    {
+      "scene": "misconception",
+      "t": 100.7,
+      "file": "outputs\\frames\\P2-newton\\s06_100p7.png",
+      "texts": 2,
+      "nonBg": 0.033
+    },
+    {
+      "scene": "misconception",
+      "t": 108.1,
+      "file": "outputs\\frames\\P2-newton\\s06_108p1.png",
+      "texts": 4,
+      "nonBg": 0.036
+    },
+    {
+      "scene": "misconception",
+      "t": 114.8,
+      "file": "outputs\\frames\\P2-newton\\s06_114p8.png",
+      "texts": 6,
+      "nonBg": 0.051
+    },
+    {
+      "scene": "apply",
+      "t": 118.7,
+      "file": "outputs\\frames\\P2-newton\\s07_118p7.png",
+      "texts": 3,
+      "nonBg": 0.037
+    },
+    {
+      "scene": "apply",
+      "t": 124.3,
+      "file": "outputs\\frames\\P2-newton\\s07_124p3.png",
+      "texts": 5,
+      "nonBg": 0.046
+    },
+    {
+      "scene": "apply",
+      "t": 129.5,
+      "file": "outputs\\frames\\P2-newton\\s07_129p5.png",
+      "texts": 7,
+      "nonBg": 0.056
+    },
+    {
+      "scene": "summary",
+      "t": 132.7,
+      "file": "outputs\\frames\\P2-newton\\s08_132p7.png",
+      "texts": 4,
+      "nonBg": 0.037
+    },
+    {
+      "scene": "summary",
+      "t": 136.5,
+      "file": "outputs\\frames\\P2-newton\\s08_136p5.png",
+      "texts": 4,
+      "nonBg": 0.035
+    },
+    {
+      "scene": "summary",
+      "t": 140.2,
+      "file": "outputs\\frames\\P2-newton\\s08_140p2.png",
+      "texts": 10,
+      "nonBg": 0.049
+    },
+    {
+      "scene": "summary",
+      "t": 141.9,
+      "file": "outputs\\frames\\P2-newton\\s08_141p9.png",
+      "texts": 10,
+      "nonBg": 0.049
+    }
+  ],
+  "consoleErrors": []
+}

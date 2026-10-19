@@ -1,0 +1,605 @@
+{
+  "case": "B3-mendel",
+  "file": "examples\\biology\\mendel-first-law\\lesson.html",
+  "generatedAt": "2026-10-19T05:42:22.777Z",
+  "duration": 194,
+  "scenes": [
+    {
+      "id": "hook",
+      "title": "高茎与矮茎",
+      "objective": "用一对差异明显的相对性状制造问题：杂交后代会长成什么样",
+      "start": 0,
+      "duration": 14,
+      "visual": "左侧标题与问题；右侧一高一矮两株豌豆",
+      "motion": "两株豌豆从地面长出，高度差形成对比，问号出现",
+      "camera": "固定机位",
+      "link": "由性状差异引出杂交实验",
+      "check": "豌豆的高茎与矮茎是一对相对性状",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "豌豆有高茎和矮茎，差别一眼就能看出。"
+        },
+        {
+          "t": 4.6,
+          "text": "孟德尔把这两种豌豆杂交，想看看后代什么样。"
+        },
+        {
+          "t": 9,
+          "text": "按常理，后代应该不高不矮，或者各占一半。"
+        }
+      ]
+    },
+    {
+      "id": "cross",
+      "title": "杂交实验：F₁ 全是高茎",
+      "objective": "知道杂交的基本操作与结果：F₁ 全部表现高茎",
+      "start": 14,
+      "duration": 26,
+      "visual": "上排两株亲本与杂交符号；下排 5 株 F₁；左侧操作步骤",
+      "motion": "亲本出现 → 杂交箭头 → F₁ 依次长出，全为高茎",
+      "camera": "固定机位",
+      "link": "用实验结果制造“矮茎去哪了”的疑问",
+      "check": "F₁ 全部为高茎",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "孟德尔先去掉母本的雄蕊，再授上另一株的花粉。"
+        },
+        {
+          "t": 6.4,
+          "text": "这样得到的后代叫 F₁，五株全是高茎。"
+        },
+        {
+          "t": 11.8,
+          "text": "一棵矮茎都没有出现。"
+        },
+        {
+          "t": 17.2,
+          "text": "矮茎性状，看起来消失了。"
+        }
+      ]
+    },
+    {
+      "id": "f2",
+      "title": "F₁ 自交，F₂ 出现 3:1",
+      "objective": "看到 F₂ 矮茎重现，并用数据说明 3:1 的统计规律",
+      "start": 40,
+      "duration": 24,
+      "visual": "左侧 F₁ 自交示意；右侧 787/277 的柱状对比与比值",
+      "motion": "柱状图生长，数字滚动，比值出现",
+      "camera": "固定机位",
+      "link": "推翻“矮茎消失”的直觉",
+      "check": "F₂ 中高茎与矮茎约为 3:1",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "孟德尔让 F₁ 自交，得到 F₂。"
+        },
+        {
+          "t": 5.4,
+          "text": "F₂ 里，矮茎又出现了。"
+        },
+        {
+          "t": 10.2,
+          "text": "数一数：787 株高茎，277 株矮茎。"
+        },
+        {
+          "t": 15.2,
+          "text": "比值约 2.84 比 1，接近 3 比 1。"
+        }
+      ]
+    },
+    {
+      "id": "hypothesis",
+      "title": "假设：基因成对存在",
+      "objective": "建立显性/隐性基因与基因型、表现型的对应关系",
+      "start": 64,
+      "duration": 26,
+      "visual": "三张基因型卡片：DD、dd、Dd，实心表示显性、空心表示隐性",
+      "motion": "亲本基因对出现，F₁ 的 Dd 由父母各取一个组合而成",
+      "camera": "固定机位",
+      "link": "用假设解释 F₁ 全高茎",
+      "check": "Dd 表现为高茎，d 未消失",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "孟德尔提出假设：性状由成对的基因决定。"
+        },
+        {
+          "t": 5.8,
+          "text": "高茎纯种的两个基因都是 D，写作 DD。"
+        },
+        {
+          "t": 10.4,
+          "text": "矮茎纯种是 dd，两个都是隐性基因。"
+        },
+        {
+          "t": 14.8,
+          "text": "F₁ 从父母各得一个，所以是 Dd。"
+        },
+        {
+          "t": 19.4,
+          "text": "D 是显性基因，F₁ 就表现为高茎。"
+        }
+      ]
+    },
+    {
+      "id": "segregation",
+      "title": "关键：形成配子时基因分离",
+      "objective": "理解分离定律的实质：Dd 产生 D、d 两种配子，比例 1:1",
+      "start": 90,
+      "duration": 24,
+      "visual": "一个 Dd 细胞拆成两个配子，分别带 D 和 d",
+      "motion": "成对基因从细胞中分开，分别进入两个配子，比例标注出现",
+      "camera": "固定机位",
+      "link": "从“是什么”进入“为什么”",
+      "check": "配子中只含成对基因中的一个",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "关键一步：形成生殖细胞时，成对的基因要分开。"
+        },
+        {
+          "t": 6.2,
+          "text": "D 和 d 分别进入不同的配子。"
+        },
+        {
+          "t": 11,
+          "text": "所以 F₁ 产生两种配子，数量各占一半。"
+        },
+        {
+          "t": 16,
+          "text": "配子里只含成对基因中的一个。"
+        }
+      ]
+    },
+    {
+      "id": "punnett",
+      "title": "棋盘法：为什么是 3:1",
+      "objective": "用配子随机结合推出 1:2:1 的基因型比例与 3:1 的表现型比例",
+      "start": 114,
+      "duration": 26,
+      "visual": "2×2 棋盘格逐格填入；右侧统计高茎与矮茎数量",
+      "motion": "四格依次填充，颜色区分表现型，计数出现",
+      "camera": "固定机位",
+      "link": "把分离与受精合起来推出 3:1",
+      "check": "基因型 1:2:1，表现型 3:1",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "受精时，雌雄配子随机结合。"
+        },
+        {
+          "t": 4.8,
+          "text": "四种组合：DD、Dd、Dd、dd。"
+        },
+        {
+          "t": 9.8,
+          "text": "DD 和 Dd 都表现高茎，只有 dd 是矮茎。"
+        },
+        {
+          "t": 14.4,
+          "text": "所以高茎比矮茎，正好 3 比 1。"
+        },
+        {
+          "t": 18.6,
+          "text": "基因型的比例则是 1 比 2 比 1。"
+        }
+      ]
+    },
+    {
+      "id": "testcross",
+      "title": "测交：用 1:1 验证猜想",
+      "objective": "理解测交的设计逻辑与 1:1 结果的含义",
+      "start": 140,
+      "duration": 22,
+      "visual": "Dd × dd 的棋盘格；右侧对比“若是 DD 会怎样”",
+      "motion": "棋盘填入，结果计数，反证出现",
+      "camera": "固定机位",
+      "link": "给分离定律一个可检验的预测",
+      "check": "测交后代 1:1，证明 F₁ 产生两种配子",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "怎么检验这个解释？孟德尔用了测交。"
+        },
+        {
+          "t": 5.2,
+          "text": "让 F₁ 与矮茎 dd 杂交。"
+        },
+        {
+          "t": 9.8,
+          "text": "后代高茎和矮茎各占一半。"
+        },
+        {
+          "t": 14.2,
+          "text": "如果 F₁ 是 DD，后代不会出现矮茎。"
+        },
+        {
+          "t": 18.2,
+          "text": "1 比 1 的结果，证明 F₁ 确实产生两种配子。"
+        }
+      ]
+    },
+    {
+      "id": "misconception",
+      "title": "两个常见误解",
+      "objective": "正面纠正“基因消失”和“显性吃掉隐性”两种错误理解",
+      "start": 162,
+      "duration": 20,
+      "visual": "上下两个对照面板：错误说法打叉，正确解释打勾",
+      "motion": "错误说法先出现并打叉，再给出正确解释",
+      "camera": "固定机位",
+      "link": "用反例巩固分离定律",
+      "check": "隐性基因并未消失，也不会被“吃掉”",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "误解一：矮茎基因在 F₁ 里消失了。"
+        },
+        {
+          "t": 4.8,
+          "text": "如果消失了，F₂ 就不可能再出现矮茎。"
+        },
+        {
+          "t": 9.4,
+          "text": "误解二：显性基因把隐性基因吃掉了。"
+        },
+        {
+          "t": 13.6,
+          "text": "基因不会互相吃掉，只是表现不同。"
+        }
+      ]
+    },
+    {
+      "id": "summary",
+      "title": "三句话记住分离定律",
+      "objective": "固化现象、实质与验证三件事",
+      "start": 182,
+      "duration": 12,
+      "visual": "三张要点卡片",
+      "motion": "按字幕节拍出现",
+      "camera": "固定机位",
+      "link": "收束全课",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "现象：F₁ 全高茎，F₂ 约 3 比 1。"
+        },
+        {
+          "t": 4.4,
+          "text": "实质：成对基因在形成配子时分离。"
+        },
+        {
+          "t": 8.2,
+          "text": "验证：测交后代 1 比 1。"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "id": "load",
+      "name": "页面加载与引擎就绪",
+      "status": "pass",
+      "detail": "meta=孟德尔第一定律：基因的分离定律 scenes=9 duration=194s"
+    },
+    {
+      "id": "duration",
+      "name": "时长符合知识点复杂度",
+      "status": "pass",
+      "detail": "实际 194s，期望 175–215s"
+    },
+    {
+      "id": "timeline",
+      "name": "镜头时间轴连续闭合",
+      "status": "pass",
+      "detail": "9 个镜头合计 194s"
+    },
+    {
+      "id": "storyboard",
+      "name": "storyboard.json 与动画一致",
+      "status": "pass",
+      "detail": "9 镜头一一对应"
+    },
+    {
+      "id": "layout-clip",
+      "name": "文字未越出画面",
+      "status": "pass",
+      "detail": "28 帧全部在画布内"
+    },
+    {
+      "id": "layout-caption",
+      "name": "正文不侵入字幕区",
+      "status": "pass",
+      "detail": "内容区与字幕区物理分离"
+    },
+    {
+      "id": "layout-header",
+      "name": "正文不侵入标题区",
+      "status": "pass",
+      "detail": "无重叠"
+    },
+    {
+      "id": "layout-overlap",
+      "name": "文字之间无实质重叠",
+      "status": "pass",
+      "detail": "未检出重叠"
+    },
+    {
+      "id": "layout-font",
+      "name": "字号满足可读性下限",
+      "status": "pass",
+      "detail": "最小正文 13.5px / 字幕 20px"
+    },
+    {
+      "id": "contrast",
+      "name": "文字与底色对比足够",
+      "status": "pass",
+      "detail": "未检出低对比文字"
+    },
+    {
+      "id": "blank",
+      "name": "无空白帧",
+      "status": "pass",
+      "detail": "0 个采样帧内容过少"
+    },
+    {
+      "id": "jump",
+      "name": "无异常闪烁或瞬变",
+      "status": "pass",
+      "detail": "0.25s 间隔画面变化均 < 55%"
+    },
+    {
+      "id": "static",
+      "name": "镜头后段仍有内容推进",
+      "status": "pass",
+      "detail": "各镜头后段均有变化"
+    },
+    {
+      "id": "probe",
+      "name": "关键数值/几何关系正确",
+      "status": "pass",
+      "detail": "relative_trait=1；f1_all_tall=1；mendel_f2_ratio=2.84；f2_tall_count=3；f2_short_count=1；f1_genotype=1；gamete_each=0.5；punnett_tall=3；punnett_short=1；testcross_ratio=1；recessive_hidden=1"
+    },
+    {
+      "id": "required-text",
+      "name": "必须出现的关键表述齐备",
+      "status": "pass",
+      "detail": "4 项全部出现"
+    },
+    {
+      "id": "forbidden-text",
+      "name": "未出现错误表述",
+      "status": "pass",
+      "detail": "未检出禁止表述"
+    },
+    {
+      "id": "caption",
+      "name": "每个镜头都有字幕讲解",
+      "status": "pass",
+      "detail": "9 个镜头均有字幕"
+    },
+    {
+      "id": "viewport",
+      "name": "不同窗口尺寸下可读",
+      "status": "pass",
+      "detail": "1024×576 最小字号 ≥11.5px，无溢出"
+    },
+    {
+      "id": "console",
+      "name": "运行期无脚本错误",
+      "status": "pass",
+      "detail": "0 error"
+    }
+  ],
+  "summary": {
+    "total": 19,
+    "pass": 19,
+    "fail": 0,
+    "warn": 0,
+    "skip": 0,
+    "verdict": "PASS"
+  },
+  "frames": [
+    {
+      "scene": "hook",
+      "t": 0.7,
+      "file": "outputs\\frames\\B3-mendel\\s01_0p7.png",
+      "texts": 6,
+      "nonBg": 0.038
+    },
+    {
+      "scene": "hook",
+      "t": 6.3,
+      "file": "outputs\\frames\\B3-mendel\\s01_6p3.png",
+      "texts": 6,
+      "nonBg": 0.047
+    },
+    {
+      "scene": "hook",
+      "t": 11.5,
+      "file": "outputs\\frames\\B3-mendel\\s01_11p5.png",
+      "texts": 7,
+      "nonBg": 0.047
+    },
+    {
+      "scene": "cross",
+      "t": 14.7,
+      "file": "outputs\\frames\\B3-mendel\\s02_14p7.png",
+      "texts": 7,
+      "nonBg": 0.031
+    },
+    {
+      "scene": "cross",
+      "t": 25.7,
+      "file": "outputs\\frames\\B3-mendel\\s02_25p7.png",
+      "texts": 12,
+      "nonBg": 0.058
+    },
+    {
+      "scene": "cross",
+      "t": 35.3,
+      "file": "outputs\\frames\\B3-mendel\\s02_35p3.png",
+      "texts": 13,
+      "nonBg": 0.059
+    },
+    {
+      "scene": "f2",
+      "t": 40.7,
+      "file": "outputs\\frames\\B3-mendel\\s03_40p7.png",
+      "texts": 10,
+      "nonBg": 0.032
+    },
+    {
+      "scene": "f2",
+      "t": 50.8,
+      "file": "outputs\\frames\\B3-mendel\\s03_50p8.png",
+      "texts": 10,
+      "nonBg": 0.094
+    },
+    {
+      "scene": "f2",
+      "t": 59.7,
+      "file": "outputs\\frames\\B3-mendel\\s03_59p7.png",
+      "texts": 12,
+      "nonBg": 0.096
+    },
+    {
+      "scene": "hypothesis",
+      "t": 64.7,
+      "file": "outputs\\frames\\B3-mendel\\s04_64p7.png",
+      "texts": 3,
+      "nonBg": 0.03
+    },
+    {
+      "scene": "hypothesis",
+      "t": 75.7,
+      "file": "outputs\\frames\\B3-mendel\\s04_75p7.png",
+      "texts": 15,
+      "nonBg": 0.053
+    },
+    {
+      "scene": "hypothesis",
+      "t": 85.3,
+      "file": "outputs\\frames\\B3-mendel\\s04_85p3.png",
+      "texts": 21,
+      "nonBg": 0.066
+    },
+    {
+      "scene": "segregation",
+      "t": 90.7,
+      "file": "outputs\\frames\\B3-mendel\\s05_90p7.png",
+      "texts": 6,
+      "nonBg": 0.041
+    },
+    {
+      "scene": "segregation",
+      "t": 100.8,
+      "file": "outputs\\frames\\B3-mendel\\s05_100p8.png",
+      "texts": 11,
+      "nonBg": 0.052
+    },
+    {
+      "scene": "segregation",
+      "t": 109.7,
+      "file": "outputs\\frames\\B3-mendel\\s05_109p7.png",
+      "texts": 15,
+      "nonBg": 0.062
+    },
+    {
+      "scene": "punnett",
+      "t": 114.7,
+      "file": "outputs\\frames\\B3-mendel\\s06_114p7.png",
+      "texts": 9,
+      "nonBg": 0.031
+    },
+    {
+      "scene": "punnett",
+      "t": 125.7,
+      "file": "outputs\\frames\\B3-mendel\\s06_125p7.png",
+      "texts": 14,
+      "nonBg": 0.038
+    },
+    {
+      "scene": "punnett",
+      "t": 135.3,
+      "file": "outputs\\frames\\B3-mendel\\s06_135p3.png",
+      "texts": 21,
+      "nonBg": 0.044
+    },
+    {
+      "scene": "testcross",
+      "t": 140.7,
+      "file": "outputs\\frames\\B3-mendel\\s07_140p7.png",
+      "texts": 10,
+      "nonBg": 0.035
+    },
+    {
+      "scene": "testcross",
+      "t": 149.9,
+      "file": "outputs\\frames\\B3-mendel\\s07_149p9.png",
+      "texts": 15,
+      "nonBg": 0.04
+    },
+    {
+      "scene": "testcross",
+      "t": 158,
+      "file": "outputs\\frames\\B3-mendel\\s07_158.png",
+      "texts": 19,
+      "nonBg": 0.049
+    },
+    {
+      "scene": "misconception",
+      "t": 162.7,
+      "file": "outputs\\frames\\B3-mendel\\s08_162p7.png",
+      "texts": 3,
+      "nonBg": 0.037
+    },
+    {
+      "scene": "misconception",
+      "t": 171,
+      "file": "outputs\\frames\\B3-mendel\\s08_171.png",
+      "texts": 5,
+      "nonBg": 0.044
+    },
+    {
+      "scene": "misconception",
+      "t": 178.4,
+      "file": "outputs\\frames\\B3-mendel\\s08_178p4.png",
+      "texts": 8,
+      "nonBg": 0.056
+    },
+    {
+      "scene": "summary",
+      "t": 182.7,
+      "file": "outputs\\frames\\B3-mendel\\s09_182p7.png",
+      "texts": 4,
+      "nonBg": 0.036
+    },
+    {
+      "scene": "summary",
+      "t": 187.4,
+      "file": "outputs\\frames\\B3-mendel\\s09_187p4.png",
+      "texts": 7,
+      "nonBg": 0.046
+    },
+    {
+      "scene": "summary",
+      "t": 191.8,
+      "file": "outputs\\frames\\B3-mendel\\s09_191p8.png",
+      "texts": 10,
+      "nonBg": 0.051
+    },
+    {
+      "scene": "summary",
+      "t": 193.9,
+      "file": "outputs\\frames\\B3-mendel\\s09_193p9.png",
+      "texts": 10,
+      "nonBg": 0.052
+    }
+  ],
+  "consoleErrors": []
+}

@@ -1,0 +1,562 @@
+{
+  "case": "B1-photosynthesis",
+  "file": "examples\\biology\\photosynthesis\\lesson.html",
+  "generatedAt": "2026-10-19T05:41:32.004Z",
+  "duration": 160,
+  "scenes": [
+    {
+      "id": "hook",
+      "title": "一棵树长大，物质从哪来",
+      "objective": "用海尔蒙特实验排除“土壤提供全部物质”的直觉",
+      "start": 0,
+      "duration": 14,
+      "visual": "柳树与土槽，五年后树增重而土几乎不变",
+      "motion": "树逐年长大，土壤高度标尺几乎不动",
+      "camera": "固定机位",
+      "link": "用历史实验提出“物质来源”问题",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "一棵小树长成大树，增加的重量从哪来？"
+        },
+        {
+          "t": 4.8,
+          "text": "有人认为是土壤。海尔蒙特把柳树种在称过的土里。"
+        },
+        {
+          "t": 9.4,
+          "text": "五年后，树重了 70 多千克，土只少了 60 克。"
+        },
+        {
+          "t": 12.6,
+          "text": "土壤解释不了，答案在空气和水中。"
+        }
+      ]
+    },
+    {
+      "id": "experiment",
+      "title": "绿叶在光下制造有机物",
+      "objective": "掌握实验步骤与现象，理解对照与单一变量",
+      "start": 14,
+      "duration": 28,
+      "visual": "叶片：暗处理 → 部分遮光 → 光照 → 酒精脱色 → 碘液显色",
+      "motion": "叶片颜色随步骤变化：绿 → 黄白 → 见光部分蓝黑",
+      "camera": "固定机位",
+      "link": "用实验证明产物是淀粉、条件是光",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "第一步，暗处理一昼夜，让叶片里的淀粉消耗掉。"
+        },
+        {
+          "t": 5.6,
+          "text": "第二步，用黑纸片把叶片一部分遮住，再光照。"
+        },
+        {
+          "t": 11.4,
+          "text": "第三步，摘下叶片，酒精隔水加热脱色。"
+        },
+        {
+          "t": 16.8,
+          "text": "第四步，滴加碘液，见光部分变蓝。"
+        },
+        {
+          "t": 22,
+          "text": "说明光下产生了淀粉，光是必要条件。"
+        }
+      ]
+    },
+    {
+      "id": "inputs",
+      "title": "原料与条件",
+      "objective": "明确原料是二氧化碳和水，条件是光和叶绿体",
+      "start": 42,
+      "duration": 24,
+      "visual": "植株：空气中 CO₂ 进入叶片，根部吸水上行，阳光照到叶绿体",
+      "motion": "三股箭头分别表示 CO₂、H₂O、光能，汇入叶绿体",
+      "camera": "固定机位",
+      "link": "从实验走向过程",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "光合作用的原料是二氧化碳和水。"
+        },
+        {
+          "t": 4.6,
+          "text": "二氧化碳从气孔进入叶片。"
+        },
+        {
+          "t": 9,
+          "text": "水由根吸收，经导管运到叶。"
+        },
+        {
+          "t": 13.4,
+          "text": "条件是光，场所是叶绿体。"
+        },
+        {
+          "t": 18,
+          "text": "四者缺一不可。"
+        }
+      ]
+    },
+    {
+      "id": "outputs",
+      "title": "产物：有机物和氧气",
+      "objective": "确认产物是有机物（淀粉）和氧气，并能检验氧气",
+      "start": 66,
+      "duration": 22,
+      "visual": "金鱼藻在水中产生气泡，试管收集气体使带火星木条复燃",
+      "motion": "气泡上升进入试管，木条复燃",
+      "camera": "固定机位",
+      "link": "补齐产物一侧",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "把金鱼藻放在水中光照，会不断冒出气泡。"
+        },
+        {
+          "t": 5.4,
+          "text": "收集这些气体，带火星的木条会复燃。"
+        },
+        {
+          "t": 9.8,
+          "text": "说明光合作用产生了氧气。"
+        },
+        {
+          "t": 14,
+          "text": "同时生成的有机物，主要是淀粉。"
+        },
+        {
+          "t": 18.2,
+          "text": "有机物既是植物自身的“食物”，也是其他生物的食物。"
+        }
+      ]
+    },
+    {
+      "id": "energy",
+      "title": "物质与能量的转化",
+      "objective": "理解光合作用是物质转化与能量转化的统一",
+      "start": 88,
+      "duration": 24,
+      "visual": "左：无机物 → 有机物；右：光能 → 化学能",
+      "motion": "两条转化链同时推进，箭头与数值出现",
+      "camera": "固定机位",
+      "link": "把过程抽象为两条转化",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "光合作用同时完成了两件事。"
+        },
+        {
+          "t": 4.6,
+          "text": "一是物质转化：无机物变成有机物。"
+        },
+        {
+          "t": 10,
+          "text": "二是能量转化：光能变成化学能。"
+        },
+        {
+          "t": 15.4,
+          "text": "能量储存在有机物里，随食物链传递。"
+        },
+        {
+          "t": 20,
+          "text": "所以光合作用是生物圈的“能量入口”。"
+        }
+      ]
+    },
+    {
+      "id": "meaning",
+      "title": "对生物圈意味着什么",
+      "objective": "从食物、氧气、碳氧平衡三个角度说明光合作用的意义",
+      "start": 112,
+      "duration": 20,
+      "visual": "三张卡片：食物来源、氧气来源、碳氧平衡；底部碳氧循环箭头",
+      "motion": "卡片依次出现，循环箭头闭合",
+      "camera": "固定机位",
+      "link": "把过程放到生态系统尺度",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "第一，制造有机物，为所有生物提供食物。"
+        },
+        {
+          "t": 5.4,
+          "text": "第二，释放氧气，维持大气中的氧含量。"
+        },
+        {
+          "t": 10.4,
+          "text": "第三，消耗二氧化碳，参与碳氧平衡。"
+        },
+        {
+          "t": 15.2,
+          "text": "没有光合作用，就没有今天的地球生命。"
+        }
+      ]
+    },
+    {
+      "id": "apply",
+      "title": "大棚里怎么增产",
+      "objective": "把光合作用原理迁移到农业生产",
+      "start": 132,
+      "duration": 16,
+      "visual": "大棚：补光、施气肥、控温三个措施与对应原理",
+      "motion": "三个措施依次出现并指向对应原理",
+      "camera": "固定机位",
+      "link": "原理回到生产实践",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "蔬菜大棚里，常用三种办法提高产量。"
+        },
+        {
+          "t": 4.6,
+          "text": "增加二氧化碳浓度，比如施气肥。"
+        },
+        {
+          "t": 8.6,
+          "text": "延长光照时间，或增加光照强度。"
+        },
+        {
+          "t": 12.2,
+          "text": "控制温度，让酶保持较高活性。"
+        }
+      ]
+    },
+    {
+      "id": "summary",
+      "title": "一句话记住光合作用",
+      "objective": "用一句完整表述固化原料、条件、场所、产物与意义",
+      "start": 148,
+      "duration": 12,
+      "visual": "中心公式与四条要点",
+      "motion": "公式与要点依次出现",
+      "camera": "固定机位",
+      "link": "收束全课",
+      "check": "",
+      "captions": [
+        {
+          "t": 0.2,
+          "text": "绿色植物在光下，把二氧化碳和水变成有机物和氧气。"
+        },
+        {
+          "t": 4.8,
+          "text": "场所是叶绿体，能量来自光。"
+        },
+        {
+          "t": 8.4,
+          "text": "这一过程，养活了几乎整个生物圈。"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "id": "load",
+      "name": "页面加载与引擎就绪",
+      "status": "pass",
+      "detail": "meta=光合作用：植物为什么能养活世界 scenes=8 duration=160s"
+    },
+    {
+      "id": "duration",
+      "name": "时长符合知识点复杂度",
+      "status": "pass",
+      "detail": "实际 160s，期望 140–185s"
+    },
+    {
+      "id": "timeline",
+      "name": "镜头时间轴连续闭合",
+      "status": "pass",
+      "detail": "8 个镜头合计 160s"
+    },
+    {
+      "id": "storyboard",
+      "name": "storyboard.json 与动画一致",
+      "status": "pass",
+      "detail": "8 镜头一一对应"
+    },
+    {
+      "id": "layout-clip",
+      "name": "文字未越出画面",
+      "status": "pass",
+      "detail": "25 帧全部在画布内"
+    },
+    {
+      "id": "layout-caption",
+      "name": "正文不侵入字幕区",
+      "status": "pass",
+      "detail": "内容区与字幕区物理分离"
+    },
+    {
+      "id": "layout-header",
+      "name": "正文不侵入标题区",
+      "status": "pass",
+      "detail": "无重叠"
+    },
+    {
+      "id": "layout-overlap",
+      "name": "文字之间无实质重叠",
+      "status": "pass",
+      "detail": "未检出重叠"
+    },
+    {
+      "id": "layout-font",
+      "name": "字号满足可读性下限",
+      "status": "pass",
+      "detail": "最小正文 13.5px / 字幕 20px"
+    },
+    {
+      "id": "contrast",
+      "name": "文字与底色对比足够",
+      "status": "pass",
+      "detail": "未检出低对比文字"
+    },
+    {
+      "id": "blank",
+      "name": "无空白帧",
+      "status": "pass",
+      "detail": "0 个采样帧内容过少"
+    },
+    {
+      "id": "jump",
+      "name": "无异常闪烁或瞬变",
+      "status": "pass",
+      "detail": "0.25s 间隔画面变化均 < 55%"
+    },
+    {
+      "id": "static",
+      "name": "镜头后段仍有内容推进",
+      "status": "pass",
+      "detail": "各镜头后段均有变化"
+    },
+    {
+      "id": "probe",
+      "name": "关键数值/几何关系正确",
+      "status": "pass",
+      "detail": "starch_requires_light=1；raw_materials=2；product_oxygen=1；energy_conversion=1；oxygen_source=1"
+    },
+    {
+      "id": "required-text",
+      "name": "必须出现的关键表述齐备",
+      "status": "pass",
+      "detail": "4 项全部出现"
+    },
+    {
+      "id": "forbidden-text",
+      "name": "未出现错误表述",
+      "status": "pass",
+      "detail": "未检出禁止表述"
+    },
+    {
+      "id": "caption",
+      "name": "每个镜头都有字幕讲解",
+      "status": "pass",
+      "detail": "8 个镜头均有字幕"
+    },
+    {
+      "id": "viewport",
+      "name": "不同窗口尺寸下可读",
+      "status": "pass",
+      "detail": "1024×576 最小字号 ≥11.5px，无溢出"
+    },
+    {
+      "id": "console",
+      "name": "运行期无脚本错误",
+      "status": "pass",
+      "detail": "0 error"
+    }
+  ],
+  "summary": {
+    "total": 19,
+    "pass": 19,
+    "fail": 0,
+    "warn": 0,
+    "skip": 0,
+    "verdict": "PASS"
+  },
+  "frames": [
+    {
+      "scene": "hook",
+      "t": 0.7,
+      "file": "outputs\\frames\\B1-photosynthesis\\s01_0p7.png",
+      "texts": 7,
+      "nonBg": 0.079
+    },
+    {
+      "scene": "hook",
+      "t": 6.3,
+      "file": "outputs\\frames\\B1-photosynthesis\\s01_6p3.png",
+      "texts": 7,
+      "nonBg": 0.093
+    },
+    {
+      "scene": "hook",
+      "t": 11.5,
+      "file": "outputs\\frames\\B1-photosynthesis\\s01_11p5.png",
+      "texts": 8,
+      "nonBg": 0.096
+    },
+    {
+      "scene": "experiment",
+      "t": 14.7,
+      "file": "outputs\\frames\\B1-photosynthesis\\s02_14p7.png",
+      "texts": 5,
+      "nonBg": 0.063
+    },
+    {
+      "scene": "experiment",
+      "t": 26.6,
+      "file": "outputs\\frames\\B1-photosynthesis\\s02_26p6.png",
+      "texts": 7,
+      "nonBg": 0.067
+    },
+    {
+      "scene": "experiment",
+      "t": 37,
+      "file": "outputs\\frames\\B1-photosynthesis\\s02_37.png",
+      "texts": 11,
+      "nonBg": 0.073
+    },
+    {
+      "scene": "inputs",
+      "t": 42.7,
+      "file": "outputs\\frames\\B1-photosynthesis\\s03_42p7.png",
+      "texts": 6,
+      "nonBg": 0.049
+    },
+    {
+      "scene": "inputs",
+      "t": 52.8,
+      "file": "outputs\\frames\\B1-photosynthesis\\s03_52p8.png",
+      "texts": 9,
+      "nonBg": 0.05
+    },
+    {
+      "scene": "inputs",
+      "t": 61.7,
+      "file": "outputs\\frames\\B1-photosynthesis\\s03_61p7.png",
+      "texts": 11,
+      "nonBg": 0.053
+    },
+    {
+      "scene": "outputs",
+      "t": 66.7,
+      "file": "outputs\\frames\\B1-photosynthesis\\s04_66p7.png",
+      "texts": 7,
+      "nonBg": 0.04
+    },
+    {
+      "scene": "outputs",
+      "t": 75.9,
+      "file": "outputs\\frames\\B1-photosynthesis\\s04_75p9.png",
+      "texts": 7,
+      "nonBg": 0.038
+    },
+    {
+      "scene": "outputs",
+      "t": 84,
+      "file": "outputs\\frames\\B1-photosynthesis\\s04_84.png",
+      "texts": 7,
+      "nonBg": 0.04
+    },
+    {
+      "scene": "energy",
+      "t": 88.7,
+      "file": "outputs\\frames\\B1-photosynthesis\\s05_88p7.png",
+      "texts": 8,
+      "nonBg": 0.043
+    },
+    {
+      "scene": "energy",
+      "t": 98.8,
+      "file": "outputs\\frames\\B1-photosynthesis\\s05_98p8.png",
+      "texts": 13,
+      "nonBg": 0.055
+    },
+    {
+      "scene": "energy",
+      "t": 107.7,
+      "file": "outputs\\frames\\B1-photosynthesis\\s05_107p7.png",
+      "texts": 15,
+      "nonBg": 0.061
+    },
+    {
+      "scene": "meaning",
+      "t": 112.7,
+      "file": "outputs\\frames\\B1-photosynthesis\\s06_112p7.png",
+      "texts": 5,
+      "nonBg": 0.043
+    },
+    {
+      "scene": "meaning",
+      "t": 121,
+      "file": "outputs\\frames\\B1-photosynthesis\\s06_121.png",
+      "texts": 7,
+      "nonBg": 0.048
+    },
+    {
+      "scene": "meaning",
+      "t": 128.4,
+      "file": "outputs\\frames\\B1-photosynthesis\\s06_128p4.png",
+      "texts": 11,
+      "nonBg": 0.055
+    },
+    {
+      "scene": "apply",
+      "t": 132.7,
+      "file": "outputs\\frames\\B1-photosynthesis\\s07_132p7.png",
+      "texts": 2,
+      "nonBg": 0.035
+    },
+    {
+      "scene": "apply",
+      "t": 139.2,
+      "file": "outputs\\frames\\B1-photosynthesis\\s07_139p2.png",
+      "texts": 4,
+      "nonBg": 0.039
+    },
+    {
+      "scene": "apply",
+      "t": 145.1,
+      "file": "outputs\\frames\\B1-photosynthesis\\s07_145p1.png",
+      "texts": 8,
+      "nonBg": 0.045
+    },
+    {
+      "scene": "summary",
+      "t": 148.7,
+      "file": "outputs\\frames\\B1-photosynthesis\\s08_148p7.png",
+      "texts": 3,
+      "nonBg": 0.038
+    },
+    {
+      "scene": "summary",
+      "t": 153.4,
+      "file": "outputs\\frames\\B1-photosynthesis\\s08_153p4.png",
+      "texts": 7,
+      "nonBg": 0.04
+    },
+    {
+      "scene": "summary",
+      "t": 157.8,
+      "file": "outputs\\frames\\B1-photosynthesis\\s08_157p8.png",
+      "texts": 8,
+      "nonBg": 0.044
+    },
+    {
+      "scene": "summary",
+      "t": 159.9,
+      "file": "outputs\\frames\\B1-photosynthesis\\s08_159p9.png",
+      "texts": 8,
+      "nonBg": 0.045
+    }
+  ],
+  "consoleErrors": []
+}

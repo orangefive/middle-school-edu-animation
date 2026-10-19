@@ -1,0 +1,995 @@
+{
+  "tag": "v1.0-dev",
+  "set": "dev",
+  "generatedAt": "2026-10-19T11:17:28",
+  "total": 8,
+  "pass": 8,
+  "avgAutoScore": 100.0,
+  "hardFailCases": [],
+  "cases": [
+    {
+      "case": "M1-quadratic",
+      "verdict": "PASS",
+      "autoScore": 100.0,
+      "hardFail": [],
+      "duration": 190,
+      "checks": [
+        {
+          "id": "load",
+          "status": "pass",
+          "detail": "meta=二次函数 y=ax²+bx+c 的图像与性质 scenes=9 duration=190s"
+        },
+        {
+          "id": "duration",
+          "status": "pass",
+          "detail": "实际 190s，期望 170–220s"
+        },
+        {
+          "id": "timeline",
+          "status": "pass",
+          "detail": "9 个镜头合计 190s"
+        },
+        {
+          "id": "storyboard",
+          "status": "pass",
+          "detail": "9 镜头一一对应"
+        },
+        {
+          "id": "layout-clip",
+          "status": "pass",
+          "detail": "28 帧全部在画布内"
+        },
+        {
+          "id": "layout-caption",
+          "status": "pass",
+          "detail": "内容区与字幕区物理分离"
+        },
+        {
+          "id": "layout-header",
+          "status": "pass",
+          "detail": "无重叠"
+        },
+        {
+          "id": "layout-overlap",
+          "status": "pass",
+          "detail": "未检出重叠"
+        },
+        {
+          "id": "layout-font",
+          "status": "pass",
+          "detail": "最小正文 13.5px / 字幕 20px"
+        },
+        {
+          "id": "blank",
+          "status": "pass",
+          "detail": "0 个采样帧内容过少"
+        },
+        {
+          "id": "jump",
+          "status": "pass",
+          "detail": "0.25s 间隔画面变化均 < 55%"
+        },
+        {
+          "id": "static",
+          "status": "pass",
+          "detail": "各镜头后段均有变化"
+        },
+        {
+          "id": "probe",
+          "status": "pass",
+          "detail": "basic_y2=4；vertexX=2；vertexY=-1；symmetryDiff=0；root1=1；root2=3；maxHeight=20"
+        },
+        {
+          "id": "required-text",
+          "status": "pass",
+          "detail": "4 项全部出现"
+        },
+        {
+          "id": "forbidden-text",
+          "status": "pass",
+          "detail": "未检出禁止表述"
+        },
+        {
+          "id": "caption",
+          "status": "pass",
+          "detail": "9 个镜头均有字幕"
+        },
+        {
+          "id": "viewport",
+          "status": "pass",
+          "detail": "1024×576 最小字号 ≥11.5px，无溢出"
+        },
+        {
+          "id": "console",
+          "status": "pass",
+          "detail": "0 error"
+        }
+      ],
+      "frames": [
+        {
+          "scene": "hook",
+          "t": 0.7,
+          "file": "outputs\\frames\\M1-quadratic\\s01_0p7.png",
+          "texts": 5,
+          "nonBg": 0.036
+        },
+        {
+          "scene": "hook",
+          "t": 5.4,
+          "file": "outputs\\frames\\M1-quadratic\\s01_5p4.png",
+          "texts": 5,
+          "nonBg": 0.039
+        },
+        {
+          "scene": "hook",
+          "t": 9.8,
+          "file": "outputs\\frames\\M1-quadratic\\s01_9p8.png",
+          "texts": 5,
+          "nonBg": 0.039
+        }
+      ],
+      "error": null
+    },
+    {
+      "case": "M2-pythagoras",
+      "verdict": "PASS",
+      "autoScore": 100.0,
+      "hardFail": [],
+      "duration": 154,
+      "checks": [
+        {
+          "id": "load",
+          "status": "pass",
+          "detail": "meta=勾股定理：直角三角形三边关系 scenes=8 duration=154s"
+        },
+        {
+          "id": "duration",
+          "status": "pass",
+          "detail": "实际 154s，期望 135–180s"
+        },
+        {
+          "id": "timeline",
+          "status": "pass",
+          "detail": "8 个镜头合计 154s"
+        },
+        {
+          "id": "storyboard",
+          "status": "pass",
+          "detail": "8 镜头一一对应"
+        },
+        {
+          "id": "layout-clip",
+          "status": "pass",
+          "detail": "25 帧全部在画布内"
+        },
+        {
+          "id": "layout-caption",
+          "status": "pass",
+          "detail": "内容区与字幕区物理分离"
+        },
+        {
+          "id": "layout-header",
+          "status": "pass",
+          "detail": "无重叠"
+        },
+        {
+          "id": "layout-overlap",
+          "status": "pass",
+          "detail": "未检出重叠"
+        },
+        {
+          "id": "layout-font",
+          "status": "pass",
+          "detail": "最小正文 13.5px / 字幕 20px"
+        },
+        {
+          "id": "blank",
+          "status": "pass",
+          "detail": "0 个采样帧内容过少"
+        },
+        {
+          "id": "jump",
+          "status": "pass",
+          "detail": "0.25s 间隔画面变化均 < 55%"
+        },
+        {
+          "id": "static",
+          "status": "pass",
+          "detail": "各镜头后段均有变化"
+        },
+        {
+          "id": "probe",
+          "status": "pass",
+          "detail": "pythagoras_3_4=5；grid_area_sum=25；leg_from_hyp=12；nonRightTriangle=0；ladder_height=4"
+        },
+        {
+          "id": "required-text",
+          "status": "pass",
+          "detail": "4 项全部出现"
+        },
+        {
+          "id": "forbidden-text",
+          "status": "pass",
+          "detail": "未检出禁止表述"
+        },
+        {
+          "id": "caption",
+          "status": "pass",
+          "detail": "8 个镜头均有字幕"
+        },
+        {
+          "id": "viewport",
+          "status": "pass",
+          "detail": "1024×576 最小字号 ≥11.5px，无溢出"
+        },
+        {
+          "id": "console",
+          "status": "pass",
+          "detail": "0 error"
+        }
+      ],
+      "frames": [
+        {
+          "scene": "hook",
+          "t": 0.7,
+          "file": "outputs\\frames\\M2-pythagoras\\s01_0p7.png",
+          "texts": 5,
+          "nonBg": 0.036
+        },
+        {
+          "scene": "hook",
+          "t": 5.4,
+          "file": "outputs\\frames\\M2-pythagoras\\s01_5p4.png",
+          "texts": 7,
+          "nonBg": 0.04
+        },
+        {
+          "scene": "hook",
+          "t": 9.8,
+          "file": "outputs\\frames\\M2-pythagoras\\s01_9p8.png",
+          "texts": 7,
+          "nonBg": 0.04
+        }
+      ],
+      "error": null
+    },
+    {
+      "case": "M4-linear",
+      "verdict": "PASS",
+      "autoScore": 100.0,
+      "hardFail": [],
+      "duration": 112,
+      "checks": [
+        {
+          "id": "load",
+          "status": "pass",
+          "detail": "meta=一次函数 y=kx+b 的图像与性质 scenes=7 duration=112s"
+        },
+        {
+          "id": "duration",
+          "status": "pass",
+          "detail": "实际 112s，期望 95–135s"
+        },
+        {
+          "id": "timeline",
+          "status": "pass",
+          "detail": "7 个镜头合计 112s"
+        },
+        {
+          "id": "storyboard",
+          "status": "pass",
+          "detail": "7 镜头一一对应"
+        },
+        {
+          "id": "layout-clip",
+          "status": "pass",
+          "detail": "22 帧全部在画布内"
+        },
+        {
+          "id": "layout-caption",
+          "status": "pass",
+          "detail": "内容区与字幕区物理分离"
+        },
+        {
+          "id": "layout-header",
+          "status": "pass",
+          "detail": "无重叠"
+        },
+        {
+          "id": "layout-overlap",
+          "status": "pass",
+          "detail": "未检出重叠"
+        },
+        {
+          "id": "layout-font",
+          "status": "pass",
+          "detail": "最小正文 13.5px / 字幕 20px"
+        },
+        {
+          "id": "blank",
+          "status": "pass",
+          "detail": "0 个采样帧内容过少"
+        },
+        {
+          "id": "jump",
+          "status": "pass",
+          "detail": "0.25s 间隔画面变化均 < 55%"
+        },
+        {
+          "id": "static",
+          "status": "pass",
+          "detail": "各镜头后段均有变化"
+        },
+        {
+          "id": "probe",
+          "status": "pass",
+          "detail": "hook_slope=60；def_value_at_3=9；slope_sign=-1；intercept_at_0=3；read_slope=6；read_intercept=2"
+        },
+        {
+          "id": "required-text",
+          "status": "pass",
+          "detail": "3 项全部出现"
+        },
+        {
+          "id": "forbidden-text",
+          "status": "pass",
+          "detail": "未检出禁止表述"
+        },
+        {
+          "id": "caption",
+          "status": "pass",
+          "detail": "7 个镜头均有字幕"
+        },
+        {
+          "id": "viewport",
+          "status": "pass",
+          "detail": "1024×576 最小字号 ≥11.5px，无溢出"
+        },
+        {
+          "id": "console",
+          "status": "pass",
+          "detail": "0 error"
+        }
+      ],
+      "frames": [
+        {
+          "scene": "hook",
+          "t": 0.7,
+          "file": "outputs\\frames\\M4-linear\\s01_0p7.png",
+          "texts": 19,
+          "nonBg": 0.036
+        },
+        {
+          "scene": "hook",
+          "t": 5.4,
+          "file": "outputs\\frames\\M4-linear\\s01_5p4.png",
+          "texts": 19,
+          "nonBg": 0.037
+        },
+        {
+          "scene": "hook",
+          "t": 9.8,
+          "file": "outputs\\frames\\M4-linear\\s01_9p8.png",
+          "texts": 20,
+          "nonBg": 0.04
+        }
+      ],
+      "error": null
+    },
+    {
+      "case": "P1-refraction",
+      "verdict": "PASS",
+      "autoScore": 100.0,
+      "hardFail": [],
+      "duration": 132,
+      "checks": [
+        {
+          "id": "load",
+          "status": "pass",
+          "detail": "meta=光的折射：从筷子“折断”说起 scenes=7 duration=132s"
+        },
+        {
+          "id": "duration",
+          "status": "pass",
+          "detail": "实际 132s，期望 115–155s"
+        },
+        {
+          "id": "timeline",
+          "status": "pass",
+          "detail": "7 个镜头合计 132s"
+        },
+        {
+          "id": "storyboard",
+          "status": "pass",
+          "detail": "7 镜头一一对应"
+        },
+        {
+          "id": "layout-clip",
+          "status": "pass",
+          "detail": "22 帧全部在画布内"
+        },
+        {
+          "id": "layout-caption",
+          "status": "pass",
+          "detail": "内容区与字幕区物理分离"
+        },
+        {
+          "id": "layout-header",
+          "status": "pass",
+          "detail": "无重叠"
+        },
+        {
+          "id": "layout-overlap",
+          "status": "pass",
+          "detail": "未检出重叠"
+        },
+        {
+          "id": "layout-font",
+          "status": "pass",
+          "detail": "最小正文 13.5px / 字幕 20px"
+        },
+        {
+          "id": "blank",
+          "status": "pass",
+          "detail": "0 个采样帧内容过少"
+        },
+        {
+          "id": "jump",
+          "status": "pass",
+          "detail": "0.25s 间隔画面变化均 < 55%"
+        },
+        {
+          "id": "static",
+          "status": "pass",
+          "detail": "各镜头后段均有变化"
+        },
+        {
+          "id": "probe",
+          "status": "pass",
+          "detail": "angle_in_water=32.1；snell_forward=32.1；snell_reverse=41.7；reverse_relation=1；apparent_depth_ratio=0.75；fish_offset_direction=-1"
+        },
+        {
+          "id": "required-text",
+          "status": "pass",
+          "detail": "4 项全部出现"
+        },
+        {
+          "id": "forbidden-text",
+          "status": "pass",
+          "detail": "未检出禁止表述"
+        },
+        {
+          "id": "caption",
+          "status": "pass",
+          "detail": "7 个镜头均有字幕"
+        },
+        {
+          "id": "viewport",
+          "status": "pass",
+          "detail": "1024×576 最小字号 ≥11.5px，无溢出"
+        },
+        {
+          "id": "console",
+          "status": "pass",
+          "detail": "0 error"
+        }
+      ],
+      "frames": [
+        {
+          "scene": "hook",
+          "t": 0.7,
+          "file": "outputs\\frames\\P1-refraction\\s01_0p7.png",
+          "texts": 5,
+          "nonBg": 0.037
+        },
+        {
+          "scene": "hook",
+          "t": 6.3,
+          "file": "outputs\\frames\\P1-refraction\\s01_6p3.png",
+          "texts": 5,
+          "nonBg": 0.041
+        },
+        {
+          "scene": "hook",
+          "t": 11.5,
+          "file": "outputs\\frames\\P1-refraction\\s01_11p5.png",
+          "texts": 5,
+          "nonBg": 0.041
+        }
+      ],
+      "error": null
+    },
+    {
+      "case": "P2-newton",
+      "verdict": "PASS",
+      "autoScore": 100.0,
+      "hardFail": [],
+      "duration": 142,
+      "checks": [
+        {
+          "id": "load",
+          "status": "pass",
+          "detail": "meta=牛顿第一定律：力是维持运动的原因吗 scenes=8 duration=142s"
+        },
+        {
+          "id": "duration",
+          "status": "pass",
+          "detail": "实际 142s，期望 125–165s"
+        },
+        {
+          "id": "timeline",
+          "status": "pass",
+          "detail": "8 个镜头合计 142s"
+        },
+        {
+          "id": "storyboard",
+          "status": "pass",
+          "detail": "8 镜头一一对应"
+        },
+        {
+          "id": "layout-clip",
+          "status": "pass",
+          "detail": "25 帧全部在画布内"
+        },
+        {
+          "id": "layout-caption",
+          "status": "pass",
+          "detail": "内容区与字幕区物理分离"
+        },
+        {
+          "id": "layout-header",
+          "status": "pass",
+          "detail": "无重叠"
+        },
+        {
+          "id": "layout-overlap",
+          "status": "pass",
+          "detail": "未检出重叠"
+        },
+        {
+          "id": "layout-font",
+          "status": "pass",
+          "detail": "最小正文 13.5px / 字幕 20px"
+        },
+        {
+          "id": "blank",
+          "status": "pass",
+          "detail": "0 个采样帧内容过少"
+        },
+        {
+          "id": "jump",
+          "status": "pass",
+          "detail": "0.25s 间隔画面变化均 < 55%"
+        },
+        {
+          "id": "static",
+          "status": "pass",
+          "detail": "各镜头后段均有变化"
+        },
+        {
+          "id": "probe",
+          "status": "pass",
+          "detail": "galileo_trend=1；ideal_constant_v=1；law_statement=1；inertia_mass=1；inertia_not_force=1"
+        },
+        {
+          "id": "required-text",
+          "status": "pass",
+          "detail": "3 项全部出现"
+        },
+        {
+          "id": "forbidden-text",
+          "status": "pass",
+          "detail": "未检出禁止表述"
+        },
+        {
+          "id": "caption",
+          "status": "pass",
+          "detail": "8 个镜头均有字幕"
+        },
+        {
+          "id": "viewport",
+          "status": "pass",
+          "detail": "1024×576 最小字号 ≥11.5px，无溢出"
+        },
+        {
+          "id": "console",
+          "status": "pass",
+          "detail": "0 error"
+        }
+      ],
+      "frames": [
+        {
+          "scene": "hook",
+          "t": 0.7,
+          "file": "outputs\\frames\\P2-newton\\s01_0p7.png",
+          "texts": 4,
+          "nonBg": 0.043
+        },
+        {
+          "scene": "hook",
+          "t": 6.3,
+          "file": "outputs\\frames\\P2-newton\\s01_6p3.png",
+          "texts": 5,
+          "nonBg": 0.043
+        },
+        {
+          "scene": "hook",
+          "t": 11.5,
+          "file": "outputs\\frames\\P2-newton\\s01_11p5.png",
+          "texts": 6,
+          "nonBg": 0.043
+        }
+      ],
+      "error": null
+    },
+    {
+      "case": "C1-conservation",
+      "verdict": "PASS",
+      "autoScore": 100.0,
+      "hardFail": [],
+      "duration": 138,
+      "checks": [
+        {
+          "id": "load",
+          "status": "pass",
+          "detail": "meta=质量守恒定律：物质去哪了 scenes=7 duration=138s"
+        },
+        {
+          "id": "duration",
+          "status": "pass",
+          "detail": "实际 138s，期望 120–160s"
+        },
+        {
+          "id": "timeline",
+          "status": "pass",
+          "detail": "7 个镜头合计 138s"
+        },
+        {
+          "id": "storyboard",
+          "status": "pass",
+          "detail": "7 镜头一一对应"
+        },
+        {
+          "id": "layout-clip",
+          "status": "pass",
+          "detail": "22 帧全部在画布内"
+        },
+        {
+          "id": "layout-caption",
+          "status": "pass",
+          "detail": "内容区与字幕区物理分离"
+        },
+        {
+          "id": "layout-header",
+          "status": "pass",
+          "detail": "无重叠"
+        },
+        {
+          "id": "layout-overlap",
+          "status": "pass",
+          "detail": "未检出重叠"
+        },
+        {
+          "id": "layout-font",
+          "status": "pass",
+          "detail": "最小正文 13.5px / 字幕 20px"
+        },
+        {
+          "id": "blank",
+          "status": "pass",
+          "detail": "0 个采样帧内容过少"
+        },
+        {
+          "id": "jump",
+          "status": "pass",
+          "detail": "0.25s 间隔画面变化均 < 55%"
+        },
+        {
+          "id": "static",
+          "status": "pass",
+          "detail": "各镜头后段均有变化"
+        },
+        {
+          "id": "probe",
+          "status": "pass",
+          "detail": "exp_balance=100；atom_count_P=4；atom_count_O=10；balanced_P=4；balanced_O=10；open_system=0；calc_product=44"
+        },
+        {
+          "id": "required-text",
+          "status": "pass",
+          "detail": "4 项全部出现"
+        },
+        {
+          "id": "forbidden-text",
+          "status": "pass",
+          "detail": "未检出禁止表述"
+        },
+        {
+          "id": "caption",
+          "status": "pass",
+          "detail": "7 个镜头均有字幕"
+        },
+        {
+          "id": "viewport",
+          "status": "pass",
+          "detail": "1024×576 最小字号 ≥11.5px，无溢出"
+        },
+        {
+          "id": "console",
+          "status": "pass",
+          "detail": "0 error"
+        }
+      ],
+      "frames": [
+        {
+          "scene": "hook",
+          "t": 0.7,
+          "file": "outputs\\frames\\C1-conservation\\s01_0p7.png",
+          "texts": 5,
+          "nonBg": 0.041
+        },
+        {
+          "scene": "hook",
+          "t": 6.3,
+          "file": "outputs\\frames\\C1-conservation\\s01_6p3.png",
+          "texts": 6,
+          "nonBg": 0.042
+        },
+        {
+          "scene": "hook",
+          "t": 11.5,
+          "file": "outputs\\frames\\C1-conservation\\s01_11p5.png",
+          "texts": 6,
+          "nonBg": 0.043
+        }
+      ],
+      "error": null
+    },
+    {
+      "case": "C2-atom",
+      "verdict": "PASS",
+      "autoScore": 100.0,
+      "hardFail": [],
+      "duration": 134,
+      "checks": [
+        {
+          "id": "load",
+          "status": "pass",
+          "detail": "meta=原子结构：从实心球到电子云 scenes=7 duration=134s"
+        },
+        {
+          "id": "duration",
+          "status": "pass",
+          "detail": "实际 134s，期望 118–155s"
+        },
+        {
+          "id": "timeline",
+          "status": "pass",
+          "detail": "7 个镜头合计 134s"
+        },
+        {
+          "id": "storyboard",
+          "status": "pass",
+          "detail": "7 镜头一一对应"
+        },
+        {
+          "id": "layout-clip",
+          "status": "pass",
+          "detail": "22 帧全部在画布内"
+        },
+        {
+          "id": "layout-caption",
+          "status": "pass",
+          "detail": "内容区与字幕区物理分离"
+        },
+        {
+          "id": "layout-header",
+          "status": "pass",
+          "detail": "无重叠"
+        },
+        {
+          "id": "layout-overlap",
+          "status": "pass",
+          "detail": "未检出重叠"
+        },
+        {
+          "id": "layout-font",
+          "status": "pass",
+          "detail": "最小正文 13.5px / 字幕 20px"
+        },
+        {
+          "id": "blank",
+          "status": "pass",
+          "detail": "0 个采样帧内容过少"
+        },
+        {
+          "id": "jump",
+          "status": "pass",
+          "detail": "0.25s 间隔画面变化均 < 55%"
+        },
+        {
+          "id": "static",
+          "status": "pass",
+          "detail": "各镜头后段均有变化"
+        },
+        {
+          "id": "probe",
+          "status": "pass",
+          "detail": "rutherford_conclusion=1；sodium_protons=11；sodium_electrons=11；na_inner_shell=2；na_outer_shell=1；na_ion_electrons=10；cl_ion_electrons=18"
+        },
+        {
+          "id": "required-text",
+          "status": "pass",
+          "detail": "4 项全部出现"
+        },
+        {
+          "id": "forbidden-text",
+          "status": "pass",
+          "detail": "未检出禁止表述"
+        },
+        {
+          "id": "caption",
+          "status": "pass",
+          "detail": "7 个镜头均有字幕"
+        },
+        {
+          "id": "viewport",
+          "status": "pass",
+          "detail": "1024×576 最小字号 ≥11.5px，无溢出"
+        },
+        {
+          "id": "console",
+          "status": "pass",
+          "detail": "0 error"
+        }
+      ],
+      "frames": [
+        {
+          "scene": "hook",
+          "t": 0.7,
+          "file": "outputs\\frames\\C2-atom\\s01_0p7.png",
+          "texts": 5,
+          "nonBg": 0.04
+        },
+        {
+          "scene": "hook",
+          "t": 5.4,
+          "file": "outputs\\frames\\C2-atom\\s01_5p4.png",
+          "texts": 6,
+          "nonBg": 0.043
+        },
+        {
+          "scene": "hook",
+          "t": 9.8,
+          "file": "outputs\\frames\\C2-atom\\s01_9p8.png",
+          "texts": 8,
+          "nonBg": 0.046
+        }
+      ],
+      "error": null
+    },
+    {
+      "case": "B2-cell",
+      "verdict": "PASS",
+      "autoScore": 100.0,
+      "hardFail": [],
+      "duration": 114,
+      "checks": [
+        {
+          "id": "load",
+          "status": "pass",
+          "detail": "meta=细胞的结构：生命活动的基本单位 scenes=6 duration=114s"
+        },
+        {
+          "id": "duration",
+          "status": "pass",
+          "detail": "实际 114s，期望 95–140s"
+        },
+        {
+          "id": "timeline",
+          "status": "pass",
+          "detail": "6 个镜头合计 114s"
+        },
+        {
+          "id": "storyboard",
+          "status": "pass",
+          "detail": "6 镜头一一对应"
+        },
+        {
+          "id": "layout-clip",
+          "status": "pass",
+          "detail": "19 帧全部在画布内"
+        },
+        {
+          "id": "layout-caption",
+          "status": "pass",
+          "detail": "内容区与字幕区物理分离"
+        },
+        {
+          "id": "layout-header",
+          "status": "pass",
+          "detail": "无重叠"
+        },
+        {
+          "id": "layout-overlap",
+          "status": "pass",
+          "detail": "未检出重叠"
+        },
+        {
+          "id": "layout-font",
+          "status": "pass",
+          "detail": "最小正文 13.5px / 字幕 20px"
+        },
+        {
+          "id": "blank",
+          "status": "pass",
+          "detail": "0 个采样帧内容过少"
+        },
+        {
+          "id": "jump",
+          "status": "pass",
+          "detail": "0.25s 间隔画面变化均 < 55%"
+        },
+        {
+          "id": "static",
+          "status": "pass",
+          "detail": "各镜头后段均有变化"
+        },
+        {
+          "id": "probe",
+          "status": "pass",
+          "detail": "animal_parts=3；plant_only=3；compare_cell_wall=1；membrane_function=1"
+        },
+        {
+          "id": "required-text",
+          "status": "pass",
+          "detail": "4 项全部出现"
+        },
+        {
+          "id": "forbidden-text",
+          "status": "pass",
+          "detail": "未检出禁止表述"
+        },
+        {
+          "id": "caption",
+          "status": "pass",
+          "detail": "6 个镜头均有字幕"
+        },
+        {
+          "id": "viewport",
+          "status": "pass",
+          "detail": "1024×576 最小字号 ≥11.5px，无溢出"
+        },
+        {
+          "id": "console",
+          "status": "pass",
+          "detail": "0 error"
+        }
+      ],
+      "frames": [
+        {
+          "scene": "hook",
+          "t": 0.7,
+          "file": "outputs\\frames\\B2-cell\\s01_0p7.png",
+          "texts": 4,
+          "nonBg": 0.048
+        },
+        {
+          "scene": "hook",
+          "t": 5.4,
+          "file": "outputs\\frames\\B2-cell\\s01_5p4.png",
+          "texts": 4,
+          "nonBg": 0.052
+        },
+        {
+          "scene": "hook",
+          "t": 9.8,
+          "file": "outputs\\frames\\B2-cell\\s01_9p8.png",
+          "texts": 4,
+          "nonBg": 0.054
+        }
+      ],
+      "error": null
+    }
+  ]
+}

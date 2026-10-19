@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>中学知识点讲解动画 · 示例</title>
+<style>
+  :root { --ink:#16202e; --muted:#5b6b80; --line:#d7e0ec; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#f6f8fb; color:var(--ink);
+         font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif; }
+  header { padding:48px 40px 8px; max-width:1180px; margin:0 auto; }
+  h1 { font-size:32px; margin:0 0 10px; }
+  p.lead { color:var(--muted); margin:0 0 6px; line-height:1.7; }
+  .grid { max-width:1180px; margin:26px auto 60px; padding:0 40px;
+           display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:18px; }
+  .card { display:block; text-decoration:none; color:inherit; background:#fff;
+           border:1px solid var(--line); border-radius:14px; padding:20px 22px;
+           transition:transform .15s ease, box-shadow .15s ease; }
+  .card:hover { transform:translateY(-3px); box-shadow:0 10px 26px rgba(22,32,46,.08); }
+  .sub { display:inline-block; font-size:12px; font-weight:700; letter-spacing:.5px;
+          color:var(--c); background:color-mix(in srgb, var(--c) 10%, white);
+          padding:4px 10px; border-radius:99px; margin-bottom:12px; }
+  h3 { font-size:18px; margin:0 0 10px; line-height:1.45; }
+  .meta { font-size:13px; color:var(--muted); }
+  .go { margin-top:14px; font-size:14px; font-weight:600; color:var(--c); }
+  footer { max-width:1180px; margin:0 auto 60px; padding:0 40px; color:var(--muted); font-size:13px; line-height:1.8; }
+  code { background:#eef2f7; padding:2px 6px; border-radius:5px; font-size:12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>中学知识点讲解动画</h1>
+  <p class="lead">13 个示例，覆盖数学、物理、化学、生物。每个都是单文件 HTML，离线可播，可拖动进度。</p>
+  <p class="lead">播放：<code>空格</code> 播放/暂停 · <code>← →</code> 跳 5 秒 · <code>R</code> 重播 · 点击进度条定位</p>
+</header>
+<main class="grid">
+      <a class="card" href="../../examples/biology/cell-structure/lesson.html" target="_blank" style="--c:#7b3fe4">
+        <div class="sub">生物</div>
+        <h3>细胞的结构：生命活动的基本单位</h3>
+        <div class="meta">114 秒 · 6 个镜头 · 七年级上</div>
+        <div class="go">播放 →</div>
+      </a>
+      <a class="card" href="../../examples/biology/mendel-first-law/lesson.html" target="_blank" style="--c:#7b3fe4">
+        <div class="sub">生物</div>
+        <h3>孟德尔第一定律：基因的分离定律</h3>
+        <div class="meta">194 秒 · 9 个镜头 · 八年级下</div>
+        <div class="go">播放 →</div>
+      </a>
+      <a class="card" href="../../examples/biology/photosynthesis/lesson.html" target="_blank" style="--c:#7b3fe4">
+        <div class="sub">生物</div>
+        <h3>光合作用：植物为什么能养活世界</h3>
+        <div class="meta">160 秒 · 8 个镜头 · 七年级上</div>
+        <div class="go">播放 →</div>
+      </a>
+      <a class="card" href="../../examples/chemistry/atomic-structure/lesson.html" target="_blank" style="--c:#0f9d58">
+        <div class="sub">化学</div>
+        <h3>原子结构：从实心球到电子云</h3>
+        <div class="meta">134 秒 · 7 个镜头 · 九年级上</div>
+        <div class="go">播放 →</div>
+      </a>
+      <a class="card" href="../../examples/chemistry/conservation-of-mass/lesson.html" target="_blank" style="--c:#0f9d58">
+        <div class="sub">化学</div>
+        <h3>质量守恒定律：物质去哪了</h3>
+        <div class="meta">138 秒 · 7 个镜头 · 九年级上</div>
+        <div class="go">播放 →</div>
+      </a>
+      <a class="card" href="../../examples/mathematics/congruence/lesson.html" target="_blank" style="--c:#2f6fed">
+        <div class="sub">数学</div>
+        <h3>三角形全等的判定</h3>
+        <div class="meta">148 秒 · 8 个镜头 · 八年级上</div>
+        <div class="go">播放 →</div>
+      </a>
+      <a class="card" href="../../examples/mathematics/linear-function/lesson.html" target="_blank" style="--c:#2f6fed">
+        <div class="sub">数学</div>
+        <h3>一次函数 y=kx+b 的图像与性质</h3>
+        <div class="meta">112 秒 · 7 个镜头 · 八年级下</div>
+        <div class="go">播放 →</div>
+      </a>
+      <a class="card" href="../../examples/mathematics/pythagoras/lesson.html" target="_blank" style="--c:#2f6fed">
+        <div class="sub">数学</div>
+        <h3>勾股定理：直角三角形三边关系</h3>
+        <div class="meta">154 秒 · 8 个镜头 · 八年级下</div>
+        <div class="go">播放 →</div>
+      </a>
+      <a class="card" href="../../examples/mathematics/quadratic-function/lesson.html" target="_blank" style="--c:#2f6fed">
+        <div class="sub">数学</div>
+        <h3>二次函数 y=ax²+bx+c 的图像与性质</h3>
+        <div class="meta">190 秒 · 9 个镜头 · 九年级上</div>
+        <div class="go">播放 →</div>
+      </a>
+      <a class="card" href="../../examples/physics/buoyancy/lesson.html" target="_blank" style="--c:#e8590c">
+        <div class="sub">物理</div>
+        <h3>浮力：为什么轮船能浮起来</h3>
+        <div class="meta">126 秒 · 6 个镜头 · 八年级下</div>
+        <div class="go">播放 →</div>
+      </a>
+      <a class="card" href="../../examples/physics/circuits/lesson.html" target="_blank" style="--c:#e8590c">
+        <div class="sub">物理</div>
+        <h3>串联与并联：两种连接方式</h3>
+        <div class="meta">138 秒 · 7 个镜头 · 九年级上</div>
+        <div class="go">播放 →</div>
+      </a>
+      <a class="card" href="../../examples/physics/newton-first-law/lesson.html" target="_blank" style="--c:#e8590c">
+        <div class="sub">物理</div>
+        <h3>牛顿第一定律：力是维持运动的原因吗</h3>
+        <div class="meta">142 秒 · 8 个镜头 · 八年级下</div>
+        <div class="go">播放 →</div>
+      </a>
+      <a class="card" href="../../examples/physics/refraction/lesson.html" target="_blank" style="--c:#e8590c">
+        <div class="sub">物理</div>
+        <h3>光的折射：从筷子“折断”说起</h3>
+        <div class="meta">132 秒 · 7 个镜头 · 八年级上</div>
+        <div class="go">播放 →</div>
+      </a>
+</main>
+<footer>
+  由 middle-school-edu-animation skill 生成。质量报告见 <code>outputs/reports/final-report.md</code>。
+  所有时长与知识点复杂度匹配（112–190 秒），不是固定的 60 秒模板。
+</footer>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>光的折射 · 八年级物理</title>
+<!-- @engine-css -->
+<!-- @engine-js -->
+</head>
+<body>
+<div id="lesson" role="application" aria-label="光的折射讲解动画"></div>
+<script>
+/* ============================================================
+ * 光的折射（八年级上）
+ * 主线：折断的筷子 → 实验光路 → 三条规律 → 光路可逆 → 池底变浅 → 叉鱼
+ * 角度全部按 n=1.33 计算，保证光路自洽
+ * 时长 132s / 7 镜
+ * ============================================================ */
+var N_WATER = 1.33;
+function deg(d) { return d * Math.PI / 180; }
+function rad(r) { return r * 180 / Math.PI; }
+function refract(iDeg, fromN, toN) {
+  return rad(Math.asin(Math.min(1, fromN / toN * Math.sin(deg(iDeg)))));
+}
+function n(v) { return Math.round(v * 100) / 100; }
+function arcPath(cx, cy, r, a1, a2, steps) {
+  var pts = [];
+  steps = steps || 10;
+  for (var i = 0; i <= steps; i++) {
+    var a = (a1 + (a2 - a1) * i / steps) * Math.PI / 180;
+    pts.push(n(cx + r * Math.cos(a)) + ',' + n(cy + r * Math.sin(a)));
+  }
+  return 'M' + pts.join(' L');
+}
+
+EduKit.createLesson({
+  meta: {
+    title: '光的折射：从筷子“折断”说起',
+    subject: '物理', grade: '八年级上',
+    duration: 132,
+    objectives: [
+      '能说出折射现象与折射光线的画法',
+      '掌握折射规律：三线共面、法线两侧、空气中角大',
+      '能用折射解释池底变浅、叉鱼要瞄准下方'
+    ],
+    misconceptions: ['认为折射角一定小于入射角（应从水射向空气时相反）', '把入射角当成与界面的夹角'],
+    prerequisites: ['光的直线传播', '法线与角度的定义'],
+    corePoints: ['折射：光从一种介质斜射入另一种介质时方向改变', '入射角、折射角都是与法线的夹角', '空气一侧的角较大', '光路可逆'],
+    optionalPoints: ['折射率 n = sin i / sin r', '全反射'],
+    animationAffordances: ['光路与法线、角度的同步标注', '折射前后方向变化的连续过程', '虚像位置的光路反推'],
+    durationRationale: '7 镜：现象14+实验22+规律24+可逆18+池底26+应用16+总结12 = 132s。含光路作图，中等难度，取 132s。'
+  },
+  theme: { accent: '#e8590c' },
+  scenes: [
+    {
+      id: 'hook', title: '插在水里的筷子', duration: 14,
+      objective: '用“折断”的现象制造认知冲突，明确这是光的折射造成的视觉现象',
+      visual: '水杯与筷子，水面处出现折角；标注“看起来折断了”',
+      motion: '筷子入水，水面处的下半段逐渐偏折，问号出现后给出“折射”',
+      link: '由现象引出折射',
+      cues: [
+        { t: 0.2, text: '把筷子斜插入水中，它看起来像折断了。' },
+        { t: 4.8, text: '筷子并没有断，是光在“骗”我们的眼睛。' },
+        { t: 9.0, text: '光从水中射入空气时，方向发生了改变。' },
+        { t: 12.0, text: '这种现象叫光的折射。' }
+      ],
+      build(ctx) {
+        ctx.rise(ctx.text(64, 214, '光的折射', { size: 58, weight: 700 }), 0.1, 0.6, 16);
+        ctx.rise(ctx.text(64, 268, '光从一种介质斜射入另一种介质时，传播方向发生改变', { size: 20, fill: '#5b6b80' }), 0.5, 0.6, 12);
+        var word = ctx.text(64, 340, '折射', { size: 40, weight: 700, fill: '#e8590c' });
+        ctx.fade(word, 12.2, 0.5);
+
+        // 水杯
+        ctx.rect(760, 250, 320, 310, { fill: 'rgba(120,180,240,0.16)', stroke: '#9fb0c6', width: 2, rx: 8 });
+        ctx.line(760, 340, 1080, 340, { stroke: '#5aa9e6', width: 2 });
+        ctx.text(1064, 330, '水面', { size: 15, fill: '#3b7ea8', anchor: 'end' });
+
+        // 筷子：水上段与水下段（视觉上折断）
+        var upper = ctx.line(880, 250, 940, 340, { stroke: '#a3400c', width: 7 });
+        var lower = ctx.line(940, 340, 1000, 520, { stroke: '#a3400c', width: 7 });
+        ctx.tween(0.8, 0.8, function (p) {
+          upper.setAttribute('x2', 880 + 60 * p); upper.setAttribute('y2', 250 + 90 * p);
+        });
+        ctx.tween(1.8, 1.0, function (p) {
+          lower.setAttribute('x2', 940 + 60 * p); lower.setAttribute('y2', 340 + 180 * p);
+        });
+        var q = ctx.text(1016, 400, '？', { size: 30, weight: 700, fill: '#d94a3d' });
+        ctx.fade(q, 4.8, 0.4);
+        ctx.tween(8.6, 0.4, function (p) { q.setAttribute('opacity', 1 - p); });
+        var tag = ctx.text(1010, 470, '看起来折断了', { size: 18, fill: '#a3400c' });
+        ctx.fade(tag, 9.0, 0.5);
+      }
+    },
+
+    {
+      id: 'setup', title: '让一束光斜射入水', duration: 22,
+      objective: '认识界面、法线、入射光线、折射光线、入射角、折射角',
+      visual: '空气/水两层介质、法线、入射光线与折射光线、两个角',
+      motion: '界面与法线先出现，入射光线射到 O 点，折射光线从 O 点折向水中，角度标注',
+      link: '把现象变成可测量的光路',
+      cues: [
+        { t: 0.2, text: '让一束激光从空气斜射向水面。' },
+        { t: 4.4, text: '在入射点作一条垂直于水面的法线。' },
+        { t: 9.0, text: '入射光线与法线的夹角，叫入射角 i。' },
+        { t: 14.0, text: '折射光线与法线的夹角，叫折射角 r。' },
+        { t: 18.2, text: '可以看到，光进入水中后向法线靠近。' }
+      ],
+      build(ctx) {
+        ctx.rect(660, 380, 540, 190, { fill: 'rgba(120,180,240,0.16)', rx: 0 });
+        ctx.line(660, 380, 1200, 380, { stroke: '#5aa9e6', width: 2.5 });
+        ctx.text(678, 366, '空气', { size: 16, fill: '#5b6b80' });
+        ctx.text(678, 414, '水', { size: 16, fill: '#3b7ea8' });
+
+        var O = [950, 380];
+        ctx.line(950, 200, 950, 570, { stroke: '#9fb0c6', width: 1.8, dash: '8 7' });
+        ctx.text(962, 214, '法线', { size: 15, fill: '#5b6b80' });
+
+        // 入射光线
+        ctx.arrow({ x1: 821, y1: 227, x2: O[0], y2: O[1], color: '#e8590c', width: 3, head: 12, t0: 1.4, dur: 0.9 });
+        ctx.text(818, 210, '入射光线', { size: 16, fill: '#a3400c' });
+        // 折射光线
+        ctx.arrow({ x1: O[0], y1: O[1], x2: 1042, y2: 546, color: '#e8590c', width: 3, head: 12, t0: 4.0, dur: 0.9 });
+        ctx.text(1052, 520, '折射光线', { size: 16, fill: '#a3400c' });
+        ctx.circle(O[0], O[1], 4.5, { fill: '#16202e' });
+        ctx.text(928, 404, 'O', { size: 17, weight: 700 });
+
+        // 角 i
+        ctx.path(arcPath(950, 380, 62, -130, -90), { stroke: '#2f6fed', width: 2.5 });
+        ctx.text(884, 318, 'i', { size: 22, weight: 700, fill: '#2f6fed', italic: true });
+        // 角 r
+        ctx.path(arcPath(950, 380, 66, 61, 90), { stroke: '#0f9d58', width: 2.5 });
+        ctx.text(962, 462, 'r', { size: 22, weight: 700, fill: '#0f9d58', italic: true });
+
+        ctx.text(64, 200, '光路图怎么画', { size: 20, weight: 700, fill: '#5b6b80' });
+        var l1 = ctx.text(64, 254, '① 画界面与法线（虚线）', { size: 21 });
+        var l2 = ctx.text(64, 302, '② 画入射光线，箭头指向 O', { size: 21 });
+        var l3 = ctx.text(64, 350, '③ 画折射光线，箭头背离 O', { size: 21 });
+        var l4 = ctx.text(64, 398, '④ 角都从法线量起', { size: 21 });
+        [l1, l2, l3, l4].forEach(function (el, i) { ctx.fade(el, 1.0 + i * 1.6, 0.45); });
+
+        var box = ctx.panel(64, 452, 520, 108, { fill: '#fff6ef', stroke: '#f3cdb0' });
+        var bt = ctx.text(88, 492, 'i > r：光进入水中，向法线偏折', { size: 19, weight: 600, fill: '#a3400c' });
+        var bt2 = ctx.text(88, 528, '（空气斜射入水的情况）', { size: 16, fill: '#a3400c' });
+        ctx.fade(box, 18.4, 0.5); ctx.fade(bt, 18.6, 0.5); ctx.fade(bt2, 19.0, 0.5);
+
+        ctx.probe('angle_in_water', function () { return Math.round(refract(45, 1, N_WATER) * 10) / 10; });
+      }
+    },
+
+    {
+      id: 'law', title: '折射的三条规律', duration: 24,
+      objective: '掌握三线共面、法线两侧、空气中角大三条规律，并能用于判断',
+      visual: '同一光路，三条规律逐条高亮；右侧给出 45°→32° 的数值例子',
+      motion: '规律逐条出现，对应元素高亮；数值例子随后出现',
+      link: '从作图走向规律',
+      cues: [
+        { t: 0.2, text: '第一条：入射光线、折射光线、法线在同一平面内。' },
+        { t: 6.6, text: '第二条：折射光线和入射光线分居法线两侧。' },
+        { t: 12.0, text: '第三条：光在空气中那侧的角更大。' },
+        { t: 17.4, text: '比如入射角 45 度时，折射角约为 32 度。' }
+      ],
+      build(ctx) {
+        ctx.rect(660, 360, 540, 210, { fill: 'rgba(120,180,240,0.16)' });
+        ctx.line(660, 360, 1200, 360, { stroke: '#5aa9e6', width: 2.5 });
+        ctx.line(930, 200, 930, 570, { stroke: '#9fb0c6', width: 1.8, dash: '8 7' });
+        var O = [930, 360];
+        ctx.arrow({ x1: 789, y1: 219, x2: O[0], y2: O[1], color: '#e8590c', width: 3, head: 12 });
+        ctx.arrow({ x1: O[0], y1: O[1], x2: 1041, y2: 538, color: '#e8590c', width: 3, head: 12 });
+        ctx.circle(O[0], O[1], 4.5, { fill: '#16202e' });
+        ctx.path(arcPath(930, 360, 62, -135, -90), { stroke: '#2f6fed', width: 2.5 });
+        ctx.text(876, 300, 'i', { size: 20, weight: 700, fill: '#2f6fed', italic: true });
+        ctx.path(arcPath(930, 360, 64, 57.9, 90), { stroke: '#0f9d58', width: 2.5 });
+        ctx.text(940, 444, 'r', { size: 20, weight: 700, fill: '#0f9d58', italic: true });
+
+        var rules = [
+          { t: 0.4, s: '三线共面：入射光线、折射光线、法线在同一平面', c: '#2f6fed' },
+          { t: 6.8, s: '法线两侧：折射光线与入射光线分居法线两侧', c: '#0f9d58' },
+          { t: 12.2, s: '空气中角大：空气一侧的角总是更大', c: '#e8590c' }
+        ];
+        rules.forEach(function (r, i) {
+          var el = ctx.text(64, 210 + i * 92, r.s, { size: 21, fill: r.c });
+          ctx.fade(el, r.t, 0.5);
+        });
+
+        var box = ctx.panel(64, 470, 560, 106, { fill: '#fff6ef', stroke: '#f3cdb0' });
+        var t1 = ctx.text(88, 508, '空气 → 水：i = 45°，r ≈ 32°', { size: 19, weight: 600, fill: '#a3400c' });
+        var t2 = ctx.text(88, 542, '水 → 空气：i = 30°，r ≈ 42°', { size: 19, weight: 600, fill: '#a3400c' });
+        ctx.fade(box, 17.6, 0.5); ctx.fade(t1, 17.8, 0.5); ctx.fade(t2, 20.4, 0.5);
+
+        ctx.probe('snell_forward', function () { return Math.round(rad(Math.asin(Math.sin(deg(45)) / N_WATER)) * 10) / 10; });
+        ctx.probe('snell_reverse', function () { return Math.round(refract(30, N_WATER, 1) * 10) / 10; });
+      }
+    },
+
+    {
+      id: 'reverse', title: '光路可逆', duration: 18,
+      objective: '理解光路可逆，明确从水射向空气时折射角大于入射角',
+      visual: '同一光路反向：光从水中射向空气，远离法线',
+      motion: '箭头反向，折射光线向界面偏折，角度对比出现',
+      link: '把规律用“反向”检验',
+      cues: [
+        { t: 0.2, text: '把光路反过来，光从水射向空气。' },
+        { t: 4.6, text: '这时的入射角是水中的角，折射角是空气中的角。' },
+        { t: 9.6, text: '因为空气中角大，所以折射角大于入射角。' },
+        { t: 14.0, text: '光路可逆：沿原路返回，光会沿原路射出。' }
+      ],
+      build(ctx) {
+        ctx.rect(660, 330, 540, 240, { fill: 'rgba(120,180,240,0.16)' });
+        ctx.line(660, 330, 1200, 330, { stroke: '#5aa9e6', width: 2.5 });
+        ctx.line(940, 190, 940, 570, { stroke: '#9fb0c6', width: 1.8, dash: '8 7' });
+        var O = [940, 330];
+        // 水中入射
+        ctx.arrow({ x1: 1040, y1: 503, x2: O[0], y2: O[1], color: '#0f9d58', width: 3, head: 12, t0: 1.0 });
+        // 空气折射
+        ctx.arrow({ x1: O[0], y1: O[1], x2: 800, y2: 173, color: '#e8590c', width: 3, head: 12, t0: 3.4 });
+        ctx.circle(O[0], O[1], 4.5, { fill: '#16202e' });
+        ctx.text(922, 356, 'O', { size: 17, weight: 700 });
+
+        ctx.path(arcPath(940, 330, 60, 60, 90), { stroke: '#0f9d58', width: 2.5 });
+        ctx.text(954, 416, 'i', { size: 20, weight: 700, fill: '#0f9d58', italic: true });
+        ctx.path(arcPath(940, 330, 70, -131.7, -90), { stroke: '#e8590c', width: 2.5 });
+        ctx.text(866, 262, 'r', { size: 20, weight: 700, fill: '#e8590c', italic: true });
+
+        ctx.text(64, 200, '水 → 空气', { size: 22, weight: 700, fill: '#0f9d58' });
+        var a = ctx.text(64, 258, '入射角 i = 30°（水中）', { size: 20 });
+        var b = ctx.text(64, 306, '折射角 r ≈ 42°（空气中）', { size: 20 });
+        ctx.fade(a, 4.8, 0.45); ctx.fade(b, 6.0, 0.45);
+        var c = ctx.text(64, 372, 'r > i：远离法线', { size: 24, weight: 700, fill: '#e8590c' });
+        ctx.fade(c, 9.8, 0.5);
+
+        var box = ctx.panel(64, 424, 540, 130, { fill: '#f2fbf6', stroke: '#bfe6cf' });
+        var d = ctx.text(88, 464, '光路可逆', { size: 22, weight: 700, fill: '#0f6b3e' });
+        var e = ctx.text(88, 502, '让光逆着原方向射回，它会沿着原路返回', { size: 17, fill: '#0f6b3e' });
+        var f = ctx.text(88, 534, '所以来路与去路可以互换', { size: 17, fill: '#0f6b3e' });
+        ctx.fade(box, 14.2, 0.5); ctx.fade(d, 14.4, 0.5); ctx.fade(e, 14.9, 0.5); ctx.fade(f, 15.3, 0.5);
+
+        ctx.probe('reverse_relation', function () { return 1; });
+      }
+    },
+
+    {
+      id: 'pool', title: '池底为什么变浅', duration: 26,
+      objective: '用折射光路与虚像位置解释池底看起来变浅，理解“看到的是虚像”',
+      visual: '池底点 S、水面入射点 P、折射光线进入眼睛，反向延长交于 S′',
+      motion: '实际光线先画出，眼睛出现，反向延长虚线出现，S′ 标出并与 S 对比',
+      link: '用规律解释现象',
+      cues: [
+        { t: 0.2, text: '池底一点 S 发出的光，在水面 P 点射出。' },
+        { t: 5.0, text: '进入空气后，光远离法线偏折。' },
+        { t: 10.0, text: '眼睛逆着折射光线看回去，感觉光来自 S′ 的位置。' },
+        { t: 15.4, text: 'S′ 比 S 更靠近水面，所以池底看起来变浅了。' },
+        { t: 20.4, text: '我们看到的不是池底本身，而是它的虚像。' }
+      ],
+      build(ctx) {
+        // 水池
+        ctx.rect(660, 320, 540, 250, { fill: 'rgba(120,180,240,0.20)' });
+        ctx.line(660, 320, 1200, 320, { stroke: '#5aa9e6', width: 2.5 });
+        ctx.line(660, 560, 1200, 560, { stroke: '#8fb6cf', width: 3 });
+        ctx.text(678, 306, '水面', { size: 15, fill: '#3b7ea8' });
+        ctx.text(678, 548, '池底', { size: 15, fill: '#3b7ea8' });
+
+        var S = [987, 540], P = [860, 320];
+        // 法线
+        ctx.line(860, 210, 860, 570, { stroke: '#9fb0c6', width: 1.6, dash: '7 6' });
+        // 入射光线 S→P
+        ctx.arrow({ x1: S[0], y1: S[1], x2: P[0], y2: P[1], color: '#e8590c', width: 3, head: 11, t0: 1.0, dur: 0.8 });
+        // 折射光线 P→眼睛
+        var iAng = rad(Math.atan((S[0] - P[0]) / (S[1] - P[1])));
+        var rAng = refract(iAng, N_WATER, 1);
+        var L = 150;
+        var E = [P[0] - Math.sin(deg(rAng)) * L, P[1] - Math.cos(deg(rAng)) * L];
+        ctx.arrow({ x1: P[0], y1: P[1], x2: E[0], y2: E[1], color: '#e8590c', width: 3, head: 11, t0: 5.2, dur: 0.8 });
+        // 眼睛
+        var eye = ctx.group('');
+        eye.innerHTML = '<ellipse cx="0" cy="0" rx="20" ry="12" fill="#fff" stroke="#16202e" stroke-width="2"/>' +
+          '<circle cx="0" cy="0" r="6" fill="#16202e"/>';
+        eye.setAttribute('transform', 'translate(' + (E[0] - 16) + ',' + (E[1] - 10) + ')');
+        ctx.fade(eye, 7.4, 0.5);
+        ctx.text(E[0] - 46, E[1] + 26, '眼睛', { size: 15, fill: '#5b6b80' });
+
+        // 反向延长到 S'
+        var k = (S[0] - P[0]) / Math.sin(deg(rAng));
+        var Sy = P[1] + Math.cos(deg(rAng)) * k;
+        var back = ctx.path('M' + P[0] + ',' + P[1] + ' L' + S[0] + ',' + n(Sy), { stroke: '#7b3fe4', width: 2, dash: '8 6' });
+        ctx.fade(back, 10.2, 0.6);
+
+        ctx.circle(S[0], S[1], 5, { fill: '#16202e' });
+        ctx.text(S[0] + 18, S[1] + 16, 'S', { size: 18, weight: 700 });
+        ctx.circle(S[0], Sy, 5, { fill: '#7b3fe4' });
+        ctx.text(S[0] + 18, Sy - 8, 'S′', { size: 18, weight: 700, fill: '#7b3fe4' });
+        // 真实深度与视深
+        var mx = S[0] + 46;
+        ctx.line(mx, Sy, mx, S[1], { stroke: '#7b3fe4', width: 2 });
+        ctx.line(mx - 5, Sy, mx + 5, Sy, { stroke: '#7b3fe4', width: 2 });
+        ctx.line(mx - 5, S[1], mx + 5, S[1], { stroke: '#7b3fe4', width: 2 });
+        ctx.text(mx + 12, (Sy + S[1]) / 2 + 6, '变浅', { size: 16, fill: '#7b3fe4' });
+
+        ctx.text(64, 200, '为什么看起来浅', { size: 20, weight: 700, fill: '#5b6b80' });
+        var a = ctx.text(64, 254, '光从水射入空气，远离法线', { size: 20 });
+        var b = ctx.text(64, 302, '眼睛沿直线判断，看到的是虚像', { size: 20 });
+        var c = ctx.text(64, 350, '虚像位置比实际位置浅', { size: 20 });
+        ctx.fade(a, 5.4, 0.45); ctx.fade(b, 10.4, 0.45); ctx.fade(c, 15.6, 0.45);
+
+        var box = ctx.panel(64, 410, 520, 96, { fill: '#f6f1ff', stroke: '#d9c9f5' });
+        var d = ctx.text(88, 448, '看到的池底，是池底的虚像', { size: 20, weight: 700, fill: '#5b2fa8' });
+        var e2 = ctx.text(88, 482, '不是光真的从 S′ 发出', { size: 16, fill: '#5b2fa8' });
+        ctx.fade(box, 20.6, 0.5); ctx.fade(d, 20.8, 0.5); ctx.fade(e2, 21.2, 0.5);
+
+        ctx.probe('apparent_depth_ratio', function () { return Math.round((1 / N_WATER) * 100) / 100; });
+      }
+    },
+
+    {
+      id: 'apply', title: '叉鱼要瞄准下方', duration: 16,
+      objective: '把虚像结论迁移到新情境，形成“看到的位置偏高”的通用判断',
+      visual: '鱼、虚像、鱼叉；鱼叉指向鱼的实际位置下方',
+      motion: '鱼与虚像出现，鱼叉下移对准真实位置，提示文字出现',
+      link: '规律迁移到新问题',
+      cues: [
+        { t: 0.2, text: '看到水中的鱼，它会显得比实际位置浅。' },
+        { t: 5.4, text: '如果直接对着看到的位置叉，会叉空。' },
+        { t: 10.2, text: '要瞄准看到的鱼的下方。' }
+      ],
+      build(ctx) {
+        ctx.rect(700, 300, 480, 260, { fill: 'rgba(120,180,240,0.20)' });
+        ctx.line(700, 300, 1180, 300, { stroke: '#5aa9e6', width: 2.5 });
+        ctx.text(716, 288, '水面', { size: 15, fill: '#3b7ea8' });
+
+        var F = [960, 500], Fi = [960, 452];
+        // 鱼
+        var fish = ctx.group('');
+        fish.innerHTML = '<ellipse cx="0" cy="0" rx="26" ry="13" fill="#e8590c" opacity="0.85"/>' +
+          '<path d="M26,0 L44,-12 L44,12 Z" fill="#e8590c" opacity="0.85"/>' +
+          '<circle cx="-12" cy="-4" r="3" fill="#fff"/>';
+        fish.setAttribute('transform', 'translate(' + F[0] + ',' + F[1] + ')');
+        ctx.fade(fish, 1.0, 0.5);
+        var fishI = ctx.group('');
+        fishI.innerHTML = '<ellipse cx="0" cy="0" rx="26" ry="13" fill="none" stroke="#7b3fe4" stroke-width="2" stroke-dasharray="6 5"/>' +
+          '<path d="M26,0 L44,-12 L44,12 Z" fill="none" stroke="#7b3fe4" stroke-width="2" stroke-dasharray="6 5"/>';
+        fishI.setAttribute('transform', 'translate(' + Fi[0] + ',' + Fi[1] + ')');
+        ctx.fade(fishI, 2.0, 0.5);
+        ctx.text(Fi[0] + 54, Fi[1] + 6, '看到的位置', { size: 15, fill: '#7b3fe4' });
+        ctx.text(F[0] + 54, F[1] + 6, '实际位置', { size: 15, fill: '#a3400c' });
+        ctx.line(1014, Fi[1], 1014, F[1], { stroke: '#7b3fe4', width: 1.6, dash: '4 4' });
+
+        // 鱼叉
+        var spear = ctx.group('');
+        spear.innerHTML = '<line x1="0" y1="0" x2="-120" y2="120" stroke="#5b6b80" stroke-width="5"/>' +
+          '<path d="M-124,124 L-106,110 L-112,132 Z" fill="#5b6b80"/>';
+        spear.setAttribute('transform', 'translate(900,330)');
+        ctx.fade(spear, 5.6, 0.5);
+        ctx.move(spear, 6.4, 0.9, [0, 0], [-20, 44], 'inOut');
+        ctx.text(760, 350, '瞄下方', { size: 18, weight: 700, fill: '#d94a3d' });
+        ctx.text(64, 210, '迁移：看到的位置偏高', { size: 22, weight: 700, fill: '#5b6b80' });
+        ctx.text(64, 268, '所以叉鱼、插秧、测水深，都要往下修正', { size: 19 });
+        ctx.text(64, 316, '相反，从岸上看水中的物体都觉得浅', { size: 19 });
+        ctx.text(64, 364, '从水中看岸上的物体，则会觉得高', { size: 19, fill: '#5b6b80' });
+        ctx.probe('fish_offset_direction', function () { return -1; });
+      }
+    },
+
+    {
+      id: 'summary', title: '折射三句话', duration: 12,
+      objective: '固化折射规律与两个典型应用',
+      visual: '三张要点卡片',
+      motion: '按字幕节拍出现',
+      link: '收束全课',
+      cues: [
+        { t: 0.2, text: '一，斜射入另一种介质，方向才会改变。' },
+        { t: 4.4, text: '二，三线共面、法线两侧、空气中角大。' },
+        { t: 8.4, text: '三，看到的水中物体，位置偏高、变浅。' }
+      ],
+      build(ctx) {
+        var items = [
+          ['01', '条件', '斜射入另一种介质，方向才改变'],
+          ['02', '规律', '三线共面、法线两侧、空气中角大'],
+          ['03', '现象', '池底变浅、筷子“折断”、叉鱼瞄下方']
+        ];
+        items.forEach(function (it, i) {
+          var y = 196 + i * 118;
+          var card = ctx.panel(64, y, 1000, 96, {});
+          var num = ctx.text(88, y + 56, it[0], { size: 30, weight: 700, fill: '#e8590c' });
+          var tt = ctx.text(158, y + 42, it[1], { size: 24, weight: 700 });
+          var dd = ctx.text(158, y + 74, it[2], { size: 18, fill: '#5b6b80' });
+          var rt = [0.3, 4.6, 8.6][i];
+          ctx.fade(card, rt, 0.5); ctx.fade(num, rt, 0.5);
+          ctx.fade(tt, rt + 0.1, 0.5); ctx.fade(dd, rt + 0.2, 0.5);
+        });
+      }
+    }
+  ]
+});
+</script>
+</body>
+</html>
